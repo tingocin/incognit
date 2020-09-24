@@ -5,6 +5,12 @@ struct Book: View {
     
     var body: some View {
         ZStack {
+            VStack {
+                Image(systemName: "eyeglasses")
+                    .font(Font.largeTitle.bold())
+                Text("incognit")
+                    .font(.headline)
+            }.foregroundColor(.init(.quaternaryLabel))
             ScrollView {
                 Spacer()
                     .frame(height: 40)

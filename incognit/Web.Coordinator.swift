@@ -1,25 +1,10 @@
 import SwiftUI
 import WebKit
+import Combine
 
 extension Web {
     final class Coordinator: WKWebView, WKNavigationDelegate {
-        var last = "" {
-            didSet {
-//                guard !last.contains("http") else {
-//                    navigate(last)
-//                    return
-//                }
-//                
-//                guard !last.contains(".") || last.last == "." else {
-//                    navigate("http://" + last)
-//                    return
-//                }
-//                
-//                navigate("https://www.ecosia.org/search?q=" + (last.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""))
-            }
-        }
-        
-        private var observations = Set<NSKeyValueObservation>()
+        private var subs = Set<AnyCancellable>()
         private let view: Web
         
         required init?(coder: NSCoder) { nil }
@@ -36,25 +21,27 @@ extension Web {
             super.init(frame: .zero, configuration: configuration)
             navigationDelegate = self
             
-            observations.insert(observe(\.estimatedProgress, options: .new) { [weak self] in
-                $1.newValue.map { progress in
-                    DispatchQueue.main.async {
-                        self?.view.progress = .init(progress)
-                    }
+            publisher(for: \.estimatedProgress).sink { [weak self] progress in
+                DispatchQueue.main.async {
+                    self?.view.progress = .init(progress)
                 }
-            })
+            }.store(in: &subs)
             
-            observations.insert(observe(\.url, options: .new) { [weak self] in
-                $1.newValue?.map { url in
-                    DispatchQueue.main.async {
-                        self?.view.session.page?.url = url
-                    }
+            publisher(for: \.title).sink { [weak self] in
+                $0.map {
+                    self?.view.session.page?.title = $0
                 }
-            })
-        }
-        
-        deinit {
-            observations.forEach { $0.invalidate() }
+            }.store(in: &subs)
+            
+            publisher(for: \.url).sink { [weak self] in
+                $0.map {
+                    self?.view.session.page?.url = $0
+                }
+            }.store(in: &subs)
+            
+            view.session.navigate.sink { [weak self] in
+                self?.load(.init(url: $0))
+            }.store(in: &subs)
         }
         
         func webView(_: WKWebView, didFinish: WKNavigation!) {

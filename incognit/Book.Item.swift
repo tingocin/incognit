@@ -22,7 +22,7 @@ extension Book {
                         }
                         if page.url != nil {
                             HStack {
-                                Text(verbatim: page.title)
+                                Text(verbatim: page.url!.absoluteString)
                                     .font(.callout)
                                     .foregroundColor(.primary)
                                     .padding(.leading)

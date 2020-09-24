@@ -7,12 +7,7 @@ struct Tab: View {
 
     var body: some View {
         ZStack {
-            VStack {
-                Image(systemName: "eyeglasses")
-                    .font(Font.largeTitle.bold())
-                Text("incognit")
-                    .font(.headline)
-            }.foregroundColor(.init(.quaternaryLabel))
+            
             VStack {
                 Progress(progress: progress)
                     .stroke(progress < 1 ? Color.accentColor : .clear, style: .init(lineWidth: 4, lineCap: .round))

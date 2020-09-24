@@ -14,7 +14,7 @@ struct Bar: View {
                 .foregroundColor(.init(.secondarySystemBackground))
             HStack {
                 Spacer()
-                TextField(.init("Search or website"), text: $text, onCommit: action)
+                TextField("Search or website", text: $text, onCommit: action)
                     .textContentType(.URL)
                     .keyboardType(.webSearch)
                     .autocapitalization(.none)
@@ -23,7 +23,7 @@ struct Bar: View {
                     .textFieldStyle(PlainTextFieldStyle())
                     .frame(width: width, height: 40)
                     .onTapGesture {
-                        self.text = ""
+                        UIApplication.shared.textField.selectAll(nil)
                 }
                 Spacer()
             }

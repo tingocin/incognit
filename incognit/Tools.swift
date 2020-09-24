@@ -1,5 +1,4 @@
 import SwiftUI
-import Combine
 
 struct Tools: View {
     @Binding var session: Session
@@ -7,9 +6,7 @@ struct Tools: View {
     @State private var hide = true
     @State private var tabsY = CGFloat()
     @State private var menuY = CGFloat()
-    @State private var bottom = CGFloat()
     @State private var barWidth = CGFloat()
-    @State private var subs = Set<AnyCancellable>()
     @State private var options = false
     
     var body: some View {
@@ -45,18 +42,16 @@ struct Tools: View {
                         Spacer()
                     }
                 }
-            }.offset(y: bottom)
+            }
         }.onAppear {
-            NotificationCenter.default.publisher(for: UIResponder.keyboardWillShowNotification).sink { notification in
-                withAnimation {
-                    self.bottom = -(notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue.height
+            if session.page?.url == nil {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    show()
+                    UIApplication.shared.textField.becomeFirstResponder()
                 }
-            }.store(in: &self.subs)
-            NotificationCenter.default.publisher(for: UIResponder.keyboardWillHideNotification).sink { notification in
-                withAnimation {
-                    self.bottom = 0
-                }
-            }.store(in: &self.subs)
+            } else {
+                session.navigate.send(session.page!.url!)
+            }
         }
     }
     
@@ -87,6 +82,23 @@ struct Tools: View {
     
     private func commit() {
         show()
-//        text = editing
+        URL(string: url).map(session.navigate.send)
+    }
+    
+    private var url: String {
+        editing.fullURL ? editing :
+            editing.url ? "http://" + editing : "https://www.ecosia.org/search?q=" + (editing.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "")
+    }
+}
+
+private extension String {
+    var fullURL: Bool {
+        (contains("http://") || contains("https://")) && url
+    }
+    
+    var url: Bool {
+        {
+            $0.count > 1 && $0.last!.count > 1 && $0.first!.count > 2
+        } (components(separatedBy: "."))
     }
 }
