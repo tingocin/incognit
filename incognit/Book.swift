@@ -4,6 +4,8 @@ import Combine
 struct Book: View {
     @Binding var session: Session
     @State private var size = Bar.Size.small
+    @State private var forget = false
+    @State private var settings = false
     
     var body: some View {
         ZStack {
@@ -12,6 +14,7 @@ struct Book: View {
                     .font(Font.largeTitle.bold())
                 Text("incognit")
                     .font(.headline)
+                    .padding()
             }.foregroundColor(.init(.quaternaryLabel))
             ScrollView {
                 Spacer()
@@ -50,10 +53,14 @@ struct Book: View {
                         }
                     }
                     Control.Circle(image: "eyeglasses") {
-                        
+                        forget = true
+                    }.sheet(isPresented: $forget) {
+                        Forget(session: $session, visible: $forget)
                     }
                     Control.Circle(image: "gearshape.fill") {
-                        
+                        settings = true
+                    }.sheet(isPresented: $settings) {
+                        Options(session: $session, visible: $settings)
                     }
                     Spacer()
                 }

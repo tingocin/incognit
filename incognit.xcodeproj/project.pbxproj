@@ -15,6 +15,7 @@
 		CE201F2E251CDB67003FF2DF /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE201F2D251CDB67003FF2DF /* UIApplication.swift */; };
 		CE201F33251CE6BB003FF2DF /* Bar.Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE201F32251CE6BB003FF2DF /* Bar.Size.swift */; };
 		CE201F39251D0032003FF2DF /* Control.Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE201F38251D0032003FF2DF /* Control.Icon.swift */; };
+		CE201F3D251D0289003FF2DF /* Forget.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE201F3C251D0289003FF2DF /* Forget.swift */; };
 		CEF33D03251CB35F006065E5 /* Incognit.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF33D02251CB35F006065E5 /* Incognit.swift */; };
 		CEF33D07251CB35F006065E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEF33D06251CB35F006065E5 /* Assets.xcassets */; };
 		CEF33D15251CB63A006065E5 /* Balam in Frameworks */ = {isa = PBXBuildFile; productRef = CEF33D14251CB63A006065E5 /* Balam */; };
@@ -38,6 +39,7 @@
 		CE201F2D251CDB67003FF2DF /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
 		CE201F32251CE6BB003FF2DF /* Bar.Size.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bar.Size.swift; sourceTree = "<group>"; };
 		CE201F38251D0032003FF2DF /* Control.Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Control.Icon.swift; sourceTree = "<group>"; };
+		CE201F3C251D0289003FF2DF /* Forget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Forget.swift; sourceTree = "<group>"; };
 		CEF33CFF251CB35F006065E5 /* incognit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = incognit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEF33D02251CB35F006065E5 /* Incognit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Incognit.swift; sourceTree = "<group>"; };
 		CEF33D06251CB35F006065E5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 				CEF33D25251CB700006065E5 /* Bar.swift */,
 				CE201F21251CBEDD003FF2DF /* Book.Item.swift */,
 				CEF33D3E251CBA87006065E5 /* Book.swift */,
+				CE201F3C251D0289003FF2DF /* Forget.swift */,
 				CE201F1D251CBB52003FF2DF /* Control.Circle.swift */,
 				CE201F38251D0032003FF2DF /* Control.Icon.swift */,
 				CE201F1A251CBB3F003FF2DF /* Control.swift */,
@@ -186,6 +189,7 @@
 				CE201F2E251CDB67003FF2DF /* UIApplication.swift in Sources */,
 				CEF33D1D251CB6D1006065E5 /* Tools.swift in Sources */,
 				CEF33D26251CB700006065E5 /* Bar.swift in Sources */,
+				CE201F3D251D0289003FF2DF /* Forget.swift in Sources */,
 				CEF33D3F251CBA87006065E5 /* Book.swift in Sources */,
 				CE201F22251CBEDD003FF2DF /* Book.Item.swift in Sources */,
 				CE201F2A251CC7F8003FF2DF /* Session.swift in Sources */,

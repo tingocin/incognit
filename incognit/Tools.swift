@@ -32,13 +32,13 @@ struct Tools: View {
                         }.padding()
                             .offset(y: tabsY)
                         Control.Circle(image: "line.horizontal.3") {
-                            self.show()
-                            self.options = true
+                            show()
+                            options = true
                         }.padding()
                             .offset(y: menuY)
-//                            .sheet(isPresented: $options) {
-//                                Options(url: self.$url, visible: self.$options)
-//                        }
+                            .sheet(isPresented: $options) {
+                                Options(session: $session, visible: $options)
+                        }
                         Control.Circle(image: hide ? "magnifyingglass" : "multiply", action: show)
                             .padding()
                     }

@@ -22,6 +22,11 @@ struct Session {
         balam.remove(page)
     }
     
+    mutating func forget() {
+        pages = []
+        balam.remove(Page.self) { _ in true }
+    }
+    
     func update(_ current: (Page) -> Void) {
         page.map {
             current($0)

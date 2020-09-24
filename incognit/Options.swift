@@ -1,32 +1,25 @@
 import SwiftUI
 
 struct Options: View {
-    @Binding var url: URL?
+    @Binding var session: Session
     @Binding var visible: Bool
     
     var body: some View {
         NavigationView {
             List {
-                Section(header:
-                    VStack {
-                        HStack {
-                            Text(verbatim: url?.absoluteString ?? "")
-                                .foregroundColor(.primary)
-                            Spacer()
-                        }
-                        Spacer()
-                            .frame(height: 50)
-                }) {
-                    Circle()
+                HStack {
+                    Text(verbatim: session.page?.url.absoluteString ?? "")
+                        .foregroundColor(.primary)
+                    Spacer()
                 }
             }.listStyle(GroupedListStyle())
                 .navigationBarItems(trailing:
                     Button(action: {
-                        self.visible = false
+                        visible = false
                     }) {
                         Text("Done")
                             .font(.callout)
-                            .foregroundColor(.pink)
+                            .foregroundColor(.accentColor)
                             .padding()
                     })
         }.navigationViewStyle(StackNavigationViewStyle())
