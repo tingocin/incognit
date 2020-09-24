@@ -3,7 +3,6 @@ import SwiftUI
 extension Control {
     struct Circle: View {
         let image: String
-        let color: Color
         let action: () -> Void
         
         var body: some View {
@@ -13,12 +12,12 @@ extension Control {
                 ZStack {
                     SwiftUI.Circle()
                         .frame(width: 40, height: 40)
-                        .shadow(color: .init(.systemBackground), radius: 2, x: pressed ? 0 : -2, y: pressed ? 0 : -2)
-                        .shadow(color: .init(.systemBackground), radius: 3, x: pressed ? 0 : 3, y: pressed ? 0 : 3)
-                        .foregroundColor(pressed ? color : .init(.secondarySystemBackground))
+                        .shadow(color: .init(.systemBackground), radius: 4, x: -2, y: -2)
+                        .shadow(color: .init(.systemBackground), radius: 4, x: 2, y: 2)
+                        .foregroundColor(pressed ? .accentColor : .init(.secondarySystemBackground))
                     Image(systemName: image)
                         .font(Font.headline.bold())
-                        .foregroundColor(pressed ? .init(.systemBackground) : color)
+                        .foregroundColor(pressed ? .init(.systemBackground) : .accentColor)
                 }.frame(width: 60, height: 60)
             })
         }

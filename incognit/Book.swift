@@ -1,7 +1,9 @@
 import SwiftUI
+import Combine
 
 struct Book: View {
     @Binding var session: Session
+    @State private var size = Bar.Size.small
     
     var body: some View {
         ZStack {
@@ -16,6 +18,7 @@ struct Book: View {
                     .frame(height: 40)
                 ForEach(session.pages.sorted { $0.date > $1.date }) { page in
                     Item(page: page) {
+                        session.refresh(page.id)
                         select(page.id)
                     }
                 }
@@ -24,29 +27,46 @@ struct Book: View {
                 Spacer()
                 HStack {
                     Spacer()
-                    Control.Circle(image: "plus.circle.fill", color: .accentColor) {
-                        let page = Page()
-                        _ = withAnimation {
-                            session.pages.insert(page)
+                    Bar(size: size) {
+                        withAnimation {
+                            size = .full
                         }
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    } commit: {
+                        guard let url = $0 else {
+                            UIApplication.shared.resign()
+                            withAnimation {
+                                size = .small
+                            }
+                            return
+                        }
+                        let page = Page(url: url)
+                        session.add(page)
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                             select(page.id)
                         }
-                    }.padding()
-                    Control.Circle(image: "eyeglasses", color: .accentColor) {
+                    }
+                    Control.Circle(image: "eyeglasses") {
                         
-                    }.padding()
-                    Control.Circle(image: "gearshape.fill", color: .accentColor) {
+                    }
+                    Control.Circle(image: "gearshape.fill") {
                         
-                    }.padding()
+                    }
                     Spacer()
                 }
             }
         }.transition(.move(edge: .top))
+        .onAppear {
+            guard session.pages.isEmpty else { return }
+            var sub: AnyCancellable?
+            sub = session.balam.nodes(Page.self).sink {
+                session.pages = .init($0)
+                sub?.cancel()
+            }
+        }
     }
     
     private func select(_ id: UUID) {
-        withAnimation(.easeInOut(duration: 0.5)) {
+        withAnimation(.easeInOut(duration: 1)) {
             session.current = id
         }
     }

@@ -20,22 +20,20 @@ extension Book {
                                 .padding(.leading)
                             Spacer()
                         }
-                        if page.url != nil {
-                            HStack {
-                                Text(verbatim: page.url!.absoluteString)
-                                    .font(.callout)
-                                    .foregroundColor(.primary)
-                                    .padding(.leading)
-                                Spacer()
-                            }
+                        HStack {
+                            Text(verbatim: page.url.absoluteString)
+                                .font(.caption2)
+                                .foregroundColor(.secondary)
+                                .padding(.leading)
+                            Spacer()
                         }
                         HStack {
-                            Spacer()
                             Text(verbatim: date)
-                                .font(.footnote)
+                                .font(.caption2)
                                 .foregroundColor(.secondary)
                                 .padding(.bottom)
-                                .padding(.trailing)
+                                .padding(.leading)
+                            Spacer()
                         }
                     }
                 }.padding(.horizontal)

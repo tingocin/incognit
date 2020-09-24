@@ -28,14 +28,20 @@ extension Web {
             }.store(in: &subs)
             
             publisher(for: \.title).sink { [weak self] in
-                $0.map {
-                    self?.view.session.page?.title = $0
+                $0.map { title in
+                    guard self?.view.session.page?.title != title else { return }
+                    self?.view.session.update {
+                        $0.title = title
+                    }
                 }
             }.store(in: &subs)
             
             publisher(for: \.url).sink { [weak self] in
-                $0.map {
-                    self?.view.session.page?.url = $0
+                $0.map { url in
+                    guard self?.view.session.page?.url != url else { return }
+                    self?.view.session.update {
+                        $0.url = url
+                    }
                 }
             }.store(in: &subs)
             
