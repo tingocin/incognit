@@ -14,7 +14,7 @@ struct Tools: View {
             ZStack {
                 HStack {
                     Spacer()
-                    Bar(size: size) {
+                    Bar(engine: session.engine, size: size) {
                         UIApplication.shared.textField.selectAll(nil)
                     } commit: {
                         show()

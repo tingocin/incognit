@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct Bar: View {
+    let engine: Engine
     let size: Size
     let tap: () -> Void
     let commit: (URL?) -> Void
@@ -17,7 +18,7 @@ struct Bar: View {
                 .foregroundColor(.accentColor)
                 .opacity(size.image ? 1 : 0)
             TextField(size.title, text: $text, onCommit: {
-                commit(text.url)
+                commit(text.url(engine))
             }).textContentType(.URL)
                 .keyboardType(.webSearch)
                 .autocapitalization(.none)
@@ -31,14 +32,14 @@ struct Bar: View {
 }
 
 private extension String {
-    var url: URL? {
+    func url(_ engine: Engine) -> URL? {
         {
-            $0.isEmpty ? nil : URL(string: $0.content)
+            $0.isEmpty ? nil : URL(string: $0.content(engine))
         } (trimmingCharacters(in: .whitespacesAndNewlines))
     }
     
-    var content: Self {
-        fullURL ? self : semiURL ? "http://" + self : "https://www.ecosia.org/search?q=" + (addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "")
+    private func content(_ engine: Engine) -> Self {
+        fullURL ? self : semiURL ? "http://" + self : engine.prefix + (addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "")
     }
     
     private var fullURL: Bool {

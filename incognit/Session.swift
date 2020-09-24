@@ -5,6 +5,7 @@ import Balam
 struct Session {
     var current: UUID?
     var pages = Set<Page>()
+    var engine = Engine.ecosia
     let navigate = PassthroughSubject<URL, Never>()
     let balam = Balam("incognit")
     
@@ -25,6 +26,12 @@ struct Session {
     mutating func forget() {
         pages = []
         balam.remove(Page.self) { _ in true }
+    }
+
+    mutating func change(_ engine: Engine) {
+        self.engine = engine
+        balam.remove(engine)
+        balam.add(engine)
     }
     
     func update(_ current: (Page) -> Void) {

@@ -16,6 +16,8 @@
 		CE201F33251CE6BB003FF2DF /* Bar.Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE201F32251CE6BB003FF2DF /* Bar.Size.swift */; };
 		CE201F39251D0032003FF2DF /* Control.Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE201F38251D0032003FF2DF /* Control.Icon.swift */; };
 		CE201F3D251D0289003FF2DF /* Forget.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE201F3C251D0289003FF2DF /* Forget.swift */; };
+		CE201F41251D04A9003FF2DF /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE201F40251D04A9003FF2DF /* Settings.swift */; };
+		CE201F44251D0533003FF2DF /* Engine.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE201F43251D0533003FF2DF /* Engine.swift */; };
 		CEF33D03251CB35F006065E5 /* Incognit.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF33D02251CB35F006065E5 /* Incognit.swift */; };
 		CEF33D07251CB35F006065E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEF33D06251CB35F006065E5 /* Assets.xcassets */; };
 		CEF33D15251CB63A006065E5 /* Balam in Frameworks */ = {isa = PBXBuildFile; productRef = CEF33D14251CB63A006065E5 /* Balam */; };
@@ -40,6 +42,8 @@
 		CE201F32251CE6BB003FF2DF /* Bar.Size.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bar.Size.swift; sourceTree = "<group>"; };
 		CE201F38251D0032003FF2DF /* Control.Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Control.Icon.swift; sourceTree = "<group>"; };
 		CE201F3C251D0289003FF2DF /* Forget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Forget.swift; sourceTree = "<group>"; };
+		CE201F40251D04A9003FF2DF /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		CE201F43251D0533003FF2DF /* Engine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Engine.swift; sourceTree = "<group>"; };
 		CEF33CFF251CB35F006065E5 /* incognit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = incognit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEF33D02251CB35F006065E5 /* Incognit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Incognit.swift; sourceTree = "<group>"; };
 		CEF33D06251CB35F006065E5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -91,15 +95,17 @@
 				CEF33D25251CB700006065E5 /* Bar.swift */,
 				CE201F21251CBEDD003FF2DF /* Book.Item.swift */,
 				CEF33D3E251CBA87006065E5 /* Book.swift */,
-				CE201F3C251D0289003FF2DF /* Forget.swift */,
 				CE201F1D251CBB52003FF2DF /* Control.Circle.swift */,
 				CE201F38251D0032003FF2DF /* Control.Icon.swift */,
 				CE201F1A251CBB3F003FF2DF /* Control.swift */,
+				CE201F43251D0533003FF2DF /* Engine.swift */,
+				CE201F3C251D0289003FF2DF /* Forget.swift */,
 				CEF33D02251CB35F006065E5 /* Incognit.swift */,
 				CEF33D28251CB714006065E5 /* Options.swift */,
 				CE201F24251CC069003FF2DF /* Page.swift */,
 				CEF33D2B251CB722006065E5 /* Progress.swift */,
 				CE201F29251CC7F8003FF2DF /* Session.swift */,
+				CE201F40251D04A9003FF2DF /* Settings.swift */,
 				CEF33D18251CB6B8006065E5 /* Tab.swift */,
 				CEF33D1C251CB6D1006065E5 /* Tools.swift */,
 				CE201F2D251CDB67003FF2DF /* UIApplication.swift */,
@@ -195,6 +201,7 @@
 				CE201F2A251CC7F8003FF2DF /* Session.swift in Sources */,
 				CEF33D23251CB6F1006065E5 /* Web.Coordinator.swift in Sources */,
 				CE201F39251D0032003FF2DF /* Control.Icon.swift in Sources */,
+				CE201F44251D0533003FF2DF /* Engine.swift in Sources */,
 				CE201F1B251CBB3F003FF2DF /* Control.swift in Sources */,
 				CEF33D19251CB6B8006065E5 /* Tab.swift in Sources */,
 				CEF33D20251CB6E1006065E5 /* Web.swift in Sources */,
@@ -204,6 +211,7 @@
 				CE201F33251CE6BB003FF2DF /* Bar.Size.swift in Sources */,
 				CE201F1E251CBB52003FF2DF /* Control.Circle.swift in Sources */,
 				CE201F25251CC069003FF2DF /* Page.swift in Sources */,
+				CE201F41251D04A9003FF2DF /* Settings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

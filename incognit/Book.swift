@@ -34,7 +34,7 @@ struct Book: View {
                 Spacer()
                 HStack {
                     Spacer()
-                    Bar(size: size) {
+                    Bar(engine: session.engine, size: size) {
                         withAnimation {
                             size = .full
                         }
@@ -60,7 +60,7 @@ struct Book: View {
                     Control.Circle(image: "gearshape.fill") {
                         settings = true
                     }.sheet(isPresented: $settings) {
-                        Options(session: $session, visible: $settings)
+                        Settings(session: $session, visible: $settings)
                     }
                     Spacer()
                 }
@@ -71,7 +71,12 @@ struct Book: View {
             var sub: AnyCancellable?
             sub = session.balam.nodes(Page.self).sink {
                 session.pages = .init($0)
-                sub?.cancel()
+                sub = session.balam.nodes(Engine.self).sink {
+                    $0.first.map {
+                        session.engine = $0
+                    }
+                    sub?.cancel()
+                }
             }
         }
     }
