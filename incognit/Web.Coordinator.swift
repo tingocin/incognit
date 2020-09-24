@@ -5,17 +5,17 @@ extension Web {
     final class Coordinator: WKWebView, WKNavigationDelegate {
         var last = "" {
             didSet {
-                guard !last.contains("http") else {
-                    navigate(last)
-                    return
-                }
-                
-                guard !last.contains(".") || last.last == "." else {
-                    navigate("http://" + last)
-                    return
-                }
-                
-                navigate("https://www.ecosia.org/search?q=" + (last.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""))
+//                guard !last.contains("http") else {
+//                    navigate(last)
+//                    return
+//                }
+//                
+//                guard !last.contains(".") || last.last == "." else {
+//                    navigate("http://" + last)
+//                    return
+//                }
+//                
+//                navigate("https://www.ecosia.org/search?q=" + (last.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""))
             }
         }
         
@@ -47,7 +47,7 @@ extension Web {
             observations.insert(observe(\.url, options: .new) { [weak self] in
                 $1.newValue?.map { url in
                     DispatchQueue.main.async {
-                        self?.view.url = url
+                        self?.view.session.page?.url = url
                     }
                 }
             })

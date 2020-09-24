@@ -2,8 +2,7 @@ import SwiftUI
 import Combine
 
 struct Tools: View {
-    @Binding var text: String
-    @Binding var url: URL?
+    @Binding var session: Session
     @State private var editing = ""
     @State private var hide = true
     @State private var tabsY = CGFloat()
@@ -25,17 +24,20 @@ struct Tools: View {
                 HStack {
                     Spacer()
                     ZStack {
-                        Blob.Icon(icon: "square.on.square", action: show)
-                            .padding()
+                        Blob.Icon(icon: "square.on.square") {
+                            withAnimation(.easeInOut(duration: 0.5)) {
+                                session.current = nil
+                            }
+                        }.padding()
                             .offset(y: tabsY)
                         Blob.Icon(icon: "line.horizontal.3") {
                             self.show()
                             self.options = true
                         }.padding()
                             .offset(y: menuY)
-                            .sheet(isPresented: $options) {
-                                Options(url: self.$url, visible: self.$options)
-                        }
+//                            .sheet(isPresented: $options) {
+//                                Options(url: self.$url, visible: self.$options)
+//                        }
                         Blob.Icon(icon: hide ? "magnifyingglass" : "multiply", action: show)
                             .padding()
                     }
@@ -85,6 +87,6 @@ struct Tools: View {
     
     private func commit() {
         show()
-        text = editing
+//        text = editing
     }
 }
