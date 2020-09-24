@@ -18,7 +18,11 @@ struct Book: View {
                     .frame(height: 40)
                 ForEach(session.pages.sorted { $0.date > $1.date }) { page in
                     Item(page: page) {
-                        session.refresh(page.id)
+                        withAnimation {
+                            session.delete(page)
+                        }
+                    } action: {
+                        session.refresh(page)
                         select(page.id)
                     }
                 }

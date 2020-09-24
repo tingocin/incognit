@@ -17,6 +17,11 @@ struct Session {
         balam.add(page)
     }
     
+    mutating func delete(_ page: Page) {
+        pages.remove(page)
+        balam.remove(page)
+    }
+    
     func update(_ current: (Page) -> Void) {
         page.map {
             current($0)
@@ -24,8 +29,7 @@ struct Session {
         }
     }
     
-    func refresh( _ id: UUID) {
-        let page = pages.first { $0.id == id }!
+    func refresh(_ page: Page) {
         page.date = .init()
         balam.update(page)
     }

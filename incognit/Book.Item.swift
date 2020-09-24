@@ -3,6 +3,7 @@ import SwiftUI
 extension Book {
     struct Item: View {
         let page: Page
+        let delete: () -> Void
         let action: () -> Void
         @State private var date = ""
         
@@ -11,30 +12,33 @@ extension Book {
                 ZStack {
                     RoundedRectangle(cornerRadius: 6)
                         .foregroundColor(.init(.secondarySystemBackground))
-                    VStack {
-                        HStack {
-                            Text(verbatim: page.title)
-                                .font(.headline)
-                                .foregroundColor(.primary)
-                                .padding(.top)
-                                .padding(.leading)
-                            Spacer()
+                    HStack {
+                        VStack {
+                            HStack {
+                                Text(verbatim: page.title)
+                                    .font(.headline)
+                                    .foregroundColor(.primary)
+                                    .padding(.top)
+                                    .padding(.leading)
+                                Spacer()
+                            }
+                            HStack {
+                                Text(verbatim: page.url.absoluteString)
+                                    .font(.caption2)
+                                    .foregroundColor(.secondary)
+                                    .padding(.leading)
+                                Spacer()
+                            }
+                            HStack {
+                                Text(verbatim: date)
+                                    .font(.caption2)
+                                    .foregroundColor(.secondary)
+                                    .padding(.bottom)
+                                    .padding(.leading)
+                                Spacer()
+                            }
                         }
-                        HStack {
-                            Text(verbatim: page.url.absoluteString)
-                                .font(.caption2)
-                                .foregroundColor(.secondary)
-                                .padding(.leading)
-                            Spacer()
-                        }
-                        HStack {
-                            Text(verbatim: date)
-                                .font(.caption2)
-                                .foregroundColor(.secondary)
-                                .padding(.bottom)
-                                .padding(.leading)
-                            Spacer()
-                        }
+                        Control.Icon(image: "xmark", color: .init(.tertiaryLabel), action: delete)
                     }
                 }.padding(.horizontal)
             }.onAppear {
