@@ -20,5 +20,12 @@ extension Bar {
             default: return false
             }
         }
+        
+        var background: Bool {
+            switch self {
+            case .hidden: return false
+            default: return true
+            }
+        }
     }
 }

@@ -31,14 +31,16 @@ struct Tools: View {
                             }
                         }.padding()
                             .offset(y: tabsY)
+                            .opacity(hide ? 0 : 1)
                         Control.Circle(image: "line.horizontal.3") {
                             show()
                             options = true
                         }.padding()
                             .offset(y: menuY)
+                            .opacity(hide ? 0 : 1)
                             .sheet(isPresented: $options) {
                                 Options(session: $session, visible: $options)
-                        }
+                            }
                         Control.Circle(image: hide ? "magnifyingglass" : "multiply", action: show)
                             .padding()
                     }

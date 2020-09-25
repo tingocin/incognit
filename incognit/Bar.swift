@@ -9,10 +9,12 @@ struct Bar: View {
     
     var body: some View {
         ZStack {
-            RoundedRectangle(cornerRadius: 20)
-                .shadow(color: .init(.systemBackground), radius: 2, x: -2, y: -2)
-                .shadow(color: .init(.systemBackground), radius: 3, x: 3, y: 3)
-                .foregroundColor(.init(.secondarySystemBackground))
+            if size.background {
+                RoundedRectangle(cornerRadius: 20)
+                    .shadow(color: .init(UIColor.systemBackground.withAlphaComponent(0.6)), radius: 4, x: -2, y: -2)
+                    .shadow(color: .init(UIColor.systemBackground.withAlphaComponent(0.6)), radius: 4, x: 2, y: 2)
+                    .foregroundColor(.init(.secondarySystemBackground))
+            }
             Image(systemName: "magnifyingglass")
                 .font(.headline)
                 .foregroundColor(.accentColor)

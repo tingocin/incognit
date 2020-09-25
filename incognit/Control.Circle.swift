@@ -12,8 +12,8 @@ extension Control {
                 ZStack {
                     SwiftUI.Circle()
                         .frame(width: 40, height: 40)
-                        .shadow(color: .init(.systemBackground), radius: 4, x: -2, y: -2)
-                        .shadow(color: .init(.systemBackground), radius: 4, x: 2, y: 2)
+                        .shadow(color: .init(UIColor.systemBackground.withAlphaComponent(0.6)), radius: 4, x: -2, y: -2)
+                        .shadow(color: .init(UIColor.systemBackground.withAlphaComponent(0.6)), radius: 4, x: 2, y: 2)
                         .foregroundColor(pressed ? .accentColor : .init(.secondarySystemBackground))
                     Image(systemName: image)
                         .font(Font.headline.bold())
