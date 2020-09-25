@@ -22,17 +22,32 @@ struct Tools: View {
                     }
                     Spacer()
                 }
+                if hide {
+                    HStack {
+                        Control.Circle(image: "chevron.left") {
+                            session.backward.send()
+                        }.opacity(session.backwards ? 1 : 0.5)
+                            .padding()
+                        Spacer()
+                        Control.Circle(image: "chevron.right") {
+                            session.forward.send()
+                        }.opacity(session.forwards ? 1 : 0.5)
+                            .padding()
+                    }
+                }
                 HStack {
                     Spacer()
                     ZStack {
                         Control.Circle(image: "square.on.square") {
-                            withAnimation(.easeInOut(duration: 0.5)) {
+                            UIApplication.shared.resign()
+                            withAnimation(.easeInOut(duration: 0.4)) {
                                 session.current = nil
                             }
                         }.padding()
                             .offset(y: tabsY)
                             .opacity(hide ? 0 : 1)
                         Control.Circle(image: "line.horizontal.3") {
+                            UIApplication.shared.resign()
                             show()
                             options = true
                         }.padding()
@@ -51,6 +66,10 @@ struct Tools: View {
             }
         }.onAppear {
             session.navigate.send(session.page!.url)
+        }.onReceive(session.change) {
+            if !hide {
+                show()
+            }
         }
     }
     

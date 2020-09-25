@@ -29,15 +29,24 @@ struct Book: View {
                         select(page.id)
                     }
                 }
+                Spacer()
+                    .frame(height: 60)
             }
             VStack {
                 Spacer()
                 HStack {
                     Spacer()
+                    Control.Circle(image: "eyeglasses") {
+                        UIApplication.shared.resign()
+                        forget = true
+                    }.sheet(isPresented: $forget) {
+                        Forget(session: $session, visible: $forget)
+                    }
                     Bar(engine: session.engine, size: size) {
                         withAnimation {
                             size = .full
                         }
+                        UIApplication.shared.textField.becomeFirstResponder()
                     } commit: {
                         guard let url = $0 else {
                             UIApplication.shared.resign()
@@ -52,12 +61,8 @@ struct Book: View {
                             select(page.id)
                         }
                     }
-                    Control.Circle(image: "eyeglasses") {
-                        forget = true
-                    }.sheet(isPresented: $forget) {
-                        Forget(session: $session, visible: $forget)
-                    }
                     Control.Circle(image: "gearshape.fill") {
+                        UIApplication.shared.resign()
                         settings = true
                     }.sheet(isPresented: $settings) {
                         Settings(session: $session, visible: $settings)
@@ -82,7 +87,8 @@ struct Book: View {
     }
     
     private func select(_ id: UUID) {
-        withAnimation(.easeInOut(duration: 1)) {
+        UIApplication.shared.resign()
+        withAnimation(.easeInOut(duration: 0.5)) {
             session.current = id
         }
     }

@@ -4,7 +4,7 @@ extension Bar {
     enum Size: CGFloat {
         case
         hidden = 0,
-        small = 80,
+        small = 90,
         full = 150
         
         var title: LocalizedStringKey {

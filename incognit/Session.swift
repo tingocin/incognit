@@ -6,7 +6,12 @@ struct Session {
     var current: UUID?
     var pages = Set<Page>()
     var engine = Engine.ecosia
+    var forwards = false
+    var backwards = false
     let navigate = PassthroughSubject<URL, Never>()
+    let backward = PassthroughSubject<Void, Never>()
+    let forward = PassthroughSubject<Void, Never>()
+    let change = PassthroughSubject<Void, Never>()
     let balam = Balam("incognit")
     
     var page: Page? {

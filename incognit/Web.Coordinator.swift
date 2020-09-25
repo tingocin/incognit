@@ -3,7 +3,7 @@ import WebKit
 import Combine
 
 extension Web {
-    final class Coordinator: WKWebView, WKNavigationDelegate {
+    final class Coordinator: WKWebView, WKNavigationDelegate, WKUIDelegate {
         private var subs = Set<AnyCancellable>()
         private let view: Web
         
@@ -45,13 +45,33 @@ extension Web {
                 }
             }.store(in: &subs)
             
+            publisher(for: \.canGoBack).sink { [weak self] in
+                self?.view.session.backwards = $0
+            }.store(in: &subs)
+            
+            publisher(for: \.canGoForward).sink { [weak self] in
+                self?.view.session.forwards = $0
+            }.store(in: &subs)
+            
             view.session.navigate.sink { [weak self] in
                 self?.load(.init(url: $0))
+            }.store(in: &subs)
+            
+            view.session.backward.sink { [weak self] in
+                self?.goBack()
+            }.store(in: &subs)
+            
+            view.session.forward.sink { [weak self] in
+                self?.goForward()
             }.store(in: &subs)
         }
         
         func webView(_: WKWebView, didFinish: WKNavigation!) {
             view.progress = 1
+        }
+        
+        func webView(_: WKWebView, didStartProvisionalNavigation: WKNavigation!) {
+            view.session.change.send()
         }
         
         private func navigate(_ url: String) {
