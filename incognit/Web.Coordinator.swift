@@ -20,6 +20,11 @@ extension Web {
             
             super.init(frame: .zero, configuration: configuration)
             navigationDelegate = self
+            uiDelegate = self
+            scrollView.contentInset.bottom = 100
+            isOpaque = false
+            backgroundColor = .clear
+            scrollView.backgroundColor = .clear
             
             publisher(for: \.estimatedProgress).sink { [weak self] progress in
                 DispatchQueue.main.async {

@@ -3,19 +3,27 @@ import WebKit
 
 struct Tab: View {
     @Binding var session: Session
-    @State private var progress = CGFloat(1)
+    @State private var progress = CGFloat()
 
     var body: some View {
         ZStack {
-            VStack {
-                Progress(progress: progress)
-                    .stroke(progress < 1 ? Color.accentColor : .clear, style: .init(lineWidth: 4, lineCap: .round))
-                    .frame(height: 4)
-                    .cornerRadius(3)
-                    .padding(.horizontal, 20)
-                    .padding(.top, 4)
-                Web(session: $session, progress: $progress)
-                    .opacity(session.page?.url == nil ? 0 : 1)
+            Web(session: $session, progress: $progress)
+                .edgesIgnoringSafeArea(.all)
+            if progress > 0 && progress < 1 {
+                VStack {
+                    ZStack {
+                        Rectangle()
+                            .foregroundColor(.init(.systemBackground))
+                            .frame(height: 10)
+                        Progress(progress: progress)
+                            .stroke(Color.accentColor, style: .init(lineWidth: 6, lineCap: .round))
+                            .padding(.horizontal, 4)
+                            .frame(height: 6)
+                            .cornerRadius(3)
+                            .animation(.easeInOut(duration: 0.6))
+                    }
+                    Spacer()
+                }
             }
             Tools(session: $session)
         }.transition(.move(edge: .bottom))
