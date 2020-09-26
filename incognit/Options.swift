@@ -8,7 +8,7 @@ struct Options: View {
         NavigationView {
             List {
                 HStack {
-                    Text(verbatim: session.page?.url.absoluteString ?? "")
+                    Text(verbatim: session.current!.url.absoluteString)
                         .foregroundColor(.primary)
                     Spacer()
                 }

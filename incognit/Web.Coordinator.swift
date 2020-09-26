@@ -27,28 +27,26 @@ extension Web {
             allowsBackForwardNavigationGestures = true
             scrollView.backgroundColor = .clear
             scrollView.keyboardDismissMode = .onDrag
+            scrollView.contentInsetAdjustmentBehavior = .scrollableAxes
+            scrollView.automaticallyAdjustsScrollIndicatorInsets = true
             
-            publisher(for: \.estimatedProgress).sink { [weak self] progress in
-                DispatchQueue.main.async {
-                    self?.view.progress = .init(progress)
-                }
+            publisher(for: \.estimatedProgress).sink { [weak self] in
+                self?.view.session.progress = $0
             }.store(in: &subs)
             
             publisher(for: \.title).sink { [weak self] in
                 $0.map { title in
-                    guard self?.view.session.page?.title != title else { return }
-                    self?.view.session.update {
-                        $0.title = title
-                    }
+                    guard let page = self?.view.session.current, page.title != title else { return }
+                    page.title = title
+                    self?.view.session.balam.update(page)
                 }
             }.store(in: &subs)
             
             publisher(for: \.url).sink { [weak self] in
                 $0.map { url in
-                    guard self?.view.session.page?.url != url else { return }
-                    self?.view.session.update {
-                        $0.url = url
-                    }
+                    guard let page = self?.view.session.current, page.url != url else { return }
+                    self?.view.session.current?.url = url
+                    self?.view.session.balam.update(page)
                 }
             }.store(in: &subs)
             
@@ -74,11 +72,11 @@ extension Web {
         }
         
         func webView(_: WKWebView, didFinish: WKNavigation!) {
-            view.progress = 1
+            view.session.progress = 1
         }
         
         func webView(_: WKWebView, didStartProvisionalNavigation: WKNavigation!) {
-            view.session.change.send()
+            view.session.redirect.send()
         }
         
         private func navigate(_ url: String) {

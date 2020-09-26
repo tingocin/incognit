@@ -26,13 +26,13 @@ struct Tools: View {
                     HStack {
                         Control.Circle(image: "chevron.left") {
                             session.backward.send()
-                        }.opacity(session.backwards ? 1 : 0.5)
-                            .padding()
+                        }.opacity(session.backwards ? 1 : 0.6)
+                            .padding(.leading)
                         Spacer()
                         Control.Circle(image: "chevron.right") {
                             session.forward.send()
-                        }.opacity(session.forwards ? 1 : 0.5)
-                            .padding()
+                        }.opacity(session.forwards ? 1 : 0.6)
+                        .padding(.trailing)
                     }
                 }
                 HStack {
@@ -43,21 +43,21 @@ struct Tools: View {
                             withAnimation(.easeInOut(duration: 0.4)) {
                                 session.current = nil
                             }
-                        }.padding()
+                        }.padding(.trailing)
                             .offset(y: tabsY)
                             .opacity(hide ? 0 : 1)
                         Control.Circle(image: "line.horizontal.3") {
                             UIApplication.shared.resign()
                             show()
                             options = true
-                        }.padding()
+                        }.padding(.trailing)
                             .offset(y: menuY)
                             .opacity(hide ? 0 : 1)
                             .sheet(isPresented: $options) {
                                 Options(session: $session, visible: $options)
                             }
                         Control.Circle(image: hide ? "magnifyingglass" : "multiply", action: show)
-                            .padding()
+                            .padding(.trailing)
                     }
                     if hide {
                         Spacer()
@@ -65,8 +65,8 @@ struct Tools: View {
                 }
             }
         }.onAppear {
-            session.navigate.send(session.page!.url)
-        }.onReceive(session.change) {
+            session.navigate.send(session.current!.url)
+        }.onReceive(session.redirect) {
             if !hide {
                 show()
             }

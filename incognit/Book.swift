@@ -24,7 +24,9 @@ struct Book: View {
                             session.delete(page)
                         }
                     } action: {
-                        session.refresh(page)
+                        UIApplication.shared.resign()
+                        page.date = .init()
+                        session.balam.update(page)
                         select(page.id)
                     }
                 }
@@ -47,8 +49,8 @@ struct Book: View {
                         }
                         UIApplication.shared.textField.becomeFirstResponder()
                     } commit: {
+                        UIApplication.shared.resign()
                         guard let url = $0 else {
-                            UIApplication.shared.resign()
                             withAnimation {
                                 size = .small
                             }
@@ -73,9 +75,8 @@ struct Book: View {
     }
     
     private func select(_ id: UUID) {
-        UIApplication.shared.resign()
-        withAnimation(.easeInOut(duration: 5)) {
-            session.current = id
+        withAnimation(.easeInOut(duration: 0.5)) {
+            session.current = session.pages.first { $0.id == id }
         }
     }
 }

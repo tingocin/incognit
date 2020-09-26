@@ -3,7 +3,6 @@ import WebKit
 
 struct Web: UIViewRepresentable {
     @Binding var session: Session
-    @Binding var progress: CGFloat
     
     func makeCoordinator() -> Coordinator {
         .init(view: self)
