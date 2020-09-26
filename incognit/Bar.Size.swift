@@ -9,7 +9,7 @@ extension Bar {
         
         var title: LocalizedStringKey {
             switch self {
-            case .full: return "Search or website"
+            case .full: return "Browse"
             default: return ""
             }
         }

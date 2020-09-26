@@ -38,7 +38,7 @@ struct Tools: View {
                 HStack {
                     Spacer()
                     ZStack {
-                        Control.Circle(image: "square.on.square") {
+                        Control.Circle(image: "square.stack.3d.up.fill") {
                             UIApplication.shared.resign()
                             withAnimation(.easeInOut(duration: 0.4)) {
                                 session.current = nil

@@ -30,7 +30,7 @@ struct Book: View {
                     }
                 }
                 Spacer()
-                    .frame(height: 60)
+                    .frame(height: 80)
             }
             VStack {
                 Spacer()

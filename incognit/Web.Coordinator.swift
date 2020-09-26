@@ -24,7 +24,9 @@ extension Web {
             scrollView.contentInset.bottom = 100
             isOpaque = false
             backgroundColor = .clear
+            allowsBackForwardNavigationGestures = true
             scrollView.backgroundColor = .clear
+            scrollView.keyboardDismissMode = .onDrag
             
             publisher(for: \.estimatedProgress).sink { [weak self] progress in
                 DispatchQueue.main.async {

@@ -16,7 +16,8 @@ extension Book {
                         VStack {
                             HStack {
                                 Text(verbatim: page.title)
-                                    .font(.headline)
+                                    .fixedSize(horizontal: false, vertical: true)
+                                    .font(.subheadline)
                                     .foregroundColor(.primary)
                                     .padding(.top)
                                     .padding(.leading)
@@ -24,6 +25,7 @@ extension Book {
                             }
                             HStack {
                                 Text(verbatim: page.url.absoluteString)
+                                    .fixedSize(horizontal: false, vertical: true)
                                     .font(.caption2)
                                     .foregroundColor(.secondary)
                                     .padding(.leading)

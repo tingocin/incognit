@@ -11,7 +11,7 @@ extension Control {
                 Image(systemName: image)
                     .font(.body)
                     .foregroundColor(color)
-                    .frame(width: 60, height: 60)
+                    .frame(width: 52, height: 52)
             }
         }
     }
