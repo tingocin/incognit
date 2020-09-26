@@ -1,4 +1,5 @@
 import SwiftUI
+import Combine
 
 @main struct Incognit: App {
     @UIApplicationDelegateAdaptor(Delegate.self) private var delegate
@@ -8,10 +9,22 @@ import SwiftUI
         WindowGroup {
             ZStack {
                 Color(.secondarySystemBackground).edgesIgnoringSafeArea(.all)
-                if session.page == nil {
+                if session.current == nil {
                     Book(session: $session)
                 } else {
                     Tab(session: $session)
+                }
+            }.onAppear {
+                assert(session.pages.isEmpty)
+                var sub: AnyCancellable?
+                sub = session.balam.nodes(Page.self).sink {
+                    session.pages = .init($0)
+                    sub = session.balam.nodes(Engine.self).sink {
+                        $0.first.map {
+                            session.engine = $0
+                        }
+                        sub?.cancel()
+                    }
                 }
             }
         }

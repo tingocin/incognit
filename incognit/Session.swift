@@ -4,10 +4,10 @@ import Balam
 
 struct Session {
     var current: UUID?
-    var pages = Set<Page>()
     var engine = Engine.ecosia
     var forwards = false
     var backwards = false
+    var pages = Set<Page>()
     let navigate = PassthroughSubject<URL, Never>()
     let backward = PassthroughSubject<Void, Never>()
     let forward = PassthroughSubject<Void, Never>()

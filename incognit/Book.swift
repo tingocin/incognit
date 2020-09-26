@@ -1,5 +1,4 @@
 import SwiftUI
-import Combine
 
 struct Book: View {
     @Binding var session: Session
@@ -71,24 +70,11 @@ struct Book: View {
                 }
             }
         }.transition(.move(edge: .top))
-        .onAppear {
-            guard session.pages.isEmpty else { return }
-            var sub: AnyCancellable?
-            sub = session.balam.nodes(Page.self).sink {
-                session.pages = .init($0)
-                sub = session.balam.nodes(Engine.self).sink {
-                    $0.first.map {
-                        session.engine = $0
-                    }
-                    sub?.cancel()
-                }
-            }
-        }
     }
     
     private func select(_ id: UUID) {
         UIApplication.shared.resign()
-        withAnimation(.easeInOut(duration: 0.5)) {
+        withAnimation(.easeInOut(duration: 5)) {
             session.current = id
         }
     }
