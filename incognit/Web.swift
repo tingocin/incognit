@@ -13,9 +13,5 @@ struct Web: UIViewRepresentable {
         context.coordinator
     }
     
-    func updateUIView(_ uiView: WKWebView, context: Context) {
-//        if context.coordinator.last != text {
-//            context.coordinator.last = text
-//        }
-    }
+    func updateUIView(_ uiView: WKWebView, context: Context) { }
 }

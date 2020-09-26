@@ -11,7 +11,7 @@ extension Book {
             Button(action: action) {
                 ZStack {
                     RoundedRectangle(cornerRadius: 6)
-                        .foregroundColor(.init(.secondarySystemBackground))
+                        .foregroundColor(.init(.tertiarySystemBackground))
                     HStack {
                         VStack {
                             HStack {

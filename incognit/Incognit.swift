@@ -6,10 +6,13 @@ import SwiftUI
     
     var body: some Scene {
         WindowGroup {
-            if session.page == nil {
-                Book(session: $session)
-            } else {
-                Tab(session: $session)
+            ZStack {
+                Color(.secondarySystemBackground).edgesIgnoringSafeArea(.all)
+                if session.page == nil {
+                    Book(session: $session)
+                } else {
+                    Tab(session: $session)
+                }
             }
         }
     }
