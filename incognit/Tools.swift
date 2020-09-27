@@ -6,6 +6,8 @@ struct Tools: View {
     @State private var tabsY = CGFloat()
     @State private var menuY = CGFloat()
     @State private var options = false
+    @State private var left = false
+    @State private var right = false
     
     var body: some View {
         VStack {
@@ -13,42 +15,41 @@ struct Tools: View {
             ZStack {
                 if hide {
                     HStack {
-                        Control.Circle(image: "chevron.left") {
+                        Control.Circle(selected: false, image: "chevron.left") {
                             session.backward.send()
                         }.opacity(session.backwards ? 1 : 0.6)
                             .padding(.leading)
                         Spacer()
-                        Control.Circle(image: "chevron.right") {
-                            session.forward.send()
-                        }.opacity(session.forwards ? 1 : 0.6)
-                        .padding(.trailing)
+//                        Control.Circle(selected: false, image: "chevron.right") {
+//                            session.forward.send()
+//                        }.opacity(session.forwards ? 1 : 0.6)
+//                        .padding(.trailing)
                     }
                 }
                 HStack {
                     Spacer()
                     ZStack {
-                        Control.Circle(image: "square.stack.3d.up.fill") {
+                        Control.Circle(selected: false, image: "square.stack.3d.up.fill") {
                             UIApplication.shared.resign()
                             withAnimation(.easeInOut(duration: 0.4)) {
                                 session.page = nil
                             }
-                        }.padding(.trailing)
-                            .offset(y: tabsY)
-                            .opacity(hide ? 0 : 1)
-                        Control.Circle(image: "line.horizontal.3") {
+                        }
+                        .offset(y: tabsY)
+                        .opacity(right ? 1 : 0)
+                        Control.Circle(selected: false, image: "line.horizontal.3") {
                             UIApplication.shared.resign()
                             show()
                             options = true
-                        }.padding(.trailing)
-                            .offset(y: menuY)
-                            .opacity(hide ? 0 : 1)
-                            .sheet(isPresented: $options) {
+                        }
+                        .offset(y: menuY)
+                        .opacity(right ? 1 : 0)
+                        .sheet(isPresented: $options) {
                                 Options(session: $session, visible: $options)
                             }
+                        Control.Circle(selected: right, image: "line.horizontal.3", action: toggleRight)
                     }
-                    if hide {
-                        Spacer()
-                    }
+                    .padding(.trailing)
                 }
                 HStack {
                     Spacer()
@@ -62,6 +63,28 @@ struct Tools: View {
             }
         }
     }
+    
+    private func toggleRight() {
+        if right {
+            UIApplication.shared.resign()
+            withAnimation(Animation.easeOut(duration: 0.2)) {
+                tabsY = 0
+                menuY = 0
+                right = false
+            }
+        } else {
+            right = true
+            withAnimation(Animation.easeOut(duration: 0.2)) {
+                tabsY = -75
+            }
+            withAnimation(Animation.easeOut(duration: 0.3)) {
+                menuY = -150
+            }
+        }
+    }
+    
+    
+    
     
     private func show() {
         if hide {

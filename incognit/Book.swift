@@ -38,14 +38,14 @@ struct Book: View {
                 Spacer()
                 HStack {
                     Spacer()
-                    Control.Circle(image: "eyeglasses") {
+                    Control.Circle(selected: false, image: "eyeglasses") {
                         UIApplication.shared.resign()
                         forget = true
                     }.sheet(isPresented: $forget) {
                         Forget(session: $session, visible: $forget)
                     }
                     Bar(session: $session)
-                    Control.Circle(image: "gearshape.fill") {
+                    Control.Circle(selected: false, image: "gearshape.fill") {
                         UIApplication.shared.resign()
                         settings = true
                     }.sheet(isPresented: $settings) {
