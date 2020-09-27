@@ -18,6 +18,9 @@ struct Bar: View {
             }
             TextField("Browse", text: $text, onCommit: {
                 open = false
+                withAnimation(.easeInOut(duration: 0.7)) {
+                    session.browse(text)
+                }
             }).textContentType(.URL)
                 .keyboardType(.webSearch)
                 .autocapitalization(.none)
@@ -35,27 +38,5 @@ struct Bar: View {
                 field?.selectAll(nil)
             }
         }.frame(width: open ? 150 : 80, height: 40)
-    }
-}
-
-private extension String {
-    func url(_ engine: Engine) -> URL? {
-        {
-            $0.isEmpty ? nil : URL(string: $0.content(engine))
-        } (trimmingCharacters(in: .whitespacesAndNewlines))
-    }
-    
-    private func content(_ engine: Engine) -> Self {
-        fullURL ? self : semiURL ? "http://" + self : engine.prefix + (addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "")
-    }
-    
-    private var fullURL: Bool {
-        (contains("http://") || contains("https://")) && semiURL
-    }
-    
-    private var semiURL: Bool {
-        {
-            $0.count > 1 && $0.last!.count > 1 && $0.first!.count > 2
-        } (components(separatedBy: "."))
     }
 }

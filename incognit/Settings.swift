@@ -30,7 +30,8 @@ struct Settings: View {
             selected = session.user!.engine
         }
         .onChange(of: selected) {
-            session.change($0)
+            session.user!.engine = $0
+            session.save(session.user!)
         }
     }
 }

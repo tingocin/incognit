@@ -14,29 +14,63 @@ struct Session {
     let redirect = PassthroughSubject<Void, Never>()
     let dispatch = DispatchQueue(label: "", qos: .utility)
 
-    
-    
-    
-    
-    
-    mutating func add(_ page: Page) {
-        pages.insert(page)
-//        balam.add(page)
+    mutating func browse(_ string: String) {
+        guard let url = string.url(user!.engine) else { return }
+        if page == nil {
+            let page = Page(url: url)
+            self.page = page
+            pages.insert(page)
+            save(page)
+        } else {
+            navigate.send(url)
+        }
     }
     
     mutating func delete(_ page: Page) {
         pages.remove(page)
-//        balam.remove(page)
+        dispatch.async {
+            FileManager.default.delete(page)
+        }
     }
     
     mutating func forget() {
         pages = []
-//        balam.remove(Page.self) { _ in true }
+        dispatch.async {
+            FileManager.default.forget()
+        }
     }
+    
+    func save(_ page: Page) {
+        dispatch.async {
+            FileManager.default.save(page)
+        }
+    }
+    
+    func save(_ user: User) {
+        dispatch.async {
+            FileManager.default.save(user)
+        }
+    }
+}
 
-    mutating func change(_ engine: Engine) {
-//        self.engine = engine
-//        balam.remove(engine)
-//        balam.add(engine)
+private extension String {
+    func url(_ engine: Engine) -> URL? {
+        {
+            $0.isEmpty ? nil : URL(string: $0.content(engine))
+        } (trimmingCharacters(in: .whitespacesAndNewlines))
+    }
+    
+    private func content(_ engine: Engine) -> Self {
+        fullURL ? self : semiURL ? "http://" + self : engine.prefix + (addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "")
+    }
+    
+    private var fullURL: Bool {
+        (contains("http://") || contains("https://")) && semiURL
+    }
+    
+    private var semiURL: Bool {
+        {
+            $0.count > 1 && $0.last!.count > 1 && $0.first!.count > 2
+        } (components(separatedBy: "."))
     }
 }

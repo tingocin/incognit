@@ -10,15 +10,21 @@ import SwiftUI
                 Book(session: $session)
                     .onOpenURL(perform: open)
             } else {
-//                Tab(session: delegate.$session)
-//                    .onOpenURL(perform: open)
+                Tab(session: $session)
+                    .onOpenURL(perform: open)
             }
         }.onChange(of: phase) {
             if $0 == .active {
                 guard session.user == nil else { return }
                 UIApplication.shared.appearance()
                 session.dispatch.async {
-                    session.user = FileManager.user ?? .init()
+                    if let user = FileManager.default.user {
+                        session.user = user
+                    } else {
+                        let user = User()
+                        session.user = user
+                        session.save(user)
+                    }
                 }
             }
         }

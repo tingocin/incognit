@@ -38,7 +38,7 @@ extension Web {
                 $0.map { title in
                     guard let page = self?.view.session.page, page.title != title else { return }
                     page.title = title
-//                    self?.view.session.balam.update(page)
+                    self?.view.session.save(page)
                 }
             }.store(in: &subs)
             
@@ -46,7 +46,7 @@ extension Web {
                 $0.map { url in
                     guard let page = self?.view.session.page, page.url != url else { return }
                     page.url = url
-//                    self?.view.session.balam.update(page)
+                    self?.view.session.save(page)
                 }
             }.store(in: &subs)
             
@@ -69,6 +69,8 @@ extension Web {
             view.session.forward.sink { [weak self] in
                 self?.goForward()
             }.store(in: &subs)
+            
+            load(.init(url: view.session.page!.url))
         }
         
         func webView(_: WKWebView, didFinish: WKNavigation!) {

@@ -1,4 +1,5 @@
 import UIKit
+import WebKit
 
 extension UIApplication {
     var textField: UITextField? {
@@ -14,6 +15,11 @@ extension UIApplication {
         windows.forEach {
             $0.rootViewController?.view.backgroundColor = .secondarySystemBackground
         }
+    }
+    
+    func forget() {
+        HTTPCookieStorage.shared.removeCookies(since: .distantPast)
+        WKWebsiteDataStore.default().removeData(ofTypes: WKWebsiteDataStore.allWebsiteDataTypes(), modifiedSince: .distantPast) { }
     }
 }
 

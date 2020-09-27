@@ -24,9 +24,11 @@ struct Book: View {
                         }
                     } action: {
                         UIApplication.shared.resign()
+                        withAnimation(.easeInOut(duration: 0.7)) {
+                            session.page = page
+                        }
                         page.date = .init()
-//                        session.balam.update(page)
-                        select(page.id)
+                        session.save(page)
                     }
                 }
                 Spacer()
@@ -52,21 +54,14 @@ struct Book: View {
                     Spacer()
                 }
             }
-        }.transition(.move(edge: .top))
-        .onAppear {
+        }.onAppear {
             guard session.pages.isEmpty else { return }
             session.dispatch.async {
-                let pages = FileManager.pages
+                let pages = FileManager.default.pages
                 DispatchQueue.main.async {
                     session.pages = pages
                 }
             }
-        }
-    }
-    
-    private func select(_ id: UUID) {
-        withAnimation(.easeInOut(duration: 0.5)) {
-            session.page = session.pages.first { $0.id == id }
-        }
+        }.transition(.move(edge: .top))
     }
 }

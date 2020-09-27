@@ -11,11 +11,6 @@ struct Tools: View {
         VStack {
             Spacer()
             ZStack {
-                HStack {
-                    Spacer()
-                    Bar(session: $session)
-                    Spacer()
-                }
                 if hide {
                     HStack {
                         Control.Circle(image: "chevron.left") {
@@ -50,16 +45,17 @@ struct Tools: View {
                             .sheet(isPresented: $options) {
                                 Options(session: $session, visible: $options)
                             }
-                        Control.Circle(image: hide ? "magnifyingglass" : "multiply", action: show)
-                            .padding(.trailing)
                     }
                     if hide {
                         Spacer()
                     }
                 }
+                HStack {
+                    Spacer()
+                    Bar(session: $session)
+                    Spacer()
+                }
             }
-        }.onAppear {
-            session.navigate.send(session.page!.url)
         }.onReceive(session.redirect) {
             if !hide {
                 show()
