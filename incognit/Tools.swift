@@ -14,7 +14,7 @@ struct Tools: View {
             ZStack {
                 HStack {
                     Spacer()
-                    Bar(engine: session.engine, size: size) {
+                    Bar(session: $session, size: size) {
                         UIApplication.shared.textField.selectAll(nil)
                     } commit: {
                         show()
@@ -41,7 +41,7 @@ struct Tools: View {
                         Control.Circle(image: "square.stack.3d.up.fill") {
                             UIApplication.shared.resign()
                             withAnimation(.easeInOut(duration: 0.4)) {
-                                session.current = nil
+                                session.page = nil
                             }
                         }.padding(.trailing)
                             .offset(y: tabsY)
@@ -65,7 +65,7 @@ struct Tools: View {
                 }
             }
         }.onAppear {
-            session.navigate.send(session.current!.url)
+            session.navigate.send(session.page!.url)
         }.onReceive(session.redirect) {
             if !hide {
                 show()

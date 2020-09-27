@@ -1,10 +1,11 @@
 import SwiftUI
 
 struct Bar: View {
-    let engine: Engine
+    @Binding var session: Session
     let size: Size
     let tap: () -> Void
     let commit: (URL?) -> Void
+    @State private var width = CGFloat(90)
     @State private var text = ""
     
     var body: some View {
@@ -20,7 +21,7 @@ struct Bar: View {
                 .foregroundColor(.accentColor)
                 .opacity(size.image ? 1 : 0)
             TextField(size.title, text: $text, onCommit: {
-                commit(text.url(engine))
+                commit(text.url(session.user!.engine))
             }).textContentType(.URL)
                 .keyboardType(.webSearch)
                 .autocapitalization(.none)

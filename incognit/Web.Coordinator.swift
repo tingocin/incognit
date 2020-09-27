@@ -36,17 +36,17 @@ extension Web {
             
             publisher(for: \.title).sink { [weak self] in
                 $0.map { title in
-                    guard let page = self?.view.session.current, page.title != title else { return }
+                    guard let page = self?.view.session.page, page.title != title else { return }
                     page.title = title
-                    self?.view.session.balam.update(page)
+//                    self?.view.session.balam.update(page)
                 }
             }.store(in: &subs)
             
             publisher(for: \.url).sink { [weak self] in
                 $0.map { url in
-                    guard let page = self?.view.session.current, page.url != url else { return }
-                    self?.view.session.current?.url = url
-                    self?.view.session.balam.update(page)
+                    guard let page = self?.view.session.page, page.url != url else { return }
+                    page.url = url
+//                    self?.view.session.balam.update(page)
                 }
             }.store(in: &subs)
             

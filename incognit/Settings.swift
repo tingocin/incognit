@@ -27,7 +27,7 @@ struct Settings: View {
             .navigationBarTitle("Search engine", displayMode: .large)
         }.navigationViewStyle(StackNavigationViewStyle())
         .onAppear {
-            selected = session.engine
+            selected = session.user!.engine
         }
         .onChange(of: selected) {
             session.change($0)

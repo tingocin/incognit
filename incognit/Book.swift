@@ -26,7 +26,7 @@ struct Book: View {
                     } action: {
                         UIApplication.shared.resign()
                         page.date = .init()
-                        session.balam.update(page)
+//                        session.balam.update(page)
                         select(page.id)
                     }
                 }
@@ -43,7 +43,7 @@ struct Book: View {
                     }.sheet(isPresented: $forget) {
                         Forget(session: $session, visible: $forget)
                     }
-                    Bar(engine: session.engine, size: size) {
+                    Bar(session: $session, size: size) {
                         withAnimation {
                             size = .full
                         }
@@ -72,11 +72,20 @@ struct Book: View {
                 }
             }
         }.transition(.move(edge: .top))
+        .onAppear {
+            guard session.pages.isEmpty else { return }
+            session.dispatch.async {
+                let pages = FileManager.pages
+                DispatchQueue.main.async {
+                    session.pages = pages
+                }
+            }
+        }
     }
     
     private func select(_ id: UUID) {
         withAnimation(.easeInOut(duration: 0.5)) {
-            session.current = session.pages.first { $0.id == id }
+            session.page = session.pages.first { $0.id == id }
         }
     }
 }
