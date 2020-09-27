@@ -2,7 +2,6 @@ import SwiftUI
 
 struct Tools: View {
     @Binding var session: Session
-    @State private var size = Bar.Size.hidden
     @State private var hide = true
     @State private var tabsY = CGFloat()
     @State private var menuY = CGFloat()
@@ -14,12 +13,7 @@ struct Tools: View {
             ZStack {
                 HStack {
                     Spacer()
-                    Bar(session: $session, size: size) {
-                        UIApplication.shared.textField.selectAll(nil)
-                    } commit: {
-                        show()
-                        $0.map(session.navigate.send)
-                    }
+                    Bar(session: $session)
                     Spacer()
                 }
                 if hide {
@@ -77,7 +71,6 @@ struct Tools: View {
         if hide {
             withAnimation(Animation.linear(duration: 0.2)) {
                 hide = false
-                size = .full
             }
             withAnimation(Animation.easeOut(duration: 0.2).delay(0.1)) {
                 menuY = -75
@@ -92,7 +85,6 @@ struct Tools: View {
                 menuY = 0
             }
             withAnimation(Animation.linear(duration: 0.2).delay(0.1)) {
-                size = .hidden
                 hide = true
             }
         }

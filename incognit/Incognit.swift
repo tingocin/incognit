@@ -16,8 +16,7 @@ import SwiftUI
         }.onChange(of: phase) {
             if $0 == .active {
                 guard session.user == nil else { return }
-                UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(named: "AccentColor")!
-                UIApplication.shared.windows.first?.rootViewController?.view.backgroundColor = .secondarySystemBackground
+                UIApplication.shared.appearance()
                 session.dispatch.async {
                     session.user = FileManager.user ?? .init()
                 }

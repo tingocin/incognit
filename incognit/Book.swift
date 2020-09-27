@@ -2,7 +2,6 @@ import SwiftUI
 
 struct Book: View {
     @Binding var session: Session
-    @State private var size = Bar.Size.small
     @State private var forget = false
     @State private var settings = false
     
@@ -43,25 +42,7 @@ struct Book: View {
                     }.sheet(isPresented: $forget) {
                         Forget(session: $session, visible: $forget)
                     }
-                    Bar(session: $session, size: size) {
-                        withAnimation {
-                            size = .full
-                        }
-                        UIApplication.shared.textField.becomeFirstResponder()
-                    } commit: {
-                        UIApplication.shared.resign()
-                        guard let url = $0 else {
-                            withAnimation {
-                                size = .small
-                            }
-                            return
-                        }
-                        let page = Page(url: url)
-                        session.add(page)
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                            select(page.id)
-                        }
-                    }
+                    Bar(session: $session)
                     Control.Circle(image: "gearshape.fill") {
                         UIApplication.shared.resign()
                         settings = true

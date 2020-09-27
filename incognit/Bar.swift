@@ -2,26 +2,22 @@ import SwiftUI
 
 struct Bar: View {
     @Binding var session: Session
-    let size: Size
-    let tap: () -> Void
-    let commit: (URL?) -> Void
-    @State private var width = CGFloat(90)
+    @State private var open = false
     @State private var text = ""
     
     var body: some View {
         ZStack {
-            if size.background {
-                RoundedRectangle(cornerRadius: 20)
-                    .shadow(color: .init(UIColor.systemBackground.withAlphaComponent(0.6)), radius: 4, x: -2, y: -2)
-                    .shadow(color: .init(UIColor.systemBackground.withAlphaComponent(0.6)), radius: 4, x: 2, y: 2)
-                    .foregroundColor(.init(.secondarySystemBackground))
+            RoundedRectangle(cornerRadius: 20)
+                .shadow(color: .init(UIColor.systemBackground.withAlphaComponent(0.6)), radius: 4, x: -2, y: -2)
+                .shadow(color: .init(UIColor.systemBackground.withAlphaComponent(0.6)), radius: 4, x: 2, y: 2)
+                .foregroundColor(.init(.secondarySystemBackground))
+            if !open {
+                Image(systemName: "magnifyingglass")
+                    .font(.headline)
+                    .foregroundColor(.accentColor)
             }
-            Image(systemName: "magnifyingglass")
-                .font(.headline)
-                .foregroundColor(.accentColor)
-                .opacity(size.image ? 1 : 0)
-            TextField(size.title, text: $text, onCommit: {
-                commit(text.url(session.user!.engine))
+            TextField("Browse", text: $text, onCommit: {
+                open = false
             }).textContentType(.URL)
                 .keyboardType(.webSearch)
                 .autocapitalization(.none)
@@ -29,8 +25,16 @@ struct Bar: View {
                 .disableAutocorrection(true)
                 .textFieldStyle(PlainTextFieldStyle())
                 .padding(.horizontal)
-                .onTapGesture(perform: tap)
-        }.frame(width: size.rawValue, height: 40)
+                .opacity(open ? 1 : 0)
+        }.onTapGesture {
+            guard !open else { return }
+            open = true
+            let field = UIApplication.shared.textField
+            field?.becomeFirstResponder()
+            if field?.text?.isEmpty == false {
+                field?.selectAll(nil)
+            }
+        }.frame(width: open ? 150 : 80, height: 40)
     }
 }
 
