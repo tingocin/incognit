@@ -82,7 +82,7 @@ extension Web {
         }
         
         func webView(_: WKWebView, didFinish: WKNavigation!) {
-            view.session.progress = 1
+            view.session.progress = 0
         }
         
         private func navigate(_ url: String) {

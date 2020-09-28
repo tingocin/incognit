@@ -17,33 +17,35 @@ import SwiftUI
             if $0 == .active {
                 guard session.user == nil else { return }
                 UIApplication.shared.appearance()
-                session.dispatch.async {
-                    if let user = FileManager.default.user {
-                        session.user = user
-                    } else {
-                        let user = User()
-                        session.user = user
-                        session.save(user)
-                    }
-                }
+                load()
             }
         }
     }
     
     private func open(_ url: URL) {
-//        if session.page != nil {
-//            session.page = nil
-//        }
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-//            var url = url
-//            if url.scheme == "incognit" {
-//                URL(string: url.absoluteString.replacingOccurrences(of: "incognit://", with: "http://")).map {
-//                    url = $0
-//                }
-//            }
-//            let page = Page(url: url)
-//            session.add(page)
-//            session.page = page
-//        }
+        switch url.scheme {
+        case "incognit":
+            load()
+            session.dispatch.async {
+                url.absoluteString.replacingOccurrences(of: "incognit://", with: "").removingPercentEncoding.map {
+                    session.browse($0)
+                }
+            }
+        default:
+            session.browse(url)
+        }
+    }
+    
+    private func load() {
+        session.dispatch.async {
+            guard session.user == nil else { return }
+            if let user = FileManager.default.user {
+                session.user = user
+            } else {
+                let user = User()
+                session.user = user
+                session.save(user)
+            }
+        }
     }
 }

@@ -16,6 +16,10 @@ struct Session {
 
     mutating func browse(_ string: String) {
         guard let url = string.url(user!.engine) else { return }
+        browse(url)
+    }
+    
+    mutating func browse(_ url: URL) {
         if page == nil {
             let page = Page(url: url)
             self.page = page
