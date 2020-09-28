@@ -11,7 +11,7 @@ struct Session {
     let navigate = PassthroughSubject<URL, Never>()
     let backward = PassthroughSubject<Void, Never>()
     let forward = PassthroughSubject<Void, Never>()
-    let redirect = PassthroughSubject<Void, Never>()
+    let reload = PassthroughSubject<Void, Never>()
     let dispatch = DispatchQueue(label: "", qos: .utility)
 
     mutating func browse(_ string: String) {

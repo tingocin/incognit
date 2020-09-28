@@ -4,30 +4,21 @@ struct Tools: View {
     @Binding var session: Session
     @State private var options = false
     @State private var left = false
-    @State private var right = false
     
     var body: some View {
         VStack {
             Spacer()
             ZStack {
-                if hide {
-                    HStack {
-                        Control.Circle(selected: false, image: "chevron.left") {
-                            session.backward.send()
-                        }.opacity(session.backwards ? 1 : 0.6)
-                            .padding(.leading)
-                        Spacer()
-//                        Control.Circle(selected: false, image: "chevron.right") {
-//                            session.forward.send()
-//                        }.opacity(session.forwards ? 1 : 0.6)
-//                        .padding(.trailing)
-                    }
+                HStack {
+                    Move(session: $session)
+                        .padding(.leading)
+                    Spacer()
                 }
                 HStack {
                     Spacer()
-                    Spring(open: $right, base: "line.horizontal.3", top: "square.and.arrow.up.fill", middle: "square.stack.3d.up.fill") {
+                    Spring {
                         options = true
-                    } middleAction: {
+                    } tabs: {
                         withAnimation(.easeInOut(duration: 0.4)) {
                             session.page = nil
                         }
@@ -40,10 +31,6 @@ struct Tools: View {
                     Bar(session: $session)
                     Spacer()
                 }
-            }
-        }.onReceive(session.redirect) {
-            if !hide {
-                show()
             }
         }
     }

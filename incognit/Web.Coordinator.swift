@@ -70,15 +70,15 @@ extension Web {
                 self?.goForward()
             }.store(in: &subs)
             
+            view.session.reload.sink { [weak self] in
+                self?.reload()
+            }.store(in: &subs)
+            
             load(.init(url: view.session.page!.url))
         }
         
         func webView(_: WKWebView, didFinish: WKNavigation!) {
             view.session.progress = 1
-        }
-        
-        func webView(_: WKWebView, didStartProvisionalNavigation: WKNavigation!) {
-            view.session.redirect.send()
         }
         
         private func navigate(_ url: String) {

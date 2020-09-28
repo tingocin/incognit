@@ -1,45 +1,44 @@
 import SwiftUI
 
 struct Spring: View {
-    @Binding var open: Bool
-    let base: String
-    let top: String
-    let middle: String
-    let topAction: () -> Void
-    let middleAction: () -> Void
-    @State private var topY = CGFloat()
-    @State private var middleY = CGFloat()
+    let share: () -> Void
+    let tabs: () -> Void
+    @State private var open = false
+    @State private var shareY = CGFloat()
+    @State private var tabsY = CGFloat()
     
     var body: some View {
         ZStack {
-            Control.Circle(selected: false, image: top) {
+            Control.Circle(selected: false, image: "square.and.arrow.up.fill") {
                 UIApplication.shared.resign()
-                topAction()
+                share()
             }
-            .offset(y: topY)
+            .offset(y: shareY)
             .opacity(open ? 1 : 0)
-            Control.Circle(selected: false, image: middle) {
+            Control.Circle(selected: false, image: "square.stack.3d.up.fill") {
                 UIApplication.shared.resign()
-                middleAction()
+                tabs()
             }
-            .offset(y: middleY)
             .opacity(open ? 1 : 0)
-            Control.Circle(selected: open, image: base) {
+            .offset(y: tabsY)
+            Control.Circle(selected: open, image: "line.horizontal.3") {
                 UIApplication.shared.resign()
-                open.toggle()
+                withAnimation(.easeInOut(duration: 0.3)) {
+                    open.toggle()
+                }
             }
         }.onChange(of: open) {
             if $0 {
-                withAnimation(.easeOut(duration: 0.2)) {
-                    middleY = -75
+                withAnimation(.easeInOut(duration: 0.2)) {
+                    tabsY = -75
                 }
-                withAnimation(.easeOut(duration: 0.3)) {
-                    topY = -150
+                withAnimation(.easeInOut(duration: 0.3)) {
+                    shareY = -150
                 }
             } else {
-                withAnimation(.easeOut(duration: 0.2)) {
-                    topY = 0
-                    middleY = 0
+                withAnimation(.easeInOut(duration: 0.3)) {
+                    tabsY = 0
+                    shareY = 0
                 }
             }
         }
