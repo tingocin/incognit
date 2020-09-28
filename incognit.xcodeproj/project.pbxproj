@@ -30,6 +30,7 @@
 		CEF33D2C251CB722006065E5 /* Progress.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF33D2B251CB722006065E5 /* Progress.swift */; };
 		CEF33D3C251CB926006065E5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CEF33D3A251CB926006065E5 /* Localizable.strings */; };
 		CEF33D3F251CBA87006065E5 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF33D3E251CBA87006065E5 /* Book.swift */; };
+		CEF3EE922521C7110031B0A4 /* Spring.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF3EE912521C7110031B0A4 /* Spring.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		CEF33D2B251CB722006065E5 /* Progress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Progress.swift; sourceTree = "<group>"; };
 		CEF33D3B251CB926006065E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CEF33D3E251CBA87006065E5 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
+		CEF3EE912521C7110031B0A4 /* Spring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spring.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				CEF33D2B251CB722006065E5 /* Progress.swift */,
 				CE201F29251CC7F8003FF2DF /* Session.swift */,
 				CE201F40251D04A9003FF2DF /* Settings.swift */,
+				CEF3EE912521C7110031B0A4 /* Spring.swift */,
 				CEF33D18251CB6B8006065E5 /* Tab.swift */,
 				CEF33D1C251CB6D1006065E5 /* Tools.swift */,
 				CE201F2D251CDB67003FF2DF /* UIApplication.swift */,
@@ -209,6 +212,7 @@
 				CEF33D2C251CB722006065E5 /* Progress.swift in Sources */,
 				CEF33D29251CB714006065E5 /* Options.swift in Sources */,
 				CE65070025209DA200AE7251 /* FileManager.swift in Sources */,
+				CEF3EE922521C7110031B0A4 /* Spring.swift in Sources */,
 				CE201F1E251CBB52003FF2DF /* Control.Circle.swift in Sources */,
 				CE201F25251CC069003FF2DF /* Page.swift in Sources */,
 				CE201F41251D04A9003FF2DF /* Settings.swift in Sources */,
