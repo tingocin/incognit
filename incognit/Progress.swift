@@ -4,10 +4,9 @@ struct Progress: Shape {
     var progress: CGFloat
     
     func path(in rect: CGRect) -> Path {
-        var path = Path()
-        path.move(to: .init(x: 0, y: rect.midY))
-        path.addLine(to: .init(x: rect.width * progress, y: rect.midY))
-        return path
+        .init {
+            $0.addRect(.init(x: 0, y: 0, width: rect.width * progress, height: rect.height))
+        }
     }
     
     var animatableData: CGFloat {

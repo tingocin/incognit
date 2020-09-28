@@ -83,12 +83,6 @@ extension Web {
         
         func webView(_: WKWebView, didFinish: WKNavigation!) {
             view.session.progress = 1
-//            scrollView.contentSize.width = frame.size.width
-//            scrollView.bouncesZoom = false
-//            DispatchQueue.main.asyncAfter(deadline: .now() + 5) { [weak self] in
-////                self?.scrollView.zoomScale = 0
-////                self?.scrollView.zoomScale = self?.scrollView.minimumZoomScale ?? 1
-//            }
         }
         
         private func navigate(_ url: String) {
