@@ -30,7 +30,36 @@
 		CEA2F6A0252344DE00DDE7B4 /* Control.Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA2F688252344DE00DDE7B4 /* Control.Icon.swift */; };
 		CEA2F6A1252344DE00DDE7B4 /* Bar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA2F689252344DE00DDE7B4 /* Bar.swift */; };
 		CEA2F6A7252344F100DDE7B4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CEA2F6A5252344F100DDE7B4 /* Localizable.strings */; };
+		CEDC32352523870A003DF67A /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEDC32342523870A003DF67A /* WidgetKit.framework */; };
+		CEDC32372523870A003DF67A /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEDC32362523870A003DF67A /* SwiftUI.framework */; };
+		CEDC323A2523870A003DF67A /* Browse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDC32392523870A003DF67A /* Browse.swift */; };
+		CEDC323C2523870A003DF67A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEDC323B2523870A003DF67A /* Assets.xcassets */; };
+		CEDC32402523870A003DF67A /* BrowseExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CEDC32322523870A003DF67A /* BrowseExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CEDC323E2523870A003DF67A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CEF33CF7251CB35F006065E5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CEDC32312523870A003DF67A;
+			remoteInfo = BrowseExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		CEDC32412523870A003DF67A /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				CEDC32402523870A003DF67A /* BrowseExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		CEA2F670252344DE00DDE7B4 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
@@ -57,10 +86,25 @@
 		CEA2F688252344DE00DDE7B4 /* Control.Icon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Control.Icon.swift; sourceTree = "<group>"; };
 		CEA2F689252344DE00DDE7B4 /* Bar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bar.swift; sourceTree = "<group>"; };
 		CEA2F6A6252344F100DDE7B4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		CEDC32322523870A003DF67A /* BrowseExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = BrowseExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEDC32342523870A003DF67A /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		CEDC32362523870A003DF67A /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		CEDC32392523870A003DF67A /* Browse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Browse.swift; sourceTree = "<group>"; };
+		CEDC323B2523870A003DF67A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CEDC323D2523870A003DF67A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CEF33CFF251CB35F006065E5 /* incognit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = incognit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		CEDC322F2523870A003DF67A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CEDC32372523870A003DF67A /* SwiftUI.framework in Frameworks */,
+				CEDC32352523870A003DF67A /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CEF33CFC251CB35F006065E5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -71,6 +115,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CEDC32332523870A003DF67A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CEDC32342523870A003DF67A /* WidgetKit.framework */,
+				CEDC32362523870A003DF67A /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CEDC32382523870A003DF67A /* Browse */ = {
+			isa = PBXGroup;
+			children = (
+				CEDC32392523870A003DF67A /* Browse.swift */,
+				CEDC323B2523870A003DF67A /* Assets.xcassets */,
+				CEDC323D2523870A003DF67A /* Info.plist */,
+			);
+			path = Browse;
+			sourceTree = "<group>";
+		};
 		CEF33CF6251CB35F006065E5 = {
 			isa = PBXGroup;
 			children = (
@@ -98,6 +161,8 @@
 				CEA2F678252344DE00DDE7B4 /* Web.swift */,
 				CEA2F672252344DE00DDE7B4 /* Assets.xcassets */,
 				CEA2F6A5252344F100DDE7B4 /* Localizable.strings */,
+				CEDC32382523870A003DF67A /* Browse */,
+				CEDC32332523870A003DF67A /* Frameworks */,
 				CEF33D00251CB35F006065E5 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -106,6 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				CEF33CFF251CB35F006065E5 /* incognit.app */,
+				CEDC32322523870A003DF67A /* BrowseExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -113,6 +179,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		CEDC32312523870A003DF67A /* BrowseExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CEDC32442523870A003DF67A /* Build configuration list for PBXNativeTarget "BrowseExtension" */;
+			buildPhases = (
+				CEDC322E2523870A003DF67A /* Sources */,
+				CEDC322F2523870A003DF67A /* Frameworks */,
+				CEDC32302523870A003DF67A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BrowseExtension;
+			productName = BrowseExtension;
+			productReference = CEDC32322523870A003DF67A /* BrowseExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		CEF33CFE251CB35F006065E5 /* incognit */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = CEF33D0E251CB35F006065E5 /* Build configuration list for PBXNativeTarget "incognit" */;
@@ -120,10 +203,12 @@
 				CEF33CFB251CB35F006065E5 /* Sources */,
 				CEF33CFC251CB35F006065E5 /* Frameworks */,
 				CEF33CFD251CB35F006065E5 /* Resources */,
+				CEDC32412523870A003DF67A /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				CEDC323F2523870A003DF67A /* PBXTargetDependency */,
 			);
 			name = incognit;
 			packageProductDependencies = (
@@ -141,6 +226,9 @@
 				LastSwiftUpdateCheck = 1200;
 				LastUpgradeCheck = 1200;
 				TargetAttributes = {
+					CEDC32312523870A003DF67A = {
+						CreatedOnToolsVersion = 12.0.1;
+					};
 					CEF33CFE251CB35F006065E5 = {
 						CreatedOnToolsVersion = 12.0;
 						LastSwiftMigration = 1200;
@@ -163,11 +251,20 @@
 			projectRoot = "";
 			targets = (
 				CEF33CFE251CB35F006065E5 /* incognit */,
+				CEDC32312523870A003DF67A /* BrowseExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		CEDC32302523870A003DF67A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CEDC323C2523870A003DF67A /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CEF33CFD251CB35F006065E5 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -180,6 +277,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		CEDC322E2523870A003DF67A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CEDC323A2523870A003DF67A /* Browse.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CEF33CFB251CB35F006065E5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -210,6 +315,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		CEDC323F2523870A003DF67A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CEDC32312523870A003DF67A /* BrowseExtension */;
+			targetProxy = CEDC323E2523870A003DF67A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		CEA2F6A5252344F100DDE7B4 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
@@ -222,6 +335,46 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		CEDC32422523870A003DF67A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7AMWG3RLHN;
+				INFOPLIST_FILE = Browse/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = incognit.Browse;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CEDC32432523870A003DF67A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7AMWG3RLHN;
+				INFOPLIST_FILE = Browse/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = incognit.Browse;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		CEF33D0C251CB35F006065E5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -350,6 +503,7 @@
 		CEF33D0F251CB35F006065E5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
@@ -371,6 +525,7 @@
 		CEF33D10251CB35F006065E5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
@@ -391,6 +546,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		CEDC32442523870A003DF67A /* Build configuration list for PBXNativeTarget "BrowseExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CEDC32422523870A003DF67A /* Debug */,
+				CEDC32432523870A003DF67A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		CEF33CFA251CB35F006065E5 /* Build configuration list for PBXProject "incognit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
