@@ -10,7 +10,7 @@ struct Tab: View {
                 Progress(progress: .init(session.progress))
                     .foregroundColor(.accentColor)
                     .frame(height: 5)
-                    .offset(y: -6)
+                    .offset(y: -5)
                     .animation(.easeInOut(duration: 0.3))
                 Spacer()
             }

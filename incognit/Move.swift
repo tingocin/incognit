@@ -21,13 +21,13 @@ struct Move: View {
             }
             .offset(x: forward, y: refresh)
             .opacity(open ? session.forwards ? 1 : 0.5 : 0)
-            Control.Circle(selected: false, image: "arrow.clockwise.circle.fill") {
+            Control.Circle(selected: false, image: "arrow.clockwise") {
                 UIApplication.shared.resign()
                 session.reload.send()
             }
             .offset(y: refresh)
             .opacity(open ? 1 : 0)
-            Control.Circle(selected: open, image: "move.3d") {
+            Control.Circle(selected: open, image: "arrow.left.arrow.right") {
                 UIApplication.shared.resign()
                 withAnimation(.easeInOut(duration: 0.3)) {
                     open.toggle()
