@@ -19,12 +19,12 @@ struct Book: View {
                     .frame(height: 40)
                 ForEach(session.pages.sorted { $0.date > $1.date }) { page in
                     Item(page: page) {
-                        withAnimation {
+                        withAnimation(.easeInOut(duration: 0.3)) {
                             session.delete(page)
                         }
                     } action: {
                         UIApplication.shared.resign()
-                        withAnimation(.easeInOut(duration: 0.7)) {
+                        withAnimation(.easeInOut(duration: 0.4)) {
                             session.page = page
                         }
                         page.date = .init()

@@ -7,7 +7,6 @@ struct Tab: View {
     var body: some View {
         ZStack {
             Web(session: $session)
-                .edgesIgnoringSafeArea(.all)
             Tools(session: $session)
         }.transition(.move(edge: .bottom))
     }

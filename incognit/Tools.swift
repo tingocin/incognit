@@ -19,7 +19,7 @@ struct Tools: View {
                     Spring {
                         options = true
                     } tabs: {
-                        withAnimation(.easeInOut(duration: 0.4)) {
+                        withAnimation(.easeInOut(duration: 0.3)) {
                             session.page = nil
                         }
                     }.sheet(isPresented: $options) {

@@ -19,9 +19,9 @@
 		CE201F44251D0533003FF2DF /* Engine.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE201F43251D0533003FF2DF /* Engine.swift */; };
 		CE65070025209DA200AE7251 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6506FF25209DA200AE7251 /* FileManager.swift */; };
 		CE65070425209E5200AE7251 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE65070325209E5200AE7251 /* User.swift */; };
+		CEA2F6682523332E00DDE7B4 /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA2F6672523332E00DDE7B4 /* Tab.swift */; };
 		CEF33D03251CB35F006065E5 /* Incognit.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF33D02251CB35F006065E5 /* Incognit.swift */; };
 		CEF33D07251CB35F006065E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEF33D06251CB35F006065E5 /* Assets.xcassets */; };
-		CEF33D19251CB6B8006065E5 /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF33D18251CB6B8006065E5 /* Tab.swift */; };
 		CEF33D1D251CB6D1006065E5 /* Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF33D1C251CB6D1006065E5 /* Tools.swift */; };
 		CEF33D20251CB6E1006065E5 /* Web.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF33D1F251CB6E1006065E5 /* Web.swift */; };
 		CEF33D23251CB6F1006065E5 /* Web.Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF33D22251CB6F1006065E5 /* Web.Coordinator.swift */; };
@@ -47,11 +47,11 @@
 		CE201F43251D0533003FF2DF /* Engine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Engine.swift; sourceTree = "<group>"; };
 		CE6506FF25209DA200AE7251 /* FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
 		CE65070325209E5200AE7251 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		CEA2F6672523332E00DDE7B4 /* Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab.swift; sourceTree = "<group>"; };
 		CEF33CFF251CB35F006065E5 /* incognit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = incognit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEF33D02251CB35F006065E5 /* Incognit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Incognit.swift; sourceTree = "<group>"; };
 		CEF33D06251CB35F006065E5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CEF33D0B251CB35F006065E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CEF33D18251CB6B8006065E5 /* Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab.swift; sourceTree = "<group>"; };
 		CEF33D1C251CB6D1006065E5 /* Tools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tools.swift; sourceTree = "<group>"; };
 		CEF33D1F251CB6E1006065E5 /* Web.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Web.swift; sourceTree = "<group>"; };
 		CEF33D22251CB6F1006065E5 /* Web.Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Web.Coordinator.swift; sourceTree = "<group>"; };
@@ -112,7 +112,7 @@
 				CE201F29251CC7F8003FF2DF /* Session.swift */,
 				CE201F40251D04A9003FF2DF /* Settings.swift */,
 				CEF3EE912521C7110031B0A4 /* Spring.swift */,
-				CEF33D18251CB6B8006065E5 /* Tab.swift */,
+				CEA2F6672523332E00DDE7B4 /* Tab.swift */,
 				CEF33D1C251CB6D1006065E5 /* Tools.swift */,
 				CE201F2D251CDB67003FF2DF /* UIApplication.swift */,
 				CE65070325209E5200AE7251 /* User.swift */,
@@ -209,12 +209,12 @@
 				CE201F44251D0533003FF2DF /* Engine.swift in Sources */,
 				CE65070425209E5200AE7251 /* User.swift in Sources */,
 				CE201F1B251CBB3F003FF2DF /* Control.swift in Sources */,
-				CEF33D19251CB6B8006065E5 /* Tab.swift in Sources */,
 				CEF33D20251CB6E1006065E5 /* Web.swift in Sources */,
 				CEF33D03251CB35F006065E5 /* Incognit.swift in Sources */,
 				CEF33D2C251CB722006065E5 /* Progress.swift in Sources */,
 				CEF33D29251CB714006065E5 /* Options.swift in Sources */,
 				CE65070025209DA200AE7251 /* FileManager.swift in Sources */,
+				CEA2F6682523332E00DDE7B4 /* Tab.swift in Sources */,
 				CEF3EE922521C7110031B0A4 /* Spring.swift in Sources */,
 				CE201F1E251CBB52003FF2DF /* Control.Circle.swift in Sources */,
 				CE201F25251CC069003FF2DF /* Page.swift in Sources */,

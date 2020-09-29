@@ -21,14 +21,13 @@ extension Web {
             super.init(frame: .zero, configuration: configuration)
             navigationDelegate = self
             uiDelegate = self
-            scrollView.contentInset.bottom = 100
             isOpaque = false
             backgroundColor = .clear
             allowsBackForwardNavigationGestures = true
             scrollView.backgroundColor = .clear
             scrollView.keyboardDismissMode = .onDrag
-            scrollView.contentInsetAdjustmentBehavior = .scrollableAxes
-            scrollView.automaticallyAdjustsScrollIndicatorInsets = true
+            scrollView.contentInsetAdjustmentBehavior = .never
+            scrollView.automaticallyAdjustsScrollIndicatorInsets = false
             
             publisher(for: \.estimatedProgress).sink { [weak self] in
                 self?.view.session.progress = $0
@@ -56,10 +55,6 @@ extension Web {
             
             publisher(for: \.canGoForward).sink { [weak self] in
                 self?.view.session.forwards = $0
-            }.store(in: &subs)
-            
-            publisher(for: \.scrollView.minimumZoomScale).debounce(for: .seconds(0.5), scheduler: DispatchQueue.main).filter { $0 < 1 }.sink { [weak self] in
-                self?.scrollView.zoomScale = $0
             }.store(in: &subs)
             
             view.session.navigate.sink { [weak self] in

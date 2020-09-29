@@ -12,15 +12,9 @@ struct Bar: View {
                 .shadow(color: .init(UIColor.systemBackground.withAlphaComponent(0.6)), radius: 4, x: 2, y: 2)
                 .foregroundColor(.init(.secondarySystemBackground))
             if !open {
-                if session.progress == 0 || session.page == nil {
-                    Image(systemName: "magnifyingglass")
-                        .font(.headline)
-                        .foregroundColor(.accentColor)
-                } else {
-                    Progress(progress: .init(session.progress))
-                        .foregroundColor(.accentColor)
-                        .padding(.vertical, 16)
-                }
+                Image(systemName: "magnifyingglass")
+                    .font(.headline)
+                    .foregroundColor(.accentColor)
             }
             TextField("Browse", text: $text, onCommit: {
                 open = false
