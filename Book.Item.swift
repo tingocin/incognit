@@ -40,7 +40,7 @@ extension Book {
                                 Spacer()
                             }
                         }
-                        Control.Icon(image: "xmark", color: .init(.tertiaryLabel), action: delete)
+                        Control.Icon(image: "xmark", color: .init(.tertiaryLabel), font: .body, action: delete)
                     }
                 }.padding(.horizontal)
             }.onAppear {
