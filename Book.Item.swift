@@ -10,7 +10,7 @@ extension Book {
         var body: some View {
             Button(action: action) {
                 ZStack {
-                    RoundedRectangle(cornerRadius: 6)
+                    RoundedRectangle(cornerRadius: 8)
                         .foregroundColor(.init(.tertiarySystemBackground))
                     HStack {
                         VStack {

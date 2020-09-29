@@ -16,7 +16,7 @@ struct Book: View {
             }.foregroundColor(.init(.quaternaryLabel))
             ScrollView {
                 Spacer()
-                    .frame(height: 40)
+                    .frame(height: 20)
                 ForEach(session.pages.sorted { $0.date > $1.date }) { page in
                     Item(page: page) {
                         withAnimation(.easeInOut(duration: 0.3)) {
