@@ -80,6 +80,13 @@ extension Web {
             view.session.progress = 1
         }
         
+        func webView(_: WKWebView, createWebViewWith: WKWebViewConfiguration, for action: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
+            if action.targetFrame == nil {
+                action.request.url.map(view.session.navigate.send)
+            }
+            return nil
+        }
+        
         private func navigate(_ url: String) {
             _ = URL(string: url).map { load(.init(url: $0)) }
         }
