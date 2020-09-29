@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct Options: View {
+struct Detail: View {
     @Binding var session: Session
     @Binding var visible: Bool
     

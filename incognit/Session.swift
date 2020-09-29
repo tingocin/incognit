@@ -2,7 +2,14 @@ import Foundation
 import Combine
 
 struct Session {
-    var page: Page?
+    var page: Page? {
+        didSet {
+            forwards = false
+            backwards = false
+            progress = 0
+        }
+    }
+    
     var user: User?
     var forwards = false
     var backwards = false
