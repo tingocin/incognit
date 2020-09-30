@@ -28,7 +28,7 @@ struct Book: View {
                             session.page = page
                         }
                         page.date = .init()
-                        session.save(page)
+                        session.save.send(page)
                     }
                 }
                 Spacer()

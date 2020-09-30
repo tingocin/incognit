@@ -11,6 +11,7 @@ struct Session {
     }
     
     var user: User?
+    var error: String?
     var forwards = false
     var backwards = false
     var progress = Double()
@@ -19,8 +20,17 @@ struct Session {
     let backward = PassthroughSubject<Void, Never>()
     let forward = PassthroughSubject<Void, Never>()
     let reload = PassthroughSubject<Void, Never>()
+    let save = PassthroughSubject<Page, Never>()
     let dispatch = DispatchQueue(label: "", qos: .utility)
+    private var subs = Set<AnyCancellable>()
 
+    init() {
+        save.sink {
+            FileManager.default.save($0)
+            print("save page")
+        }.store(in: &subs)
+    }
+    
     mutating func browse(_ string: String) {
         guard let url = string.url(user!.engine) else { return }
         browse(url)
@@ -31,7 +41,7 @@ struct Session {
             let page = Page(url: url)
             self.page = page
             pages.insert(page)
-            save(page)
+            save.send(page)
         } else {
             navigate.send(url)
         }
@@ -48,12 +58,6 @@ struct Session {
         pages = []
         dispatch.async {
             FileManager.default.forget()
-        }
-    }
-    
-    func save(_ page: Page) {
-        dispatch.async {
-            FileManager.default.save(page)
         }
     }
     

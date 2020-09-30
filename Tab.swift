@@ -14,6 +14,19 @@ struct Tab: View {
                     .animation(.easeInOut(duration: 0.3))
                 Spacer()
             }
+            if session.error != nil {
+                VStack {
+                    Image(systemName: "exclamationmark.triangle.fill")
+                        .font(Font.largeTitle.bold())
+                        .padding(.bottom)
+                    Text(verbatim: session.page?.url.absoluteString ?? "")
+                        .bold()
+                        .padding(.horizontal)
+                    Text(verbatim: session.error!)
+                        .font(.footnote)
+                        .padding(.horizontal)
+                }.foregroundColor(.secondary)
+            }
             Web(session: $session)
             Tools(session: $session)
         }.transition(.move(edge: .bottom))

@@ -37,7 +37,7 @@ extension Web {
                 $0.map { title in
                     guard let page = self?.view.session.page, page.title != title else { return }
                     page.title = title
-                    self?.view.session.save(page)
+                    self?.view.session.save.send(page)
                 }
             }.store(in: &subs)
             
@@ -45,7 +45,7 @@ extension Web {
                 $0.map { url in
                     guard let page = self?.view.session.page, page.url != url else { return }
                     page.url = url
-                    self?.view.session.save(page)
+                    self?.view.session.save.send(page)
                 }
             }.store(in: &subs)
             
@@ -76,8 +76,32 @@ extension Web {
             load(.init(url: view.session.page!.url))
         }
         
+        func webView(_: WKWebView, didStartProvisionalNavigation: WKNavigation!) {
+            view.session.error = nil
+        }
+        
         func webView(_: WKWebView, didFinish: WKNavigation!) {
             view.session.progress = 1
+        }
+        
+        func webView(_: WKWebView, didFailProvisionalNavigation: WKNavigation!, withError: Error) {
+            if let error = withError as? URLError {
+                switch error.code {
+                case .networkConnectionLost,
+                     .notConnectedToInternet,
+                     .dnsLookupFailed,
+                     .resourceUnavailable,
+                     .unsupportedURL,
+                     .cannotFindHost,
+                     .cannotConnectToHost,
+                     .timedOut:
+                    view.session.error = error.localizedDescription
+                default:
+                    break
+                }
+            } else if (withError as NSError).code == 101 {
+                view.session.error = withError.localizedDescription
+            }
         }
         
         func webView(_: WKWebView, createWebViewWith: WKWebViewConfiguration, for action: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
