@@ -2,8 +2,6 @@ import WidgetKit
 import SwiftUI
 
 @main struct Browse: Widget {
-    
-    
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: "Browse", provider: Provider()) { entry in
             VStack {
@@ -16,9 +14,10 @@ import SwiftUI
                         .font(Font.headline.bold())
                         .foregroundColor(Color(.systemIndigo))
                 }
+                .widgetURL(URL(string: "incognit-search://google.com")!)
                 .frame(height: 40)
                 .padding()
-                LL(items: entry.items)
+                Items(items: entry.items)
             }.background(Color(.secondarySystemBackground))
         }
         .configurationDisplayName("Browse")
@@ -26,7 +25,7 @@ import SwiftUI
     }
 }
 
-private struct LL: View {
+private struct Items: View {
     @Environment(\.widgetFamily) var family: WidgetFamily
     let items: [History.Item]
     

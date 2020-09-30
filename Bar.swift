@@ -29,14 +29,19 @@ struct Bar: View {
                 .textFieldStyle(PlainTextFieldStyle())
                 .padding(.horizontal)
                 .opacity(open ? 1 : 0)
-        }.onTapGesture {
-            guard !open else { return }
-            open = true
-            let field = UIApplication.shared.textField
-            field?.becomeFirstResponder()
-            if field?.text?.isEmpty == false {
-                field?.selectAll(nil)
-            }
-        }.frame(width: open ? 150 : 80, height: 40)
+        }
+        .onTapGesture(perform: type)
+        .onReceive(session.type, perform: type)
+        .frame(width: open ? 150 : 80, height: 40)
+    }
+    
+    private func type() {
+        guard !open else { return }
+        open = true
+        let field = UIApplication.shared.textField
+        field?.becomeFirstResponder()
+        if field?.text?.isEmpty == false {
+            field?.selectAll(nil)
+        }
     }
 }

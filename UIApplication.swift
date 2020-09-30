@@ -3,7 +3,7 @@ import WebKit
 
 extension UIApplication {
     var textField: UITextField? {
-        windows.first?.rootViewController?.view.textField
+        windows.compactMap { $0.rootViewController?.view.textField }.first
     }
     
     func resign() {
@@ -31,7 +31,8 @@ extension UIApplication {
 
 private extension UIView {
     var textField: UITextField? {
-        subviews.compactMap { $0 as? UITextField }.first ??
+        subviews.compactMap { $0 as? UITextField }
+            .filter { $0.keyboardType == .webSearch }.first ??
             subviews.compactMap { $0.textField }.first
     }
 }

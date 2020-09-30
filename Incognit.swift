@@ -44,7 +44,9 @@ import SwiftUI
                 open(url.absoluteString)
             }
         case "incognit-search":
-            break
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                session.type.send()
+            }
         default:
             session.browse(url)
         }
