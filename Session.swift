@@ -59,6 +59,7 @@ struct Session {
     
     mutating func delete(_ page: Page) {
         pages.value.remove(page)
+        save.send(nil)
         dispatch.async {
             FileManager.default.delete(page)
         }
