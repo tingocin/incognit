@@ -1,5 +1,6 @@
 import Foundation
 import Combine
+import WidgetKit
 
 struct Session {
     weak var page: Page? {
@@ -15,18 +16,25 @@ struct Session {
     var forwards = false
     var backwards = false
     var progress = Double()
-    var pages = Set<Page>()
     let navigate = PassthroughSubject<URL, Never>()
     let backward = PassthroughSubject<Void, Never>()
     let forward = PassthroughSubject<Void, Never>()
     let reload = PassthroughSubject<Void, Never>()
     let save = PassthroughSubject<Page, Never>()
+    let pages = CurrentValueSubject<Set<Page>, Never>([])
     let dispatch = DispatchQueue(label: "", qos: .utility)
     private var subs = Set<AnyCancellable>()
 
     init() {
         save.debounce(for: .seconds(1), scheduler: dispatch).sink {
             FileManager.default.save($0)
+        }.store(in: &subs)
+        
+        save.combineLatest(pages).debounce(for: .seconds(3), scheduler: dispatch).sink {
+            (try? JSONEncoder().encode($0.1.sorted { $0.date > $1.date }.prefix(3).map { History.Item(url: $0.url, title: $0.title) })).map {
+                History.defaults.setValue($0, forKey: History.key)
+                WidgetCenter.shared.reloadAllTimelines()
+            }
         }.store(in: &subs)
     }
     
@@ -39,7 +47,7 @@ struct Session {
         if page == nil {
             let page = Page(url: url)
             self.page = page
-            pages.insert(page)
+            pages.value.insert(page)
             save.send(page)
         } else {
             navigate.send(url)
@@ -47,14 +55,14 @@ struct Session {
     }
     
     mutating func delete(_ page: Page) {
-        pages.remove(page)
+        pages.value.remove(page)
         dispatch.async {
             FileManager.default.delete(page)
         }
     }
     
     mutating func forget() {
-        pages = []
+        pages.value = []
         dispatch.async {
             FileManager.default.forget()
         }

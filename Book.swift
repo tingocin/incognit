@@ -4,6 +4,7 @@ struct Book: View {
     @Binding var session: Session
     @State private var forget = false
     @State private var settings = false
+    @State private var pages = [Page]()
     
     var body: some View {
         ZStack {
@@ -17,11 +18,9 @@ struct Book: View {
             ScrollView {
                 Spacer()
                     .frame(height: 20)
-                ForEach(session.pages.sorted { $0.date > $1.date }) { page in
+                ForEach(pages) { page in
                     Item(page: page) {
-                        withAnimation(.easeInOut(duration: 0.3)) {
-                            session.delete(page)
-                        }
+                        session.delete(page)
                     } action: {
                         UIApplication.shared.resign()
                         withAnimation(.easeInOut(duration: 0.4)) {
@@ -55,12 +54,16 @@ struct Book: View {
                 }
             }
         }.onAppear {
-            guard session.pages.isEmpty else { return }
+            guard session.pages.value.isEmpty else { return }
             session.dispatch.async {
                 let pages = FileManager.default.pages
                 DispatchQueue.main.async {
-                    session.pages = pages
+                    session.pages.value = pages
                 }
+            }
+        }.onReceive(session.pages) { new in
+            withAnimation(pages.isEmpty ? .none : .easeInOut(duration: 0.3)) {
+                pages = new.sorted { $0.date > $1.date }
             }
         }.transition(.move(edge: .top))
     }

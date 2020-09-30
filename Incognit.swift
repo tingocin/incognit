@@ -23,6 +23,7 @@ import SwiftUI
     }
     
     private func open(_ url: URL) {
+        UIApplication.shared.dismiss()
         switch url.scheme {
         case "incognit":
             load()

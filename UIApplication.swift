@@ -27,6 +27,12 @@ extension UIApplication {
         controller.popoverPresentationController?.sourceView = windows.first?.rootViewController?.presentedViewController?.view
         windows.first?.rootViewController?.presentedViewController?.present(controller, animated: true)
     }
+    
+    func dismiss() {
+        windows.forEach {
+            $0.rootViewController?.dismiss(animated: false)
+        }
+    }
 }
 
 private extension UIView {
