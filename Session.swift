@@ -2,7 +2,7 @@ import Foundation
 import Combine
 
 struct Session {
-    var page: Page? {
+    weak var page: Page? {
         didSet {
             forwards = false
             backwards = false
