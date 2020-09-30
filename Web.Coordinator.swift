@@ -76,6 +76,11 @@ extension Web {
             load(.init(url: view.session.page!.url))
         }
         
+        deinit {
+            uiDelegate = nil
+            navigationDelegate = nil
+        }
+        
         func webView(_: WKWebView, didStartProvisionalNavigation: WKNavigation!) {
             view.session.error = nil
         }

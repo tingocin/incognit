@@ -25,9 +25,8 @@ struct Session {
     private var subs = Set<AnyCancellable>()
 
     init() {
-        save.sink {
+        save.debounce(for: .seconds(1), scheduler: dispatch).sink {
             FileManager.default.save($0)
-            print("save page")
         }.store(in: &subs)
     }
     
