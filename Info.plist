@@ -26,6 +26,8 @@
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>incognit</string>
+				<string>incognit-id</string>
+				<string>incognit-search</string>
 				<string>http</string>
 				<string>https</string>
 			</array>

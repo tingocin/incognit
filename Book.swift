@@ -53,14 +53,6 @@ struct Book: View {
                     Spacer()
                 }
             }
-        }.onAppear {
-            guard session.pages.value.isEmpty else { return }
-            session.dispatch.async {
-                let pages = FileManager.default.pages
-                DispatchQueue.main.async {
-                    session.pages.value = pages
-                }
-            }
         }.onReceive(session.pages) { new in
             withAnimation(pages.isEmpty ? .none : .easeInOut(duration: 0.3)) {
                 pages = new.sorted { $0.date > $1.date }

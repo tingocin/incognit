@@ -31,7 +31,9 @@ struct Session {
         }.store(in: &subs)
         
         save.combineLatest(pages).debounce(for: .seconds(3), scheduler: dispatch).sink {
-            (try? JSONEncoder().encode($0.1.sorted { $0.date > $1.date }.prefix(3).map { History.Item(url: $0.url, title: $0.title) })).map {
+            (try? JSONEncoder().encode($0.1.sorted { $0.date > $1.date }.prefix(3).map {
+                History.Item(open: URL(string: "incognit-id://" + $0.id.uuidString)!, url: $0.url, title: $0.title)
+            })).map {
                 History.defaults.setValue($0, forKey: History.key)
                 WidgetCenter.shared.reloadAllTimelines()
             }

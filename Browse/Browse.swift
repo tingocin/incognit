@@ -55,7 +55,7 @@ private struct Item: View {
     let item: History.Item
     
     var body: some View {
-        Link(destination: item.url) {
+        Link(destination: item.open) {
             ZStack {
                 RoundedRectangle(cornerRadius: 8)
                     .foregroundColor(.init(.tertiarySystemBackground))

@@ -8,6 +8,7 @@ import SwiftUI
         WindowGroup {
             if session.page == nil {
                 Book(session: $session)
+                    .onAppear(perform: pages)
                     .onOpenURL(perform: open)
             } else {
                 Tab(session: $session)
@@ -23,7 +24,6 @@ import SwiftUI
     }
     
     private func open(_ url: URL) {
-        UIApplication.shared.dismiss()
         switch url.scheme {
         case "incognit":
             load()
@@ -32,6 +32,19 @@ import SwiftUI
                     session.browse($0)
                 }
             }
+        case "incognit-id":
+            if session.pages.value.isEmpty {
+                pages()
+                session.dispatch.async {
+                    DispatchQueue.main.async {
+                        open(url.absoluteString)
+                    }
+                }
+            } else {
+                open(url.absoluteString)
+            }
+        case "incognit-search":
+            break
         default:
             session.browse(url)
         }
@@ -47,6 +60,24 @@ import SwiftUI
                 session.user = user
                 session.save(user)
             }
+        }
+    }
+    
+    private func pages() {
+        guard session.pages.value.isEmpty else { return }
+        session.dispatch.async {
+            let pages = FileManager.default.pages
+            DispatchQueue.main.async {
+                session.pages.value = pages
+            }
+        }
+    }
+    
+    private func open(_ id: String) {
+        session.pages.value.first { $0.id.uuidString == id.replacingOccurrences(of: "incognit-id://", with: "") }.map {
+            $0.date = .init()
+            session.page = $0
+            session.save.send($0)
         }
     }
 }
