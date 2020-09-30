@@ -33,7 +33,6 @@
 		CEDC32352523870A003DF67A /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEDC32342523870A003DF67A /* WidgetKit.framework */; };
 		CEDC32372523870A003DF67A /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEDC32362523870A003DF67A /* SwiftUI.framework */; };
 		CEDC323A2523870A003DF67A /* Browse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDC32392523870A003DF67A /* Browse.swift */; };
-		CEDC323C2523870A003DF67A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEDC323B2523870A003DF67A /* Assets.xcassets */; };
 		CEDC32402523870A003DF67A /* BrowseExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CEDC32322523870A003DF67A /* BrowseExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
@@ -90,7 +89,6 @@
 		CEDC32342523870A003DF67A /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		CEDC32362523870A003DF67A /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		CEDC32392523870A003DF67A /* Browse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Browse.swift; sourceTree = "<group>"; };
-		CEDC323B2523870A003DF67A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CEDC323D2523870A003DF67A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CEF33CFF251CB35F006065E5 /* incognit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = incognit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -128,7 +126,6 @@
 			isa = PBXGroup;
 			children = (
 				CEDC32392523870A003DF67A /* Browse.swift */,
-				CEDC323B2523870A003DF67A /* Assets.xcassets */,
 				CEDC323D2523870A003DF67A /* Info.plist */,
 			);
 			path = Browse;
@@ -261,7 +258,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CEDC323C2523870A003DF67A /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,6 +337,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 7AMWG3RLHN;
 				INFOPLIST_FILE = Browse/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -348,6 +345,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
+				MARKETING_VERSION = 6;
 				PRODUCT_BUNDLE_IDENTIFIER = incognit.Browse;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -361,6 +359,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 7AMWG3RLHN;
 				INFOPLIST_FILE = Browse/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -368,6 +367,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
+				MARKETING_VERSION = 6;
 				PRODUCT_BUNDLE_IDENTIFIER = incognit.Browse;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -508,14 +508,14 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 7AMWG3RLHN;
 				INFOPLIST_FILE = Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 5;
+				MARKETING_VERSION = 6;
 				PRODUCT_BUNDLE_IDENTIFIER = incognit;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -530,14 +530,14 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 7AMWG3RLHN;
 				INFOPLIST_FILE = Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 5;
+				MARKETING_VERSION = 6;
 				PRODUCT_BUNDLE_IDENTIFIER = incognit;
 				SWIFT_VERSION = 5.0;
 			};

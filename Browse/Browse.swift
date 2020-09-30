@@ -7,13 +7,13 @@ import SwiftUI
             VStack {
                 ZStack {
                     RoundedRectangle(cornerRadius: 20)
-                        .shadow(color: .init(UIColor.systemBackground.withAlphaComponent(0.6)), radius: 4, x: -2, y: -2)
-                        .shadow(color: .init(UIColor.systemBackground.withAlphaComponent(0.6)), radius: 4, x: 2, y: 2)
                         .foregroundColor(.init(.secondarySystemBackground))
                     Image(systemName: "magnifyingglass")
-                        .font(.headline)
-                        .foregroundColor(.accentColor)
-                }.frame(height: 40)
+                        .font(Font.headline.bold())
+                        .foregroundColor(Color(.systemIndigo))
+                }
+                .frame(height: 40)
+                .padding()
                 Spacer()
             }
         }
@@ -27,11 +27,11 @@ private struct Provider: TimelineProvider {
         .empty
     }
 
-    func getSnapshot(in: Context, completion: @escaping (Model) -> ()) {
-        completion(.empty)
+    func getSnapshot(in context: Context, completion: @escaping (Model) -> ()) {
+        completion(context.isPreview ? .empty : .init(pages: 0))
     }
 
-    func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
+    func getTimeline(in: Context, completion: @escaping (Timeline<Entry>) -> ()) {
         completion(Timeline(entries: [.init(pages: 0)], policy: .never))
     }
 }
