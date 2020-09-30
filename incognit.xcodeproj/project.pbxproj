@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		CE0A1F032524979E00983D41 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE0A1F022524979E00983D41 /* Media.xcassets */; };
+		CE0A1F0E252499F400983D41 /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0A1F0C252499F400983D41 /* History.swift */; };
+		CE0A1F1425249A6300983D41 /* History.Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0A1F1325249A6300983D41 /* History.Item.swift */; };
+		CE0A1F1525249A6300983D41 /* History.Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0A1F1325249A6300983D41 /* History.Item.swift */; };
+		CE0A1F1825249AD300983D41 /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0A1F0C252499F400983D41 /* History.swift */; };
 		CEA2F68A252344DE00DDE7B4 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA2F670252344DE00DDE7B4 /* Session.swift */; };
 		CEA2F68B252344DE00DDE7B4 /* Control.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA2F671252344DE00DDE7B4 /* Control.swift */; };
 		CEA2F68C252344DE00DDE7B4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEA2F672252344DE00DDE7B4 /* Assets.xcassets */; };
@@ -63,6 +67,10 @@
 
 /* Begin PBXFileReference section */
 		CE0A1F022524979E00983D41 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		CE0A1F062524996600983D41 /* incognit.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = incognit.entitlements; sourceTree = "<group>"; };
+		CE0A1F092524999100983D41 /* BrowseExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BrowseExtension.entitlements; sourceTree = "<group>"; };
+		CE0A1F0C252499F400983D41 /* History.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = History.swift; sourceTree = "<group>"; };
+		CE0A1F1325249A6300983D41 /* History.Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = History.Item.swift; sourceTree = "<group>"; };
 		CEA2F670252344DE00DDE7B4 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		CEA2F671252344DE00DDE7B4 /* Control.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Control.swift; sourceTree = "<group>"; };
 		CEA2F672252344DE00DDE7B4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -127,8 +135,10 @@
 		CEDC32382523870A003DF67A /* Browse */ = {
 			isa = PBXGroup;
 			children = (
-				CEDC32392523870A003DF67A /* Browse.swift */,
 				CEDC323D2523870A003DF67A /* Info.plist */,
+				CEDC32392523870A003DF67A /* Browse.swift */,
+				CE0A1F1325249A6300983D41 /* History.Item.swift */,
+				CE0A1F0C252499F400983D41 /* History.swift */,
 				CE0A1F022524979E00983D41 /* Media.xcassets */,
 			);
 			path = Browse;
@@ -137,6 +147,8 @@
 		CEF33CF6251CB35F006065E5 = {
 			isa = PBXGroup;
 			children = (
+				CE0A1F092524999100983D41 /* BrowseExtension.entitlements */,
+				CE0A1F062524996600983D41 /* incognit.entitlements */,
 				CEA2F683252344DE00DDE7B4 /* Info.plist */,
 				CEA2F689252344DE00DDE7B4 /* Bar.swift */,
 				CEA2F67D252344DE00DDE7B4 /* Book.Item.swift */,
@@ -160,9 +172,9 @@
 				CEA2F673252344DE00DDE7B4 /* Web.Coordinator.swift */,
 				CEA2F678252344DE00DDE7B4 /* Web.swift */,
 				CEA2F672252344DE00DDE7B4 /* Assets.xcassets */,
-				CEA2F6A5252344F100DDE7B4 /* Localizable.strings */,
 				CEDC32382523870A003DF67A /* Browse */,
 				CEDC32332523870A003DF67A /* Frameworks */,
+				CEA2F6A5252344F100DDE7B4 /* Localizable.strings */,
 				CEF33D00251CB35F006065E5 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -281,6 +293,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE0A1F0E252499F400983D41 /* History.swift in Sources */,
+				CE0A1F1525249A6300983D41 /* History.Item.swift in Sources */,
 				CEDC323A2523870A003DF67A /* Browse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -291,6 +305,7 @@
 			files = (
 				CEA2F69E252344DE00DDE7B4 /* Progress.swift in Sources */,
 				CEA2F6A1252344DE00DDE7B4 /* Bar.swift in Sources */,
+				CE0A1F1425249A6300983D41 /* History.Item.swift in Sources */,
 				CEA2F69C252344DE00DDE7B4 /* Book.swift in Sources */,
 				CEA2F696252344DE00DDE7B4 /* UIApplication.swift in Sources */,
 				CEA2F68D252344DE00DDE7B4 /* Web.Coordinator.swift in Sources */,
@@ -301,6 +316,7 @@
 				CEA2F694252344DE00DDE7B4 /* Incognit.swift in Sources */,
 				CEA2F68F252344DE00DDE7B4 /* Forget.swift in Sources */,
 				CEA2F693252344DE00DDE7B4 /* Page.swift in Sources */,
+				CE0A1F1825249AD300983D41 /* History.swift in Sources */,
 				CEA2F698252344DE00DDE7B4 /* Detail.swift in Sources */,
 				CEA2F695252344DE00DDE7B4 /* Tools.swift in Sources */,
 				CEA2F68B252344DE00DDE7B4 /* Control.swift in Sources */,
@@ -340,6 +356,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = BrowseExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 7AMWG3RLHN;
@@ -362,6 +379,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = BrowseExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 7AMWG3RLHN;
@@ -511,6 +529,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = incognit.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 7AMWG3RLHN;
@@ -533,6 +552,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = incognit.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 7AMWG3RLHN;

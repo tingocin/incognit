@@ -2,20 +2,33 @@ import WidgetKit
 import SwiftUI
 
 @main struct Browse: Widget {
+    @Environment(\.widgetFamily) var family: WidgetFamily
+    
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: "Browse", provider: Provider()) { entry in
-            VStack {
-                ZStack {
-                    RoundedRectangle(cornerRadius: 20)
-                        .foregroundColor(.init(.secondarySystemBackground))
-                    Image(systemName: "magnifyingglass")
-                        .font(Font.headline.bold())
-                        .foregroundColor(Color(.systemIndigo))
+            ZStack {
+                Image(systemName: "eyeglasses")
+                    .font(Font.largeTitle.bold())
+                    .foregroundColor(.init(.quaternaryLabel))
+                VStack {
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 20)
+                            .shadow(color: .init(UIColor.systemBackground.withAlphaComponent(0.6)), radius: 4, x: -2, y: -2)
+                            .shadow(color: .init(UIColor.systemBackground.withAlphaComponent(0.6)), radius: 4, x: 2, y: 2)
+                            .foregroundColor(.init(.secondarySystemBackground))
+                        Image(systemName: "magnifyingglass")
+                            .font(Font.headline.bold())
+                            .foregroundColor(Color(.systemIndigo))
+                    }
+                    .frame(height: 40)
+                    .padding()
+                    if family == .systemLarge {
+                        Spacer()
+                    } else {
+                        Spacer()
+                    }
                 }
-                .frame(height: 40)
-                .padding()
-                Spacer()
-            }
+            }.background(Color(.secondarySystemBackground))
         }
         .configurationDisplayName("Browse")
         .description("incognit quick access")
@@ -23,21 +36,15 @@ import SwiftUI
 }
 
 private struct Provider: TimelineProvider {
-    func placeholder(in: Context) -> Model {
+    func placeholder(in: Context) -> History {
         .empty
     }
 
-    func getSnapshot(in context: Context, completion: @escaping (Model) -> ()) {
-        completion(context.isPreview ? .empty : .init(pages: 0))
+    func getSnapshot(in context: Context, completion: @escaping (History) -> ()) {
+        completion(context.isPreview ? .empty : .init(items: []))
     }
 
     func getTimeline(in: Context, completion: @escaping (Timeline<Entry>) -> ()) {
-        completion(Timeline(entries: [.init(pages: 0)], policy: .never))
+        completion(Timeline(entries: [.init(items: [])], policy: .never))
     }
-}
-
-private struct Model: TimelineEntry {
-    static let empty = Self(pages: 0)
-    let pages: Int
-    let date = Date()
 }
