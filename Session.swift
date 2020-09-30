@@ -20,14 +20,14 @@ struct Session {
     let backward = PassthroughSubject<Void, Never>()
     let forward = PassthroughSubject<Void, Never>()
     let reload = PassthroughSubject<Void, Never>()
-    let save = PassthroughSubject<Page, Never>()
+    let save = PassthroughSubject<Page?, Never>()
     let pages = CurrentValueSubject<Set<Page>, Never>([])
     let dispatch = DispatchQueue(label: "", qos: .utility)
     private var subs = Set<AnyCancellable>()
 
     init() {
         save.debounce(for: .seconds(1), scheduler: dispatch).sink {
-            FileManager.default.save($0)
+            $0.map(FileManager.default.save)
         }.store(in: &subs)
         
         save.combineLatest(pages).debounce(for: .seconds(3), scheduler: dispatch).sink {
@@ -65,6 +65,7 @@ struct Session {
     
     mutating func forget() {
         pages.value = []
+        save.send(nil)
         dispatch.async {
             FileManager.default.forget()
         }
