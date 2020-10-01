@@ -6,12 +6,16 @@ import SwiftUI
     
     var body: some Scene {
         WindowGroup {
-            Book(session: $session)
-                .onAppear(perform: pages)
-                .onOpenURL(perform: open)
-                .fullScreenCover(item: $session.page) { _ in
+            ZStack {
+                if session.page == nil {
+                    Book(session: $session)
+                }
+                if session.page != nil {
                     Tab(session: $session)
                 }
+            }
+            .onAppear(perform: pages)
+            .onOpenURL(perform: open)
         }.onChange(of: phase) {
             if $0 == .active {
                 guard session.user == nil else { return }

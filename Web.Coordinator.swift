@@ -22,9 +22,7 @@ extension Web {
             navigationDelegate = self
             uiDelegate = self
             isOpaque = false
-            backgroundColor = .clear
             allowsBackForwardNavigationGestures = true
-            scrollView.backgroundColor = .clear
             scrollView.keyboardDismissMode = .onDrag
             scrollView.contentInsetAdjustmentBehavior = .never
             scrollView.automaticallyAdjustsScrollIndicatorInsets = false

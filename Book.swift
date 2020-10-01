@@ -23,7 +23,7 @@ struct Book: View {
                         session.delete(page)
                     } action: {
                         UIApplication.shared.resign()
-                        withAnimation(.easeInOut(duration: 0.4)) {
+                        withAnimation(.easeInOut(duration: 0.3)) {
                             session.page = page
                         }
                         page.date = .init()
