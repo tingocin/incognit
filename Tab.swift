@@ -28,7 +28,6 @@ struct Tab: View {
                 }.foregroundColor(.secondary)
             }
             Web(session: $session)
-            Tools(session: $session)
         }
     }
 }

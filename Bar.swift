@@ -20,6 +20,7 @@ struct Bar: View {
                 open = false
                 withAnimation(.easeInOut(duration: 0.7)) {
                     session.browse(text)
+                    text = ""
                 }
             }).textContentType(.URL)
                 .keyboardType(.webSearch)

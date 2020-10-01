@@ -2,8 +2,6 @@ import SwiftUI
 
 struct Book: View {
     @Binding var session: Session
-    @State private var forget = false
-    @State private var settings = false
     @State private var pages = [Page]()
     
     var body: some View {
@@ -34,33 +32,11 @@ struct Book: View {
                 Spacer()
                     .frame(height: 80)
             }
-            VStack {
-                Spacer()
-                HStack {
-                    Spacer()
-                    Control.Circle(selected: false, image: "eyeglasses") {
-                        UIApplication.shared.resign()
-                        forget = true
-                    }.sheet(isPresented: $forget) {
-                        Forget(session: $session, visible: $forget)
-                    }
-                    Bar(session: $session)
-                    Control.Circle(selected: false, image: "gearshape.fill") {
-                        UIApplication.shared.resign()
-                        settings = true
-                    }.sheet(isPresented: $settings) {
-                        Settings(session: $session, visible: $settings)
-                    }
-                    Spacer()
-                }
-            }
-        }.onReceive(session.pages.receive(on: DispatchQueue.main)) { new in
+        }.onReceive(session.pages.receive(on: DispatchQueue.main)) {
+            guard let new = $0 else { return }
             withAnimation(pages.isEmpty ? .none : .easeInOut(duration: 0.3)) {
                 pages = new.sorted { $0.date > $1.date }
             }
-        }.onReceive(session.dismiss) {
-            forget = false
-            settings = false
         }
     }
 }

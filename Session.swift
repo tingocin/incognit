@@ -23,7 +23,7 @@ struct Session {
     let type = PassthroughSubject<Void, Never>()
     let dismiss = PassthroughSubject<Void, Never>()
     let save = PassthroughSubject<Page?, Never>()
-    let pages = CurrentValueSubject<Set<Page>, Never>([])
+    let pages = CurrentValueSubject<Set<Page>?, Never>(nil)
     let dispatch = DispatchQueue(label: "", qos: .utility)
     private var subs = Set<AnyCancellable>()
 
@@ -33,7 +33,8 @@ struct Session {
         }.store(in: &subs)
         
         save.combineLatest(pages).debounce(for: .seconds(3), scheduler: dispatch).sink {
-            (try? JSONEncoder().encode($0.1.sorted { $0.date > $1.date }.prefix(3).map {
+            guard let pages = $0.1 else { return }
+            (try? JSONEncoder().encode(pages.sorted { $0.date > $1.date }.prefix(3).map {
                 History.Item(open: URL(string: "incognit-id://" + $0.id.uuidString)!, url: $0.url, title: $0.title)
             })).map {
                 History.defaults.setValue($0, forKey: History.key)
@@ -51,7 +52,7 @@ struct Session {
         if page == nil {
             let page = Page(url: url)
             self.page = page
-            pages.value.insert(page)
+            pages.value?.insert(page)
             save.send(page)
         } else {
             navigate.send(url)
@@ -59,7 +60,7 @@ struct Session {
     }
     
     mutating func delete(_ page: Page) {
-        pages.value.remove(page)
+        pages.value?.remove(page)
         save.send(nil)
         dispatch.async {
             FileManager.default.delete(page)
