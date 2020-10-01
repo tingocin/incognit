@@ -12,9 +12,6 @@ extension UIApplication {
     
     func appearance() {
         UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(named: "AccentColor")!
-        windows.forEach {
-            $0.rootViewController?.view.backgroundColor = .secondarySystemBackground
-        }
     }
     
     func forget() {

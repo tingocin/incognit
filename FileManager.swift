@@ -14,6 +14,10 @@ extension FileManager {
         try? JSONDecoder().decode(User.self, from: Data(contentsOf: Self._user))
     }
     
+    func load(_ id: String) -> Page? {
+        try? JSONDecoder().decode(Page.self, from: Data(contentsOf: Self._pages.appendingPathComponent(id)))
+    }
+    
     func save(_ page: Page) {
         var url = Self._pages
         if !fileExists(atPath: url.path) {

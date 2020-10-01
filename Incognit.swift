@@ -1,64 +1,33 @@
 import SwiftUI
 
 @main struct Incognit: App {
-    @Environment(\.scenePhase) private var phase
     @State private var session = Session()
+    @State private var _user = false
+    @State private var _pages = false
     
     var body: some Scene {
         WindowGroup {
             ZStack {
+                Color(.secondarySystemBackground)
+                    .edgesIgnoringSafeArea(.all)
                 if session.page == nil {
                     Book(session: $session)
+                        .onAppear(perform: pages)
                 }
                 if session.page != nil {
                     Tab(session: $session)
                 }
             }
-            .onAppear(perform: pages)
             .onOpenURL(perform: open)
-        }.onChange(of: phase) {
-            if $0 == .active {
-                guard session.user == nil else { return }
-                UIApplication.shared.appearance()
-                load()
-            }
+            .onAppear(perform: launch)
         }
     }
     
-    private func open(_ url: URL) {
-        session.dismiss.send()
-        
-        switch url.scheme {
-        case "incognit":
-            load()
-            session.dispatch.async {
-                url.absoluteString.replacingOccurrences(of: "incognit://", with: "").removingPercentEncoding.map {
-                    session.browse($0)
-                }
-            }
-        case "incognit-id":
-            if session.pages.value.isEmpty {
-                pages()
-                session.dispatch.async {
-                    DispatchQueue.main.async {
-                        open(url.absoluteString)
-                    }
-                }
-            } else {
-                open(url.absoluteString)
-            }
-        case "incognit-search":
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                session.type.send()
-            }
-        default:
-            session.browse(url)
-        }
-    }
-    
-    private func load() {
+    private func launch() {
+        NSLog("incognit:::: launch")
+        guard !_user else { return }
+        _user = true
         session.dispatch.async {
-            guard session.user == nil else { return }
             if let user = FileManager.default.user {
                 session.user = user
             } else {
@@ -66,29 +35,59 @@ import SwiftUI
                 session.user = user
                 session.save(user)
             }
+            NSLog("incognit:::: user ready")
         }
+        UIApplication.shared.appearance()
     }
     
     private func pages() {
-        guard session.pages.value.isEmpty else { return }
+        NSLog("incognit:::: pages")
+        guard !_pages else { return }
+        _pages = true
         session.dispatch.async {
-            let pages = FileManager.default.pages
-            DispatchQueue.main.async {
-                session.pages.value = pages
-            }
+            session.pages.value = FileManager.default.pages
+            NSLog("incognit:::: pages ready")
         }
     }
     
-    private func open(_ id: String) {
-        session.pages.value.first { $0.id.uuidString == id.replacingOccurrences(of: "incognit-id://", with: "") }.map {
-            $0.date = .init()
-            if session.page != nil {
-                session.page = $0
-                session.navigate.send($0.url)
-            } else {
-                session.page = $0
+    
+    
+    
+    
+    
+    
+    
+    
+    private func open(_ url: URL) {
+        NSLog("incognit:::: open")
+        session.dismiss.send()
+        
+        switch url.scheme {
+        case "incognit":
+            session.dispatch.async {
+                url.absoluteString.replacingOccurrences(of: "incognit://", with: "").removingPercentEncoding.map {
+                    session.browse($0)
+                }
             }
-            session.save.send($0)
+        case "incognit-id":
+            let id = url.absoluteString.replacingOccurrences(of: "incognit-id://", with: "")
+            (session.pages.value.first { $0.id.uuidString == id } ?? FileManager.default.load(id)).map {
+                $0.date = .init()
+                if session.page == nil {
+                    session.page = $0
+                } else {
+                    session.page = $0
+                    session.navigate.send($0.url)
+                }
+                session.save.send($0)
+                NSLog("incognit:::: page ready")
+            }
+        case "incognit-search":
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                session.type.send()
+            }
+        default:
+            session.browse(url)
         }
     }
 }

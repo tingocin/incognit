@@ -54,7 +54,7 @@ struct Book: View {
                     Spacer()
                 }
             }
-        }.onReceive(session.pages) { new in
+        }.onReceive(session.pages.receive(on: DispatchQueue.main)) { new in
             withAnimation(pages.isEmpty ? .none : .easeInOut(duration: 0.3)) {
                 pages = new.sorted { $0.date > $1.date }
             }
