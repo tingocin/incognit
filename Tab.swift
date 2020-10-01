@@ -20,12 +20,11 @@ struct Tab: View {
                         .font(Font.largeTitle.bold())
                         .padding(.bottom)
                     Text(verbatim: session.page?.url.absoluteString ?? "")
-                        .bold()
                         .padding(.horizontal)
                     Text(verbatim: session.error!)
-                        .font(.footnote)
+                        .font(.caption2)
                         .padding(.horizontal)
-                }.foregroundColor(.secondary)
+                }.foregroundColor(.init(.tertiaryLabel))
             }
             Web(session: $session)
         }

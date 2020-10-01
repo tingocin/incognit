@@ -25,7 +25,7 @@ extension Field {
             searchTextField.textAlignment = .center
             delegate = self
             
-            view.session.dismiss.sink { [weak self] in
+            view.session.resign.sink { [weak self] in
                 self?.resignFirstResponder()
             }.store(in: &subs)
             

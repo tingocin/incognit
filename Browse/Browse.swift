@@ -5,20 +5,22 @@ import SwiftUI
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: "Browse", provider: Provider()) { entry in
             VStack {
+                Items(items: entry.items)
                 ZStack {
                     RoundedRectangle(cornerRadius: 20)
-                        .shadow(color: .init(UIColor.systemBackground.withAlphaComponent(0.6)), radius: 4, x: -2, y: -2)
-                        .shadow(color: .init(UIColor.systemBackground.withAlphaComponent(0.6)), radius: 4, x: 2, y: 2)
-                        .foregroundColor(.init(.secondarySystemBackground))
+                        .foregroundColor(Color(.systemIndigo))
                     Image(systemName: "magnifyingglass")
                         .font(Font.headline.bold())
-                        .foregroundColor(Color(.systemIndigo))
+                        .foregroundColor(.black)
                 }
                 .widgetURL(URL(string: "incognit-search://google.com")!)
                 .frame(height: 40)
-                .padding()
-                Items(items: entry.items)
-            }.background(Color(.secondarySystemBackground))
+                .padding(.horizontal)
+                .padding(.bottom)
+            }.background(LinearGradient(gradient: Gradient(colors: [
+                                                            Color(.init(srgbRed: 88/255, green: 86/255, blue: 214/255, alpha: 1)),
+                                                            Color(.init(srgbRed: 104/255, green: 155/255, blue: 233/255, alpha: 1))]),
+                                        startPoint: .top, endPoint: .bottom))
         }
         .configurationDisplayName("Browse")
         .description("incognit quick access")
@@ -32,21 +34,17 @@ private struct Items: View {
     var body: some View {
         VStack {
             if items.isEmpty {
+                Spacer()
                 Image(systemName: "eyeglasses")
                     .font(Font.largeTitle.bold())
-                    .foregroundColor(.init(.quaternaryLabel))
-                    .padding()
+                    .foregroundColor(Color.black.opacity(0.2))
             } else {
-                if family != .systemLarge {
-                    Item(item: items.first!)
-                } else {
-                    ForEach(0 ..< items.count) {
-                        Item(item: items[$0])
-                    }
+                ForEach(0 ..< (family == .systemLarge ? items.count : 1)) {
+                    Item(item: items[$0])
                 }
             }
             Spacer()
-        }
+        }.padding(.top)
     }
 }
 
@@ -55,28 +53,22 @@ private struct Item: View {
     
     var body: some View {
         Link(destination: item.open) {
-            ZStack {
-                RoundedRectangle(cornerRadius: 8)
-                    .foregroundColor(.init(.tertiarySystemBackground))
+            VStack {
                 HStack {
-                    VStack {
-                        HStack {
-                            Text(verbatim: item.title)
-                                .font(.footnote)
-                                .foregroundColor(.primary)
-                            Spacer()
-                        }
-                        HStack {
-                            Text(verbatim: item.url.absoluteString)
-                                .font(.caption2)
-                                .foregroundColor(.secondary)
-                            Spacer()
-                        }
-                    }
-                }.padding()
+                    Text(verbatim: item.title)
+                        .font(.footnote)
+                        .foregroundColor(.black)
+                    Spacer()
+                }
+                HStack {
+                    Text(verbatim: item.url.absoluteString)
+                        .font(.caption2)
+                        .foregroundColor(Color.black.opacity(0.7))
+                    Spacer()
+                }
             }
-            .frame(height: 40)
-            .padding()
+            .frame(height: 55)
+            .padding(.horizontal)
         }
     }
 }

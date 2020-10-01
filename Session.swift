@@ -22,6 +22,7 @@ struct Session {
     let forward = PassthroughSubject<Void, Never>()
     let reload = PassthroughSubject<Void, Never>()
     let type = PassthroughSubject<Void, Never>()
+    let resign = PassthroughSubject<Void, Never>()
     let dismiss = PassthroughSubject<Void, Never>()
     let save = PassthroughSubject<Page?, Never>()
     let pages = CurrentValueSubject<Set<Page>?, Never>(nil)
@@ -33,9 +34,9 @@ struct Session {
             $0.map(FileManager.default.save)
         }.store(in: &subs)
         
-        save.combineLatest(pages).debounce(for: .seconds(3), scheduler: dispatch).sink {
+        save.combineLatest(pages).debounce(for: .seconds(2), scheduler: dispatch).sink {
             guard let pages = $0.1 else { return }
-            (try? JSONEncoder().encode(pages.sorted { $0.date > $1.date }.prefix(3).map {
+            (try? JSONEncoder().encode(pages.sorted { $0.date > $1.date }.prefix(5).map {
                 History.Item(open: URL(string: "incognit-id://" + $0.id.uuidString)!, url: $0.url, title: $0.title)
             })).map {
                 History.defaults.setValue($0, forKey: History.key)

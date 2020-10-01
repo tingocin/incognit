@@ -21,7 +21,7 @@ struct Book: View {
                     Item(page: page) {
                         session.delete(page)
                     } action: {
-                        session.dismiss.send()
+                        session.resign.send()
                         withAnimation(.easeInOut(duration: 0.3)) {
                             session.page = page
                         }
