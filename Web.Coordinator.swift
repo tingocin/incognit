@@ -34,18 +34,16 @@ extension Web {
             }.store(in: &subs)
             
             publisher(for: \.title).sink { [weak self] in
-                $0.map { title in
-                    guard let page = self?.view.session.page, page.title != title else { return }
-                    page.title = title
-                    self?.view.session.save.send(page)
+                $0.map {
+                    self?.view.session.page?.title = $0
+                    self?.view.session.save.send(self?.view.session.page)
                 }
             }.store(in: &subs)
             
             publisher(for: \.url).sink { [weak self] in
-                $0.map { url in
-                    guard let page = self?.view.session.page, page.url != url else { return }
-                    page.url = url
-                    self?.view.session.save.send(page)
+                $0.map {
+                    self?.view.session.page?.url = $0
+                    self?.view.session.save.send(self?.view.session.page)
                 }
             }.store(in: &subs)
             
