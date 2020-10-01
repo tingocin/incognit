@@ -57,6 +57,6 @@ struct Book: View {
             withAnimation(pages.isEmpty ? .none : .easeInOut(duration: 0.3)) {
                 pages = new.sorted { $0.date > $1.date }
             }
-        }.transition(.move(edge: .top))
+        }
     }
 }

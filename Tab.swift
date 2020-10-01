@@ -29,6 +29,6 @@ struct Tab: View {
             }
             Web(session: $session)
             Tools(session: $session)
-        }.transition(.move(edge: .bottom))
+        }
     }
 }
