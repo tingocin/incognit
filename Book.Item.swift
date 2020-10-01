@@ -17,7 +17,7 @@ extension Book {
                             HStack {
                                 Text(verbatim: page.title)
                                     .fixedSize(horizontal: false, vertical: true)
-                                    .font(.subheadline)
+                                    .font(.footnote)
                                     .foregroundColor(.primary)
                                     .padding(.top)
                                     .padding(.leading)
@@ -27,14 +27,14 @@ extension Book {
                                 Text(verbatim: page.url.absoluteString)
                                     .fixedSize(horizontal: false, vertical: true)
                                     .font(.caption2)
-                                    .foregroundColor(.secondary)
+                                    .foregroundColor(.init(.tertiaryLabel))
                                     .padding(.leading)
                                 Spacer()
                             }
                             HStack {
                                 Text(verbatim: date)
                                     .font(.caption2)
-                                    .foregroundColor(.secondary)
+                                    .foregroundColor(.init(.tertiaryLabel))
                                     .padding(.bottom)
                                     .padding(.leading)
                                 Spacer()

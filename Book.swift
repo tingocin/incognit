@@ -11,9 +11,10 @@ struct Book: View {
             VStack {
                 Image(systemName: "eyeglasses")
                     .font(Font.largeTitle.bold())
+                Spacer()
+                    .frame(height: 5)
                 Text("incognit")
                     .font(.headline)
-                    .padding()
             }.foregroundColor(.init(.quaternaryLabel))
             ScrollView {
                 Spacer()
@@ -57,6 +58,9 @@ struct Book: View {
             withAnimation(pages.isEmpty ? .none : .easeInOut(duration: 0.3)) {
                 pages = new.sorted { $0.date > $1.date }
             }
+        }.onReceive(session.dismiss) {
+            forget = false
+            settings = false
         }
     }
 }

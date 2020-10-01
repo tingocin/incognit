@@ -21,6 +21,7 @@ struct Session {
     let forward = PassthroughSubject<Void, Never>()
     let reload = PassthroughSubject<Void, Never>()
     let type = PassthroughSubject<Void, Never>()
+    let dismiss = PassthroughSubject<Void, Never>()
     let save = PassthroughSubject<Page?, Never>()
     let pages = CurrentValueSubject<Set<Page>, Never>([])
     let dispatch = DispatchQueue(label: "", qos: .utility)

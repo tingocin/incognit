@@ -33,6 +33,7 @@ extension Web {
             
             publisher(for: \.title).sink { [weak self] in
                 $0.map {
+                    guard !$0.isEmpty else { return }
                     self?.view.session.page?.title = $0
                     self?.view.session.save.send(self?.view.session.page)
                 }

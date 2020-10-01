@@ -26,6 +26,8 @@ import SwiftUI
     }
     
     private func open(_ url: URL) {
+        session.dismiss.send()
+        
         switch url.scheme {
         case "incognit":
             load()
@@ -80,7 +82,12 @@ import SwiftUI
     private func open(_ id: String) {
         session.pages.value.first { $0.id.uuidString == id.replacingOccurrences(of: "incognit-id://", with: "") }.map {
             $0.date = .init()
-            session.page = $0
+            if session.page != nil {
+                session.page = $0
+                session.navigate.send($0.url)
+            } else {
+                session.page = $0
+            }
             session.save.send($0)
         }
     }

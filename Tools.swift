@@ -84,6 +84,8 @@ struct Tools: View {
                     Spacer()
                 }
             }
+        }.onReceive(session.dismiss) {
+            detail = false
         }
     }
 }
