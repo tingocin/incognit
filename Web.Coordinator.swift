@@ -112,9 +112,5 @@ extension Web {
             }
             return nil
         }
-        
-        private func navigate(_ url: String) {
-            _ = URL(string: url).map { load(.init(url: $0)) }
-        }
     }
 }

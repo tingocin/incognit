@@ -1,4 +1,5 @@
 import SwiftUI
+import WebKit
 
 struct Forget: View {
     @Binding var session: Session
@@ -11,7 +12,8 @@ struct Forget: View {
                     withAnimation(.easeInOut(duration: 1)) {
                         session.forget()
                     }
-                    UIApplication.shared.forget()
+                    HTTPCookieStorage.shared.removeCookies(since: .distantPast)
+                    WKWebsiteDataStore.default().removeData(ofTypes: WKWebsiteDataStore.allWebsiteDataTypes(), modifiedSince: .distantPast) { }
                     visible = false
                 } label: {
                     Text("Forget")

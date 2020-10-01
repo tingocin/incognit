@@ -15,6 +15,7 @@ struct Session {
     var error: String?
     var forwards = false
     var backwards = false
+    var typing = false
     var progress = Double()
     let navigate = PassthroughSubject<URL, Never>()
     let backward = PassthroughSubject<Void, Never>()

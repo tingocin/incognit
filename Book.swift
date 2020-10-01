@@ -21,7 +21,7 @@ struct Book: View {
                     Item(page: page) {
                         session.delete(page)
                     } action: {
-                        UIApplication.shared.resign()
+                        session.dismiss.send()
                         withAnimation(.easeInOut(duration: 0.3)) {
                             session.page = page
                         }
