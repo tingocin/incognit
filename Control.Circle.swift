@@ -2,24 +2,29 @@ import SwiftUI
 
 extension Control {
     struct Circle: View {
-        let state = State.ready
+        var state = State.ready
         let image: String
         let action: () -> Void
         
         var body: some View {
-            Button(action: action) {
+            Button {
+                guard state != .disabled else { return }
+                action()
+            } label: {
                 EmptyView()
             }.buttonStyle(Style(state: state) { current in
                 ZStack {
                     SwiftUI.Circle()
                         .frame(width: 40, height: 40)
-                        .shadow(color: Color.black.opacity(0.6), radius: current == .disabled ? 0 : 3, x: -2, y: -2)
-                        .shadow(color: Color.black.opacity(0.6), radius: current == .disabled ? 0 : 3, x: 2, y: 2)
-                        .foregroundColor(state == .selected ? .init(.secondarySystemBackground) : .accentColor)
+                        .shadow(color: Color.black.opacity(current == .disabled ? 0 : 0.6), radius: 3, x: -2, y: -2)
+                        .shadow(color: Color.black.opacity(current == .disabled ? 0 : 0.6), radius: 3, x: 2, y: 2)
+                        .foregroundColor(current == .disabled ? .init(UIColor.tertiarySystemBackground.withAlphaComponent(0.5)) : current == .selected ? .init(.secondarySystemBackground) : .accentColor)
                     Image(systemName: image)
                         .font(Font.headline.bold())
-                        .foregroundColor(state == .selected ? .accentColor : .black)
-                }.frame(width: 60, height: 60)
+                        .foregroundColor(current == .disabled ? .init(.tertiaryLabel) : current == .selected ? .accentColor : .black)
+                }
+                .frame(width: 70, height: 70)
+                .contentShape(SwiftUI.Circle())
             })
         }
     }

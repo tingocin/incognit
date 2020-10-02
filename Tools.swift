@@ -18,19 +18,19 @@ struct Tools: View {
                 if session.page != nil {
                     HStack {
                         ZStack {
-                            Control.Circle(selected: false, image: "chevron.left") {
+                            Control.Circle(state: session.backwards ? .ready : .disabled, image: "chevron.left") {
                                 session.resign.send()
                                 session.backward.send()
                             }
                             .offset(x: backwardX)
-                            .opacity(spring ? session.backwards ? 1 : 0.5 : 0)
-                            Control.Circle(selected: false, image: "chevron.right") {
+                            .opacity(spring ? 1 : 0)
+                            Control.Circle(state: session.forwards ? .ready : .disabled, image: "chevron.right") {
                                 session.resign.send()
                                 session.forward.send()
                             }
                             .offset(x: forwardX)
-                            .opacity(spring ? session.forwards ? 1 : 0.5 : 0)
-                            Control.Circle(selected: false, image: "line.horizontal.3") {
+                            .opacity(spring ? 1 : 0)
+                            Control.Circle(image: "line.horizontal.3") {
                                 session.resign.send()
                                 detail = true
                             }.sheet(isPresented: $detail) {
@@ -38,13 +38,13 @@ struct Tools: View {
                             }
                             .offset(y: detailY)
                             .opacity(spring ? 1 : 0)
-                            Control.Circle(selected: false, image: "arrow.clockwise") {
+                            Control.Circle(image: "arrow.clockwise") {
                                 session.resign.send()
                                 session.reload.send()
                             }
                             .opacity(spring ? 1 : 0)
                             .offset(y: reloadY)
-                            Control.Circle(selected: spring, image: "plus") {
+                            Control.Circle(state: spring ? .selected : .ready, image: "plus") {
                                 session.resign.send()
                                 withAnimation(.easeInOut(duration: 0.3)) {
                                     spring.toggle()
@@ -73,7 +73,7 @@ struct Tools: View {
                     }
                     HStack {
                         Spacer()
-                        Control.Circle(selected: false, image: "xmark") {
+                        Control.Circle(image: "xmark") {
                             session.resign.send()
                             withAnimation(.easeInOut(duration: 0.3)) {
                                 spring = false
@@ -85,7 +85,7 @@ struct Tools: View {
                 HStack {
                     Spacer()
                     if session.page == nil {
-                        Control.Circle(selected: false, image: "eyeglasses") {
+                        Control.Circle(image: "eyeglasses") {
                             session.resign.send()
                             forget = true
                         }.sheet(isPresented: $forget) {
@@ -95,7 +95,7 @@ struct Tools: View {
                     Bar(session: $session)
                         .opacity(spring ? 0 : 1)
                     if session.page == nil {
-                        Control.Circle(selected: false, image: "gearshape.fill") {
+                        Control.Circle(image: "gearshape.fill") {
                             session.resign.send()
                             settings = true
                         }.sheet(isPresented: $settings) {
@@ -106,6 +106,7 @@ struct Tools: View {
                 }
             }
         }.onReceive(session.dismiss) {
+            spring = false
             detail = false
             forget = false
             settings = false
