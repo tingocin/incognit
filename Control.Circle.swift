@@ -18,10 +18,10 @@ extension Control {
                         .frame(width: 40, height: 40)
                         .shadow(color: Color.black.opacity(current == .disabled ? 0 : 0.6), radius: 3, x: -2, y: -2)
                         .shadow(color: Color.black.opacity(current == .disabled ? 0 : 0.6), radius: 3, x: 2, y: 2)
-                        .foregroundColor(current == .disabled ? .init(UIColor.tertiarySystemBackground.withAlphaComponent(0.5)) : current == .selected ? .init(.secondarySystemBackground) : .accentColor)
+                        .foregroundColor(current == .disabled ? .init(.tertiarySystemBackground) : current == .selected ? .init(.secondarySystemBackground) : .accentColor)
                     Image(systemName: image)
                         .font(Font.headline.bold())
-                        .foregroundColor(current == .disabled ? .init(.tertiaryLabel) : current == .selected ? .accentColor : .black)
+                        .foregroundColor(current == .disabled ? .init(.quaternaryLabel) : current == .selected ? .accentColor : .black)
                 }
                 .frame(width: 70, height: 70)
                 .contentShape(SwiftUI.Circle())
