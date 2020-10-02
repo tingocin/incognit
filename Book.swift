@@ -15,8 +15,9 @@ struct Book: View {
                     .font(.headline)
             }.foregroundColor(.init(.quaternaryLabel))
             ScrollView {
-                Spacer()
-                    .frame(height: 20)
+                HStack{
+                    Spacer()
+                }.frame(height: 20)
                 ForEach(pages) { page in
                     Item(page: page) {
                         session.delete(page)
