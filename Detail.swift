@@ -6,7 +6,7 @@ struct Detail: View {
     @State private var done = false
     
     var body: some View {
-        VStack {
+        ScrollView {
             VStack {
                 Spacer()
                     .frame(height: 30)
@@ -39,13 +39,16 @@ struct Detail: View {
                 try? Data(contentsOf: session.page!.url).write(to: url, options: .atomic)
                 UIApplication.shared.share(url)
             }
+            Item(image: "printer.fill.and.paper.fill", text: "Print") {
+                session.print.send()
+            }
             if ({
                 switch $0 {
                 case "png", "jpg", "jpeg", "bmp", "gif": return true
                 default: return false
                 }
             } (session.page!.url.pathExtension.lowercased())) {
-                Item(image: "photo.fill.on.rectangle.fill", text: "Add to Photos") {
+                Item(image: "photo.fill", text: "Add to Photos") {
                     (try? Data(contentsOf: session.page!.url)).flatMap(UIImage.init(data:)).map {
                         UIImageWriteToSavedPhotosAlbum($0, nil, nil, nil)
                         success()
