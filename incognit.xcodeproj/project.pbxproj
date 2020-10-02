@@ -78,6 +78,7 @@
 		CE0A1F1325249A6300983D41 /* History.Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = History.Item.swift; sourceTree = "<group>"; };
 		CE2194782526236B00CED077 /* Field.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Field.swift; sourceTree = "<group>"; };
 		CE21947C252624F600CED077 /* Field.Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Field.Coordinator.swift; sourceTree = "<group>"; };
+		CE25B42825277BC80021900A /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		CEA2F670252344DE00DDE7B4 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		CEA2F671252344DE00DDE7B4 /* Control.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Control.swift; sourceTree = "<group>"; };
 		CEA2F672252344DE00DDE7B4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -155,6 +156,7 @@
 		CEF33CF6251CB35F006065E5 = {
 			isa = PBXGroup;
 			children = (
+				CE25B42825277BC80021900A /* README.md */,
 				CE0A1F092524999100983D41 /* BrowseExtension.entitlements */,
 				CE0A1F062524996600983D41 /* incognit.entitlements */,
 				CEA2F683252344DE00DDE7B4 /* Info.plist */,
