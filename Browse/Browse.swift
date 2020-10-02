@@ -17,9 +17,9 @@ import SwiftUI
                 .frame(height: 40)
                 .padding(.horizontal)
                 .padding(.bottom)
-            }.background(LinearGradient(gradient: Gradient(colors: [
-                                                            Color(.init(srgbRed: 88/255, green: 86/255, blue: 214/255, alpha: 1)),
-                                                            Color(.init(srgbRed: 104/255, green: 155/255, blue: 233/255, alpha: 1))]),
+            }.background(LinearGradient(gradient:
+                                            .init(colors: [.init(.init(srgbRed: 0.345, green: 0.313, blue: 0.839, alpha: 1.0)),
+                                                           .init(.init(srgbRed: 0.407, green: 0.607, blue: 0.913, alpha: 1.0))]),
                                         startPoint: .top, endPoint: .bottom))
         }
         .configurationDisplayName("Browse")

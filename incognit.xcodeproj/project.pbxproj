@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE02488B25273014005DBB9C /* Control.State.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE02488A25273014005DBB9C /* Control.State.swift */; };
 		CE0A1F032524979E00983D41 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE0A1F022524979E00983D41 /* Media.xcassets */; };
 		CE0A1F0E252499F400983D41 /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0A1F0C252499F400983D41 /* History.swift */; };
 		CE0A1F1425249A6300983D41 /* History.Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0A1F1325249A6300983D41 /* History.Item.swift */; };
@@ -68,6 +69,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		CE02488A25273014005DBB9C /* Control.State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Control.State.swift; sourceTree = "<group>"; };
 		CE0A1F022524979E00983D41 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		CE0A1F062524996600983D41 /* incognit.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = incognit.entitlements; sourceTree = "<group>"; };
 		CE0A1F092524999100983D41 /* BrowseExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BrowseExtension.entitlements; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 				CEA2F684252344DE00DDE7B4 /* Book.swift */,
 				CEA2F687252344DE00DDE7B4 /* Control.Circle.swift */,
 				CEA2F688252344DE00DDE7B4 /* Control.Icon.swift */,
+				CE02488A25273014005DBB9C /* Control.State.swift */,
 				CEA2F671252344DE00DDE7B4 /* Control.swift */,
 				CEA2F67E252344DE00DDE7B4 /* Detail.swift */,
 				CEA2F677252344DE00DDE7B4 /* Engine.swift */,
@@ -313,6 +316,7 @@
 				CEA2F6A1252344DE00DDE7B4 /* Bar.swift in Sources */,
 				CE2194792526236B00CED077 /* Field.swift in Sources */,
 				CE0A1F1425249A6300983D41 /* History.Item.swift in Sources */,
+				CE02488B25273014005DBB9C /* Control.State.swift in Sources */,
 				CEA2F69C252344DE00DDE7B4 /* Book.swift in Sources */,
 				CEA2F696252344DE00DDE7B4 /* UIApplication.swift in Sources */,
 				CEA2F68D252344DE00DDE7B4 /* Web.Coordinator.swift in Sources */,

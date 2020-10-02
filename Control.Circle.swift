@@ -2,23 +2,23 @@ import SwiftUI
 
 extension Control {
     struct Circle: View {
-        let selected: Bool
+        let state = State.ready
         let image: String
         let action: () -> Void
         
         var body: some View {
             Button(action: action) {
                 EmptyView()
-            }.buttonStyle(Style { pressed in
+            }.buttonStyle(Style(state: state) { current in
                 ZStack {
                     SwiftUI.Circle()
                         .frame(width: 40, height: 40)
-                        .shadow(color: .init(UIColor.systemBackground.withAlphaComponent(0.6)), radius: 4, x: -2, y: -2)
-                        .shadow(color: .init(UIColor.systemBackground.withAlphaComponent(0.6)), radius: 4, x: 2, y: 2)
-                        .foregroundColor(selected || pressed ? .accentColor : .init(.secondarySystemBackground))
+                        .shadow(color: Color.black.opacity(0.6), radius: current == .disabled ? 0 : 3, x: -2, y: -2)
+                        .shadow(color: Color.black.opacity(0.6), radius: current == .disabled ? 0 : 3, x: 2, y: 2)
+                        .foregroundColor(state == .selected ? .init(.secondarySystemBackground) : .accentColor)
                     Image(systemName: image)
                         .font(Font.headline.bold())
-                        .foregroundColor(selected || pressed ? .init(.systemBackground) : .accentColor)
+                        .foregroundColor(state == .selected ? .accentColor : .black)
                 }.frame(width: 60, height: 60)
             })
         }
@@ -26,9 +26,10 @@ extension Control {
 }
 
 private struct Style<Content>: ButtonStyle where Content : View {
-    var hover: (Bool) -> Content
+    let state: Control.State
+    let current: (Control.State) -> Content
     
     func makeBody(configuration: Configuration) -> some View {
-        hover(configuration.isPressed)
+        current(state != .disabled && configuration.isPressed ? .selected : state)
     }
 }
