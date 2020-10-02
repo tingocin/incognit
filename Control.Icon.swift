@@ -13,6 +13,7 @@ extension Control {
                     .font(font)
                     .foregroundColor(color)
                     .frame(width: 52, height: 52)
+                    .contentShape(SwiftUI.Circle())
             }
         }
     }

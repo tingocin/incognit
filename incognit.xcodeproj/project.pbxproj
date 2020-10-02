@@ -38,6 +38,7 @@
 		CEA2F6A0252344DE00DDE7B4 /* Control.Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA2F688252344DE00DDE7B4 /* Control.Icon.swift */; };
 		CEA2F6A1252344DE00DDE7B4 /* Bar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA2F689252344DE00DDE7B4 /* Bar.swift */; };
 		CEA2F6A7252344F100DDE7B4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CEA2F6A5252344F100DDE7B4 /* Localizable.strings */; };
+		CEBC47682527502800ED45FF /* Detail.Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBC47672527502800ED45FF /* Detail.Item.swift */; };
 		CEDC32352523870A003DF67A /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEDC32342523870A003DF67A /* WidgetKit.framework */; };
 		CEDC32372523870A003DF67A /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEDC32362523870A003DF67A /* SwiftUI.framework */; };
 		CEDC323A2523870A003DF67A /* Browse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDC32392523870A003DF67A /* Browse.swift */; };
@@ -101,6 +102,7 @@
 		CEA2F688252344DE00DDE7B4 /* Control.Icon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Control.Icon.swift; sourceTree = "<group>"; };
 		CEA2F689252344DE00DDE7B4 /* Bar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bar.swift; sourceTree = "<group>"; };
 		CEA2F6A6252344F100DDE7B4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		CEBC47672527502800ED45FF /* Detail.Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Detail.Item.swift; sourceTree = "<group>"; };
 		CEDC32322523870A003DF67A /* BrowseExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = BrowseExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEDC32342523870A003DF67A /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		CEDC32362523870A003DF67A /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -163,6 +165,7 @@
 				CEA2F688252344DE00DDE7B4 /* Control.Icon.swift */,
 				CE02488A25273014005DBB9C /* Control.State.swift */,
 				CEA2F671252344DE00DDE7B4 /* Control.swift */,
+				CEBC47672527502800ED45FF /* Detail.Item.swift */,
 				CEA2F67E252344DE00DDE7B4 /* Detail.swift */,
 				CEA2F677252344DE00DDE7B4 /* Engine.swift */,
 				CE21947C252624F600CED077 /* Field.Coordinator.swift */,
@@ -328,6 +331,7 @@
 				CEA2F68F252344DE00DDE7B4 /* Forget.swift in Sources */,
 				CEA2F693252344DE00DDE7B4 /* Page.swift in Sources */,
 				CE0A1F1825249AD300983D41 /* History.swift in Sources */,
+				CEBC47682527502800ED45FF /* Detail.Item.swift in Sources */,
 				CE21947D252624F600CED077 /* Field.Coordinator.swift in Sources */,
 				CEA2F698252344DE00DDE7B4 /* Detail.swift in Sources */,
 				CEA2F695252344DE00DDE7B4 /* Tools.swift in Sources */,

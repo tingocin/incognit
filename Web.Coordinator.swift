@@ -70,6 +70,11 @@ extension Web {
                 self?.reload()
             }.store(in: &subs)
             
+            view.session.print.sink { [weak self] in
+                UIPrintInteractionController.shared.printFormatter = self?.viewPrintFormatter()
+                UIPrintInteractionController.shared.present(animated: true)
+            }.store(in: &subs)
+            
             load(.init(url: view.session.page!.url))
         }
         
