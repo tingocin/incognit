@@ -130,5 +130,10 @@ extension Web {
             }
             return nil
         }
+        
+        func webView(_: WKWebView, decidePolicyFor: WKNavigationAction, preferences: WKWebpagePreferences, decisionHandler: @escaping (WKNavigationActionPolicy, WKWebpagePreferences) -> Void) {
+            preferences.allowsContentJavaScript = view.session.user.javascript
+            decisionHandler(.allow, preferences)
+        }
     }
 }

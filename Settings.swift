@@ -4,34 +4,39 @@ import WebKit
 struct Settings: View {
     @Binding var session: Session
     @Binding var visible: Bool
-    @State private var selected = Engine.ecosia
     
     var body: some View {
         NavigationView {
             List {
-                Picker("", selection: $selected) {
-                    Text("Ecosia")
-                        .tag(Engine.ecosia)
-                    Text("Google")
-                        .tag(Engine.google)
-                }.pickerStyle(SegmentedPickerStyle())
-                    .labelsHidden()
-                    .padding()
-                Button {
-                    visible = false
-                } label: {
-                    Text("Done")
-                        .font(.subheadline)
-                }.foregroundColor(.secondary)
-            }.listStyle(GroupedListStyle())
-            .navigationBarTitle("Search engine", displayMode: .large)
-        }.navigationViewStyle(StackNavigationViewStyle())
-        .onAppear {
-            selected = session.user!.engine
+                Section(header:
+                            Text("Search Engine")
+                            .padding(.top, 20)) {
+                    Picker("", selection: $session.user.engine) {
+                        Text("Ecosia")
+                            .tag(Engine.ecosia)
+                        Text("Google")
+                            .tag(Engine.google)
+                    }.pickerStyle(SegmentedPickerStyle())
+                        .labelsHidden()
+                }
+                Section {
+                    Toggle("Enable JavaScript", isOn: $session.user.javascript)
+                        .toggleStyle(SwitchToggleStyle(tint: .accentColor))
+                }
+                Section(footer:
+                            HStack {
+                                Spacer()
+                                Control.Icon(image: "arrow.down.circle.fill", color: .accentColor, font: .title) {
+                                    visible = false
+                                }.padding()
+                                Spacer()
+                            }) {
+                    EmptyView()
+                }
+            }
+            .listStyle(GroupedListStyle())
+            .navigationBarTitle("Settings", displayMode: .inline)
         }
-        .onChange(of: selected) {
-            session.user!.engine = $0
-            session.save(session.user!)
-        }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }

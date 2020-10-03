@@ -11,7 +11,14 @@ struct Session {
         }
     }
     
-    var user: User?
+    var user: User! {
+        willSet {
+            dispatch.async {
+                FileManager.default.save(newValue)
+            }
+        }
+    }
+    
     var error: String?
     var forwards = false
     var backwards = false
@@ -77,12 +84,6 @@ struct Session {
         save.send(nil)
         dispatch.async {
             FileManager.default.forget()
-        }
-    }
-    
-    func save(_ user: User) {
-        dispatch.async {
-            FileManager.default.save(user)
         }
     }
 }

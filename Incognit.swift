@@ -32,9 +32,7 @@ import SwiftUI
             if let user = FileManager.default.user {
                 session.user = user
             } else {
-                let user = User()
-                session.user = user
-                session.save(user)
+                session.user = User()
             }
         }
     }
