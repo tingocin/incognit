@@ -156,9 +156,9 @@
 		CEF33CF6251CB35F006065E5 = {
 			isa = PBXGroup;
 			children = (
-				CE25B42825277BC80021900A /* README.md */,
 				CE0A1F092524999100983D41 /* BrowseExtension.entitlements */,
 				CE0A1F062524996600983D41 /* incognit.entitlements */,
+				CE25B42825277BC80021900A /* README.md */,
 				CEA2F683252344DE00DDE7B4 /* Info.plist */,
 				CEA2F689252344DE00DDE7B4 /* Bar.swift */,
 				CEA2F67D252344DE00DDE7B4 /* Book.Item.swift */,

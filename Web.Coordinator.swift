@@ -75,6 +75,14 @@ extension Web {
                 UIPrintInteractionController.shared.present(animated: true)
             }.store(in: &subs)
             
+            view.session.pdf.sink { [weak self] in
+                self?.createPDF {
+                    if case .success(let data) = $0 {
+                        UIApplication.shared.share(data)
+                    }
+                }
+            }.store(in: &subs)
+            
             load(.init(url: view.session.page!.url))
         }
         

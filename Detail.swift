@@ -9,50 +9,55 @@ struct Detail: View {
         ScrollView {
             VStack {
                 Spacer()
-                    .frame(height: 30)
+                    .frame(height: 20)
                 HStack {
                     Text(verbatim: session.page!.title)
                         .fixedSize(horizontal: false, vertical: true)
-                        .font(Font.title3.bold())
+                        .font(.headline)
                         .foregroundColor(.primary)
                     Spacer()
-                }.padding(.horizontal)
+                }
                 HStack {
                     Text(verbatim: session.page!.url.absoluteString)
                         .fixedSize(horizontal: false, vertical: true)
                         .font(.footnote)
                         .foregroundColor(.init(.tertiaryLabel))
                     Spacer()
-                }.padding(.horizontal)
-                Spacer()
-                    .frame(height: 20)
-            }
-            Item(image: "doc.on.doc.fill", text: "Copy URL") {
-                UIPasteboard.general.string = session.page!.url.absoluteString
-                success()
-            }
-            Item(image: "square.and.arrow.up.fill", text: "Share") {
-                UIApplication.shared.share(session.page!.url)
-            }
-            Item(image: "square.and.arrow.down.fill", text: "Download") {
-                let url = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(session.page!.url.lastPathComponent)
-                try? Data(contentsOf: session.page!.url).write(to: url, options: .atomic)
-                UIApplication.shared.share(url)
-            }
-            Item(image: "printer.fill.and.paper.fill", text: "Print") {
-                session.print.send()
-            }
-            if ({
-                switch $0 {
-                case "png", "jpg", "jpeg", "bmp", "gif": return true
-                default: return false
                 }
-            } (session.page!.url.pathExtension.lowercased())) {
-                Item(image: "photo.fill", text: "Add to Photos") {
-                    (try? Data(contentsOf: session.page!.url)).flatMap(UIImage.init(data:)).map {
-                        UIImageWriteToSavedPhotosAlbum($0, nil, nil, nil)
-                        success()
+                Spacer()
+                    .frame(height: 10)
+            }.padding()
+            VStack {
+                if ({
+                    switch $0 {
+                    case "png", "jpg", "jpeg", "bmp", "gif": return true
+                    default: return false
                     }
+                } (session.page!.url.pathExtension.lowercased())) {
+                    Item(image: "photo", text: "Add to Photos") {
+                        (try? Data(contentsOf: session.page!.url)).flatMap(UIImage.init(data:)).map {
+                            UIImageWriteToSavedPhotosAlbum($0, nil, nil, nil)
+                            success()
+                        }
+                    }
+                }
+                Item(image: "doc.on.doc", text: "Copy URL") {
+                    UIPasteboard.general.string = session.page!.url.absoluteString
+                    success()
+                }
+                Item(image: "square.and.arrow.up", text: "Share") {
+                    UIApplication.shared.share(session.page!.url)
+                }
+                Item(image: "square.and.arrow.down", text: "Download") {
+                    let url = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(session.page!.url.lastPathComponent)
+                    try? Data(contentsOf: session.page!.url).write(to: url, options: .atomic)
+                    UIApplication.shared.share(url)
+                }
+                Item(image: "printer", text: "Print") {
+                    session.print.send()
+                }
+                Item(image: "doc.plaintext", text: "PDF") {
+                    session.pdf.send()
                 }
             }
             HStack {

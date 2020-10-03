@@ -12,16 +12,17 @@ extension Detail {
                     RoundedRectangle(cornerRadius: 8)
                         .foregroundColor(.init(.secondarySystemBackground))
                     HStack {
-                        Image(systemName: image)
-                            .padding()
                         Text(text)
                             .font(.footnote)
                         Spacer()
-                    }.padding(.horizontal)
-                }.frame(height: 50)
+                        Image(systemName: image)
+                    }
+                    .padding(.horizontal)
+                    .foregroundColor(.primary)
+                }
+                .frame(height: 50)
             }
             .padding(.horizontal)
-            .accentColor(.primary)
         }
     }
 }

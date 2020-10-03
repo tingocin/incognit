@@ -25,6 +25,7 @@ struct Session {
     let resign = PassthroughSubject<Void, Never>()
     let dismiss = PassthroughSubject<Void, Never>()
     let print = PassthroughSubject<Void, Never>()
+    let pdf = PassthroughSubject<Void, Never>()
     let save = PassthroughSubject<Page?, Never>()
     let pages = CurrentValueSubject<Set<Page>?, Never>(nil)
     let dispatch = DispatchQueue(label: "", qos: .utility)
