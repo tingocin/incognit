@@ -15,6 +15,8 @@
 		CE0A1F1825249AD300983D41 /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0A1F0C252499F400983D41 /* History.swift */; };
 		CE2194792526236B00CED077 /* Field.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2194782526236B00CED077 /* Field.swift */; };
 		CE21947D252624F600CED077 /* Field.Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE21947C252624F600CED077 /* Field.Coordinator.swift */; };
+		CE6B778F25289EB700B25A50 /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6B778B25289EA700B25A50 /* Provider.swift */; };
+		CE6B779825289F2E00B25A50 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6B779425289EEC00B25A50 /* Log.swift */; };
 		CEA2F68A252344DE00DDE7B4 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA2F670252344DE00DDE7B4 /* Session.swift */; };
 		CEA2F68B252344DE00DDE7B4 /* Control.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA2F671252344DE00DDE7B4 /* Control.swift */; };
 		CEA2F68C252344DE00DDE7B4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEA2F672252344DE00DDE7B4 /* Assets.xcassets */; };
@@ -79,6 +81,8 @@
 		CE2194782526236B00CED077 /* Field.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Field.swift; sourceTree = "<group>"; };
 		CE21947C252624F600CED077 /* Field.Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Field.Coordinator.swift; sourceTree = "<group>"; };
 		CE25B42825277BC80021900A /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		CE6B778B25289EA700B25A50 /* Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
+		CE6B779425289EEC00B25A50 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		CEA2F670252344DE00DDE7B4 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		CEA2F671252344DE00DDE7B4 /* Control.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Control.swift; sourceTree = "<group>"; };
 		CEA2F672252344DE00DDE7B4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -148,6 +152,8 @@
 				CEDC32392523870A003DF67A /* Browse.swift */,
 				CE0A1F1325249A6300983D41 /* History.Item.swift */,
 				CE0A1F0C252499F400983D41 /* History.swift */,
+				CE6B779425289EEC00B25A50 /* Log.swift */,
+				CE6B778B25289EA700B25A50 /* Provider.swift */,
 				CE0A1F022524979E00983D41 /* Media.xcassets */,
 			);
 			path = Browse;
@@ -307,7 +313,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE6B778F25289EB700B25A50 /* Provider.swift in Sources */,
 				CE0A1F0E252499F400983D41 /* History.swift in Sources */,
+				CE6B779825289F2E00B25A50 /* Log.swift in Sources */,
 				CE0A1F1525249A6300983D41 /* History.Item.swift in Sources */,
 				CEDC323A2523870A003DF67A /* Browse.swift in Sources */,
 			);

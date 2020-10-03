@@ -8,6 +8,12 @@ struct History: TimelineEntry {
     static let defaults = UserDefaults(suiteName: "group.incognit.share")!
     static let key = "history"
     static let empty = Self(items: [])
+    static let placerholder = Self(items: [
+                                    .init(open: nil, url: nil, title: "incognit incognit incognit incognit incognit incognit"),
+                                    .init(open: nil, url: nil, title: "incognit incognit"),
+                                    .init(open: nil, url: nil, title: "incognit incognit incognit incognit"),
+                                    .init(open: nil, url: nil, title: "incognit incognit incognit"),
+                                    .init(open: nil, url: nil, title: "incognit incognit incognit incognit incognit")])
     
     let items: [Item]
     let date = Date()

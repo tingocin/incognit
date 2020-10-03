@@ -39,7 +39,7 @@ struct Session {
         save.combineLatest(pages).debounce(for: .seconds(2), scheduler: dispatch).sink {
             guard let pages = $0.1 else { return }
             (try? JSONEncoder().encode(pages.sorted { $0.date > $1.date }.prefix(5).map {
-                History.Item(open: URL(string: "incognit-id://" + $0.id.uuidString)!, url: $0.url, title: $0.title)
+                History.Item(open: URL(string: "incognit-id://" + $0.id.uuidString), url: $0.url, title: $0.title)
             })).map {
                 History.defaults.setValue($0, forKey: History.key)
                 WidgetCenter.shared.reloadAllTimelines()
