@@ -25,7 +25,7 @@ extension Book {
                             }
                             HStack {
                                 Text(verbatim: page.url.absoluteString)
-                                    .fixedSize(horizontal: false, vertical: true)
+                                    .lineLimit(1)
                                     .font(.caption2)
                                     .foregroundColor(.init(.tertiaryLabel))
                                     .padding(.leading)

@@ -3,7 +3,7 @@ import WebKit
 import Combine
 
 extension Web {
-    final class Coordinator: WKWebView, WKNavigationDelegate, WKUIDelegate {
+    final class Coordinator: WKWebView, WKNavigationDelegate, WKUIDelegate, UIScrollViewDelegate {
         private var subs = Set<AnyCancellable>()
         private let view: Web
         
@@ -81,6 +81,11 @@ extension Web {
                         UIApplication.shared.share(data)
                     }
                 }
+            }.store(in: &subs)
+            
+            view.session.find.sink { [weak self] in
+                self?.select(nil)
+                self?.find($0) { _ in }
             }.store(in: &subs)
             
             load(.init(url: view.session.page!.url))

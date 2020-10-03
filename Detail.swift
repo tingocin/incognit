@@ -4,6 +4,7 @@ struct Detail: View {
     @Binding var session: Session
     @Binding var visible: Bool
     @State private var done = false
+    @State private var find = ""
     
     var body: some View {
         ScrollView {
@@ -24,8 +25,31 @@ struct Detail: View {
                         .foregroundColor(.init(.tertiaryLabel))
                     Spacer()
                 }
-                Spacer()
-                    .frame(height: 10)
+            }.padding()
+            ZStack {
+                RoundedRectangle(cornerRadius: 8)
+                    .frame(height: 50)
+                    .foregroundColor(.init(.secondarySystemBackground))
+                HStack {
+                    TextField("Find on Page", text: $find, onCommit: {
+                        visible = false
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                            session.find.send(find)
+                        }
+                    }).textContentType(.URL)
+                        .keyboardType(.webSearch)
+                        .autocapitalization(.none)
+                        .disableAutocorrection(true)
+                        .textFieldStyle(PlainTextFieldStyle())
+                        .padding(.horizontal)
+                    Button(action: UIApplication.shared.resign) {
+                        Text("Cancel")
+                            .font(.footnote)
+                            .foregroundColor(.secondary)
+                            .padding()
+                            .contentShape(SwiftUI.Rectangle())
+                    }
+                }
             }.padding()
             VStack {
                 if ({
