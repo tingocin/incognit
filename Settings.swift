@@ -20,7 +20,7 @@ struct Settings: View {
                         .labelsHidden()
                 }
                 Section {
-                    Toggle("Enable JavaScript", isOn: $session.user.javascript)
+                    Toggle("Allow JavaScript", isOn: $session.user.javascript)
                         .toggleStyle(SwitchToggleStyle(tint: .accentColor))
                 }
                 Section(footer:
@@ -36,7 +36,6 @@ struct Settings: View {
             }
             .listStyle(GroupedListStyle())
             .navigationBarTitle("Settings", displayMode: .inline)
-        }
-        .navigationViewStyle(StackNavigationViewStyle())
+        }.navigationViewStyle(StackNavigationViewStyle())
     }
 }

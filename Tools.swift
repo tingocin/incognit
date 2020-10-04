@@ -4,7 +4,7 @@ struct Tools: View {
     @Binding var session: Session
     @State private var spring = false
     @State private var detail = false
-    @State private var forget = false
+    @State private var usage = false
     @State private var settings = false
     @State private var detailY = CGFloat()
     @State private var reloadY = CGFloat()
@@ -87,9 +87,9 @@ struct Tools: View {
                     if session.page == nil {
                         Control.Circle(image: "eyeglasses") {
                             session.resign.send()
-                            forget = true
-                        }.sheet(isPresented: $forget) {
-                            Forget(session: $session, visible: $forget)
+                            usage = true
+                        }.sheet(isPresented: $usage) {
+                            Usage(session: $session, visible: $usage)
                         }.padding(.leading)
                     }
                     Bar(session: $session)
@@ -108,7 +108,7 @@ struct Tools: View {
         }.onReceive(session.dismiss) {
             spring = false
             detail = false
-            forget = false
+            usage = false
             settings = false
         }
     }
