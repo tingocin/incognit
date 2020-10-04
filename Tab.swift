@@ -18,13 +18,12 @@ struct Tab: View {
                 VStack {
                     Image(systemName: "exclamationmark.triangle.fill")
                         .font(Font.largeTitle.bold())
-                        .padding(.bottom)
                     Text(verbatim: session.page?.url.absoluteString ?? "")
-                        .padding(.horizontal)
+                        .padding()
                     Text(verbatim: session.error!)
-                        .font(.caption2)
+                        .font(.footnote)
                         .padding(.horizontal)
-                }.foregroundColor(.init(.tertiaryLabel))
+                }.foregroundColor(.secondary)
             }
             Web(session: $session)
         }
