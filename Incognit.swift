@@ -21,6 +21,15 @@ import SwiftUI
                 launch()
                 pages()
                 UIApplication.shared.appearance()
+                
+                session.dispatch.async {
+                    if !session.user!.rated && Calendar.current.component(.day, from: session.user!.created) > 10 {
+                        session.user!.rated = true
+                        DispatchQueue.main.async {
+                            UIApplication.shared.rate()
+                        }
+                    }
+                }
             }
         }
     }

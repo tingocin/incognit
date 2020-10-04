@@ -1,4 +1,5 @@
 import UIKit
+import StoreKit
 
 extension UIApplication {
     func appearance() {
@@ -13,5 +14,9 @@ extension UIApplication {
         let controller = UIActivityViewController(activityItems: [any], applicationActivities: nil)
         controller.popoverPresentationController?.sourceView = windows.first?.rootViewController?.presentedViewController?.view
         windows.first?.rootViewController?.presentedViewController?.present(controller, animated: true)
+    }
+    
+    func rate() {
+        windows.first.flatMap(\.windowScene).map(SKStoreReviewController.requestReview(in:))
     }
 }
