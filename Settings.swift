@@ -19,8 +19,16 @@ struct Settings: View {
                     }.pickerStyle(SegmentedPickerStyle())
                         .labelsHidden()
                 }
-                Section {
-                    Toggle("Allow JavaScript", isOn: $session.user.javascript)
+                Section(header:
+                            Text("Options")
+                            .padding(.top, 20)) {
+                    Toggle("Safe Browsing", isOn: $session.user.secure)
+                        .toggleStyle(SwitchToggleStyle(tint: .accentColor))
+                    Toggle("Pop-ups", isOn: $session.user.popups)
+                        .toggleStyle(SwitchToggleStyle(tint: .accentColor))
+                    Toggle("JavaScript", isOn: $session.user.javascript)
+                        .toggleStyle(SwitchToggleStyle(tint: .accentColor))
+                    Toggle("Ads (experimental)", isOn: $session.user.ads)
                         .toggleStyle(SwitchToggleStyle(tint: .accentColor))
                 }
                 Section(footer:

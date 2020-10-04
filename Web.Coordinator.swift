@@ -16,6 +16,8 @@ extension Web {
             configuration.ignoresViewportScaleLimits = true
             configuration.dataDetectorTypes = [.link, .phoneNumber]
             configuration.defaultWebpagePreferences.preferredContentMode = .mobile
+            configuration.preferences.javaScriptCanOpenWindowsAutomatically = view.session.user!.popups && view.session.user!.javascript
+            configuration.preferences.isFraudulentWebsiteWarningEnabled = view.session.user!.secure
             configuration.websiteDataStore = .nonPersistent()
             
             super.init(frame: .zero, configuration: configuration)
@@ -114,14 +116,23 @@ extension Web {
                      .unsupportedURL,
                      .cannotFindHost,
                      .cannotConnectToHost,
-                     .timedOut:
+                     .timedOut,
+                     .secureConnectionFailed,
+                     .serverCertificateUntrusted:
                     view.session.error = error.localizedDescription
-                default:
-                    break
+                default: break
                 }
             } else if (withError as NSError).code == 101 {
                 view.session.error = withError.localizedDescription
             }
+        }
+        
+        func webView(_: WKWebView, didReceive: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
+            guard view.session.user!.secure else {
+                completionHandler(.useCredential, didReceive.protectionSpace.serverTrust.map(URLCredential.init(trust:)))
+                return
+            }
+            completionHandler(.performDefaultHandling, nil)
         }
         
         func webView(_: WKWebView, createWebViewWith: WKWebViewConfiguration, for action: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
