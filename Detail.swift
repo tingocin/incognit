@@ -97,12 +97,11 @@ struct Detail: View {
                     .foregroundColor(.accentColor)
                 Spacer()
             }.opacity(done ? 1 : 0)
-            Spacer()
             HStack {
                 Spacer()
                 Control.Icon(image: "arrow.down.circle.fill", color: .accentColor, font: .title) {
                     visible = false
-                }.padding()
+                }
                 Spacer()
             }
         }
