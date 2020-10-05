@@ -7,10 +7,12 @@ import SwiftUI
     var body: some Scene {
         WindowGroup {
             ZStack {
-                if session.page == nil {
-                    Book(session: $session)
-                } else {
-                    Tab(session: $session)
+                if session.user != nil {
+                    if session.page == nil {
+                        Book(session: $session)
+                    } else {
+                        Tab(session: $session)
+                    }
                 }
                 Tools(session: $session)
             }
@@ -23,6 +25,7 @@ import SwiftUI
                 UIApplication.shared.appearance()
                 
                 session.dispatch.async {
+                    guard session.user != nil else { return }
                     if !session.user!.rated && Calendar.current.component(.day, from: session.user!.created) > 10 {
                         session.user!.rated = true
                         DispatchQueue.main.async {
@@ -76,8 +79,10 @@ import SwiftUI
                 }
                 session.save.send(page)
                 session.dispatch.asyncAfter(deadline: .now() + 1) {
-                    session.pages.value?.remove(page)
-                    session.pages.value?.insert(page)
+                    guard var pages = session.pages.value else { return }
+                    pages.remove(page)
+                    pages.insert(page)
+                    session.pages.value = pages
                 }
             }
         case "incognit-search":
