@@ -19,4 +19,8 @@ extension UIApplication {
     func rate() {
         windows.first.flatMap(\.windowScene).map(SKStoreReviewController.requestReview(in:))
     }
+    
+    func settings() {
+        open(URL(string: Self.openSettingsURLString)!)
+    }
 }

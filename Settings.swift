@@ -1,9 +1,10 @@
 import SwiftUI
-import WebKit
+import CoreLocation
 
 struct Settings: View {
     @Binding var session: Session
     @Binding var visible: Bool
+    @State private var location = LocalizedStringKey("")
     
     var body: some View {
         NavigationView {
@@ -31,6 +32,28 @@ struct Settings: View {
                     Toggle("Ads (experimental)", isOn: $session.user.ads)
                         .toggleStyle(SwitchToggleStyle(tint: .accentColor))
                 }
+                Section(header:
+                            Text("Privacy"),
+                        footer:
+                            VStack {
+                                HStack {
+                                    Text(location)
+                                        .foregroundColor(.primary)
+                                        .font(.footnote)
+                                    Spacer()
+                                }
+                                HStack {
+                                    Text("Websites might want to access your location to provide maps or navigation.\n\nYou can enable access to your location when needed and then go to Privacy Settings and deny access, so that you can sure no one will be tracking you.\n\nOurselves we don't access your location at all.")
+                                    Spacer()
+                                }
+                            }) {
+                    Button(action: {
+                        UIApplication.shared.settings()
+                    }) {
+                        Text("Open Privacy Settings")
+                            .foregroundColor(.primary)
+                    }
+                }
                 Section(footer:
                             HStack {
                                 Spacer()
@@ -44,6 +67,12 @@ struct Settings: View {
             }
             .listStyle(GroupedListStyle())
             .navigationBarTitle("Settings", displayMode: .inline)
+        }.onAppear {
+            switch CLLocationManager().authorizationStatus {
+            case .denied, .restricted: location = "Location access denied"
+            case .notDetermined: location = "Location access not determined"
+            default: location = "Location access granted, you might want to change this"
+            }
         }.navigationViewStyle(StackNavigationViewStyle())
     }
 }
