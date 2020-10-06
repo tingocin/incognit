@@ -47,6 +47,19 @@ struct Session {
         }.store(in: &subs)
     }
     
+    mutating func browse(id: String) {
+        (pages.value?.first { $0.id.uuidString == id } ?? FileManager.default.load(id)).map { item in
+            item.date = .init()
+            if page == nil {
+                page = item
+            } else {
+                page = item
+                navigate.send(item.url)
+            }
+            save.send(item)
+        }
+    }
+    
     mutating func browse(_ string: String) {
         guard let url = string.url(User.engine) else { return }
         browse(url)

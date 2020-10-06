@@ -18,9 +18,11 @@ import SwiftUI
             .onOpenURL(perform: open)
         }.onChange(of: phase) {
             if $0 == .active {
-                pages()
-                UIApplication.shared.appearance()
+                if session.page == nil {
+                    pages()
+                }
                 
+                UIApplication.shared.appearance()
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                     if let created = User.created {
                         if !User.rated && Calendar.current.component(.day, from: created) > 10 {
@@ -31,6 +33,10 @@ import SwiftUI
                         User.created = .init()
                     }
                 }
+            }
+        }.onChange(of: session.page) {
+            if $0 == nil {
+                pages()
             }
         }
     }
@@ -47,30 +53,17 @@ import SwiftUI
         
         switch url.scheme {
         case "incognit":
+            session.resign.send()
             url.absoluteString.replacingOccurrences(of: "incognit://", with: "").removingPercentEncoding.map {
                 session.browse($0)
             }
         case "incognit-id":
-            let id = url.absoluteString.replacingOccurrences(of: "incognit-id://", with: "")
-            (session.pages.value?.first { $0.id.uuidString == id } ?? FileManager.default.load(id)).map { page in
-                page.date = .init()
-                if session.page == nil {
-                    session.page = page
-                } else {
-                    session.page = page
-                    session.navigate.send(page.url)
-                }
-                session.save.send(page)
-                session.dispatch.asyncAfter(deadline: .now() + 1) {
-                    guard var pages = session.pages.value else { return }
-                    pages.remove(page)
-                    pages.insert(page)
-                    session.pages.value = pages
-                }
-            }
+            session.resign.send()
+            session.browse(id: url.absoluteString.replacingOccurrences(of: "incognit-id://", with: ""))
         case "incognit-search":
             session.type.send()
         default:
+            session.resign.send()
             session.browse(url)
         }
     }
