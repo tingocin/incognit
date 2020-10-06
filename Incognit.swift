@@ -7,12 +7,10 @@ import SwiftUI
     var body: some Scene {
         WindowGroup {
             ZStack {
-                if session.user != nil {
-                    if session.page == nil {
-                        Book(session: $session)
-                    } else {
-                        Tab(session: $session)
-                    }
+                if session.page == nil {
+                    Book(session: $session)
+                } else {
+                    Tab(session: $session)
                 }
                 Tools(session: $session)
             }
@@ -20,32 +18,19 @@ import SwiftUI
             .onOpenURL(perform: open)
         }.onChange(of: phase) {
             if $0 == .active {
-                launch()
                 pages()
                 UIApplication.shared.appearance()
-                print(UserDefaults.standard.value(forKey: "name_preference"))
                 
-                session.dispatch.async {
-                    guard session.user != nil else { return }
-                    if !session.user!.rated && Calendar.current.component(.day, from: session.user!.created) > 10 {
-                        session.user!.rated = true
-                        DispatchQueue.main.async {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                    if let created = User.created {
+                        if !User.rated && Calendar.current.component(.day, from: created) > 10 {
+                            User.rated = true
                             UIApplication.shared.rate()
                         }
+                    } else {
+                        User.created = .init()
                     }
                 }
-            }
-        }
-    }
-    
-    private func launch() {
-        guard session.user == nil else { return }
-        session.dispatch.async {
-            guard session.user == nil else { return }
-            if let user = FileManager.default.user {
-                session.user = user
-            } else {
-                session.user = User()
             }
         }
     }
@@ -62,11 +47,8 @@ import SwiftUI
         
         switch url.scheme {
         case "incognit":
-            launch()
-            session.dispatch.async {
-                url.absoluteString.replacingOccurrences(of: "incognit://", with: "").removingPercentEncoding.map {
-                    session.browse($0)
-                }
+            url.absoluteString.replacingOccurrences(of: "incognit://", with: "").removingPercentEncoding.map {
+                session.browse($0)
             }
         case "incognit-id":
             let id = url.absoluteString.replacingOccurrences(of: "incognit-id://", with: "")

@@ -6,21 +6,21 @@ extension Web {
     final class Coordinator: WKWebView, WKNavigationDelegate, WKUIDelegate, UIScrollViewDelegate {
         private var subs = Set<AnyCancellable>()
         private let view: Web
+        private let javascript = User.javascript
+        private let popups = User.popups
+        private let secure = User.secure
         
         required init?(coder: NSCoder) { nil }
         init(view: Web) {
             self.view = view
-            
-            let configuration = WKWebViewConfiguration()
+            super.init(frame: .zero, configuration: WKWebViewConfiguration())
             configuration.allowsInlineMediaPlayback = true
             configuration.ignoresViewportScaleLimits = true
             configuration.dataDetectorTypes = [.link, .phoneNumber]
             configuration.defaultWebpagePreferences.preferredContentMode = .mobile
-            configuration.preferences.javaScriptCanOpenWindowsAutomatically = view.session.user!.popups && view.session.user!.javascript
-            configuration.preferences.isFraudulentWebsiteWarningEnabled = view.session.user!.secure
+            configuration.preferences.javaScriptCanOpenWindowsAutomatically = popups && javascript
+            configuration.preferences.isFraudulentWebsiteWarningEnabled = secure
             configuration.websiteDataStore = .nonPersistent()
-            
-            super.init(frame: .zero, configuration: configuration)
             navigationDelegate = self
             uiDelegate = self
             isOpaque = false
@@ -128,7 +128,7 @@ extension Web {
         }
         
         func webView(_: WKWebView, didReceive: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
-            guard view.session.user!.secure else {
+            guard secure else {
                 completionHandler(.useCredential, didReceive.protectionSpace.serverTrust.map(URLCredential.init(trust:)))
                 return
             }
@@ -143,7 +143,7 @@ extension Web {
         }
         
         func webView(_: WKWebView, decidePolicyFor: WKNavigationAction, preferences: WKWebpagePreferences, decisionHandler: @escaping (WKNavigationActionPolicy, WKWebpagePreferences) -> Void) {
-            preferences.allowsContentJavaScript = view.session.user.javascript
+            preferences.allowsContentJavaScript = javascript
             decisionHandler(.allow, preferences)
         }
     }

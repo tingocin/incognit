@@ -11,14 +11,6 @@ struct Session {
         }
     }
     
-    var user: User! {
-        willSet {
-            dispatch.async {
-                FileManager.default.save(newValue)
-            }
-        }
-    }
-    
     var error: String?
     var forwards = false
     var backwards = false
@@ -56,7 +48,7 @@ struct Session {
     }
     
     mutating func browse(_ string: String) {
-        guard let url = string.url(user!.engine) else { return }
+        guard let url = string.url(User.engine) else { return }
         browse(url)
     }
     

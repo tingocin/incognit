@@ -10,10 +10,6 @@ extension FileManager {
         } ?? [])
     }
     
-    var user: User? {
-        try? JSONDecoder().decode(User.self, from: Data(contentsOf: Self._user))
-    }
-    
     func load(_ id: String) -> Page? {
         try? JSONDecoder().decode(Page.self, from: Data(contentsOf: Self._pages.appendingPathComponent(id)))
     }
@@ -33,15 +29,10 @@ extension FileManager {
         try? removeItem(at: Self._pages.appendingPathComponent(page.id.uuidString))
     }
     
-    func save(_ user: User) {
-        try? JSONEncoder().encode(user).write(to: Self._user, options: .atomic)
-    }
-    
     func forget() {
         try? removeItem(at: Self._pages)
     }
     
     private static let root = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
     private static let _pages = root.appendingPathComponent("pages")
-    private static let _user = root.appendingPathComponent("user")
 }
