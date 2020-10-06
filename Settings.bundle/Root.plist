@@ -8,32 +8,64 @@
 	<array>
 		<dict>
 			<key>Type</key>
-			<string>PSTextFieldSpecifier</string>
+			<string>PSMultiValueSpecifier</string>
 			<key>Title</key>
-			<string>Name</string>
+			<string>Search Engine</string>
 			<key>Key</key>
-			<string>name_preference</string>
+			<string>incognit_engine</string>
 			<key>DefaultValue</key>
-			<string></string>
-			<key>IsSecure</key>
-			<false/>
-			<key>KeyboardType</key>
-			<string>Alphabet</string>
-			<key>AutocapitalizationType</key>
-			<string>None</string>
-			<key>AutocorrectionType</key>
-			<string>No</string>
+			<string>ecosia</string>
+			<key>Titles</key>
+			<array>
+				<string>Ecosia</string>
+				<string>Google</string>
+			</array>
+			<key>Values</key>
+			<array>
+				<string>ecosia</string>
+				<string>google</string>
+			</array>
 		</dict>
 		<dict>
 			<key>Type</key>
 			<string>PSToggleSwitchSpecifier</string>
 			<key>Title</key>
-			<string>Enabled</string>
+			<string>Safe Browsing</string>
 			<key>Key</key>
-			<string>enabled_preference</string>
+			<string>incognit_secure</string>
 			<key>DefaultValue</key>
 			<true/>
 		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>Pop-ups</string>
+			<key>Key</key>
+			<string>incognit_popups</string>
+			<key>DefaultValue</key>
+			<false/>
+		</dict>
+        <dict>
+            <key>Type</key>
+            <string>PSToggleSwitchSpecifier</string>
+            <key>Title</key>
+            <string>JavaScript</string>
+            <key>Key</key>
+            <string>incognit_javascript</string>
+            <key>DefaultValue</key>
+            <true/>
+        </dict>
+        <dict>
+            <key>Type</key>
+            <string>PSToggleSwitchSpecifier</string>
+            <key>Title</key>
+            <string>Ads</string>
+            <key>Key</key>
+            <string>incognit_ads</string>
+            <key>DefaultValue</key>
+            <false/>
+        </dict>
 	</array>
 </dict>
 </plist>

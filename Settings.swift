@@ -34,7 +34,7 @@ struct Settings: View {
                         .toggleStyle(SwitchToggleStyle(tint: .accentColor))
                     Toggle("JavaScript", isOn: $javascript)
                         .toggleStyle(SwitchToggleStyle(tint: .accentColor))
-                    Toggle("Ads (experimental)", isOn: $ads)
+                    Toggle("Ads", isOn: $ads)
                         .toggleStyle(SwitchToggleStyle(tint: .accentColor))
                 }
                 Section(header:

@@ -15,8 +15,10 @@
 "Usage" = "Usage";
 "Now" = "Now";
 "Safe Browsing" = "Safe Browsing";
+"Ecosia" = "Ecosia";
+"Google" = "Google";
 "Pop-ups" = "Pop-ups";
-"Ads (experimental)" = "Ads (experimental)";
+"Ads" = "Ads";
 "Options" = "Options";
 "Open Privacy Settings" = "Open Privacy Settings";
 "Websites might want to access your location to provide maps or navigation.\n\nYou can enable access to your location when needed and then go to Privacy Settings and deny access, so that you can sure no one will be tracking you.\n\nOurselves we don't access your location at all." = "Websites might want to access your location to provide maps or navigation.\n\nYou can enable access to your location when needed and then go to Privacy Settings and deny access, so that you can sure no one will be tracking you.\n\nOurselves we don't access your location at all.";
