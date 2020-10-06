@@ -1,6 +1,6 @@
 import Foundation
 
-enum Engine: String, Codable {
+enum Engine: String {
     case
     ecosia,
     google
