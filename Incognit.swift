@@ -23,6 +23,7 @@ import SwiftUI
                 launch()
                 pages()
                 UIApplication.shared.appearance()
+                print(UserDefaults.standard.value(forKey: "name_preference"))
                 
                 session.dispatch.async {
                     guard session.user != nil else { return }
