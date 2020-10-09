@@ -21,6 +21,37 @@ extension Web {
             configuration.preferences.javaScriptCanOpenWindowsAutomatically = popups && javascript
             configuration.preferences.isFraudulentWebsiteWarningEnabled = secure
             configuration.websiteDataStore = .nonPersistent()
+            
+            let rules = """
+[
+    {
+        "action": {
+            "type": "block"
+        },
+        "trigger": {
+            "url-filter": ".*dailymail.*"
+        }
+    }
+]
+"""
+            
+            WKContentRuleListStore.default()?.compileContentRuleList(forIdentifier: "ContentBlockingRules", encodedContentRuleList: rules, completionHandler: {
+                self.configuration.userContentController.add($0!)
+                print("a")
+                print($0)
+                print($1)
+                print("b")
+            })
+            
+            WKContentRuleListStore.default()?.getAvailableContentRuleListIdentifiers({
+                print("rules")
+                print($0)
+            })
+            
+            
+            
+//            configuration.userContentController.add(WKContentRuleList())
+            
             navigationDelegate = self
             uiDelegate = self
             isOpaque = false

@@ -45,7 +45,7 @@
 		CEDC32352523870A003DF67A /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEDC32342523870A003DF67A /* WidgetKit.framework */; };
 		CEDC32372523870A003DF67A /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEDC32362523870A003DF67A /* SwiftUI.framework */; };
 		CEDC323A2523870A003DF67A /* Browse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDC32392523870A003DF67A /* Browse.swift */; };
-		CEDC32402523870A003DF67A /* BrowseExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CEDC32322523870A003DF67A /* BrowseExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		CEDC32402523870A003DF67A /* browse.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CEDC32322523870A003DF67A /* browse.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		CEF100832530729100776E26 /* blockerList.json in Resources */ = {isa = PBXBuildFile; fileRef = CEF100822530729100776E26 /* blockerList.json */; };
 		CEF100852530729100776E26 /* ContentBlockerRequestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF100842530729100776E26 /* ContentBlockerRequestHandler.swift */; };
 		CEF100892530729100776E26 /* blocker.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CEF100802530729100776E26 /* blocker.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -76,7 +76,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				CEDC32402523870A003DF67A /* BrowseExtension.appex in Embed App Extensions */,
+				CEDC32402523870A003DF67A /* browse.appex in Embed App Extensions */,
 				CEF100892530729100776E26 /* blocker.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
@@ -122,7 +122,7 @@
 		CEA2F689252344DE00DDE7B4 /* Bar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bar.swift; sourceTree = "<group>"; };
 		CEA2F6A6252344F100DDE7B4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CEBC47672527502800ED45FF /* Detail.Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Detail.Item.swift; sourceTree = "<group>"; };
-		CEDC32322523870A003DF67A /* BrowseExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = BrowseExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEDC32322523870A003DF67A /* browse.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = browse.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEDC32342523870A003DF67A /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		CEDC32362523870A003DF67A /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		CEDC32392523870A003DF67A /* Browse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Browse.swift; sourceTree = "<group>"; };
@@ -185,14 +185,14 @@
 			path = Browse;
 			sourceTree = "<group>";
 		};
-		CEF100812530729100776E26 /* blocker */ = {
+		CEF100812530729100776E26 /* Blocker */ = {
 			isa = PBXGroup;
 			children = (
 				CEF100822530729100776E26 /* blockerList.json */,
 				CEF100842530729100776E26 /* ContentBlockerRequestHandler.swift */,
 				CEF100862530729100776E26 /* Info.plist */,
 			);
-			path = blocker;
+			path = Blocker;
 			sourceTree = "<group>";
 		};
 		CEF33CF6251CB35F006065E5 = {
@@ -230,8 +230,8 @@
 				CEA2F673252344DE00DDE7B4 /* Web.Coordinator.swift */,
 				CEA2F678252344DE00DDE7B4 /* Web.swift */,
 				CEA2F672252344DE00DDE7B4 /* Assets.xcassets */,
+				CEF100812530729100776E26 /* Blocker */,
 				CEDC32382523870A003DF67A /* Browse */,
-				CEF100812530729100776E26 /* blocker */,
 				CEDC32332523870A003DF67A /* Frameworks */,
 				CEA2F6A5252344F100DDE7B4 /* Localizable.strings */,
 				CEF33D00251CB35F006065E5 /* Products */,
@@ -242,7 +242,7 @@
 			isa = PBXGroup;
 			children = (
 				CEF33CFF251CB35F006065E5 /* incognit.app */,
-				CEDC32322523870A003DF67A /* BrowseExtension.appex */,
+				CEDC32322523870A003DF67A /* browse.appex */,
 				CEF100802530729100776E26 /* blocker.appex */,
 			);
 			name = Products;
@@ -251,9 +251,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		CEDC32312523870A003DF67A /* BrowseExtension */ = {
+		CEDC32312523870A003DF67A /* browse */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CEDC32442523870A003DF67A /* Build configuration list for PBXNativeTarget "BrowseExtension" */;
+			buildConfigurationList = CEDC32442523870A003DF67A /* Build configuration list for PBXNativeTarget "browse" */;
 			buildPhases = (
 				CEDC322E2523870A003DF67A /* Sources */,
 				CEDC322F2523870A003DF67A /* Frameworks */,
@@ -263,9 +263,9 @@
 			);
 			dependencies = (
 			);
-			name = BrowseExtension;
+			name = browse;
 			productName = BrowseExtension;
-			productReference = CEDC32322523870A003DF67A /* BrowseExtension.appex */;
+			productReference = CEDC32322523870A003DF67A /* browse.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 		CEF1007F2530729100776E26 /* blocker */ = {
@@ -344,7 +344,7 @@
 			projectRoot = "";
 			targets = (
 				CEF33CFE251CB35F006065E5 /* incognit */,
-				CEDC32312523870A003DF67A /* BrowseExtension */,
+				CEDC32312523870A003DF67A /* browse */,
 				CEF1007F2530729100776E26 /* blocker */,
 			);
 		};
@@ -440,7 +440,7 @@
 /* Begin PBXTargetDependency section */
 		CEDC323F2523870A003DF67A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = CEDC32312523870A003DF67A /* BrowseExtension */;
+			target = CEDC32312523870A003DF67A /* browse */;
 			targetProxy = CEDC323E2523870A003DF67A /* PBXContainerItemProxy */;
 		};
 		CEF100882530729100776E26 /* PBXTargetDependency */ = {
@@ -514,7 +514,7 @@
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7AMWG3RLHN;
-				INFOPLIST_FILE = blocker/Info.plist;
+				INFOPLIST_FILE = Blocker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -533,7 +533,7 @@
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7AMWG3RLHN;
-				INFOPLIST_FILE = blocker/Info.plist;
+				INFOPLIST_FILE = Blocker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -719,7 +719,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		CEDC32442523870A003DF67A /* Build configuration list for PBXNativeTarget "BrowseExtension" */ = {
+		CEDC32442523870A003DF67A /* Build configuration list for PBXNativeTarget "browse" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CEDC32422523870A003DF67A /* Debug */,
