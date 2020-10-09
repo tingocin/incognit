@@ -46,6 +46,9 @@
 		CEDC32372523870A003DF67A /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEDC32362523870A003DF67A /* SwiftUI.framework */; };
 		CEDC323A2523870A003DF67A /* Browse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDC32392523870A003DF67A /* Browse.swift */; };
 		CEDC32402523870A003DF67A /* BrowseExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CEDC32322523870A003DF67A /* BrowseExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		CEF100832530729100776E26 /* blockerList.json in Resources */ = {isa = PBXBuildFile; fileRef = CEF100822530729100776E26 /* blockerList.json */; };
+		CEF100852530729100776E26 /* ContentBlockerRequestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF100842530729100776E26 /* ContentBlockerRequestHandler.swift */; };
+		CEF100892530729100776E26 /* blocker.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CEF100802530729100776E26 /* blocker.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		CEF9AD062529E3A6005305EB /* Chart.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF9AD052529E3A6005305EB /* Chart.swift */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +60,13 @@
 			remoteGlobalIDString = CEDC32312523870A003DF67A;
 			remoteInfo = BrowseExtension;
 		};
+		CEF100872530729100776E26 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CEF33CF7251CB35F006065E5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CEF1007F2530729100776E26;
+			remoteInfo = blocker;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -67,6 +77,7 @@
 			dstSubfolderSpec = 13;
 			files = (
 				CEDC32402523870A003DF67A /* BrowseExtension.appex in Embed App Extensions */,
+				CEF100892530729100776E26 /* blocker.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -116,6 +127,10 @@
 		CEDC32362523870A003DF67A /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		CEDC32392523870A003DF67A /* Browse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Browse.swift; sourceTree = "<group>"; };
 		CEDC323D2523870A003DF67A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CEF100802530729100776E26 /* blocker.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = blocker.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEF100822530729100776E26 /* blockerList.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = blockerList.json; sourceTree = "<group>"; };
+		CEF100842530729100776E26 /* ContentBlockerRequestHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentBlockerRequestHandler.swift; sourceTree = "<group>"; };
+		CEF100862530729100776E26 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CEF33CFF251CB35F006065E5 /* incognit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = incognit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEF9AD052529E3A6005305EB /* Chart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chart.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -127,6 +142,13 @@
 			files = (
 				CEDC32372523870A003DF67A /* SwiftUI.framework in Frameworks */,
 				CEDC32352523870A003DF67A /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CEF1007D2530729100776E26 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -161,6 +183,16 @@
 				CE0A1F022524979E00983D41 /* Media.xcassets */,
 			);
 			path = Browse;
+			sourceTree = "<group>";
+		};
+		CEF100812530729100776E26 /* blocker */ = {
+			isa = PBXGroup;
+			children = (
+				CEF100822530729100776E26 /* blockerList.json */,
+				CEF100842530729100776E26 /* ContentBlockerRequestHandler.swift */,
+				CEF100862530729100776E26 /* Info.plist */,
+			);
+			path = blocker;
 			sourceTree = "<group>";
 		};
 		CEF33CF6251CB35F006065E5 = {
@@ -199,6 +231,7 @@
 				CEA2F678252344DE00DDE7B4 /* Web.swift */,
 				CEA2F672252344DE00DDE7B4 /* Assets.xcassets */,
 				CEDC32382523870A003DF67A /* Browse */,
+				CEF100812530729100776E26 /* blocker */,
 				CEDC32332523870A003DF67A /* Frameworks */,
 				CEA2F6A5252344F100DDE7B4 /* Localizable.strings */,
 				CEF33D00251CB35F006065E5 /* Products */,
@@ -210,6 +243,7 @@
 			children = (
 				CEF33CFF251CB35F006065E5 /* incognit.app */,
 				CEDC32322523870A003DF67A /* BrowseExtension.appex */,
+				CEF100802530729100776E26 /* blocker.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -234,6 +268,23 @@
 			productReference = CEDC32322523870A003DF67A /* BrowseExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
+		CEF1007F2530729100776E26 /* blocker */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CEF1008C2530729100776E26 /* Build configuration list for PBXNativeTarget "blocker" */;
+			buildPhases = (
+				CEF1007C2530729100776E26 /* Sources */,
+				CEF1007D2530729100776E26 /* Frameworks */,
+				CEF1007E2530729100776E26 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = blocker;
+			productName = blocker;
+			productReference = CEF100802530729100776E26 /* blocker.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		CEF33CFE251CB35F006065E5 /* incognit */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = CEF33D0E251CB35F006065E5 /* Build configuration list for PBXNativeTarget "incognit" */;
@@ -247,6 +298,7 @@
 			);
 			dependencies = (
 				CEDC323F2523870A003DF67A /* PBXTargetDependency */,
+				CEF100882530729100776E26 /* PBXTargetDependency */,
 			);
 			name = incognit;
 			packageProductDependencies = (
@@ -265,6 +317,9 @@
 				LastUpgradeCheck = 1200;
 				TargetAttributes = {
 					CEDC32312523870A003DF67A = {
+						CreatedOnToolsVersion = 12.0.1;
+					};
+					CEF1007F2530729100776E26 = {
 						CreatedOnToolsVersion = 12.0.1;
 					};
 					CEF33CFE251CB35F006065E5 = {
@@ -290,6 +345,7 @@
 			targets = (
 				CEF33CFE251CB35F006065E5 /* incognit */,
 				CEDC32312523870A003DF67A /* BrowseExtension */,
+				CEF1007F2530729100776E26 /* blocker */,
 			);
 		};
 /* End PBXProject section */
@@ -300,6 +356,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE0A1F032524979E00983D41 /* Media.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CEF1007E2530729100776E26 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CEF100832530729100776E26 /* blockerList.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -325,6 +389,14 @@
 				CE6B779825289F2E00B25A50 /* Log.swift in Sources */,
 				CE0A1F1525249A6300983D41 /* History.Item.swift in Sources */,
 				CEDC323A2523870A003DF67A /* Browse.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CEF1007C2530729100776E26 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CEF100852530729100776E26 /* ContentBlockerRequestHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -370,6 +442,11 @@
 			isa = PBXTargetDependency;
 			target = CEDC32312523870A003DF67A /* BrowseExtension */;
 			targetProxy = CEDC323E2523870A003DF67A /* PBXContainerItemProxy */;
+		};
+		CEF100882530729100776E26 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CEF1007F2530729100776E26 /* blocker */;
+			targetProxy = CEF100872530729100776E26 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -425,6 +502,44 @@
 				);
 				MARKETING_VERSION = 12;
 				PRODUCT_BUNDLE_IDENTIFIER = incognit.Browse;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		CEF1008A2530729100776E26 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7AMWG3RLHN;
+				INFOPLIST_FILE = blocker/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = incognit.blocker;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CEF1008B2530729100776E26 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7AMWG3RLHN;
+				INFOPLIST_FILE = blocker/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = incognit.blocker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -609,6 +724,15 @@
 			buildConfigurations = (
 				CEDC32422523870A003DF67A /* Debug */,
 				CEDC32432523870A003DF67A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CEF1008C2530729100776E26 /* Build configuration list for PBXNativeTarget "blocker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CEF1008A2530729100776E26 /* Debug */,
+				CEF1008B2530729100776E26 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
