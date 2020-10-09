@@ -5,28 +5,20 @@ extension Web {
 [
     {
         "action": {
-            "type": "block"
+            "type": "css-display-none",
+            "selector": "div[id='rhs']"
         },
         "trigger": {
-            "url-filter": ".*dailymail.*"
+            "url-filter": "https://www.ecosia.org"
         }
     },
     {
         "action": {
             "type": "css-display-none",
-            "selector": "div[class*='card-ad']"
+            "selector": "div[id='taw']"
         },
         "trigger": {
-            "url-filter": ".*"
-        }
-    },
-    {
-        "action": {
-            "type": "css-display-none",
-            "selector": "div[id='tvcap']"
-        },
-        "trigger": {
-            "url-filter": ".*"
+            "url-filter": "https://www.ecosia.org"
         }
     }
 ]
