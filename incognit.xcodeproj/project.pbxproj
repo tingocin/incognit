@@ -46,6 +46,7 @@
 		CEDC32372523870A003DF67A /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEDC32362523870A003DF67A /* SwiftUI.framework */; };
 		CEDC323A2523870A003DF67A /* Browse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDC32392523870A003DF67A /* Browse.swift */; };
 		CEDC32402523870A003DF67A /* browse.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CEDC32322523870A003DF67A /* browse.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		CEF1009F253082D300776E26 /* Web.Block.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1009E253082D300776E26 /* Web.Block.swift */; };
 		CEF9AD062529E3A6005305EB /* Chart.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF9AD052529E3A6005305EB /* Chart.swift */; };
 /* End PBXBuildFile section */
 
@@ -116,6 +117,7 @@
 		CEDC32362523870A003DF67A /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		CEDC32392523870A003DF67A /* Browse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Browse.swift; sourceTree = "<group>"; };
 		CEDC323D2523870A003DF67A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CEF1009E253082D300776E26 /* Web.Block.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Web.Block.swift; sourceTree = "<group>"; };
 		CEF33CFF251CB35F006065E5 /* incognit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = incognit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEF9AD052529E3A6005305EB /* Chart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chart.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -195,6 +197,7 @@
 				CEA2F67C252344DE00DDE7B4 /* UIApplication.swift */,
 				CEA2F675252344DE00DDE7B4 /* Usage.swift */,
 				CEA2F676252344DE00DDE7B4 /* User.swift */,
+				CEF1009E253082D300776E26 /* Web.Block.swift */,
 				CEA2F673252344DE00DDE7B4 /* Web.Coordinator.swift */,
 				CEA2F678252344DE00DDE7B4 /* Web.swift */,
 				CEA2F672252344DE00DDE7B4 /* Assets.xcassets */,
@@ -334,6 +337,7 @@
 			files = (
 				CEA2F69E252344DE00DDE7B4 /* Progress.swift in Sources */,
 				CEA2F6A1252344DE00DDE7B4 /* Bar.swift in Sources */,
+				CEF1009F253082D300776E26 /* Web.Block.swift in Sources */,
 				CE2194792526236B00CED077 /* Field.swift in Sources */,
 				CE0A1F1425249A6300983D41 /* History.Item.swift in Sources */,
 				CE02488B25273014005DBB9C /* Control.State.swift in Sources */,

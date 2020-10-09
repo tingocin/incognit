@@ -4,6 +4,7 @@ import Combine
 
 extension Web {
     final class Coordinator: WKWebView, WKNavigationDelegate, WKUIDelegate, UIScrollViewDelegate {
+        private static var rules: WKContentRuleList?
         private var subs = Set<AnyCancellable>()
         private let view: Web
         private let javascript = User.javascript
@@ -21,37 +22,6 @@ extension Web {
             configuration.preferences.javaScriptCanOpenWindowsAutomatically = popups && javascript
             configuration.preferences.isFraudulentWebsiteWarningEnabled = secure
             configuration.websiteDataStore = .nonPersistent()
-            
-            let rules = """
-[
-    {
-        "action": {
-            "type": "block"
-        },
-        "trigger": {
-            "url-filter": ".*dailymail.*"
-        }
-    }
-]
-"""
-            
-            WKContentRuleListStore.default()?.compileContentRuleList(forIdentifier: "ContentBlockingRules", encodedContentRuleList: rules, completionHandler: {
-                self.configuration.userContentController.add($0!)
-                print("a")
-                print($0)
-                print($1)
-                print("b")
-            })
-            
-            WKContentRuleListStore.default()?.getAvailableContentRuleListIdentifiers({
-                print("rules")
-                print($0)
-            })
-            
-            
-            
-//            configuration.userContentController.add(WKContentRuleList())
-            
             navigationDelegate = self
             uiDelegate = self
             isOpaque = false
@@ -59,6 +29,7 @@ extension Web {
             scrollView.keyboardDismissMode = .onDrag
             scrollView.contentInsetAdjustmentBehavior = .never
             scrollView.automaticallyAdjustsScrollIndicatorInsets = false
+            block()
             
             publisher(for: \.estimatedProgress).sink { [weak self] in
                 self?.view.session.progress = $0
@@ -176,6 +147,19 @@ extension Web {
         func webView(_: WKWebView, decidePolicyFor: WKNavigationAction, preferences: WKWebpagePreferences, decisionHandler: @escaping (WKNavigationActionPolicy, WKWebpagePreferences) -> Void) {
             preferences.allowsContentJavaScript = javascript
             decisionHandler(.allow, preferences)
+        }
+        
+        private func block() {
+            guard let rules = Self.rules else {
+                WKContentRuleListStore.default()?.compileContentRuleList(forIdentifier: "incognit", encodedContentRuleList: Web.json) { [weak self] list, _ in
+                    list.map {
+                        Self.rules = $0
+                        self?.configuration.userContentController.add($0)
+                    }
+                }
+                return
+            }
+            configuration.userContentController.add(rules)
         }
     }
 }
