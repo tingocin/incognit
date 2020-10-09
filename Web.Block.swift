@@ -8,6 +8,30 @@ extension Web {
             "type": "block"
         },
         "trigger": {
+            "url-filter": "https://ssum-sec.casalemedia.com"
+        }
+    },
+    {
+        "action": {
+            "type": "block"
+        },
+        "trigger": {
+            "url-filter": "https://ads.pubmatic.com"
+        }
+    },
+    {
+        "action": {
+            "type": "block"
+        },
+        "trigger": {
+            "url-filter": "https://tpc.googlesyndication.com"
+        }
+    },
+    {
+        "action": {
+            "type": "block"
+        },
+        "trigger": {
             "url-filter": "https://www.googletagservices.com"
         }
     },
