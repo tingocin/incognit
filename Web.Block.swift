@@ -5,6 +5,46 @@ extension Web {
 [
     {
         "action": {
+            "type": "block"
+        },
+        "trigger": {
+            "url-filter": "https://www.googletagservices.com"
+        }
+    },
+    {
+        "action": {
+            "type": "block"
+        },
+        "trigger": {
+            "url-filter": "https://www.googletagservices.com"
+        }
+    },
+    {
+        "action": {
+            "type": "block"
+        },
+        "trigger": {
+            "url-filter": "https://pagead2.googlesyndication.com"
+        }
+    },
+    {
+        "action": {
+            "type": "block"
+        },
+        "trigger": {
+            "url-filter": "https://googleads.g.doubleclick.net"
+        }
+    },
+    {
+        "action": {
+            "type": "block"
+        },
+        "trigger": {
+            "url-filter": "https://tags.crwdcntrl.net"
+        }
+    },
+    {
+        "action": {
             "type": "css-display-none",
             "selector": "div[class*='card-ad']"
         },
