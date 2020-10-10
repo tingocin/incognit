@@ -27,7 +27,6 @@ extension Web {
             
             navigationDelegate = self
             uiDelegate = self
-//            isOpaque = false
             allowsBackForwardNavigationGestures = true
             scrollView.keyboardDismissMode = .onDrag
             scrollView.contentInsetAdjustmentBehavior = .never
