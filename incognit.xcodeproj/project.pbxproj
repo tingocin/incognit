@@ -405,7 +405,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 13;
-				PRODUCT_BUNDLE_IDENTIFIER = incognit.Browse;
+				PRODUCT_BUNDLE_IDENTIFIER = incognit.browse;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -428,7 +428,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 13;
-				PRODUCT_BUNDLE_IDENTIFIER = incognit.Browse;
+				PRODUCT_BUNDLE_IDENTIFIER = incognit.browse;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
