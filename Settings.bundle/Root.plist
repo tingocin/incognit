@@ -30,7 +30,7 @@
 			<key>Type</key>
 			<string>PSToggleSwitchSpecifier</string>
 			<key>Title</key>
-			<string>Safe Browsing</string>
+			<string>Safe browsing</string>
 			<key>Key</key>
 			<string>incognit_secure</string>
 			<key>DefaultValue</key>
