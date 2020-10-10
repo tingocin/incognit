@@ -107,6 +107,70 @@ extension WKUserContentController {
     "trigger": {
         "url-filter": "https://contextual.media.net"
     }
+},
+{
+    "action": {
+        "type": "block"
+    },
+    "trigger": {
+        "url-filter": "https://imasdk.googleapis.com"
+    }
+},
+{
+    "action": {
+        "type": "block"
+    },
+    "trigger": {
+        "url-filter": "https://platform.twitter.com"
+    }
+},
+{
+    "action": {
+        "type": "block"
+    },
+    "trigger": {
+        "url-filter": "https://mafo.adalliance.io"
+    }
+},
+{
+    "action": {
+        "type": "block"
+    },
+    "trigger": {
+        "url-filter": "https://ad.yieldlab.net"
+    }
+},
+{
+    "action": {
+        "type": "block"
+    },
+    "trigger": {
+        "url-filter": ".*adsystem.com"
+    }
+},
+{
+    "action": {
+        "type": "block"
+    },
+    "trigger": {
+        "url-filter": "https://static.emsservice.de"
+    }
+},
+{
+    "action": {
+        "type": "block"
+    },
+    "trigger": {
+        "url-filter": "https://cdn.flashtalking.com"
+    }
+},
+{
+    "action": {
+        "type": "block"
+    },
+    "trigger": {
+        "url-filter": "https://gum.criteo.com"
+    }
 }
 ]
 """

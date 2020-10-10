@@ -27,7 +27,7 @@ extension Web {
             
             navigationDelegate = self
             uiDelegate = self
-            isOpaque = false
+//            isOpaque = false
             allowsBackForwardNavigationGestures = true
             scrollView.keyboardDismissMode = .onDrag
             scrollView.contentInsetAdjustmentBehavior = .never
@@ -160,14 +160,16 @@ extension Web {
             var policy = WKNavigationActionPolicy.allow
             if trackers {
                 decidePolicyFor.request.url.map(\.absoluteString).map { url in
-                    print("decide for: \(url.prefix(100))")
-                    Self.blacklist.first { url.contains($0) }.map {
-                        print("                       -------   blocked! \($0)")
+                    Self.blacklist.first { url.contains($0) }.map { _ in
+//                        print("                       -------   blocked! \($0)")
                         policy = .cancel
                     }
                 }
             }
             preferences.allowsContentJavaScript = javascript
+            if policy == .allow {
+//                print("not blocked: \(decidePolicyFor.request.url)")
+            }
             decisionHandler(policy, preferences)
         }
         
@@ -176,6 +178,7 @@ extension Web {
         "googlesyndication.",
         "crwdcntrl.",
         "about:blank",
+        "about:srcdoc",
         "pubmatic.",
         "indexww.",
         "casalemedia.",
@@ -185,6 +188,15 @@ extension Web {
         "dianomi.",
         "hotjar.",
         "demdex.",
-        "media."])
+        "media.",
+        "imasdk.",
+        "platform.twitter.",
+        "adalliance.",
+        "yieldlab.",
+        "adsystem.",
+        "emsservice.",
+        "adrtx.",
+        "flashtalking.",
+        "criteo."])
     }
 }

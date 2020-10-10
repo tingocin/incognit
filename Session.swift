@@ -110,7 +110,7 @@ private extension String {
     
     private var semiURL: Bool {
         {
-            $0.count > 1 && $0.last!.count > 1 && $0.first!.count > 2
+            $0.count > 1 && $0.last!.count > 1 && $0.first!.count > 1
         } (components(separatedBy: "."))
     }
 }
