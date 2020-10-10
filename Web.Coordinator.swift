@@ -4,7 +4,6 @@ import Combine
 
 extension Web {
     final class Coordinator: WKWebView, WKNavigationDelegate, WKUIDelegate, UIScrollViewDelegate {
-        private static var rules: WKContentRuleList?
         private var subs = Set<AnyCancellable>()
         private let view: Web
         private let javascript = User.javascript
@@ -22,6 +21,7 @@ extension Web {
             configuration.preferences.javaScriptCanOpenWindowsAutomatically = popups && javascript
             configuration.preferences.isFraudulentWebsiteWarningEnabled = secure
             configuration.websiteDataStore = .nonPersistent()
+            
             navigationDelegate = self
             uiDelegate = self
             isOpaque = false
@@ -30,17 +30,10 @@ extension Web {
             scrollView.contentInsetAdjustmentBehavior = .never
             scrollView.automaticallyAdjustsScrollIndicatorInsets = false
             
+            HTTPCookieStorage.shared.cookieAcceptPolicy = .never
+            
             if User.ads {
-                guard let rules = Self.rules else {
-                    WKContentRuleListStore.default()?.compileContentRuleList(forIdentifier: "incognit", encodedContentRuleList: Web.json) { [weak self] list, _ in
-                        list.map {
-                            Self.rules = $0
-                            self?.configuration.userContentController.add($0)
-                        }
-                    }
-                    return
-                }
-                configuration.userContentController.add(rules)
+                configuration.userContentController.blockAds()
             }
             
             publisher(for: \.estimatedProgress).sink { [weak self] in
@@ -162,3 +155,120 @@ extension Web {
         }
     }
 }
+
+
+
+
+
+/*
+ import Foundation
+
+ extension Web {
+         static let json = """
+ [
+     {
+         "action": {
+             "type": "block"
+         },
+         "trigger": {
+             "url-filter": "https://ssum-sec.casalemedia.com"
+         }
+     },
+     {
+         "action": {
+             "type": "block"
+         },
+         "trigger": {
+             "url-filter": "https://ads.pubmatic.com"
+         }
+     },
+     {
+         "action": {
+             "type": "block"
+         },
+         "trigger": {
+             "url-filter": "https://tpc.googlesyndication.com"
+         }
+     },
+     {
+         "action": {
+             "type": "block"
+         },
+         "trigger": {
+             "url-filter": "https://www.googletagservices.com"
+         }
+     },
+     {
+         "action": {
+             "type": "block"
+         },
+         "trigger": {
+             "url-filter": "https://www.googletagservices.com"
+         }
+     },
+     {
+         "action": {
+             "type": "block"
+         },
+         "trigger": {
+             "url-filter": "https://pagead2.googlesyndication.com"
+         }
+     },
+     {
+         "action": {
+             "type": "block"
+         },
+         "trigger": {
+             "url-filter": "https://googleads.g.doubleclick.net"
+         }
+     },
+     {
+         "action": {
+             "type": "block"
+         },
+         "trigger": {
+             "url-filter": "https://tags.crwdcntrl.net"
+         }
+     },
+     {
+         "action": {
+             "type": "css-display-none",
+             "selector": "div[class*='card-ad']"
+         },
+         "trigger": {
+             "url-filter": "https://www.ecosia.org"
+         }
+     },
+     {
+         "action": {
+             "type": "css-display-none",
+             "selector": "div[class*='card-productads']"
+         },
+         "trigger": {
+             "url-filter": "https://www.ecosia.org"
+         }
+     },
+     {
+         "action": {
+             "type": "css-display-none",
+             "selector": "div[id='taw']"
+         },
+         "trigger": {
+             "url-filter": "https://www.google.com"
+         }
+     },
+     {
+         "action": {
+             "type": "css-display-none",
+             "selector": "div[id='rhs']"
+         },
+         "trigger": {
+             "url-filter": "https://www.google.com"
+         }
+     }
+ ]
+ """
+ }
+
+ 
+ */

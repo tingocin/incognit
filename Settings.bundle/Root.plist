@@ -50,7 +50,7 @@
 			<key>Type</key>
 			<string>PSToggleSwitchSpecifier</string>
 			<key>Title</key>
-			<string>JavaScript</string>
+			<string>Allow JavaScript</string>
 			<key>Key</key>
 			<string>incognit_javascript</string>
 			<key>DefaultValue</key>
