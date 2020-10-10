@@ -8,7 +8,7 @@ enum Engine: String {
     var prefix: String {
         switch self {
         case .ecosia: return "https://www.ecosia.org/search?q="
-        case .google: return "https://google.com/search?q="
+        case .google: return "https://www.google.com/search?q="
         }
     }
 }

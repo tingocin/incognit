@@ -9,6 +9,9 @@ extension Web {
         private let javascript = User.javascript
         private let popups = User.popups
         private let secure = User.secure
+        private let ads = User.ads
+        private let cookies = User.cookies
+        private let trackers = User.trackers
         
         required init?(coder: NSCoder) { nil }
         init(view: Web) {
@@ -32,8 +35,12 @@ extension Web {
             
             HTTPCookieStorage.shared.cookieAcceptPolicy = .never
             
-            if User.ads {
+            if ads {
                 configuration.userContentController.blockAds()
+            }
+            
+            if cookies {
+                configuration.userContentController.blockCookies()
             }
             
             publisher(for: \.estimatedProgress).sink { [weak self] in
@@ -150,125 +157,34 @@ extension Web {
         }
         
         func webView(_: WKWebView, decidePolicyFor: WKNavigationAction, preferences: WKWebpagePreferences, decisionHandler: @escaping (WKNavigationActionPolicy, WKWebpagePreferences) -> Void) {
+            var policy = WKNavigationActionPolicy.allow
+            if trackers {
+                decidePolicyFor.request.url.map(\.absoluteString).map { url in
+                    print("decide for: \(url.prefix(100))")
+                    Self.blacklist.first { url.contains($0) }.map {
+                        print("                       -------   blocked! \($0)")
+                        policy = .cancel
+                    }
+                }
+            }
             preferences.allowsContentJavaScript = javascript
-            decisionHandler(.allow, preferences)
+            decisionHandler(policy, preferences)
         }
+        
+        private static let blacklist = Set([
+        "safeframe.",
+        "googlesyndication.",
+        "crwdcntrl.",
+        "about:blank",
+        "pubmatic.",
+        "indexww.",
+        "casalemedia.",
+        "doubleclick.",
+        "googletagservices.",
+        "sourcepoint.",
+        "dianomi.",
+        "hotjar.",
+        "demdex.",
+        "media."])
     }
 }
-
-
-
-
-
-/*
- import Foundation
-
- extension Web {
-         static let json = """
- [
-     {
-         "action": {
-             "type": "block"
-         },
-         "trigger": {
-             "url-filter": "https://ssum-sec.casalemedia.com"
-         }
-     },
-     {
-         "action": {
-             "type": "block"
-         },
-         "trigger": {
-             "url-filter": "https://ads.pubmatic.com"
-         }
-     },
-     {
-         "action": {
-             "type": "block"
-         },
-         "trigger": {
-             "url-filter": "https://tpc.googlesyndication.com"
-         }
-     },
-     {
-         "action": {
-             "type": "block"
-         },
-         "trigger": {
-             "url-filter": "https://www.googletagservices.com"
-         }
-     },
-     {
-         "action": {
-             "type": "block"
-         },
-         "trigger": {
-             "url-filter": "https://www.googletagservices.com"
-         }
-     },
-     {
-         "action": {
-             "type": "block"
-         },
-         "trigger": {
-             "url-filter": "https://pagead2.googlesyndication.com"
-         }
-     },
-     {
-         "action": {
-             "type": "block"
-         },
-         "trigger": {
-             "url-filter": "https://googleads.g.doubleclick.net"
-         }
-     },
-     {
-         "action": {
-             "type": "block"
-         },
-         "trigger": {
-             "url-filter": "https://tags.crwdcntrl.net"
-         }
-     },
-     {
-         "action": {
-             "type": "css-display-none",
-             "selector": "div[class*='card-ad']"
-         },
-         "trigger": {
-             "url-filter": "https://www.ecosia.org"
-         }
-     },
-     {
-         "action": {
-             "type": "css-display-none",
-             "selector": "div[class*='card-productads']"
-         },
-         "trigger": {
-             "url-filter": "https://www.ecosia.org"
-         }
-     },
-     {
-         "action": {
-             "type": "css-display-none",
-             "selector": "div[id='taw']"
-         },
-         "trigger": {
-             "url-filter": "https://www.google.com"
-         }
-     },
-     {
-         "action": {
-             "type": "css-display-none",
-             "selector": "div[id='rhs']"
-         },
-         "trigger": {
-             "url-filter": "https://www.google.com"
-         }
-     }
- ]
- """
- }
-
- 
- */

@@ -67,6 +67,46 @@ extension WKUserContentController {
     "trigger": {
         "url-filter": "https://www.google.com"
     }
+},
+{
+    "action": {
+        "type": "block"
+    },
+    "trigger": {
+        "url-filter": "https://ads.pubmatic.com"
+    }
+},
+{
+    "action": {
+        "type": "block"
+    },
+    "trigger": {
+        "url-filter": ".*googlesyndication.com"
+    }
+},
+{
+    "action": {
+        "type": "block"
+    },
+    "trigger": {
+        "url-filter": "https://www.dianomi.com"
+    }
+},
+{
+    "action": {
+        "type": "block"
+    },
+    "trigger": {
+        "url-filter": "https://vars.hotjar.com"
+    }
+},
+{
+    "action": {
+        "type": "block"
+    },
+    "trigger": {
+        "url-filter": "https://contextual.media.net"
+    }
 }
 ]
 """

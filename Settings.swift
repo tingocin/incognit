@@ -10,6 +10,8 @@ struct Settings: View {
     @State private var popups = User.popups
     @State private var javascript = User.javascript
     @State private var ads = User.ads
+    @State private var trackers = User.trackers
+    @State private var cookies = User.cookies
     
     var body: some View {
         NavigationView {
@@ -29,14 +31,12 @@ struct Settings: View {
                             Text("Options")
                             .padding(.top, 20)) {
                     Toggle("Safe Browsing", isOn: $secure)
-                        .toggleStyle(SwitchToggleStyle(tint: .accentColor))
+                    Toggle("Block trackers", isOn: $trackers)
+                    Toggle("Block cookies", isOn: $cookies)
                     Toggle("Block pop-ups", isOn: $popups)
-                        .toggleStyle(SwitchToggleStyle(tint: .accentColor))
                     Toggle("Allow JavaScript", isOn: $javascript)
-                        .toggleStyle(SwitchToggleStyle(tint: .accentColor))
                     Toggle("Remove ads", isOn: $ads)
-                        .toggleStyle(SwitchToggleStyle(tint: .accentColor))
-                }
+                }.toggleStyle(SwitchToggleStyle(tint: .accentColor))
                 Section(header:
                             Text("Privacy"),
                         footer:
@@ -93,6 +93,12 @@ struct Settings: View {
         }
         .onChange(of: ads) {
             User.ads = $0
+        }
+        .onChange(of: trackers) {
+            User.trackers = $0
+        }
+        .onChange(of: cookies) {
+            User.cookies = $0
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }
