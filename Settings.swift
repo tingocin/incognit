@@ -30,7 +30,7 @@ struct Settings: View {
                 Section(header:
                             Text("Options")
                             .padding(.top, 20)) {
-                    Toggle("Safe Browsing", isOn: $secure)
+                    Toggle("Safe browsing", isOn: $secure)
                     Toggle("Block trackers", isOn: $trackers)
                     Toggle("Block cookies", isOn: $cookies)
                     Toggle("Block pop-ups", isOn: $popups)
