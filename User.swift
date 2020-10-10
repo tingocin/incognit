@@ -21,7 +21,7 @@ final class User: UserDefaults {
     }
     
     class var popups: Bool {
-        get { standard.object(forKey: _popups) as? Bool ?? false }
+        get { standard.object(forKey: _popups) as? Bool ?? true }
         set { standard.setValue(newValue, forKey: _popups) }
     }
     
@@ -31,7 +31,7 @@ final class User: UserDefaults {
     }
     
     class var ads: Bool {
-        get { standard.object(forKey: _ads) as? Bool ?? false }
+        get { standard.object(forKey: _ads) as? Bool ?? true }
         set { standard.setValue(newValue, forKey: _ads) }
     }
     

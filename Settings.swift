@@ -30,11 +30,11 @@ struct Settings: View {
                             .padding(.top, 20)) {
                     Toggle("Safe Browsing", isOn: $secure)
                         .toggleStyle(SwitchToggleStyle(tint: .accentColor))
-                    Toggle("Pop-ups", isOn: $popups)
+                    Toggle("Block pop-ups", isOn: $popups)
                         .toggleStyle(SwitchToggleStyle(tint: .accentColor))
-                    Toggle("JavaScript", isOn: $javascript)
+                    Toggle("Allow JavaScript", isOn: $javascript)
                         .toggleStyle(SwitchToggleStyle(tint: .accentColor))
-                    Toggle("Ads", isOn: $ads)
+                    Toggle("Remove ads", isOn: $ads)
                         .toggleStyle(SwitchToggleStyle(tint: .accentColor))
                 }
                 Section(header:
@@ -44,11 +44,12 @@ struct Settings: View {
                                 HStack {
                                     Text(location)
                                         .foregroundColor(.primary)
-                                        .font(.footnote)
                                     Spacer()
                                 }
+                                Spacer()
+                                    .frame(height: 6)
                                 HStack {
-                                    Text("Websites might want to access your location to provide maps or navigation.\n\nYou can enable access to your location when needed and then go to Privacy Settings and deny access, so that you can sure no one will be tracking you.\n\nOurselves we don't access your location at all.")
+                                    Text("Websites might want to access your location to provide maps or navigation.\n\nYou can enable access to your location when needed and then go to Privacy Settings and deny access, so that you can sure no one will be tracking you.\n\nWe don't access your location at all.")
                                     Spacer()
                                 }
                             }) {

@@ -40,32 +40,32 @@
 			<key>Type</key>
 			<string>PSToggleSwitchSpecifier</string>
 			<key>Title</key>
-			<string>Pop-ups</string>
+			<string>Block pop-ups</string>
 			<key>Key</key>
 			<string>incognit_popups</string>
 			<key>DefaultValue</key>
-			<false/>
+			<true/>
 		</dict>
-        <dict>
-            <key>Type</key>
-            <string>PSToggleSwitchSpecifier</string>
-            <key>Title</key>
-            <string>JavaScript</string>
-            <key>Key</key>
-            <string>incognit_javascript</string>
-            <key>DefaultValue</key>
-            <true/>
-        </dict>
-        <dict>
-            <key>Type</key>
-            <string>PSToggleSwitchSpecifier</string>
-            <key>Title</key>
-            <string>Ads</string>
-            <key>Key</key>
-            <string>incognit_ads</string>
-            <key>DefaultValue</key>
-            <false/>
-        </dict>
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>JavaScript</string>
+			<key>Key</key>
+			<string>incognit_javascript</string>
+			<key>DefaultValue</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>Remove ads</string>
+			<key>Key</key>
+			<string>incognit_ads</string>
+			<key>DefaultValue</key>
+			<true/>
+		</dict>
 	</array>
 </dict>
 </plist>

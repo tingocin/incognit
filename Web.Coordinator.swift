@@ -29,7 +29,19 @@ extension Web {
             scrollView.keyboardDismissMode = .onDrag
             scrollView.contentInsetAdjustmentBehavior = .never
             scrollView.automaticallyAdjustsScrollIndicatorInsets = false
-            block()
+            
+            if User.ads {
+                guard let rules = Self.rules else {
+                    WKContentRuleListStore.default()?.compileContentRuleList(forIdentifier: "incognit", encodedContentRuleList: Web.json) { [weak self] list, _ in
+                        list.map {
+                            Self.rules = $0
+                            self?.configuration.userContentController.add($0)
+                        }
+                    }
+                    return
+                }
+                configuration.userContentController.add(rules)
+            }
             
             publisher(for: \.estimatedProgress).sink { [weak self] in
                 self?.view.session.progress = $0
@@ -147,19 +159,6 @@ extension Web {
         func webView(_: WKWebView, decidePolicyFor: WKNavigationAction, preferences: WKWebpagePreferences, decisionHandler: @escaping (WKNavigationActionPolicy, WKWebpagePreferences) -> Void) {
             preferences.allowsContentJavaScript = javascript
             decisionHandler(.allow, preferences)
-        }
-        
-        private func block() {
-            guard let rules = Self.rules else {
-                WKContentRuleListStore.default()?.compileContentRuleList(forIdentifier: "incognit", encodedContentRuleList: Web.json) { [weak self] list, _ in
-                    list.map {
-                        Self.rules = $0
-                        self?.configuration.userContentController.add($0)
-                    }
-                }
-                return
-            }
-            configuration.userContentController.add(rules)
         }
     }
 }
