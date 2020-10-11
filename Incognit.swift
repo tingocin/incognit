@@ -25,7 +25,7 @@ import SwiftUI
                 UIApplication.shared.appearance()
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                     if let created = User.created {
-                        if !User.rated && Calendar.current.component(.day, from: created) > 10 {
+                        if !User.rated && Calendar.current.dateComponents([.day], from: created, to: .init()).day! > 6 {
                             User.rated = true
                             UIApplication.shared.rate()
                         }
