@@ -35,11 +35,11 @@ extension Web {
             HTTPCookieStorage.shared.cookieAcceptPolicy = .never
             
             if ads {
-                configuration.userContentController.blockAds()
+//                configuration.userContentController.blockAds()
             }
             
             if cookies {
-                configuration.userContentController.blockCookies()
+//                configuration.userContentController.blockCookies()
             }
             
             publisher(for: \.estimatedProgress).sink { [weak self] in
@@ -157,18 +157,19 @@ extension Web {
         
         func webView(_: WKWebView, decidePolicyFor: WKNavigationAction, preferences: WKWebpagePreferences, decisionHandler: @escaping (WKNavigationActionPolicy, WKWebpagePreferences) -> Void) {
             var policy = WKNavigationActionPolicy.allow
-            if trackers {
-                decidePolicyFor.request.url.map(\.absoluteString).map { url in
-                    Self.blacklist.first { url.contains($0) }.map { _ in
-//                        print("                       -------   blocked! \($0)")
-                        policy = .cancel
-                    }
-                }
-            }
-            preferences.allowsContentJavaScript = javascript
-            if policy == .allow {
-//                print("not blocked: \(decidePolicyFor.request.url)")
-            }
+//            if trackers {
+//                decidePolicyFor.request.url.map(\.absoluteString).map { url in
+//                    Self.blacklist.first { url.contains($0) }.map { _ in
+////                        print("                       -------   blocked! \($0)")
+//                        policy = .cancel
+//                    }
+//                }
+//            }
+//            preferences.allowsContentJavaScript = javascript
+//            if policy == .allow {
+////                print("not blocked: \(decidePolicyFor.request.url)")
+//            }
+            print(decidePolicyFor.request.url)
             decisionHandler(policy, preferences)
         }
         

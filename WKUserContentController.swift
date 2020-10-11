@@ -171,6 +171,134 @@ extension WKUserContentController {
     "trigger": {
         "url-filter": "https://gum.criteo.com"
     }
+},
+{
+    "action": {
+        "type": "block"
+    },
+    "trigger": {
+        "url-filter": "https://imagesrv.adition.com"
+    }
+},
+{
+    "action": {
+        "type": "block"
+    },
+    "trigger": {
+        "url-filter": "https://us-u.openx.net"
+    }
+},
+{
+    "action": {
+        "type": "block"
+    },
+    "trigger": {
+        "url-filter": "https://www.google.com/pagead/"
+    }
+},
+{
+    "action": {
+        "type": "block"
+    },
+    "trigger": {
+        "url-filter": "https://interactive.guim.co.uk"
+    }
+},
+{
+    "action": {
+        "type": "block"
+    },
+    "trigger": {
+        "url-filter": "https://js-sec.indexww.com"
+    }
+},
+{
+    "action": {
+        "type": "block"
+    },
+    "trigger": {
+        "url-filter": "https://elb.the-ozone-project.com"
+    }
+},
+{
+    "action": {
+        "type": "block"
+    },
+    "trigger": {
+        "url-filter": "https://www.googleadservices.com"
+    }
+},
+{
+    "action": {
+        "type": "block"
+    },
+    "trigger": {
+        "url-filter": "https://googleads.g.doubleclick.net"
+    }
+},
+{
+    "action": {
+        "type": "block"
+    },
+    "trigger": {
+        "url-filter": "https://s7.addthis.com"
+    }
+},
+{
+    "action": {
+        "type": "block"
+    },
+    "trigger": {
+        "url-filter": "https://widgets.sparwelt.click"
+    }
+},
+{
+    "action": {
+        "type": "block"
+    },
+    "trigger": {
+        "url-filter": "https://adstax-match.adrtx.net"
+    }
+},
+{
+    "action": {
+        "type": "block"
+    },
+    "trigger": {
+        "url-filter": "https://aax-eu.amazon-adsystem.com"
+    }
+},
+{
+    "action": {
+        "type": "block"
+    },
+    "trigger": {
+        "url-filter": "https://datawrapper.dwcdn.net"
+    }
+},
+{
+    "action": {
+        "type": "block"
+    },
+    "trigger": {
+        "url-filter": "https://secure-assets.rubiconproject.com"
+    }
+},
+{
+    "action": {
+        "type": "block"
+    },
+    "trigger": {
+        "url-filter": "https://eus.rubiconproject.com"
+    }
+},
+{
+    "action": {
+        "type": "block"
+    },
+    "trigger": {
+        "url-filter": "https://ams.creativecdn.com"
+    }
 }
 ]
 """
