@@ -1,6 +1,7 @@
 import SwiftUI
 import WebKit
 import Combine
+import Tron
 
 extension Web {
     final class Coordinator: WKWebView, WKNavigationDelegate, WKUIDelegate, UIScrollViewDelegate {
@@ -12,6 +13,7 @@ extension Web {
         private let ads = User.ads
         private let cookies = User.cookies
         private let trackers = User.trackers
+        private let tron = Tron()
         
         required init?(coder: NSCoder) { nil }
         init(view: Web) {
@@ -35,11 +37,11 @@ extension Web {
             HTTPCookieStorage.shared.cookieAcceptPolicy = .never
             
             if ads {
-//                configuration.userContentController.blockAds()
+                configuration.userContentController.blockAds()
             }
             
             if cookies {
-//                configuration.userContentController.blockCookies()
+                configuration.userContentController.blockCookies()
             }
             
             publisher(for: \.estimatedProgress).sink { [weak self] in
@@ -109,6 +111,7 @@ extension Web {
         deinit {
             uiDelegate = nil
             navigationDelegate = nil
+            scrollView.delegate = nil
         }
         
         func webView(_: WKWebView, didStartProvisionalNavigation: WKNavigation!) {
@@ -156,47 +159,17 @@ extension Web {
         }
         
         func webView(_: WKWebView, decidePolicyFor: WKNavigationAction, preferences: WKWebpagePreferences, decisionHandler: @escaping (WKNavigationActionPolicy, WKWebpagePreferences) -> Void) {
-            var policy = WKNavigationActionPolicy.allow
-//            if trackers {
-//                decidePolicyFor.request.url.map(\.absoluteString).map { url in
-//                    Self.blacklist.first { url.contains($0) }.map { _ in
-////                        print("                       -------   blocked! \($0)")
-//                        policy = .cancel
-//                    }
-//                }
-//            }
-//            preferences.allowsContentJavaScript = javascript
-//            if policy == .allow {
-////                print("not blocked: \(decidePolicyFor.request.url)")
-//            }
-            print(decidePolicyFor.request.url)
-            decisionHandler(policy, preferences)
+            preferences.allowsContentJavaScript = javascript
+            if trackers {
+                tron.accept(decidePolicyFor.request.url!) { result in
+                    if result {
+                        print("not blocked: \(decidePolicyFor.request.url!)")
+                    }
+                    decisionHandler(result ? .allow : .cancel, preferences)
+                }
+            } else {
+                decisionHandler(.allow, preferences)
+            }
         }
-        
-        private static let blacklist = Set([
-        "safeframe.",
-        "googlesyndication.",
-        "crwdcntrl.",
-        "about:blank",
-        "about:srcdoc",
-        "pubmatic.",
-        "indexww.",
-        "casalemedia.",
-        "doubleclick.",
-        "googletagservices.",
-        "sourcepoint.",
-        "dianomi.",
-        "hotjar.",
-        "demdex.",
-        "media.",
-        "imasdk.",
-        "platform.twitter.",
-        "adalliance.",
-        "yieldlab.",
-        "adsystem.",
-        "emsservice.",
-        "adrtx.",
-        "flashtalking.",
-        "criteo."])
     }
 }

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -46,6 +46,7 @@
 		CEDC32372523870A003DF67A /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEDC32362523870A003DF67A /* SwiftUI.framework */; };
 		CEDC323A2523870A003DF67A /* Browse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDC32392523870A003DF67A /* Browse.swift */; };
 		CEDC32402523870A003DF67A /* browse.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CEDC32322523870A003DF67A /* browse.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		CEEA4FE92533539B00ABA2CB /* Tron in Frameworks */ = {isa = PBXBuildFile; productRef = CEEA4FE82533539B00ABA2CB /* Tron */; };
 		CEF283672531C97C008D2594 /* WKUserContentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF283662531C97C008D2594 /* WKUserContentController.swift */; };
 		CEF9AD062529E3A6005305EB /* Chart.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF9AD052529E3A6005305EB /* Chart.swift */; };
 /* End PBXBuildFile section */
@@ -136,6 +137,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEEA4FE92533539B00ABA2CB /* Tron in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,6 +255,7 @@
 			);
 			name = incognit;
 			packageProductDependencies = (
+				CEEA4FE82533539B00ABA2CB /* Tron */,
 			);
 			productName = incognit;
 			productReference = CEF33CFF251CB35F006065E5 /* incognit.app */;
@@ -286,6 +289,7 @@
 			);
 			mainGroup = CEF33CF6251CB35F006065E5;
 			packageReferences = (
+				CEEA4FE72533539B00ABA2CB /* XCRemoteSwiftPackageReference "Tron" */,
 			);
 			productRefGroup = CEF33D00251CB35F006065E5 /* Products */;
 			projectDirPath = "";
@@ -636,6 +640,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CEEA4FE72533539B00ABA2CB /* XCRemoteSwiftPackageReference "Tron" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/tingocin/Tron.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CEEA4FE82533539B00ABA2CB /* Tron */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CEEA4FE72533539B00ABA2CB /* XCRemoteSwiftPackageReference "Tron" */;
+			productName = Tron;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CEF33CF7251CB35F006065E5 /* Project object */;
 }

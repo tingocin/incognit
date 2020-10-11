@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Tron",
+        "repositoryURL": "https://github.com/tingocin/Tron.git",
+        "state": {
+          "branch": "main",
+          "revision": "185fbab14e84b0a24be413ea86de2d87d0f28fec",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}
