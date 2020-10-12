@@ -299,6 +299,14 @@ extension WKUserContentController {
     "trigger": {
         "url-filter": "https://ams.creativecdn.com"
     }
+},
+{
+    "action": {
+        "type": "block"
+    },
+    "trigger": {
+        "url-filter": "https://www.youtube.com/embed"
+    }
 }
 ]
 """

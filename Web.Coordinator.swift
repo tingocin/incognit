@@ -159,16 +159,23 @@ extension Web {
         }
         
         func webView(_: WKWebView, decidePolicyFor: WKNavigationAction, preferences: WKWebpagePreferences, decisionHandler: @escaping (WKNavigationActionPolicy, WKWebpagePreferences) -> Void) {
-            preferences.allowsContentJavaScript = javascript
-            if trackers {
-                tron.accept(decidePolicyFor.request.url!) { result in
-                    if result {
-                        print("not blocked: \(decidePolicyFor.request.url!)")
+            if ["https", "http"].contains(decidePolicyFor.request.url!.scheme) {
+                preferences.allowsContentJavaScript = javascript
+                if trackers {
+                    tron.accept(decidePolicyFor.request.url!) { [weak preferences] result in
+                        preferences.map {
+                            if result {
+                                print("not blocked: \(decidePolicyFor.request.url!)")
+                            }
+                            decisionHandler(result ? .allow : .cancel, $0)
+                        }
                     }
-                    decisionHandler(result ? .allow : .cancel, preferences)
+                } else {
+                    decisionHandler(.allow, preferences)
                 }
             } else {
-                decisionHandler(.allow, preferences)
+                decisionHandler(.cancel, preferences)
+                UIApplication.shared.open(decidePolicyFor.request.url!)
             }
         }
     }
