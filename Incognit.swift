@@ -1,8 +1,10 @@
 import SwiftUI
+import WatchConnectivity
 
 @main struct Incognit: App {
     @Environment(\.scenePhase) private var phase
     @State private var session = Session()
+    private let delegate = Delegate()
     
     var body: some Scene {
         WindowGroup {
@@ -32,6 +34,11 @@ import SwiftUI
                     } else {
                         User.created = .init()
                     }
+                }
+                
+                if WCSession.isSupported() {
+                    WCSession.default.delegate = delegate
+                    WCSession.default.activate()
                 }
             }
         }.onChange(of: session.page) {

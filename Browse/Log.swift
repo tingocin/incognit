@@ -3,7 +3,7 @@ import SwiftUI
 
 struct Log: View {
     @Environment(\.widgetFamily) var family: WidgetFamily
-    let items: [History.Item]
+    let items: [Shared.Item]
     
     var body: some View {
         VStack {
@@ -31,7 +31,7 @@ struct Log: View {
 }
 
 private struct Item: View {
-    let item: History.Item
+    let item: Shared.Item
     
     var body: some View {
         Link(destination: item.open!) {

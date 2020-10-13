@@ -1,6 +1,7 @@
 import Foundation
 import Combine
 import WidgetKit
+import CoreGraphics
 
 struct Session {
     weak var page: Page? {
@@ -16,6 +17,7 @@ struct Session {
     var backwards = false
     var typing = false
     var progress = Double()
+    var stats = Stats(values: [], initial: "")
     let navigate = PassthroughSubject<URL, Never>()
     let backward = PassthroughSubject<Void, Never>()
     let forward = PassthroughSubject<Void, Never>()
@@ -32,6 +34,10 @@ struct Session {
     private var subs = Set<AnyCancellable>()
 
     init() {
+        let formatter = DateComponentsFormatter()
+        formatter.allowedUnits = [.day, .hour, .minute]
+        formatter.unitsStyle = .short
+        
         save.debounce(for: .seconds(1), scheduler: dispatch).sink {
             $0.map(FileManager.default.save)
         }.store(in: &subs)
@@ -39,11 +45,33 @@ struct Session {
         save.combineLatest(pages).debounce(for: .seconds(2), scheduler: dispatch).sink {
             guard let pages = $0.1 else { return }
             (try? JSONEncoder().encode(pages.sorted { $0.date > $1.date }.prefix(5).map {
-                History.Item(open: URL(string: "incognit-id://" + $0.id.uuidString), url: $0.url, title: $0.title)
+                Shared.Item(open: URL(string: "incognit-id://" + $0.id.uuidString), url: $0.url, title: $0.title)
             })).map {
-                History.defaults.setValue($0, forKey: History.key)
+                Shared.set($0, key: .history)
                 WidgetCenter.shared.reloadAllTimelines()
             }
+        }.store(in: &subs)
+        
+        pages.debounce(for: .seconds(3), scheduler: dispatch).sink {
+            guard $0?.isEmpty == false else { return }
+            let dates = $0!.map(\.date.timeIntervalSince1970)
+            let first = dates.min()!
+            let interval = (Date().timeIntervalSince1970 - first) / 5
+            let ranges = (0 ..< 5).map {
+                (.init($0) * interval) + first
+            }
+            let array = dates.reduce(into: Array(repeating: 0, count: 5)) {
+                var index = 0
+                while index < 4 && ranges[index + 1] < $1 {
+                    index += 1
+                }
+                $0[index] += 1
+            }
+            let top = CGFloat(array.max()!)
+            let chart = array.map { .init($0) / top }
+            let initial = formatter.string(from: Date(timeIntervalSince1970: first), to: .init())!
+            Shared.set(chart, key: .chart)
+            Shared.set(initial, key: .first)
         }.store(in: &subs)
     }
     

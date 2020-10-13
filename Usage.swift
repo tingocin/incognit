@@ -5,7 +5,7 @@ struct Usage: View {
     @Binding var session: Session
     @Binding var visible: Bool
     @State private var values = [CGFloat]()
-    @State private var initial = ""
+    @State private var first = ""
     
     var body: some View {
         NavigationView {
@@ -16,7 +16,7 @@ struct Usage: View {
                     Chart(values: values)
                         .frame(height: 140)
                     HStack {
-                        Text(verbatim: initial)
+                        Text(verbatim: first)
                             .font(.footnote)
                             .foregroundColor(.secondary)
                         Spacer()
@@ -56,27 +56,12 @@ struct Usage: View {
         }
         .navigationViewStyle(StackNavigationViewStyle())
         .onAppear {
-            guard !session.pages.value!.isEmpty else { return }
-            let dates = session.pages.value!.map(\.date.timeIntervalSince1970)
-            let first = dates.min()!
-            let interval = (Date().timeIntervalSince1970 - first) / 5
-            let ranges = (0 ..< 5).map {
-                (.init($0) * interval) + first
+            (Shared.get(.chart) as? [CGFloat]).map {
+                values = $0
             }
-            let array = dates.reduce(into: Array(repeating: 0, count: 5)) {
-                var index = 0
-                while index < 4 && ranges[index + 1] < $1 {
-                    index += 1
-                }
-                $0[index] += 1
+            (Shared.get(.first) as? String).map {
+                first = $0
             }
-            let top = CGFloat(array.max()!)
-            values = array.map { .init($0) / top }
-            
-            let formatter = DateComponentsFormatter()
-            formatter.allowedUnits = [.day, .hour, .minute]
-            formatter.unitsStyle = .short
-            initial = formatter.string(from: Date(timeIntervalSince1970: first), to: .init())!
         }
     }
 }

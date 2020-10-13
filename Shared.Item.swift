@@ -1,6 +1,6 @@
 import Foundation
 
-extension History {
+extension Shared {
     struct Item: Codable {
         let open: URL?
         let url: URL?
