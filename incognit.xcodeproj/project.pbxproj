@@ -42,6 +42,11 @@
 		CEA2F6A1252344DE00DDE7B4 /* Bar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA2F689252344DE00DDE7B4 /* Bar.swift */; };
 		CEA2F6A7252344F100DDE7B4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CEA2F6A5252344F100DDE7B4 /* Localizable.strings */; };
 		CEBC47682527502800ED45FF /* Detail.Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBC47672527502800ED45FF /* Detail.Item.swift */; };
+		CED485DB2535DBE400CDDA68 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CED485DA2535DBE400CDDA68 /* Assets.xcassets */; };
+		CED485E22535DBE400CDDA68 /* watch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CED485E12535DBE400CDDA68 /* watch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		CED485E72535DBE400CDDA68 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED485E62535DBE400CDDA68 /* ContentView.swift */; };
+		CED485E92535DBE400CDDA68 /* incognitApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED485E82535DBE400CDDA68 /* incognitApp.swift */; };
+		CED485F42535DBE500CDDA68 /* watch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = CED485D82535DBE400CDDA68 /* watch.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		CEDC32352523870A003DF67A /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEDC32342523870A003DF67A /* WidgetKit.framework */; };
 		CEDC32372523870A003DF67A /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEDC32362523870A003DF67A /* SwiftUI.framework */; };
 		CEDC323A2523870A003DF67A /* Browse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDC32392523870A003DF67A /* Browse.swift */; };
@@ -52,6 +57,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		CED485E32535DBE400CDDA68 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CEF33CF7251CB35F006065E5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CED485E02535DBE400CDDA68;
+			remoteInfo = "watch Extension";
+		};
+		CED485F22535DBE500CDDA68 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CEF33CF7251CB35F006065E5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CED485D72535DBE400CDDA68;
+			remoteInfo = watch;
+		};
 		CEDC323E2523870A003DF67A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = CEF33CF7251CB35F006065E5 /* Project object */;
@@ -62,6 +81,28 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		CED485F52535DBE500CDDA68 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				CED485F42535DBE500CDDA68 /* watch.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CED485F82535DBE500CDDA68 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				CED485E22535DBE400CDDA68 /* watch Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CEDC32412523870A003DF67A /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -113,6 +154,13 @@
 		CEA2F689252344DE00DDE7B4 /* Bar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bar.swift; sourceTree = "<group>"; };
 		CEA2F6A6252344F100DDE7B4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CEBC47672527502800ED45FF /* Detail.Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Detail.Item.swift; sourceTree = "<group>"; };
+		CED485D82535DBE400CDDA68 /* watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = watch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CED485DA2535DBE400CDDA68 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CED485DC2535DBE400CDDA68 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CED485E12535DBE400CDDA68 /* watch Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "watch Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CED485E62535DBE400CDDA68 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		CED485E82535DBE400CDDA68 /* incognitApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = incognitApp.swift; sourceTree = "<group>"; };
+		CED485F12535DBE500CDDA68 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CEDC32322523870A003DF67A /* browse.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = browse.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEDC32342523870A003DF67A /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		CEDC32362523870A003DF67A /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -124,6 +172,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		CED485DE2535DBE400CDDA68 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CEDC322F2523870A003DF67A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -144,6 +199,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CED485D92535DBE400CDDA68 /* watch */ = {
+			isa = PBXGroup;
+			children = (
+				CED485DA2535DBE400CDDA68 /* Assets.xcassets */,
+				CED485DC2535DBE400CDDA68 /* Info.plist */,
+			);
+			path = watch;
+			sourceTree = "<group>";
+		};
+		CED485E52535DBE400CDDA68 /* watch Extension */ = {
+			isa = PBXGroup;
+			children = (
+				CED485E62535DBE400CDDA68 /* ContentView.swift */,
+				CED485E82535DBE400CDDA68 /* incognitApp.swift */,
+				CED485F12535DBE500CDDA68 /* Info.plist */,
+			);
+			path = "watch Extension";
+			sourceTree = "<group>";
+		};
 		CEDC32332523870A003DF67A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -204,6 +278,8 @@
 				CEF283662531C97C008D2594 /* WKUserContentController.swift */,
 				CEA2F672252344DE00DDE7B4 /* Assets.xcassets */,
 				CEDC32382523870A003DF67A /* Browse */,
+				CED485D92535DBE400CDDA68 /* watch */,
+				CED485E52535DBE400CDDA68 /* watch Extension */,
 				CEDC32332523870A003DF67A /* Frameworks */,
 				CEA2F6A5252344F100DDE7B4 /* Localizable.strings */,
 				CEF33D00251CB35F006065E5 /* Products */,
@@ -215,6 +291,8 @@
 			children = (
 				CEF33CFF251CB35F006065E5 /* incognit.app */,
 				CEDC32322523870A003DF67A /* browse.appex */,
+				CED485D82535DBE400CDDA68 /* watch.app */,
+				CED485E12535DBE400CDDA68 /* watch Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -222,6 +300,40 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		CED485D72535DBE400CDDA68 /* watch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CED485FC2535DBE500CDDA68 /* Build configuration list for PBXNativeTarget "watch" */;
+			buildPhases = (
+				CED485D62535DBE400CDDA68 /* Resources */,
+				CED485F82535DBE500CDDA68 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CED485E42535DBE400CDDA68 /* PBXTargetDependency */,
+			);
+			name = watch;
+			productName = watch;
+			productReference = CED485D82535DBE400CDDA68 /* watch.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		CED485E02535DBE400CDDA68 /* watch Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CED485FB2535DBE500CDDA68 /* Build configuration list for PBXNativeTarget "watch Extension" */;
+			buildPhases = (
+				CED485DD2535DBE400CDDA68 /* Sources */,
+				CED485DE2535DBE400CDDA68 /* Frameworks */,
+				CED485DF2535DBE400CDDA68 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "watch Extension";
+			productName = "watch Extension";
+			productReference = CED485E12535DBE400CDDA68 /* watch Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
 		CEDC32312523870A003DF67A /* browse */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = CEDC32442523870A003DF67A /* Build configuration list for PBXNativeTarget "browse" */;
@@ -247,11 +359,13 @@
 				CEF33CFC251CB35F006065E5 /* Frameworks */,
 				CEF33CFD251CB35F006065E5 /* Resources */,
 				CEDC32412523870A003DF67A /* Embed App Extensions */,
+				CED485F52535DBE500CDDA68 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				CEDC323F2523870A003DF67A /* PBXTargetDependency */,
+				CED485F32535DBE500CDDA68 /* PBXTargetDependency */,
 			);
 			name = incognit;
 			packageProductDependencies = (
@@ -270,6 +384,12 @@
 				LastSwiftUpdateCheck = 1200;
 				LastUpgradeCheck = 1200;
 				TargetAttributes = {
+					CED485D72535DBE400CDDA68 = {
+						CreatedOnToolsVersion = 12.0.1;
+					};
+					CED485E02535DBE400CDDA68 = {
+						CreatedOnToolsVersion = 12.0.1;
+					};
 					CEDC32312523870A003DF67A = {
 						CreatedOnToolsVersion = 12.0.1;
 					};
@@ -297,11 +417,28 @@
 			targets = (
 				CEF33CFE251CB35F006065E5 /* incognit */,
 				CEDC32312523870A003DF67A /* browse */,
+				CED485D72535DBE400CDDA68 /* watch */,
+				CED485E02535DBE400CDDA68 /* watch Extension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		CED485D62535DBE400CDDA68 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CED485DB2535DBE400CDDA68 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CED485DF2535DBE400CDDA68 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CEDC32302523870A003DF67A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -323,6 +460,15 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		CED485DD2535DBE400CDDA68 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CED485E92535DBE400CDDA68 /* incognitApp.swift in Sources */,
+				CED485E72535DBE400CDDA68 /* ContentView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CEDC322E2523870A003DF67A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -374,6 +520,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		CED485E42535DBE400CDDA68 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CED485E02535DBE400CDDA68 /* watch Extension */;
+			targetProxy = CED485E32535DBE400CDDA68 /* PBXContainerItemProxy */;
+		};
+		CED485F32535DBE500CDDA68 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CED485D72535DBE400CDDA68 /* watch */;
+			targetProxy = CED485F22535DBE500CDDA68 /* PBXContainerItemProxy */;
+		};
 		CEDC323F2523870A003DF67A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = CEDC32312523870A003DF67A /* browse */;
@@ -393,6 +549,82 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		CED485F62535DBE500CDDA68 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7AMWG3RLHN;
+				IBSC_MODULE = watch_Extension;
+				INFOPLIST_FILE = watch/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = incognit.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 7.0;
+			};
+			name = Debug;
+		};
+		CED485F72535DBE500CDDA68 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7AMWG3RLHN;
+				IBSC_MODULE = watch_Extension;
+				INFOPLIST_FILE = watch/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = incognit.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 7.0;
+			};
+			name = Release;
+		};
+		CED485F92535DBE500CDDA68 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7AMWG3RLHN;
+				INFOPLIST_FILE = "watch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = incognit.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 7.0;
+			};
+			name = Debug;
+		};
+		CED485FA2535DBE500CDDA68 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7AMWG3RLHN;
+				INFOPLIST_FILE = "watch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = incognit.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 7.0;
+			};
+			name = Release;
+		};
 		CEDC32422523870A003DF67A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -612,6 +844,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		CED485FB2535DBE500CDDA68 /* Build configuration list for PBXNativeTarget "watch Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CED485F92535DBE500CDDA68 /* Debug */,
+				CED485FA2535DBE500CDDA68 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CED485FC2535DBE500CDDA68 /* Build configuration list for PBXNativeTarget "watch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CED485F62535DBE500CDDA68 /* Debug */,
+				CED485F72535DBE500CDDA68 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		CEDC32442523870A003DF67A /* Build configuration list for PBXNativeTarget "browse" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
