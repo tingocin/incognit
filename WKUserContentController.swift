@@ -307,6 +307,30 @@ extension WKUserContentController {
     "trigger": {
         "url-filter": "https://www.youtube.com/embed"
     }
+},
+{
+    "action": {
+        "type": "block"
+    },
+    "trigger": {
+        "url-filter": "https://www.medtargetsystem.com"
+    }
+},
+{
+    "action": {
+        "type": "block"
+    },
+    "trigger": {
+        "url-filter": "https://tr.snapchat.com"
+    }
+},
+{
+    "action": {
+        "type": "block"
+    },
+    "trigger": {
+        "url-filter": "https://cloudfront.net"
+    }
 }
 ]
 """

@@ -159,23 +159,20 @@ extension Web {
         }
         
         func webView(_: WKWebView, decidePolicyFor: WKNavigationAction, preferences: WKWebpagePreferences, decisionHandler: @escaping (WKNavigationActionPolicy, WKWebpagePreferences) -> Void) {
-            if ["https", "http"].contains(decidePolicyFor.request.url!.scheme) {
-                preferences.allowsContentJavaScript = javascript
-                if trackers {
-                    tron.accept(decidePolicyFor.request.url!) { [weak preferences] result in
-                        preferences.map {
-                            if result {
-                                print("not blocked: \(decidePolicyFor.request.url!)")
-                            }
-                            decisionHandler(result ? .allow : .cancel, $0)
-                        }
-                    }
-                } else {
+            var sub: AnyCancellable?
+            sub = tron.policy(for: decidePolicyFor.request.url!, shield: trackers).receive(on: DispatchQueue.main).sink { [weak self] in
+                sub?.cancel()
+                switch $0 {
+                case .allow:
+                    print("allow \(decidePolicyFor.request.url!)")
+                    preferences.allowsContentJavaScript = self?.javascript ?? false
                     decisionHandler(.allow, preferences)
+                case .deny:
+                    decisionHandler(.cancel, preferences)
+                case .external:
+                    decisionHandler(.cancel, preferences)
+                    UIApplication.shared.open(decidePolicyFor.request.url!)
                 }
-            } else {
-                decisionHandler(.cancel, preferences)
-                UIApplication.shared.open(decidePolicyFor.request.url!)
             }
         }
     }
