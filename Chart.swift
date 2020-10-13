@@ -20,7 +20,6 @@ struct Chart: View {
                     .stroke(Color.primary, style: .init(lineWidth: 2, lineCap: .round))
             }
         }
-        .frame(height: 140)
         .padding(.vertical)
     }
 }

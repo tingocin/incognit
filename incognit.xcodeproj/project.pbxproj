@@ -41,6 +41,7 @@
 		CEA2F6A0252344DE00DDE7B4 /* Control.Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA2F688252344DE00DDE7B4 /* Control.Icon.swift */; };
 		CEA2F6A1252344DE00DDE7B4 /* Bar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA2F689252344DE00DDE7B4 /* Bar.swift */; };
 		CEA2F6A7252344F100DDE7B4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CEA2F6A5252344F100DDE7B4 /* Localizable.strings */; };
+		CEA63E862535E5EB00CFCECF /* Chart.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF9AD052529E3A6005305EB /* Chart.swift */; };
 		CEBC47682527502800ED45FF /* Detail.Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBC47672527502800ED45FF /* Detail.Item.swift */; };
 		CED485DB2535DBE400CDDA68 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CED485DA2535DBE400CDDA68 /* Assets.xcassets */; };
 		CED485E22535DBE400CDDA68 /* watch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CED485E12535DBE400CDDA68 /* watch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -458,6 +459,7 @@
 			files = (
 				CED486242535E50D00CDDA68 /* Usage.swift in Sources */,
 				CED4861F2535E50900CDDA68 /* Incognit.swift in Sources */,
+				CEA63E862535E5EB00CFCECF /* Chart.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -14,6 +14,7 @@ struct Usage: View {
                     Spacer()
                         .frame(height: 10)
                     Chart(values: values)
+                        .frame(height: 140)
                     HStack {
                         Text(verbatim: initial)
                             .font(.footnote)
