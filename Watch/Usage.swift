@@ -1,8 +1,7 @@
 import SwiftUI
 
 struct Usage: View {
-    @State private var values = [CGFloat]()
-    @State private var initial = ""
+    @ObservedObject var delegate: Delegate
     
     var body: some View {
         NavigationView {
@@ -10,10 +9,10 @@ struct Usage: View {
                 VStack {
                     Spacer()
                         .frame(height: 10)
-                    Chart(values: values)
+                    Chart(values: delegate.chart)
                         .frame(height: 100)
                     HStack {
-                        Text(verbatim: initial)
+                        Text(verbatim: delegate.first)
                             .font(.footnote)
                             .foregroundColor(.secondary)
                         Spacer()
@@ -36,29 +35,6 @@ struct Usage: View {
                     }.foregroundColor(.primary)
                 }
             }
-        }
-        .onAppear {
-//            guard !session.pages.value!.isEmpty else { return }
-//            let dates = session.pages.value!.map(\.date.timeIntervalSince1970)
-//            let first = dates.min()!
-//            let interval = (Date().timeIntervalSince1970 - first) / 5
-//            let ranges = (0 ..< 5).map {
-//                (.init($0) * interval) + first
-//            }
-//            let array = dates.reduce(into: Array(repeating: 0, count: 5)) {
-//                var index = 0
-//                while index < 4 && ranges[index + 1] < $1 {
-//                    index += 1
-//                }
-//                $0[index] += 1
-//            }
-//            let top = CGFloat(array.max()!)
-//            values = array.map { .init($0) / top }
-//
-//            let formatter = DateComponentsFormatter()
-//            formatter.allowedUnits = [.day, .hour, .minute]
-//            formatter.unitsStyle = .short
-//            initial = formatter.string(from: Date(timeIntervalSince1970: first), to: .init())!
         }
     }
 }

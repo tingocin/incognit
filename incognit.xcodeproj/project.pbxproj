@@ -44,8 +44,6 @@
 		CEA63E862535E5EB00CFCECF /* Chart.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF9AD052529E3A6005305EB /* Chart.swift */; };
 		CEA63E8B2535E84D00CFCECF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CEA2F6A5252344F100DDE7B4 /* Localizable.strings */; };
 		CEA63E912535EB7400CFCECF /* Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA63E902535EB7400CFCECF /* Delegate.swift */; };
-		CEA63E9B2535ED0E00CFCECF /* Stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA63E9A2535ED0E00CFCECF /* Stats.swift */; };
-		CEA63EA02535ED1E00CFCECF /* Stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA63E9A2535ED0E00CFCECF /* Stats.swift */; };
 		CEBC47682527502800ED45FF /* Detail.Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBC47672527502800ED45FF /* Detail.Item.swift */; };
 		CED485DB2535DBE400CDDA68 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CED485DA2535DBE400CDDA68 /* Assets.xcassets */; };
 		CED485E22535DBE400CDDA68 /* watch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CED485E12535DBE400CDDA68 /* watch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -59,6 +57,7 @@
 		CEEA4FE92533539B00ABA2CB /* Tron in Frameworks */ = {isa = PBXBuildFile; productRef = CEEA4FE82533539B00ABA2CB /* Tron */; };
 		CEEC19D32535F1F400B03A02 /* Shared.Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEC19D22535F1F400B03A02 /* Shared.Key.swift */; };
 		CEEC19DD2535F20A00B03A02 /* Shared.Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEC19D22535F1F400B03A02 /* Shared.Key.swift */; };
+		CEEC19F12535F5D300B03A02 /* Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEC19EB2535F5CD00B03A02 /* Delegate.swift */; };
 		CEF283672531C97C008D2594 /* WKUserContentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF283662531C97C008D2594 /* WKUserContentController.swift */; };
 		CEF9AD062529E3A6005305EB /* Chart.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF9AD052529E3A6005305EB /* Chart.swift */; };
 /* End PBXBuildFile section */
@@ -161,7 +160,6 @@
 		CEA2F689252344DE00DDE7B4 /* Bar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bar.swift; sourceTree = "<group>"; };
 		CEA2F6A6252344F100DDE7B4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CEA63E902535EB7400CFCECF /* Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delegate.swift; sourceTree = "<group>"; };
-		CEA63E9A2535ED0E00CFCECF /* Stats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stats.swift; sourceTree = "<group>"; };
 		CEBC47672527502800ED45FF /* Detail.Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Detail.Item.swift; sourceTree = "<group>"; };
 		CED485D82535DBE400CDDA68 /* watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = watch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CED485DA2535DBE400CDDA68 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -176,6 +174,7 @@
 		CEDC32392523870A003DF67A /* Browse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Browse.swift; sourceTree = "<group>"; };
 		CEDC323D2523870A003DF67A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CEEC19D22535F1F400B03A02 /* Shared.Key.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shared.Key.swift; sourceTree = "<group>"; };
+		CEEC19EB2535F5CD00B03A02 /* Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delegate.swift; sourceTree = "<group>"; };
 		CEF283662531C97C008D2594 /* WKUserContentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WKUserContentController.swift; sourceTree = "<group>"; };
 		CEF33CFF251CB35F006065E5 /* incognit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = incognit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEF9AD052529E3A6005305EB /* Chart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chart.swift; sourceTree = "<group>"; };
@@ -214,6 +213,7 @@
 			children = (
 				CED486152535E35B00CDDA68 /* InfoWatch.plist */,
 				CED485F12535DBE500CDDA68 /* InfoWatchExtension.plist */,
+				CEEC19EB2535F5CD00B03A02 /* Delegate.swift */,
 				CED485E82535DBE400CDDA68 /* Incognit.swift */,
 				CED485E62535DBE400CDDA68 /* Usage.swift */,
 				CED485DA2535DBE400CDDA68 /* Assets.xcassets */,
@@ -273,7 +273,6 @@
 				CE0A1F1325249A6300983D41 /* Shared.Item.swift */,
 				CEEC19D22535F1F400B03A02 /* Shared.Key.swift */,
 				CE0A1F0C252499F400983D41 /* Shared.swift */,
-				CEA63E9A2535ED0E00CFCECF /* Stats.swift */,
 				CEA2F682252344DE00DDE7B4 /* Tab.swift */,
 				CEA2F67B252344DE00DDE7B4 /* Tools.swift */,
 				CEA2F67C252344DE00DDE7B4 /* UIApplication.swift */,
@@ -470,8 +469,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEEC19F12535F5D300B03A02 /* Delegate.swift in Sources */,
 				CED486242535E50D00CDDA68 /* Usage.swift in Sources */,
-				CEA63EA02535ED1E00CFCECF /* Stats.swift in Sources */,
 				CED4861F2535E50900CDDA68 /* Incognit.swift in Sources */,
 				CEA63E862535E5EB00CFCECF /* Chart.swift in Sources */,
 			);
@@ -512,7 +511,6 @@
 				CEA2F68F252344DE00DDE7B4 /* Usage.swift in Sources */,
 				CEA2F693252344DE00DDE7B4 /* Page.swift in Sources */,
 				CE0A1F1825249AD300983D41 /* Shared.swift in Sources */,
-				CEA63E9B2535ED0E00CFCECF /* Stats.swift in Sources */,
 				CEBC47682527502800ED45FF /* Detail.Item.swift in Sources */,
 				CE21947D252624F600CED077 /* Field.Coordinator.swift in Sources */,
 				CEA2F698252344DE00DDE7B4 /* Detail.swift in Sources */,

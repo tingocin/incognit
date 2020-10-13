@@ -2,6 +2,7 @@ import Foundation
 import Combine
 import WidgetKit
 import CoreGraphics
+import WatchConnectivity
 
 struct Session {
     weak var page: Page? {
@@ -17,7 +18,6 @@ struct Session {
     var backwards = false
     var typing = false
     var progress = Double()
-    var stats = Stats(values: [], initial: "")
     let navigate = PassthroughSubject<URL, Never>()
     let backward = PassthroughSubject<Void, Never>()
     let forward = PassthroughSubject<Void, Never>()
@@ -72,6 +72,10 @@ struct Session {
             let initial = formatter.string(from: Date(timeIntervalSince1970: first), to: .init())!
             Shared.set(chart, key: .chart)
             Shared.set(initial, key: .first)
+            
+            if WCSession.isSupported() && WCSession.default.isPaired && WCSession.default.isWatchAppInstalled {
+                try? WCSession.default.updateApplicationContext([Shared.Key.chart.rawValue : chart, Shared.Key.first.rawValue : initial])
+            }
         }.store(in: &subs)
     }
     
