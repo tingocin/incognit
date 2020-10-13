@@ -48,6 +48,7 @@
       "subtype" : "44mm"
     },
     {
+      "filename" : "watch172w.png",
       "idiom" : "watch",
       "role" : "quickLook",
       "scale" : "2x",
@@ -55,6 +56,7 @@
       "subtype" : "38mm"
     },
     {
+      "filename" : "watch196w.png",
       "idiom" : "watch",
       "role" : "quickLook",
       "scale" : "2x",
@@ -62,6 +64,7 @@
       "subtype" : "42mm"
     },
     {
+      "filename" : "watch216w.png",
       "idiom" : "watch",
       "role" : "quickLook",
       "scale" : "2x",
@@ -69,6 +72,7 @@
       "subtype" : "44mm"
     },
     {
+      "filename" : "watch.png",
       "idiom" : "watch-marketing",
       "scale" : "1x",
       "size" : "1024x1024"
