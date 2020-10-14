@@ -10,12 +10,11 @@ struct Usage: View {
             VStack {
                 Image(systemName: "eyeglasses")
                     .font(Font.title.bold())
-                    .padding()
                     .foregroundColor(.accentColor)
                 Spacer()
                     .frame(height: 20)
                 Chart(values: delegate.chart)
-                    .frame(height: 80)
+                    .frame(height: 100)
                 HStack {
                     Text(verbatim: since)
                         .font(.footnote)
@@ -27,7 +26,7 @@ struct Usage: View {
                 }
             }.padding()
             Spacer()
-                .frame(height: 10)
+                .frame(height: 20)
             Button {
                 alert = true
             } label: {
