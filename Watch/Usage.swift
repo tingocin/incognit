@@ -2,39 +2,66 @@ import SwiftUI
 
 struct Usage: View {
     @ObservedObject var delegate: Delegate
+    @State private var since = ""
+    @State private var alert = false
     
     var body: some View {
-        NavigationView {
-            List {
-                VStack {
+        ScrollView {
+            VStack {
+                Image(systemName: "eyeglasses")
+                    .font(Font.title.bold())
+                    .padding()
+                    .foregroundColor(.accentColor)
+                Spacer()
+                    .frame(height: 20)
+                Chart(values: delegate.chart)
+                    .frame(height: 80)
+                HStack {
+                    Text(verbatim: since)
+                        .font(.footnote)
+                        .foregroundColor(.secondary)
                     Spacer()
-                        .frame(height: 10)
-                    Chart(values: delegate.chart)
-                        .frame(height: 100)
+                    Text("Now")
+                        .font(.footnote)
+                        .foregroundColor(.secondary)
+                }
+            }.padding()
+            Spacer()
+                .frame(height: 10)
+            Button {
+                alert = true
+            } label: {
+                ZStack {
+                    RoundedRectangle(cornerRadius: 8)
+                        .foregroundColor(.accentColor)
                     HStack {
-                        Text(verbatim: delegate.first)
-                            .font(.footnote)
-                            .foregroundColor(.secondary)
-                        Spacer()
-                        Text("Now")
-                            .font(.footnote)
-                            .foregroundColor(.secondary)
-                    }
-                    Spacer()
-                        .frame(height: 10)
-                }
-                Section {
-                    Button {
-                        withAnimation(.easeInOut(duration: 1)) {
-//                            session.forget()
-                        }
-                        HTTPCookieStorage.shared.removeCookies(since: .distantPast)
-                    } label: {
-                        Text("Forget everything")
+                        Text("Forget")
                             .font(.headline)
-                    }.foregroundColor(.primary)
-                }
+                            .padding()
+                        Spacer()
+                        Image(systemName: "flame")
+                            .padding()
+                    }.padding(.horizontal)
+                }.contentShape(Rectangle())
+            }.alert(isPresented: $alert) {
+                Alert(title: .init("Forget everything?"), primaryButton: .default(.init("Cancel")), secondaryButton: .destructive(.init("Forget")) {
+                    delegate.forget()
+                })
             }
+            .buttonStyle(PlainButtonStyle())
+            .foregroundColor(.primary)
+            .padding()
         }
+        .onAppear(perform: update)
+        .onChange(of: delegate.chart) { _ in
+            update()
+        }
+    }
+    
+    private func update() {
+        let formatter = DateComponentsFormatter()
+        formatter.allowedUnits = [.day, .hour, .minute]
+        formatter.unitsStyle = .short
+        since = formatter.string(from: delegate.since, to: .init())!
     }
 }

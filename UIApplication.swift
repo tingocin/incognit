@@ -1,5 +1,6 @@
 import UIKit
 import StoreKit
+import WebKit
 
 extension UIApplication {
     func appearance() {
@@ -22,5 +23,10 @@ extension UIApplication {
     
     func settings() {
         open(URL(string: Self.openSettingsURLString)!)
+    }
+    
+    func forget() {
+        HTTPCookieStorage.shared.removeCookies(since: .distantPast)
+        WKWebsiteDataStore.default().removeData(ofTypes: WKWebsiteDataStore.allWebsiteDataTypes(), modifiedSince: .distantPast) { }
     }
 }

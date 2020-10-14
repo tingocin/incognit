@@ -17,6 +17,7 @@
 		CE1720A12537080A003D5B30 /* Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0A1F0C252499F400983D41 /* Shared.swift */; };
 		CE1720A62537091E003D5B30 /* Shared.Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0A1F1325249A6300983D41 /* Shared.Item.swift */; };
 		CE1720B5253709DD003D5B30 /* Shared.Browse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1720AB253709C7003D5B30 /* Shared.Browse.swift */; };
+		CE1720DD25370D3A003D5B30 /* Shared.Chart.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1720CB25370BE2003D5B30 /* Shared.Chart.swift */; };
 		CE2194792526236B00CED077 /* Field.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2194782526236B00CED077 /* Field.swift */; };
 		CE21947D252624F600CED077 /* Field.Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE21947C252624F600CED077 /* Field.Coordinator.swift */; };
 		CE2F01C6252C71DB00C14302 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CE2F01C5252C71DB00C14302 /* Settings.bundle */; };
@@ -130,11 +131,13 @@
 		CE02488A25273014005DBB9C /* Control.State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Control.State.swift; sourceTree = "<group>"; };
 		CE0A1F022524979E00983D41 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		CE0A1F062524996600983D41 /* incognit.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = incognit.entitlements; sourceTree = "<group>"; };
-		CE0A1F092524999100983D41 /* BrowseExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BrowseExtension.entitlements; sourceTree = "<group>"; };
+		CE0A1F092524999100983D41 /* browse.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = browse.entitlements; sourceTree = "<group>"; };
 		CE0A1F0C252499F400983D41 /* Shared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shared.swift; sourceTree = "<group>"; };
 		CE0A1F1325249A6300983D41 /* Shared.Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shared.Item.swift; sourceTree = "<group>"; };
 		CE17208A25370738003D5B30 /* Shared.Timeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shared.Timeline.swift; sourceTree = "<group>"; };
 		CE1720AB253709C7003D5B30 /* Shared.Browse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shared.Browse.swift; sourceTree = "<group>"; };
+		CE1720BE25370AD6003D5B30 /* watch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = watch.entitlements; sourceTree = "<group>"; };
+		CE1720CB25370BE2003D5B30 /* Shared.Chart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shared.Chart.swift; sourceTree = "<group>"; };
 		CE2194782526236B00CED077 /* Field.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Field.swift; sourceTree = "<group>"; };
 		CE21947C252624F600CED077 /* Field.Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Field.Coordinator.swift; sourceTree = "<group>"; };
 		CE25B42825277BC80021900A /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -252,8 +255,9 @@
 			isa = PBXGroup;
 			children = (
 				CE2F01C5252C71DB00C14302 /* Settings.bundle */,
-				CE0A1F092524999100983D41 /* BrowseExtension.entitlements */,
+				CE0A1F092524999100983D41 /* browse.entitlements */,
 				CE0A1F062524996600983D41 /* incognit.entitlements */,
+				CE1720BE25370AD6003D5B30 /* watch.entitlements */,
 				CE25B42825277BC80021900A /* README.md */,
 				CEA2F683252344DE00DDE7B4 /* Info.plist */,
 				CEA2F689252344DE00DDE7B4 /* Bar.swift */,
@@ -277,6 +281,7 @@
 				CEA2F670252344DE00DDE7B4 /* Session.swift */,
 				CEA2F685252344DE00DDE7B4 /* Settings.swift */,
 				CE1720AB253709C7003D5B30 /* Shared.Browse.swift */,
+				CE1720CB25370BE2003D5B30 /* Shared.Chart.swift */,
 				CE0A1F1325249A6300983D41 /* Shared.Item.swift */,
 				CEEC19D22535F1F400B03A02 /* Shared.Key.swift */,
 				CE0A1F0C252499F400983D41 /* Shared.swift */,
@@ -525,6 +530,7 @@
 				CE0A1F1825249AD300983D41 /* Shared.swift in Sources */,
 				CEBC47682527502800ED45FF /* Detail.Item.swift in Sources */,
 				CE21947D252624F600CED077 /* Field.Coordinator.swift in Sources */,
+				CE1720DD25370D3A003D5B30 /* Shared.Chart.swift in Sources */,
 				CEA2F698252344DE00DDE7B4 /* Detail.swift in Sources */,
 				CEA2F695252344DE00DDE7B4 /* Tools.swift in Sources */,
 				CEF283672531C97C008D2594 /* WKUserContentController.swift in Sources */,
@@ -583,7 +589,7 @@
 				IBSC_MODULE = watch_Extension;
 				INFOPLIST_FILE = Watch/InfoWatch.plist;
 				MARKETING_VERSION = 17;
-				PRODUCT_BUNDLE_IDENTIFIER = incognit.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = incognit.watch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -604,7 +610,7 @@
 				IBSC_MODULE = watch_Extension;
 				INFOPLIST_FILE = Watch/InfoWatch.plist;
 				MARKETING_VERSION = 17;
-				PRODUCT_BUNDLE_IDENTIFIER = incognit.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = incognit.watch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -616,6 +622,7 @@
 		CED485F92535DBE500CDDA68 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = watch.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_TEAM = 7AMWG3RLHN;
@@ -626,7 +633,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 17;
-				PRODUCT_BUNDLE_IDENTIFIER = incognit.watchkitapp.watchkitextension;
+				PRODUCT_BUNDLE_IDENTIFIER = incognit.watch.extension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -638,6 +645,7 @@
 		CED485FA2535DBE500CDDA68 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = watch.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_TEAM = 7AMWG3RLHN;
@@ -648,7 +656,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 17;
-				PRODUCT_BUNDLE_IDENTIFIER = incognit.watchkitapp.watchkitextension;
+				PRODUCT_BUNDLE_IDENTIFIER = incognit.watch.extension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -662,7 +670,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_ENTITLEMENTS = BrowseExtension.entitlements;
+				CODE_SIGN_ENTITLEMENTS = browse.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_TEAM = 7AMWG3RLHN;
@@ -685,7 +693,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_ENTITLEMENTS = BrowseExtension.entitlements;
+				CODE_SIGN_ENTITLEMENTS = browse.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_TEAM = 7AMWG3RLHN;

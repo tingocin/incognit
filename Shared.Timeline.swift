@@ -3,7 +3,7 @@ import WidgetKit
 extension Shared {
     struct Timeline: TimelineEntry {
         static var latest: Self {
-            .init(items: Shared.get(.history).flatMap { $0 as? Data }.flatMap { try? JSONDecoder().decode([Item].self, from: $0) } ?? [])
+            .init(items: Shared.history.flatMap { try? JSONDecoder().decode([Item].self, from: $0) } ?? [])
         }
         
         static let empty = Self(items: [])

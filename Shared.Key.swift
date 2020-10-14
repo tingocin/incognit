@@ -5,6 +5,7 @@ extension Shared {
         case
         history,
         chart,
-        first
+        since,
+        forget
     }
 }

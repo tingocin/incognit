@@ -1,11 +1,8 @@
 import SwiftUI
-import WebKit
 
 struct Usage: View {
     @Binding var session: Session
     @Binding var visible: Bool
-    @State private var values = [CGFloat]()
-    @State private var first = ""
     
     var body: some View {
         NavigationView {
@@ -13,10 +10,10 @@ struct Usage: View {
                 VStack {
                     Spacer()
                         .frame(height: 10)
-                    Chart(values: values)
+                    Chart(values: Shared.chart)
                         .frame(height: 140)
                     HStack {
-                        Text(verbatim: first)
+                        Text(Shared.since, style: .relative)
                             .font(.footnote)
                             .foregroundColor(.secondary)
                         Spacer()
@@ -32,12 +29,17 @@ struct Usage: View {
                         withAnimation(.easeInOut(duration: 1)) {
                             session.forget()
                         }
-                        HTTPCookieStorage.shared.removeCookies(since: .distantPast)
-                        WKWebsiteDataStore.default().removeData(ofTypes: WKWebsiteDataStore.allWebsiteDataTypes(), modifiedSince: .distantPast) { }
+                        UIApplication.shared.forget()
                         visible = false
                     } label: {
-                        Text("Forget everything")
-                            .font(.headline)
+                        HStack {
+                            Text("Forget")
+                                .font(.headline)
+                                .padding(.leading)
+                            Spacer()
+                            Image(systemName: "flame")
+                                .padding(.trailing)
+                        }
                     }.foregroundColor(.primary)
                 }
                 Section(footer:
@@ -55,13 +57,5 @@ struct Usage: View {
             .navigationBarTitle("Usage", displayMode: .inline)
         }
         .navigationViewStyle(StackNavigationViewStyle())
-        .onAppear {
-            (Shared.get(.chart) as? [CGFloat]).map {
-                values = $0
-            }
-            (Shared.get(.first) as? String).map {
-                first = $0
-            }
-        }
     }
 }

@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct Chart: View {
-    let values: [CGFloat]
+    let values: [Double]
     
     var body: some View {
         ZStack {
@@ -10,7 +10,7 @@ struct Chart: View {
             Pattern()
                 .stroke(Color.secondary, style: .init(lineWidth: 1, lineCap: .round, dash: [1, 4]))
             Shade(values: values)
-                .fill(Color.accentColor.opacity(0.3))
+                .fill(Color.accentColor.opacity(0.4))
             Road(values: values)
                 .stroke(Color.accentColor, style: .init(lineWidth: 2, lineCap: .round))
             ForEach(0 ..< values.count, id: \.self) {
@@ -53,14 +53,14 @@ private struct Pattern: Shape {
 }
 
 private struct Shade: Shape {
-    let values: [CGFloat]
+    let values: [Double]
     
     func path(in rect: CGRect) -> Path {
         .init {
             if !values.isEmpty {
                 $0.move(to: .init(x: 0, y: rect.maxY))
                 $0.addLines(values.enumerated().map {
-                    .init(x: rect.maxX / .init(values.count - 1) * .init($0.0), y: rect.maxY - (rect.maxY * $0.1))
+                    .init(x: Double(rect.maxX) / .init(values.count - 1) * .init($0.0), y: .init(rect.maxY) - (.init(rect.maxY) * $0.1))
                 })
                 $0.addLine(to: .init(x: rect.maxX, y: rect.maxY))
                 $0.addLine(to: .init(x: 0, y: rect.maxY))
@@ -71,14 +71,14 @@ private struct Shade: Shape {
 }
 
 private struct Road: Shape {
-    let values: [CGFloat]
-    
+    let values: [Double]
+
     func path(in rect: CGRect) -> Path {
         .init {
             $0.move(to: .init(x: 0, y: rect.maxY))
             if !values.isEmpty {
                 $0.addLines(values.enumerated().map {
-                    .init(x: rect.maxX / .init(values.count - 1) * .init($0.0), y: rect.maxY - (rect.maxY * $0.1))
+                    .init(x: Double(rect.maxX) / .init(values.count - 1) * .init($0.0), y: .init(rect.maxY) - (.init(rect.maxY) * $0.1))
                 })
             } else {
                 $0.addLine(to: .init(x: rect.maxX, y: rect.maxY))
@@ -88,13 +88,13 @@ private struct Road: Shape {
 }
 
 private struct Dot: Shape {
-    let y: CGFloat
+    let y: Double
     let index: Int
     let count: Int
-    
+
     func path(in rect: CGRect) -> Path {
         .init {
-            $0.addArc(center: .init(x: rect.maxX / .init(count - 1) * .init(index), y: rect.maxY - (rect.maxY * y)), radius: 5, startAngle: .zero, endAngle: .init(radians: .pi * 2), clockwise: true)
+            $0.addArc(center: .init(x: Double(rect.maxX) / .init(count - 1) * .init(index), y: .init(rect.maxY) - (.init(rect.maxY) * y)), radius: 5, startAngle: .zero, endAngle: .init(radians: .pi * 2), clockwise: true)
         }
     }
 }

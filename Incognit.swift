@@ -18,6 +18,10 @@ import WatchConnectivity
             }
             .background(Color(.secondarySystemBackground).edgesIgnoringSafeArea(.all))
             .onOpenURL(perform: open)
+            .onReceive(delegate.forget) {
+                session.forget()
+                UIApplication.shared.forget()
+            }
         }.onChange(of: phase) {
             if $0 == .active {
                 if session.page == nil {
