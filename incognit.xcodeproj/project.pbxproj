@@ -10,9 +10,13 @@
 		CE02488B25273014005DBB9C /* Control.State.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE02488A25273014005DBB9C /* Control.State.swift */; };
 		CE0A1F032524979E00983D41 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE0A1F022524979E00983D41 /* Media.xcassets */; };
 		CE0A1F0E252499F400983D41 /* Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0A1F0C252499F400983D41 /* Shared.swift */; };
-		CE0A1F1425249A6300983D41 /* Shared.Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0A1F1325249A6300983D41 /* Shared.Item.swift */; };
 		CE0A1F1525249A6300983D41 /* Shared.Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0A1F1325249A6300983D41 /* Shared.Item.swift */; };
 		CE0A1F1825249AD300983D41 /* Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0A1F0C252499F400983D41 /* Shared.swift */; };
+		CE17208B25370738003D5B30 /* Shared.Timeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE17208A25370738003D5B30 /* Shared.Timeline.swift */; };
+		CE17209C25370806003D5B30 /* Shared.Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEC19D22535F1F400B03A02 /* Shared.Key.swift */; };
+		CE1720A12537080A003D5B30 /* Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0A1F0C252499F400983D41 /* Shared.swift */; };
+		CE1720A62537091E003D5B30 /* Shared.Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0A1F1325249A6300983D41 /* Shared.Item.swift */; };
+		CE1720B5253709DD003D5B30 /* Shared.Browse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1720AB253709C7003D5B30 /* Shared.Browse.swift */; };
 		CE2194792526236B00CED077 /* Field.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2194782526236B00CED077 /* Field.swift */; };
 		CE21947D252624F600CED077 /* Field.Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE21947C252624F600CED077 /* Field.Coordinator.swift */; };
 		CE2F01C6252C71DB00C14302 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CE2F01C5252C71DB00C14302 /* Settings.bundle */; };
@@ -129,6 +133,8 @@
 		CE0A1F092524999100983D41 /* BrowseExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BrowseExtension.entitlements; sourceTree = "<group>"; };
 		CE0A1F0C252499F400983D41 /* Shared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shared.swift; sourceTree = "<group>"; };
 		CE0A1F1325249A6300983D41 /* Shared.Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shared.Item.swift; sourceTree = "<group>"; };
+		CE17208A25370738003D5B30 /* Shared.Timeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shared.Timeline.swift; sourceTree = "<group>"; };
+		CE1720AB253709C7003D5B30 /* Shared.Browse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shared.Browse.swift; sourceTree = "<group>"; };
 		CE2194782526236B00CED077 /* Field.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Field.swift; sourceTree = "<group>"; };
 		CE21947C252624F600CED077 /* Field.Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Field.Coordinator.swift; sourceTree = "<group>"; };
 		CE25B42825277BC80021900A /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -270,9 +276,11 @@
 				CEA2F686252344DE00DDE7B4 /* Progress.swift */,
 				CEA2F670252344DE00DDE7B4 /* Session.swift */,
 				CEA2F685252344DE00DDE7B4 /* Settings.swift */,
+				CE1720AB253709C7003D5B30 /* Shared.Browse.swift */,
 				CE0A1F1325249A6300983D41 /* Shared.Item.swift */,
 				CEEC19D22535F1F400B03A02 /* Shared.Key.swift */,
 				CE0A1F0C252499F400983D41 /* Shared.swift */,
+				CE17208A25370738003D5B30 /* Shared.Timeline.swift */,
 				CEA2F682252344DE00DDE7B4 /* Tab.swift */,
 				CEA2F67B252344DE00DDE7B4 /* Tools.swift */,
 				CEA2F67C252344DE00DDE7B4 /* UIApplication.swift */,
@@ -469,7 +477,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE1720A12537080A003D5B30 /* Shared.swift in Sources */,
 				CEEC19F12535F5D300B03A02 /* Delegate.swift in Sources */,
+				CE17209C25370806003D5B30 /* Shared.Key.swift in Sources */,
 				CED486242535E50D00CDDA68 /* Usage.swift in Sources */,
 				CED4861F2535E50900CDDA68 /* Incognit.swift in Sources */,
 				CEA63E862535E5EB00CFCECF /* Chart.swift in Sources */,
@@ -483,6 +493,7 @@
 				CE6B778F25289EB700B25A50 /* Provider.swift in Sources */,
 				CEEC19DD2535F20A00B03A02 /* Shared.Key.swift in Sources */,
 				CE0A1F0E252499F400983D41 /* Shared.swift in Sources */,
+				CE17208B25370738003D5B30 /* Shared.Timeline.swift in Sources */,
 				CE6B779825289F2E00B25A50 /* Log.swift in Sources */,
 				CE0A1F1525249A6300983D41 /* Shared.Item.swift in Sources */,
 				CEDC323A2523870A003DF67A /* Browse.swift in Sources */,
@@ -496,11 +507,12 @@
 				CEA2F69E252344DE00DDE7B4 /* Progress.swift in Sources */,
 				CEA2F6A1252344DE00DDE7B4 /* Bar.swift in Sources */,
 				CE2194792526236B00CED077 /* Field.swift in Sources */,
-				CE0A1F1425249A6300983D41 /* Shared.Item.swift in Sources */,
 				CE02488B25273014005DBB9C /* Control.State.swift in Sources */,
 				CEA2F69C252344DE00DDE7B4 /* Book.swift in Sources */,
+				CE1720B5253709DD003D5B30 /* Shared.Browse.swift in Sources */,
 				CEA63E912535EB7400CFCECF /* Delegate.swift in Sources */,
 				CEA2F696252344DE00DDE7B4 /* UIApplication.swift in Sources */,
+				CE1720A62537091E003D5B30 /* Shared.Item.swift in Sources */,
 				CEA2F68D252344DE00DDE7B4 /* Web.Coordinator.swift in Sources */,
 				CEF9AD062529E3A6005305EB /* Chart.swift in Sources */,
 				CEA2F69D252344DE00DDE7B4 /* Settings.swift in Sources */,
@@ -566,9 +578,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_TEAM = 7AMWG3RLHN;
 				IBSC_MODULE = watch_Extension;
 				INFOPLIST_FILE = Watch/InfoWatch.plist;
+				MARKETING_VERSION = 17;
 				PRODUCT_BUNDLE_IDENTIFIER = incognit.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -585,9 +599,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_TEAM = 7AMWG3RLHN;
 				IBSC_MODULE = watch_Extension;
 				INFOPLIST_FILE = Watch/InfoWatch.plist;
+				MARKETING_VERSION = 17;
 				PRODUCT_BUNDLE_IDENTIFIER = incognit.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -601,6 +617,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_TEAM = 7AMWG3RLHN;
 				INFOPLIST_FILE = Watch/InfoWatchExtension.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -608,6 +625,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
+				MARKETING_VERSION = 17;
 				PRODUCT_BUNDLE_IDENTIFIER = incognit.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
@@ -621,6 +639,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_TEAM = 7AMWG3RLHN;
 				INFOPLIST_FILE = Watch/InfoWatchExtension.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -628,6 +647,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
+				MARKETING_VERSION = 17;
 				PRODUCT_BUNDLE_IDENTIFIER = incognit.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
@@ -644,7 +664,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = BrowseExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 16;
+				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_TEAM = 7AMWG3RLHN;
 				INFOPLIST_FILE = Browse/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -652,7 +672,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 16;
+				MARKETING_VERSION = 17;
 				PRODUCT_BUNDLE_IDENTIFIER = incognit.browse;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -667,7 +687,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = BrowseExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 16;
+				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_TEAM = 7AMWG3RLHN;
 				INFOPLIST_FILE = Browse/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -675,7 +695,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 16;
+				MARKETING_VERSION = 17;
 				PRODUCT_BUNDLE_IDENTIFIER = incognit.browse;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -817,14 +837,14 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = incognit.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 16;
+				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_TEAM = 7AMWG3RLHN;
 				INFOPLIST_FILE = Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 16;
+				MARKETING_VERSION = 17;
 				PRODUCT_BUNDLE_IDENTIFIER = incognit;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -840,14 +860,14 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = incognit.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 16;
+				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_TEAM = 7AMWG3RLHN;
 				INFOPLIST_FILE = Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 16;
+				MARKETING_VERSION = 17;
 				PRODUCT_BUNDLE_IDENTIFIER = incognit;
 				SWIFT_VERSION = 5.0;
 			};

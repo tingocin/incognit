@@ -3,7 +3,7 @@ import WatchConnectivity
 
 @main struct Incognit: App {
     @Environment(\.scenePhase) private var phase
-    let delegate = Delegate()
+    @ObservedObject var delegate = Delegate()
     
     var body: some Scene {
         WindowGroup {

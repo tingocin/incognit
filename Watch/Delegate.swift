@@ -6,7 +6,9 @@ final class Delegate: NSObject, ObservableObject, WCSessionDelegate {
     @Published private(set) var chart = [CGFloat]()
     @Published private(set) var first = ""
     
-    func session(_: WCSession, activationDidCompleteWith: WCSessionActivationState, error: Error?) { }
+    func session(_ a: WCSession, activationDidCompleteWith: WCSessionActivationState, error: Error?) {
+        print(a.applicationContext)
+    }
 
     func session(_: WCSession, didReceiveApplicationContext: [String: Any]) {
         DispatchQueue.main.async { [weak self] in
@@ -19,5 +21,10 @@ final class Delegate: NSObject, ObservableObject, WCSessionDelegate {
                 print($0)
             }
         }
+    }
+    
+    func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
+        print("message")
+        print(message)
     }
 }
