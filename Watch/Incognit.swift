@@ -2,8 +2,7 @@ import SwiftUI
 import WatchConnectivity
 
 @main struct Incognit: App {
-    @Environment(\.scenePhase) private var phase
-    @ObservedObject var delegate = Delegate()
+    private let delegate = Delegate()
     
     var body: some Scene {
         WindowGroup {
