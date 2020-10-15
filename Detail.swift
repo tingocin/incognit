@@ -55,18 +55,22 @@ struct Detail: View {
                         }
                     }.padding(.horizontal)
                     Button {
-                        trackers = true
+                        if User.trackers {
+                            trackers = true
+                        }
                     } label: {
                         ZStack {
                             RoundedRectangle(cornerRadius: 8)
                                 .frame(height: 50)
-                                .foregroundColor(.accentColor)
+                                .foregroundColor(User.trackers ? .accentColor : .clear)
                             HStack {
                                 Text("Tracker blocked")
                                     .font(.footnote)
                                 Spacer()
-                                Text(verbatim: "\(session.state.blocked.count)")
-                                    .font(Font.footnote.bold())
+                                if User.trackers {
+                                    Text(verbatim: "\(session.state.blocked.count)")
+                                        .font(Font.footnote.bold())
+                                }
                                 Image(systemName: User.trackers ? "shield.lefthalf.fill" : "shield.lefthalf.fill.slash")
                             }.padding()
                         }.contentShape(Rectangle())
