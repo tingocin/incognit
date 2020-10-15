@@ -17,7 +17,7 @@ final class Delegate: NSObject, ObservableObject, WCSessionDelegate {
     }
     
     func forget() {
-        guard WCSession.isSupported() && WCSession.default.isReachable && WCSession.default.isCompanionAppInstalled else { return }
+        guard WCSession.isSupported() && WCSession.default.activationState == .activated && WCSession.default.isReachable && WCSession.default.isCompanionAppInstalled else { return }
         WCSession.default.sendMessage([Shared.Key.forget.rawValue : true], replyHandler: nil, errorHandler: nil)
         Shared.since = .init()
         Shared.chart = []

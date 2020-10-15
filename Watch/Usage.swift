@@ -7,48 +7,49 @@ struct Usage: View {
     
     var body: some View {
         ScrollView {
-            VStack {
-                Image(systemName: "eyeglasses")
-                    .font(Font.title.bold())
-                    .foregroundColor(.accentColor)
+            Image(systemName: "eyeglasses")
+                .font(Font.title.bold())
+                .foregroundColor(.accentColor)
+                .padding()
+            Spacer()
+                .frame(height: 30)
+            Chart(values: delegate.chart)
+                .frame(height: 110)
+                .padding(.horizontal)
+            HStack {
+                Text(verbatim: since)
+                    .font(.footnote)
+                    .foregroundColor(.secondary)
                 Spacer()
-                    .frame(height: 20)
-                Chart(values: delegate.chart)
-                    .frame(height: 100)
-                HStack {
-                    Text(verbatim: since)
-                        .font(.footnote)
-                        .foregroundColor(.secondary)
-                    Spacer()
-                    Text("Now")
-                        .font(.footnote)
-                        .foregroundColor(.secondary)
-                }
-                Spacer()
-                    .frame(height: 20)
-                Button {
-                    alert = true
-                } label: {
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 8)
-                            .foregroundColor(.accentColor)
-                        HStack {
-                            Text("Forget")
-                                .font(.headline)
-                                .padding()
-                            Spacer()
-                            Image(systemName: "flame")
-                                .padding()
-                        }.padding(.horizontal)
-                    }.contentShape(Rectangle())
-                }.alert(isPresented: $alert) {
-                    Alert(title: .init("Forget everything?"), primaryButton: .default(.init("Cancel")), secondaryButton: .destructive(.init("Forget")) {
-                        delegate.forget()
-                    })
-                }
-                .buttonStyle(PlainButtonStyle())
-                .foregroundColor(.primary)
-            }.padding()
+                Text("Now")
+                    .font(.footnote)
+                    .foregroundColor(.secondary)
+            }.padding(.horizontal)
+            Spacer()
+                .frame(height: 30)
+            Button {
+                alert = true
+            } label: {
+                ZStack {
+                    RoundedRectangle(cornerRadius: 8)
+                        .foregroundColor(.accentColor)
+                    HStack {
+                        Text("Forget")
+                            .font(.headline)
+                            .padding()
+                        Spacer()
+                        Image(systemName: "flame")
+                            .padding()
+                    }.padding(.horizontal)
+                }.contentShape(Rectangle())
+            }.alert(isPresented: $alert) {
+                Alert(title: .init("Forget everything?"), primaryButton: .default(.init("Cancel")), secondaryButton: .destructive(.init("Forget")) {
+                    delegate.forget()
+                })
+            }
+            .buttonStyle(PlainButtonStyle())
+            .foregroundColor(.primary)
+            .padding()
         }
         .onAppear(perform: update)
         .onChange(of: delegate.chart) { _ in

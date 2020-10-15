@@ -19,6 +19,7 @@ import WatchConnectivity
             .background(Color(.secondarySystemBackground).edgesIgnoringSafeArea(.all))
             .onOpenURL(perform: open)
             .onReceive(delegate.forget) {
+                session.dismiss.send()
                 session.forget()
                 UIApplication.shared.forget()
             }
@@ -40,7 +41,7 @@ import WatchConnectivity
                     }
                 }
                 
-                if WCSession.isSupported() && WCSession.default.isWatchAppInstalled && WCSession.default.activationState != .activated {
+                if WCSession.isSupported() && WCSession.default.activationState != .activated {
                     WCSession.default.delegate = delegate
                     WCSession.default.activate()
                 }

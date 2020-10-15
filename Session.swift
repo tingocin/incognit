@@ -80,6 +80,7 @@ struct Session {
     }
     
     mutating func forget() {
+        page = nil
         pages.value = []
         save.send(nil)
         dispatch.async {
