@@ -27,9 +27,8 @@
 "Trackers" = "Trackers";
 "No trackers blocked" = "No trackers blocked";
 "Tracker blocked" = "Tracker blocked";
-"Open Privacy Settings" = "Open Privacy Settings";
-"Websites might want to access your location to provide maps or navigation.\n\nYou can enable access to your location when needed and then go to Privacy Settings and deny access, so that you can sure no one will be tracking you.\n\nOurselves we don't access your location at all." = "Websites might want to access your location to provide maps or navigation.\n\nYou can enable access to your location when needed and then go to Privacy Settings and deny access, so that you can sure no one will be tracking you.\n\nWe don't access your location at all.";
-"Location access granted, you might want to change this" = "Location access granted, you might want to change this";
-"Location access not determined" = "Location access not determined";
-"Location access denied" = "Location access denied";
+"Privacy Settings" = "Privacy Settings";
+"Websites may want to access your location to provide maps or navigation.\nYou can enable access to your location when needed and later remove the access.\nWe don't access your location at all." = "Websites may want to access your location to provide maps or navigation.\nYou can enable access to your location when needed and later remove the access.\nWe don't access your location at all.";
+"No one can access your location" = "No one can access your location";
+"Website can access your location" = "Website can access your location";
 "Privacy" = "Privacy";

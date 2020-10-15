@@ -43,20 +43,18 @@ struct Settings: View {
                             VStack {
                                 HStack {
                                     Text(location)
-                                        .foregroundColor(.primary)
+                                        .font(.headline)
                                     Spacer()
                                 }
-                                Spacer()
-                                    .frame(height: 6)
                                 HStack {
-                                    Text("Websites might want to access your location to provide maps or navigation.\n\nYou can enable access to your location when needed and then go to Privacy Settings and deny access, so that you can sure no one will be tracking you.\n\nWe don't access your location at all.")
+                                    Text("Websites may want to access your location to provide maps or navigation.\nYou can enable access to your location when needed and later remove the access.\nWe don't access your location at all.")
                                     Spacer()
                                 }
                             }) {
                     Button(action: {
                         UIApplication.shared.settings()
                     }) {
-                        Text("Open Privacy Settings")
+                        Text("Privacy Settings")
                             .foregroundColor(.primary)
                     }
                 }
@@ -74,9 +72,8 @@ struct Settings: View {
                                     }))
         }.onAppear {
             switch CLLocationManager().authorizationStatus {
-            case .denied, .restricted: location = "Location access denied"
-            case .notDetermined: location = "Location access not determined"
-            default: location = "Location access granted, you might want to change this"
+            case .denied, .restricted, .notDetermined: location = "No one can access your location"
+            default: location = "Website can access your location"
             }
         }.onChange(of: engine) {
             User.engine = $0
