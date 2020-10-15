@@ -10,9 +10,11 @@ final class Delegate: NSObject, WCSessionDelegate {
     func sessionDidDeactivate(_: WCSession) { }
     
     func session(_: WCSession, didReceiveMessage: [String : Any]) {
-        didReceiveMessage[Shared.Key.forget.rawValue].flatMap { $0 as? Bool }.map {
-            guard $0 else { return }
-            forget.send()
+        DispatchQueue.main.async { [weak self] in
+            didReceiveMessage[Shared.Key.forget.rawValue].flatMap { $0 as? Bool }.map {
+                guard $0 else { return }
+                self?.forget.send()
+            }
         }
     }
 }

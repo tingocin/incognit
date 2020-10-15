@@ -54,29 +54,27 @@ struct Detail: View {
                             }
                         }
                     }.padding(.horizontal)
-                    if User.trackers {
-                        Button {
-                            trackers = true
-                        } label: {
-                            ZStack {
-                                RoundedRectangle(cornerRadius: 8)
-                                    .frame(height: 50)
-                                    .foregroundColor(.accentColor)
-                                HStack {
-                                    Text("Tracker blocked")
-                                        .font(.footnote)
-                                    Spacer()
-                                    Text(verbatim: "\(session.state.blocked.count)")
-                                        .font(Font.footnote.bold())
-                                    Image(systemName: "shield.lefthalf.fill")
-                                }.padding()
-                            }.contentShape(Rectangle())
-                        }
-                        .foregroundColor(.white)
-                        .padding(.horizontal)
-                        .sheet(isPresented: $trackers) {
-                            Trackers(session: $session, visible: $trackers)
-                        }
+                    Button {
+                        trackers = true
+                    } label: {
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 8)
+                                .frame(height: 50)
+                                .foregroundColor(.accentColor)
+                            HStack {
+                                Text("Tracker blocked")
+                                    .font(.footnote)
+                                Spacer()
+                                Text(verbatim: "\(session.state.blocked.count)")
+                                    .font(Font.footnote.bold())
+                                Image(systemName: User.trackers ? "shield.lefthalf.fill" : "shield.lefthalf.fill.slash")
+                            }.padding()
+                        }.contentShape(Rectangle())
+                    }
+                    .foregroundColor(.white)
+                    .padding(.horizontal)
+                    .sheet(isPresented: $trackers) {
+                        Trackers(session: $session, visible: $trackers)
                     }
                     VStack {
                         if ({

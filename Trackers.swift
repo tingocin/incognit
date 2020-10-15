@@ -3,14 +3,22 @@ import SwiftUI
 struct Trackers: View {
     @Binding var session: Session
     @Binding var visible: Bool
+    @State private var trackers = [URL]()
     
     var body: some View {
         NavigationView {
             List {
-                ForEach(0 ..< session.state.blocked.count) {
-                    Text(session.state.blocked[$0].absoluteString)
+                if trackers.isEmpty {
+                    Text("No trackers blocked")
                         .font(.footnote)
                         .foregroundColor(.secondary)
+                        .padding()
+                } else {
+                    ForEach(0 ..< trackers.count) {
+                        Text(trackers[$0].absoluteString)
+                            .font(.footnote)
+                            .foregroundColor(.secondary)
+                    }
                 }
             }
             .navigationBarTitle("Trackers", displayMode: .inline)
@@ -23,6 +31,10 @@ struct Trackers: View {
                                             .frame(width: 40, height: 40)
                                             .contentShape(Rectangle())
                                     }))
-        }.navigationViewStyle(StackNavigationViewStyle())
+        }
+        .navigationViewStyle(StackNavigationViewStyle())
+        .onAppear {
+            trackers = session.state.blocked
+        }
     }
 }
