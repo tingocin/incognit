@@ -4,17 +4,12 @@ import Combine
 struct Session {
     weak var page: Page? {
         didSet {
-            forwards = false
-            backwards = false
-            progress = 0
+            state = .init()
         }
     }
     
-    var error: String?
-    var forwards = false
-    var backwards = false
     var typing = false
-    var progress = Double()
+    var state = State()
     let navigate = PassthroughSubject<URL, Never>()
     let backward = PassthroughSubject<Void, Never>()
     let forward = PassthroughSubject<Void, Never>()

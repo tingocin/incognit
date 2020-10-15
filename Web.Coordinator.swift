@@ -45,7 +45,7 @@ extension Web {
             }
             
             publisher(for: \.estimatedProgress).sink { [weak self] in
-                self?.view.session.progress = $0
+                self?.view.session.state.progress = $0
             }.store(in: &subs)
             
             publisher(for: \.title).sink { [weak self] in
@@ -64,11 +64,11 @@ extension Web {
             }.store(in: &subs)
             
             publisher(for: \.canGoBack).sink { [weak self] in
-                self?.view.session.backwards = $0
+                self?.view.session.state.backwards = $0
             }.store(in: &subs)
             
             publisher(for: \.canGoForward).sink { [weak self] in
-                self?.view.session.forwards = $0
+                self?.view.session.state.forwards = $0
             }.store(in: &subs)
             
             view.session.navigate.sink { [weak self] in
@@ -115,11 +115,11 @@ extension Web {
         }
         
         func webView(_: WKWebView, didStartProvisionalNavigation: WKNavigation!) {
-            view.session.error = nil
+            view.session.state.error = nil
         }
         
         func webView(_: WKWebView, didFinish: WKNavigation!) {
-            view.session.progress = 1
+            view.session.state.progress = 1
         }
         
         func webView(_: WKWebView, didFailProvisionalNavigation: WKNavigation!, withError: Error) {
@@ -135,12 +135,13 @@ extension Web {
                      .timedOut,
                      .secureConnectionFailed,
                      .serverCertificateUntrusted:
-                    view.session.error = error.localizedDescription
+                    view.session.state.error = error.localizedDescription
                 default: break
                 }
             } else if (withError as NSError).code == 101 {
-                view.session.error = withError.localizedDescription
+                view.session.state.error = withError.localizedDescription
             }
+            view.session.state.progress = 1
         }
         
         func webView(_: WKWebView, didReceive: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
@@ -170,7 +171,6 @@ extension Web {
                     decisionHandler(.cancel, preferences)
                 case .external:
                     decisionHandler(.cancel, preferences)
-                    self?.view.session.progress = 0
                     UIApplication.shared.open(decidePolicyFor.request.url!)
                 }
             }

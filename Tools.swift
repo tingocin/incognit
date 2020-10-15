@@ -18,13 +18,13 @@ struct Tools: View {
                 if session.page != nil {
                     HStack {
                         ZStack {
-                            Control.Circle(state: session.backwards ? .ready : .disabled, image: "chevron.left") {
+                            Control.Circle(state: session.state.backwards ? .ready : .disabled, image: "chevron.left") {
                                 session.resign.send()
                                 session.backward.send()
                             }
                             .offset(x: backwardX)
                             .opacity(spring ? 1 : 0)
-                            Control.Circle(state: session.forwards ? .ready : .disabled, image: "chevron.right") {
+                            Control.Circle(state: session.state.forwards ? .ready : .disabled, image: "chevron.right") {
                                 session.resign.send()
                                 session.forward.send()
                             }

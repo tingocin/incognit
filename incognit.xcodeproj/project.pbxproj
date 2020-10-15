@@ -23,6 +23,7 @@
 		CE2F01C6252C71DB00C14302 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CE2F01C5252C71DB00C14302 /* Settings.bundle */; };
 		CE6B778F25289EB700B25A50 /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6B778B25289EA700B25A50 /* Provider.swift */; };
 		CE6B779825289F2E00B25A50 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6B779425289EEC00B25A50 /* Log.swift */; };
+		CE8E7F9625388B0E00C8E4B2 /* Session.State.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8E7F9525388B0E00C8E4B2 /* Session.State.swift */; };
 		CEA2F68A252344DE00DDE7B4 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA2F670252344DE00DDE7B4 /* Session.swift */; };
 		CEA2F68B252344DE00DDE7B4 /* Control.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA2F671252344DE00DDE7B4 /* Control.swift */; };
 		CEA2F68C252344DE00DDE7B4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEA2F672252344DE00DDE7B4 /* Assets.xcassets */; };
@@ -144,6 +145,7 @@
 		CE2F01C5252C71DB00C14302 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		CE6B778B25289EA700B25A50 /* Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
 		CE6B779425289EEC00B25A50 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
+		CE8E7F9525388B0E00C8E4B2 /* Session.State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.State.swift; sourceTree = "<group>"; };
 		CEA2F670252344DE00DDE7B4 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		CEA2F671252344DE00DDE7B4 /* Control.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Control.swift; sourceTree = "<group>"; };
 		CEA2F672252344DE00DDE7B4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -278,6 +280,7 @@
 				CEA2F67A252344DE00DDE7B4 /* Incognit.swift */,
 				CEA2F679252344DE00DDE7B4 /* Page.swift */,
 				CEA2F686252344DE00DDE7B4 /* Progress.swift */,
+				CE8E7F9525388B0E00C8E4B2 /* Session.State.swift */,
 				CEA2F670252344DE00DDE7B4 /* Session.swift */,
 				CEA2F685252344DE00DDE7B4 /* Settings.swift */,
 				CE1720AB253709C7003D5B30 /* Shared.Browse.swift */,
@@ -536,6 +539,7 @@
 				CEF283672531C97C008D2594 /* WKUserContentController.swift in Sources */,
 				CEA2F68B252344DE00DDE7B4 /* Control.swift in Sources */,
 				CEEC19D32535F1F400B03A02 /* Shared.Key.swift in Sources */,
+				CE8E7F9625388B0E00C8E4B2 /* Session.State.swift in Sources */,
 				CEA2F697252344DE00DDE7B4 /* Book.Item.swift in Sources */,
 				CEA2F69A252344DE00DDE7B4 /* Tab.swift in Sources */,
 				CEA2F69F252344DE00DDE7B4 /* Control.Circle.swift in Sources */,
