@@ -6,5 +6,6 @@ extension Session {
         var forwards = false
         var backwards = false
         var progress = Double()
+        var blocked = [URL]()
     }
 }

@@ -50,7 +50,7 @@ struct Usage: View {
                         }.padding(.horizontal)
                     }.contentShape(Rectangle())
                 }
-                .foregroundColor(.primary)
+                .foregroundColor(.white)
                 .padding(.horizontal)
                 Spacer()
                     .frame(height: 20)

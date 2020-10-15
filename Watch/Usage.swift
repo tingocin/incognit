@@ -48,7 +48,7 @@ struct Usage: View {
                 })
             }
             .buttonStyle(PlainButtonStyle())
-            .foregroundColor(.primary)
+            .foregroundColor(.white)
             .padding()
         }
         .onAppear(perform: update)

@@ -169,6 +169,7 @@ extension Web {
                     decisionHandler(.allow, preferences)
                 case .deny:
                     decisionHandler(.cancel, preferences)
+                    self?.view.session.state.blocked.append(decidePolicyFor.request.url!)
                 case .external:
                     decisionHandler(.cancel, preferences)
                     UIApplication.shared.open(decidePolicyFor.request.url!)
