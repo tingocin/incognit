@@ -31,6 +31,6 @@
 		<string>com.apple.watchkit</string>
 	</dict>
 	<key>WKRunsIndependentlyOfCompanionApp</key>
-	<false/>
+	<true/>
 </dict>
 </plist>

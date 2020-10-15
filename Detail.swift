@@ -75,7 +75,7 @@ struct Detail: View {
                             }.padding()
                         }.contentShape(Rectangle())
                     }
-                    .foregroundColor(.white)
+                    .foregroundColor(User.trackers ? .white : .primary)
                     .padding(.horizontal)
                     .sheet(isPresented: $trackers) {
                         Trackers(session: $session, visible: $trackers)
