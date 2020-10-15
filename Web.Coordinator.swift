@@ -170,6 +170,7 @@ extension Web {
                     decisionHandler(.cancel, preferences)
                 case .external:
                     decisionHandler(.cancel, preferences)
+                    self?.view.session.progress = 0
                     UIApplication.shared.open(decidePolicyFor.request.url!)
                 }
             }
