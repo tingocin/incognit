@@ -6,11 +6,11 @@ struct Chart: View {
     var body: some View {
         ZStack {
             Base()
-                .stroke(Color.secondary, style: .init(lineWidth: 1, lineCap: .round))
+                .stroke(Color.accentColor, style: .init(lineWidth: 1, lineCap: .round))
             Pattern()
-                .stroke(Color.secondary, style: .init(lineWidth: 1, lineCap: .round, dash: [1, 4]))
+                .stroke(Color.accentColor, style: .init(lineWidth: 1, lineCap: .round, dash: [1, 4]))
             Shade(values: values)
-                .fill(Color.accentColor.opacity(0.4))
+                .fill(Color.accentColor.opacity(0.5))
             Road(values: values)
                 .stroke(Color.accentColor, style: .init(lineWidth: 2, lineCap: .round))
             ForEach(0 ..< values.count, id: \.self) {

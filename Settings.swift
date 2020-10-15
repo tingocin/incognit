@@ -60,19 +60,18 @@ struct Settings: View {
                             .foregroundColor(.primary)
                     }
                 }
-                Section(footer:
-                            HStack {
-                                Spacer()
-                                Control.Icon(image: "arrow.down.circle.fill", color: .accentColor, font: .title) {
-                                    visible = false
-                                }.padding()
-                                Spacer()
-                            }) {
-                    EmptyView()
-                }
             }
             .listStyle(GroupedListStyle())
             .navigationBarTitle("Settings", displayMode: .inline)
+            .navigationBarItems(trailing:
+                                    Button(action: {
+                                        visible = false
+                                    }, label: {
+                                        Image(systemName: "xmark")
+                                            .foregroundColor(.secondary)
+                                            .frame(width: 40, height: 40)
+                                            .contentShape(Rectangle())
+                                    }))
         }.onAppear {
             switch CLLocationManager().authorizationStatus {
             case .denied, .restricted: location = "Location access denied"
