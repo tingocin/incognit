@@ -24,32 +24,31 @@ struct Usage: View {
                         .font(.footnote)
                         .foregroundColor(.secondary)
                 }
+                Spacer()
+                    .frame(height: 20)
+                Button {
+                    alert = true
+                } label: {
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 8)
+                            .foregroundColor(.accentColor)
+                        HStack {
+                            Text("Forget")
+                                .font(.headline)
+                                .padding()
+                            Spacer()
+                            Image(systemName: "flame")
+                                .padding()
+                        }.padding(.horizontal)
+                    }.contentShape(Rectangle())
+                }.alert(isPresented: $alert) {
+                    Alert(title: .init("Forget everything?"), primaryButton: .default(.init("Cancel")), secondaryButton: .destructive(.init("Forget")) {
+                        delegate.forget()
+                    })
+                }
+                .buttonStyle(PlainButtonStyle())
+                .foregroundColor(.primary)
             }.padding()
-            Spacer()
-                .frame(height: 20)
-            Button {
-                alert = true
-            } label: {
-                ZStack {
-                    RoundedRectangle(cornerRadius: 8)
-                        .foregroundColor(.accentColor)
-                    HStack {
-                        Text("Forget")
-                            .font(.headline)
-                            .padding()
-                        Spacer()
-                        Image(systemName: "flame")
-                            .padding()
-                    }.padding(.horizontal)
-                }.contentShape(Rectangle())
-            }.alert(isPresented: $alert) {
-                Alert(title: .init("Forget everything?"), primaryButton: .default(.init("Cancel")), secondaryButton: .destructive(.init("Forget")) {
-                    delegate.forget()
-                })
-            }
-            .buttonStyle(PlainButtonStyle())
-            .foregroundColor(.primary)
-            .padding()
         }
         .onAppear(perform: update)
         .onChange(of: delegate.chart) { _ in

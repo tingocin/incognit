@@ -40,7 +40,7 @@ import WatchConnectivity
                     }
                 }
                 
-                if WCSession.isSupported() && WCSession.default.activationState != .activated {
+                if WCSession.isSupported() && WCSession.default.isWatchAppInstalled && WCSession.default.activationState != .activated {
                     WCSession.default.delegate = delegate
                     WCSession.default.activate()
                 }

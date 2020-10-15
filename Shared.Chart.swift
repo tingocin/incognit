@@ -23,7 +23,7 @@ extension Shared {
             since = .init(timeIntervalSince1970: initial)
         }
 
-        if WCSession.isSupported() && WCSession.default.isPaired && WCSession.default.isWatchAppInstalled {
+        if WCSession.isSupported() && WCSession.default.activationState == .activated && WCSession.default.isPaired && WCSession.default.isWatchAppInstalled {
             try? WCSession.default.updateApplicationContext([Shared.Key.chart.rawValue : chart, Shared.Key.since.rawValue : since])
         }
     }
