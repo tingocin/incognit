@@ -13,7 +13,7 @@ struct Book: View {
                     .frame(height: 5)
                 Text("incognit")
                     .font(.headline)
-            }.foregroundColor(.init(.quaternaryLabel))
+            }.foregroundColor(Color.accentColor.opacity(0.3))
             ScrollView {
                 HStack{
                     Spacer()
