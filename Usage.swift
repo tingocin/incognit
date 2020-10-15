@@ -55,7 +55,6 @@ struct Usage: View {
                 Spacer()
                     .frame(height: 20)
             }
-            .navigationViewStyle(StackNavigationViewStyle())
             .navigationBarTitle("Usage", displayMode: .inline)
             .navigationBarItems(trailing:
                                     Button(action: {
@@ -71,6 +70,6 @@ struct Usage: View {
             formatter.allowedUnits = [.day, .hour, .minute]
             formatter.unitsStyle = .short
             since = formatter.string(from: Shared.since, to: .init())!
-        }
+        }.navigationViewStyle(StackNavigationViewStyle())
     }
 }

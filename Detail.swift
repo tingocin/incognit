@@ -74,6 +74,9 @@ struct Detail: View {
                         }
                         .foregroundColor(.white)
                         .padding(.horizontal)
+                        .sheet(isPresented: $trackers) {
+                            Trackers(session: $session, visible: $trackers)
+                        }
                     }
                     VStack {
                         if ({
@@ -123,7 +126,6 @@ struct Detail: View {
                     }.opacity(done ? 1 : 0)
                 }
             }
-            .navigationViewStyle(StackNavigationViewStyle())
             .navigationBarTitle("Browsing", displayMode: .inline)
             .navigationBarItems(trailing:
                                     Button(action: {
@@ -136,7 +138,7 @@ struct Detail: View {
                                     }))
         }.onReceive(session.dismiss) {
             trackers = false
-        }
+        }.navigationViewStyle(StackNavigationViewStyle())
     }
     
     private func success() {
