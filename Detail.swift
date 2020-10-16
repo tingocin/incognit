@@ -64,7 +64,7 @@ struct Detail: View {
                                 .frame(height: 50)
                                 .foregroundColor(User.trackers ? .accentColor : .clear)
                             HStack {
-                                Text("Tracker blocked")
+                                Text("Trackers blocked")
                                     .font(.footnote)
                                 Spacer()
                                 if User.trackers {

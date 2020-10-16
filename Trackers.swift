@@ -3,7 +3,7 @@ import SwiftUI
 struct Trackers: View {
     @Binding var session: Session
     @Binding var visible: Bool
-    @State private var trackers = [URL]()
+    @State private var trackers = [String]()
     
     var body: some View {
         NavigationView {
@@ -15,7 +15,7 @@ struct Trackers: View {
                         .padding()
                 } else {
                     ForEach(0 ..< trackers.count) {
-                        Text(trackers[$0].absoluteString)
+                        Text(trackers[$0])
                             .font(.footnote)
                             .foregroundColor(.secondary)
                     }
@@ -34,7 +34,13 @@ struct Trackers: View {
         }
         .navigationViewStyle(StackNavigationViewStyle())
         .onAppear {
-            trackers = session.state.blocked
+            trackers = Set(session.state.blocked
+                            .filter { $0.scheme == "https" || $0.scheme == "http" }
+                            .map {
+                                $0.absoluteString.replacingOccurrences(of: "https://", with: "").replacingOccurrences(of: "http://", with: "")
+                            }.compactMap {
+                                $0.components(separatedBy: "/").first
+                            }).sorted()
         }
     }
 }
