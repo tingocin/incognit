@@ -26,14 +26,14 @@ extension Book {
                             HStack {
                                 Text(verbatim: page.url.absoluteString)
                                     .lineLimit(1)
-                                    .font(.caption2)
+                                    .font(.footnote)
                                     .foregroundColor(.init(.tertiaryLabel))
                                     .padding(.leading)
                                 Spacer()
                             }
                             HStack {
                                 Text(verbatim: date)
-                                    .font(.caption2)
+                                    .font(Font.caption2.bold())
                                     .foregroundColor(.init(.tertiaryLabel))
                                     .padding(.bottom)
                                     .padding(.leading)
