@@ -5,6 +5,8 @@ struct Bar: View {
     
     var body: some View {
         ZStack {
+            Rectangle()
+                .foregroundColor(.init(.sRGB, white: 0, opacity: 0.00001))
             RoundedRectangle(cornerRadius: 20)
                 .frame(height: 40)
                 .shadow(color: Color.black.opacity(0.6), radius: 3, x: -2, y: -2)
@@ -18,9 +20,9 @@ struct Bar: View {
                 .padding(.trailing)
                 .opacity(session.typing ? 1 : 0)
         }
+        .frame(width: session.typing ? 150 : 80, height: 70)
         .onTapGesture {
             session.type.send(nil)
         }
-        .frame(width: session.typing ? 150 : 80, height: 40)
     }
 }
