@@ -280,6 +280,7 @@
 				CEA2F688252344DE00DDE7B4 /* Control.Icon.swift */,
 				CE02488A25273014005DBB9C /* Control.State.swift */,
 				CEA2F671252344DE00DDE7B4 /* Control.swift */,
+				CE467C51253B1B8B00134EA7 /* Data.swift */,
 				CEA63E902535EB7400CFCECF /* Delegate.swift */,
 				CE467C33253B08ED00134EA7 /* Detail.Find.swift */,
 				CEBC47672527502800ED45FF /* Detail.Item.swift */,
@@ -304,7 +305,6 @@
 				CE17208A25370738003D5B30 /* Shared.Timeline.swift */,
 				CEA2F682252344DE00DDE7B4 /* Tab.swift */,
 				CEA2F67B252344DE00DDE7B4 /* Tools.swift */,
-				CE467C51253B1B8B00134EA7 /* Data.swift */,
 				CE8E7F9F2538930700C8E4B2 /* Trackers.swift */,
 				CEA2F67C252344DE00DDE7B4 /* UIApplication.swift */,
 				CEA2F675252344DE00DDE7B4 /* Usage.swift */,
@@ -608,11 +608,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_TEAM = 7AMWG3RLHN;
 				IBSC_MODULE = watch_Extension;
 				INFOPLIST_FILE = Watch/InfoWatch.plist;
-				MARKETING_VERSION = 19;
+				MARKETING_VERSION = 20;
 				PRODUCT_BUNDLE_IDENTIFIER = incognit.watch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -629,11 +629,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_TEAM = 7AMWG3RLHN;
 				IBSC_MODULE = watch_Extension;
 				INFOPLIST_FILE = Watch/InfoWatch.plist;
-				MARKETING_VERSION = 19;
+				MARKETING_VERSION = 20;
 				PRODUCT_BUNDLE_IDENTIFIER = incognit.watch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -648,7 +648,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = watch.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_TEAM = 7AMWG3RLHN;
 				INFOPLIST_FILE = Watch/InfoWatchExtension.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -656,7 +656,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 19;
+				MARKETING_VERSION = 20;
 				PRODUCT_BUNDLE_IDENTIFIER = incognit.watch.extension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
@@ -671,7 +671,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = watch.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_TEAM = 7AMWG3RLHN;
 				INFOPLIST_FILE = Watch/InfoWatchExtension.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -679,7 +679,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 19;
+				MARKETING_VERSION = 20;
 				PRODUCT_BUNDLE_IDENTIFIER = incognit.watch.extension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
@@ -696,7 +696,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = browse.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_TEAM = 7AMWG3RLHN;
 				INFOPLIST_FILE = Browse/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -704,7 +704,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 19;
+				MARKETING_VERSION = 20;
 				PRODUCT_BUNDLE_IDENTIFIER = incognit.browse;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -719,7 +719,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = browse.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_TEAM = 7AMWG3RLHN;
 				INFOPLIST_FILE = Browse/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -727,7 +727,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 19;
+				MARKETING_VERSION = 20;
 				PRODUCT_BUNDLE_IDENTIFIER = incognit.browse;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -869,14 +869,14 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = incognit.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_TEAM = 7AMWG3RLHN;
 				INFOPLIST_FILE = Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 19;
+				MARKETING_VERSION = 20;
 				PRODUCT_BUNDLE_IDENTIFIER = incognit;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -892,14 +892,14 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = incognit.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_TEAM = 7AMWG3RLHN;
 				INFOPLIST_FILE = Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 19;
+				MARKETING_VERSION = 20;
 				PRODUCT_BUNDLE_IDENTIFIER = incognit;
 				SWIFT_VERSION = 5.0;
 			};
