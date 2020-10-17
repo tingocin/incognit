@@ -26,6 +26,7 @@ struct Tab: View {
                 }.foregroundColor(.secondary)
             }
             Web(session: $session)
+                .opacity(session.state.error == nil ? 1 : 0)
         }
     }
 }
