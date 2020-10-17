@@ -3,6 +3,7 @@ import SwiftUI
 struct Detail: View {
     @Binding var session: Session
     @Binding var visible: Bool
+    @State private var trackers = false
     
     var body: some View {
         NavigationView {
@@ -10,8 +11,7 @@ struct Detail: View {
                 if session.page != nil {
                     Title(session: $session)
                     Find(session: $session, visible: $visible)
-                    Shield(session: $session)
-                    Options(session: $session, visible: $visible)
+                    Options(session: $session, trackers: $trackers, visible: $visible)
                 }
             }
             .navigationBarTitle("Browsing", displayMode: .inline)
@@ -24,8 +24,12 @@ struct Detail: View {
                                             .frame(width: 40, height: 40)
                                             .contentShape(Rectangle())
                                     }))
-        }.navigationViewStyle(StackNavigationViewStyle())
+        }
+        .navigationViewStyle(StackNavigationViewStyle())
+        .sheet(isPresented: $trackers) {
+            Trackers(session: $session, visible: $trackers)
+        }.onReceive(session.dismiss) {
+            trackers = false
+        }
     }
-    
-    
 }

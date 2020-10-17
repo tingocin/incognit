@@ -171,6 +171,7 @@ extension Web {
                 sub?.cancel()
                 switch $0 {
                 case .allow:
+                    print("allow \(decidePolicyFor.request.url!)")
                     preferences.allowsContentJavaScript = self?.javascript ?? false
                     decisionHandler(.allow, preferences)
                 case .deny:

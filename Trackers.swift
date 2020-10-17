@@ -9,10 +9,14 @@ struct Trackers: View {
         NavigationView {
             List {
                 if trackers.isEmpty {
-                    Text("No trackers blocked")
-                        .font(.footnote)
-                        .foregroundColor(.secondary)
-                        .padding()
+                    HStack {
+                        Spacer()
+                        Image(systemName: "shield.lefthalf.fill")
+                            .font(.largeTitle)
+                            .foregroundColor(.secondary)
+                            .padding()
+                        Spacer()
+                    }.padding(.vertical)
                 } else {
                     ForEach(0 ..< trackers.count) {
                         Text(trackers[$0])
