@@ -25,6 +25,7 @@
 		CE467C34253B08ED00134EA7 /* Detail.Find.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE467C33253B08ED00134EA7 /* Detail.Find.swift */; };
 		CE467C3A253B0A8600134EA7 /* Detail.Shield.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE467C39253B0A8600134EA7 /* Detail.Shield.swift */; };
 		CE467C44253B0B5000134EA7 /* Detail.Options.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE467C43253B0B5000134EA7 /* Detail.Options.swift */; };
+		CE467C52253B1B8B00134EA7 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE467C51253B1B8B00134EA7 /* Data.swift */; };
 		CE6B778F25289EB700B25A50 /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6B778B25289EA700B25A50 /* Provider.swift */; };
 		CE6B779825289F2E00B25A50 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6B779425289EEC00B25A50 /* Log.swift */; };
 		CE8E7F9625388B0E00C8E4B2 /* Session.State.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8E7F9525388B0E00C8E4B2 /* Session.State.swift */; };
@@ -152,6 +153,7 @@
 		CE467C33253B08ED00134EA7 /* Detail.Find.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Detail.Find.swift; sourceTree = "<group>"; };
 		CE467C39253B0A8600134EA7 /* Detail.Shield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Detail.Shield.swift; sourceTree = "<group>"; };
 		CE467C43253B0B5000134EA7 /* Detail.Options.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Detail.Options.swift; sourceTree = "<group>"; };
+		CE467C51253B1B8B00134EA7 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		CE6B778B25289EA700B25A50 /* Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
 		CE6B779425289EEC00B25A50 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		CE8E7F9525388B0E00C8E4B2 /* Session.State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.State.swift; sourceTree = "<group>"; };
@@ -305,6 +307,7 @@
 				CE17208A25370738003D5B30 /* Shared.Timeline.swift */,
 				CEA2F682252344DE00DDE7B4 /* Tab.swift */,
 				CEA2F67B252344DE00DDE7B4 /* Tools.swift */,
+				CE467C51253B1B8B00134EA7 /* Data.swift */,
 				CE8E7F9F2538930700C8E4B2 /* Trackers.swift */,
 				CEA2F67C252344DE00DDE7B4 /* UIApplication.swift */,
 				CEA2F675252344DE00DDE7B4 /* Usage.swift */,
@@ -558,6 +561,7 @@
 				CEA2F695252344DE00DDE7B4 /* Tools.swift in Sources */,
 				CEF283672531C97C008D2594 /* WKUserContentController.swift in Sources */,
 				CEA2F68B252344DE00DDE7B4 /* Control.swift in Sources */,
+				CE467C52253B1B8B00134EA7 /* Data.swift in Sources */,
 				CEEC19D32535F1F400B03A02 /* Shared.Key.swift in Sources */,
 				CE8E7F9625388B0E00C8E4B2 /* Session.State.swift in Sources */,
 				CEA2F697252344DE00DDE7B4 /* Book.Item.swift in Sources */,

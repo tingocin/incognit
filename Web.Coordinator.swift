@@ -95,7 +95,13 @@ extension Web {
             view.session.pdf.sink { [weak self] in
                 self?.createPDF {
                     if case .success(let data) = $0 {
-                        UIApplication.shared.share(data)
+                        guard var name = self?.view.session.page?.url.lastPathComponent.replacingOccurrences(of: "/", with: "") else { return }
+                        if name.isEmpty {
+                            name = "Page.pdf"
+                        } else if !name.hasSuffix(".pdf") {
+                            name = name.components(separatedBy: ".").dropLast().joined(separator: ".") + ".pdf"
+                        }
+                        UIApplication.shared.share(data.temporal(name))
                     }
                 }
             }.store(in: &subs)

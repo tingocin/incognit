@@ -32,9 +32,9 @@ extension Detail {
                 UIApplication.shared.share(session.page!.url)
             }
             Item(image: "square.and.arrow.down", text: "Download") {
-                let url = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(session.page!.url.lastPathComponent)
-                try? Data(contentsOf: session.page!.url).write(to: url, options: .atomic)
-                UIApplication.shared.share(url)
+                (try? Data(contentsOf: session.page!.url)).map { $0.temporal({
+                    $0.isEmpty ? "Page.webarchive" : $0
+                } (session.page!.url.lastPathComponent.replacingOccurrences(of: "/", with: ""))) }.map(UIApplication.shared.share)
             }
             Item(image: "printer", text: "Print") {
                 session.print.send()
