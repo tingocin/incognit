@@ -18,11 +18,9 @@ struct Bar: View {
                 .padding(.trailing)
                 .opacity(session.typing ? 1 : 0)
         }
-        .onTapGesture(perform: type)
+        .onTapGesture {
+            session.type.send(nil)
+        }
         .frame(width: session.typing ? 150 : 80, height: 40)
-    }
-    
-    private func type() {
-        session.type.send()
     }
 }

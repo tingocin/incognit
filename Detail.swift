@@ -94,6 +94,10 @@ struct Detail: View {
                                 }
                             }
                         }
+                        Item(image: "pencil", text: "Edit URL") {
+                            visible = false
+                            session.type.send(session.page!.url.absoluteString)
+                        }
                         Item(image: "doc.on.doc", text: "Copy URL") {
                             UIPasteboard.general.string = session.page!.url.absoluteString
                             success()

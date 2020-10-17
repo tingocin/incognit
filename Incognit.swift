@@ -73,7 +73,7 @@ import WatchConnectivity
             session.resign.send()
             session.browse(id: url.absoluteString.replacingOccurrences(of: "incognit-id://", with: ""))
         case "incognit-search":
-            session.type.send()
+            session.type.send(nil)
         default:
             session.resign.send()
             session.browse(url)

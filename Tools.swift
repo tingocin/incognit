@@ -110,6 +110,8 @@ struct Tools: View {
             detail = false
             usage = false
             settings = false
+        }.onReceive(session.type) { _ in
+            spring = false
         }
     }
 }

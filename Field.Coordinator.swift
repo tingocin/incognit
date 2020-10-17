@@ -30,6 +30,9 @@ extension Field {
             }.store(in: &subs)
             
             view.session.type.sink { [weak self] in
+                $0.map {
+                    self?.text = $0
+                }
                 self?.becomeFirstResponder()
             }.store(in: &subs)
         }
