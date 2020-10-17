@@ -7,12 +7,14 @@ struct Usage: View {
     
     var body: some View {
         ScrollView {
+            Spacer()
+                .frame(height: 20)
             Image(systemName: "eyeglasses")
                 .font(Font.title.bold())
                 .foregroundColor(.accentColor)
                 .padding()
             Spacer()
-                .frame(height: 30)
+                .frame(height: 50)
             Chart(values: delegate.chart)
                 .frame(height: 110)
                 .padding(.horizontal)
@@ -26,7 +28,7 @@ struct Usage: View {
                     .foregroundColor(.secondary)
             }.padding(.horizontal)
             Spacer()
-                .frame(height: 30)
+                .frame(height: 40)
             Button {
                 alert = true
             } label: {
@@ -36,10 +38,10 @@ struct Usage: View {
                     HStack {
                         Text("Forget")
                             .font(.headline)
-                            .padding()
+                            .padding(.vertical)
                         Spacer()
                         Image(systemName: "flame")
-                            .padding()
+                            .padding(.vertical)
                     }.padding(.horizontal)
                 }.contentShape(Rectangle())
             }.alert(isPresented: $alert) {
@@ -48,7 +50,7 @@ struct Usage: View {
                 })
             }
             .buttonStyle(PlainButtonStyle())
-            .foregroundColor(.white)
+            .foregroundColor(.black)
             .padding()
         }
         .onAppear(perform: update)

@@ -9,12 +9,12 @@ struct Usage: View {
         NavigationView {
             ScrollView {
                 Spacer()
-                    .frame(height: 50)
+                    .frame(height: 70)
                 Image(systemName: "eyeglasses")
                     .font(Font.largeTitle.bold())
                     .foregroundColor(.accentColor)
                 Spacer()
-                    .frame(height: 30)
+                    .frame(height: 50)
                 Chart(values: Shared.chart)
                     .frame(height: 200)
                     .padding(.horizontal)
@@ -43,14 +43,12 @@ struct Usage: View {
                         HStack {
                             Text("Forget")
                                 .font(.headline)
-                                .padding()
                             Spacer()
                             Image(systemName: "flame")
-                                .padding()
                         }.padding(.horizontal)
                     }.contentShape(Rectangle())
                 }
-                .foregroundColor(.white)
+                .foregroundColor(.black)
                 .padding(.horizontal)
                 Spacer()
                     .frame(height: 20)
