@@ -21,6 +21,10 @@
 		CE2194792526236B00CED077 /* Field.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2194782526236B00CED077 /* Field.swift */; };
 		CE21947D252624F600CED077 /* Field.Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE21947C252624F600CED077 /* Field.Coordinator.swift */; };
 		CE2F01C6252C71DB00C14302 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CE2F01C5252C71DB00C14302 /* Settings.bundle */; };
+		CE467C2E253B08B100134EA7 /* Detail.Title.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE467C2D253B08B100134EA7 /* Detail.Title.swift */; };
+		CE467C34253B08ED00134EA7 /* Detail.Find.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE467C33253B08ED00134EA7 /* Detail.Find.swift */; };
+		CE467C3A253B0A8600134EA7 /* Detail.Shield.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE467C39253B0A8600134EA7 /* Detail.Shield.swift */; };
+		CE467C44253B0B5000134EA7 /* Detail.Options.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE467C43253B0B5000134EA7 /* Detail.Options.swift */; };
 		CE6B778F25289EB700B25A50 /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6B778B25289EA700B25A50 /* Provider.swift */; };
 		CE6B779825289F2E00B25A50 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6B779425289EEC00B25A50 /* Log.swift */; };
 		CE8E7F9625388B0E00C8E4B2 /* Session.State.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8E7F9525388B0E00C8E4B2 /* Session.State.swift */; };
@@ -144,6 +148,10 @@
 		CE21947C252624F600CED077 /* Field.Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Field.Coordinator.swift; sourceTree = "<group>"; };
 		CE25B42825277BC80021900A /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		CE2F01C5252C71DB00C14302 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		CE467C2D253B08B100134EA7 /* Detail.Title.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Detail.Title.swift; sourceTree = "<group>"; };
+		CE467C33253B08ED00134EA7 /* Detail.Find.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Detail.Find.swift; sourceTree = "<group>"; };
+		CE467C39253B0A8600134EA7 /* Detail.Shield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Detail.Shield.swift; sourceTree = "<group>"; };
+		CE467C43253B0B5000134EA7 /* Detail.Options.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Detail.Options.swift; sourceTree = "<group>"; };
 		CE6B778B25289EA700B25A50 /* Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
 		CE6B779425289EEC00B25A50 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		CE8E7F9525388B0E00C8E4B2 /* Session.State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.State.swift; sourceTree = "<group>"; };
@@ -273,8 +281,12 @@
 				CE02488A25273014005DBB9C /* Control.State.swift */,
 				CEA2F671252344DE00DDE7B4 /* Control.swift */,
 				CEA63E902535EB7400CFCECF /* Delegate.swift */,
+				CE467C33253B08ED00134EA7 /* Detail.Find.swift */,
 				CEBC47672527502800ED45FF /* Detail.Item.swift */,
+				CE467C43253B0B5000134EA7 /* Detail.Options.swift */,
+				CE467C39253B0A8600134EA7 /* Detail.Shield.swift */,
 				CEA2F67E252344DE00DDE7B4 /* Detail.swift */,
+				CE467C2D253B08B100134EA7 /* Detail.Title.swift */,
 				CEA2F677252344DE00DDE7B4 /* Engine.swift */,
 				CE21947C252624F600CED077 /* Field.Coordinator.swift */,
 				CE2194782526236B00CED077 /* Field.swift */,
@@ -519,7 +531,9 @@
 				CEA2F6A1252344DE00DDE7B4 /* Bar.swift in Sources */,
 				CE8E7FA02538930700C8E4B2 /* Trackers.swift in Sources */,
 				CE2194792526236B00CED077 /* Field.swift in Sources */,
+				CE467C3A253B0A8600134EA7 /* Detail.Shield.swift in Sources */,
 				CE02488B25273014005DBB9C /* Control.State.swift in Sources */,
+				CE467C44253B0B5000134EA7 /* Detail.Options.swift in Sources */,
 				CEA2F69C252344DE00DDE7B4 /* Book.swift in Sources */,
 				CE1720B5253709DD003D5B30 /* Shared.Browse.swift in Sources */,
 				CEA63E912535EB7400CFCECF /* Delegate.swift in Sources */,
@@ -528,9 +542,11 @@
 				CEA2F68D252344DE00DDE7B4 /* Web.Coordinator.swift in Sources */,
 				CEF9AD062529E3A6005305EB /* Chart.swift in Sources */,
 				CEA2F69D252344DE00DDE7B4 /* Settings.swift in Sources */,
+				CE467C34253B08ED00134EA7 /* Detail.Find.swift in Sources */,
 				CEA2F68A252344DE00DDE7B4 /* Session.swift in Sources */,
 				CEA2F692252344DE00DDE7B4 /* Web.swift in Sources */,
 				CEA2F690252344DE00DDE7B4 /* User.swift in Sources */,
+				CE467C2E253B08B100134EA7 /* Detail.Title.swift in Sources */,
 				CEA2F694252344DE00DDE7B4 /* Incognit.swift in Sources */,
 				CEA2F68F252344DE00DDE7B4 /* Usage.swift in Sources */,
 				CEA2F693252344DE00DDE7B4 /* Page.swift in Sources */,
