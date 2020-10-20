@@ -174,12 +174,14 @@ extension Web {
                     print("allow \(decidePolicyFor.request.url!)")
                     preferences.allowsContentJavaScript = self?.javascript ?? false
                     decisionHandler(.allow, preferences)
-                case .deny:
-                    decisionHandler(.cancel, preferences)
-                    self?.view.session.state.blocked.insert(decidePolicyFor.request.url!)
                 case .external:
                     decisionHandler(.cancel, preferences)
                     UIApplication.shared.open(decidePolicyFor.request.url!)
+                case .ignore:
+                    decisionHandler(.cancel, preferences)
+                case .block(let domain):
+                    decisionHandler(.cancel, preferences)
+                    self?.view.session.state.blocked.insert(domain)
                 }
             }
         }

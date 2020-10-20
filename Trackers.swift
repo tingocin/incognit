@@ -38,13 +38,7 @@ struct Trackers: View {
         }
         .navigationViewStyle(StackNavigationViewStyle())
         .onAppear {
-            trackers = Set(session.state.blocked
-                            .filter { $0.scheme == "https" || $0.scheme == "http" }
-                            .map {
-                                $0.absoluteString.replacingOccurrences(of: "https://", with: "").replacingOccurrences(of: "http://", with: "")
-                            }.compactMap {
-                                $0.components(separatedBy: "/").first
-                            }).sorted()
+            trackers = session.state.blocked.sorted()
         }
     }
 }
