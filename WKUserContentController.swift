@@ -70,6 +70,15 @@ extension WKUserContentController {
 },
 {
     "action": {
+        "type": "css-display-none",
+        "selector": "div[class*='commercial']"
+    },
+    "trigger": {
+        "url-filter": "https://www.google.com"
+    }
+},
+{
+    "action": {
         "type": "block"
     },
     "trigger": {
