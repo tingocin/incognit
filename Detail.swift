@@ -20,6 +20,7 @@ struct Detail: View {
                                         visible = false
                                     }, label: {
                                         Image(systemName: "xmark")
+                                            .font(.footnote)
                                             .foregroundColor(.secondary)
                                             .frame(width: 40, height: 40)
                                             .contentShape(Rectangle())

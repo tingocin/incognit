@@ -21,7 +21,6 @@ struct Trackers: View {
                     ForEach(0 ..< trackers.count) {
                         Text(trackers[$0])
                             .font(.footnote)
-                            .foregroundColor(.secondary)
                     }
                 }
             }
@@ -31,6 +30,7 @@ struct Trackers: View {
                                         visible = false
                                     }, label: {
                                         Image(systemName: "xmark")
+                                            .font(.footnote)
                                             .foregroundColor(.secondary)
                                             .frame(width: 40, height: 40)
                                             .contentShape(Rectangle())
