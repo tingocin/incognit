@@ -17,7 +17,7 @@ struct Settings: View {
         NavigationView {
             List {
                 Section(header:
-                            Text("Search Engine")
+                            Text("Search engine")
                             .padding(.top, 20)) {
                     Picker("", selection: $engine) {
                         Text("Ecosia")
