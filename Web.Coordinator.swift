@@ -19,6 +19,7 @@ extension Web {
         init(view: Web) {
             self.view = view
             super.init(frame: .zero, configuration: WKWebViewConfiguration())
+            configuration.allowsAirPlayForMediaPlayback = true
             configuration.allowsInlineMediaPlayback = true
             configuration.ignoresViewportScaleLimits = true
             configuration.dataDetectorTypes = [.link, .phoneNumber]
