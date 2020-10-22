@@ -9,6 +9,7 @@ final class User: UserDefaults {
     private static let _secure = "incognit_secure"
     private static let _trackers = "incognit_trackers"
     private static let _cookies = "incognit_cookies"
+    private static let _dark = "incognit_dark"
     private static let _engine = "incognit_engine"
     private static let _created = "incognit_created"
     
@@ -50,6 +51,11 @@ final class User: UserDefaults {
     class var secure: Bool {
         get { standard.object(forKey: _secure) as? Bool ?? true }
         set { standard.setValue(newValue, forKey: _secure) }
+    }
+    
+    class var dark: Bool {
+        get { standard.object(forKey: _dark) as? Bool ?? false }
+        set { standard.setValue(newValue, forKey: _dark) }
     }
     
     class var engine: Engine {

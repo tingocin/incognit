@@ -13,6 +13,7 @@ extension Web {
         private let ads = User.ads
         private let cookies = User.cookies
         private let trackers = User.trackers
+        private let dark = User.dark
         private let tron = Tron()
         
         required init?(coder: NSCoder) { nil }
@@ -35,7 +36,11 @@ extension Web {
             scrollView.contentInsetAdjustmentBehavior = .never
             scrollView.automaticallyAdjustsScrollIndicatorInsets = false
             
-            HTTPCookieStorage.shared.cookieAcceptPolicy = .never
+            HTTPCookieStorage.shared.cookieAcceptPolicy = cookies ? .never : .always
+            
+            if dark {
+                isOpaque = false
+            }
             
             if ads {
                 configuration.userContentController.blockAds()
@@ -127,6 +132,14 @@ extension Web {
         
         func webView(_: WKWebView, didFinish: WKNavigation!) {
             view.session.state.progress = 1
+            let jsString = """
+var style = document.createElement('style');
+style.innerHTML = ':root, img { filter: invert(1)  hue-rotate(.5turn); }';
+document.head.appendChild(style);
+"""
+            evaluateJavaScript(jsString) {
+                print("js \($0), err \($1)")
+            }
         }
         
         func webView(_: WKWebView, didFailProvisionalNavigation: WKNavigation!, withError: Error) {

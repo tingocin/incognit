@@ -12,6 +12,7 @@ struct Settings: View {
     @State private var ads = User.ads
     @State private var trackers = User.trackers
     @State private var cookies = User.cookies
+    @State private var dark = User.dark
     
     var body: some View {
         NavigationView {
@@ -30,6 +31,7 @@ struct Settings: View {
                 Section(header:
                             Text("Options")
                             .padding(.top, 20)) {
+                    Toggle("Force dark mode", isOn: $dark)
                     Toggle("Safe browsing", isOn: $secure)
                     Toggle("Block trackers", isOn: $trackers)
                     Toggle("Block cookies", isOn: $cookies)
@@ -96,6 +98,9 @@ struct Settings: View {
         }
         .onChange(of: cookies) {
             User.cookies = $0
+        }
+        .onChange(of: dark) {
+            User.dark = $0
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }
