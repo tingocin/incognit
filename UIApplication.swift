@@ -13,12 +13,12 @@ extension UIApplication {
     
     func share(_ any: Any) {
         let controller = UIActivityViewController(activityItems: [any], applicationActivities: nil)
-        controller.popoverPresentationController?.sourceView = windows.first?.rootViewController?.presentedViewController?.view
-        windows.first?.rootViewController?.presentedViewController?.present(controller, animated: true)
+        controller.popoverPresentationController?.sourceView = windows.first!.rootViewController!.presentedViewController?.view
+        windows.first!.rootViewController!.presentedViewController?.present(controller, animated: true)
     }
     
     func rate() {
-        windows.first.flatMap(\.windowScene).map(SKStoreReviewController.requestReview(in:))
+        SKStoreReviewController.requestReview(in: windows.first!.windowScene!)
     }
     
     func settings() {
