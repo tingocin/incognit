@@ -33,6 +33,7 @@ struct Tools: View {
                             Control.Circle(image: "line.horizontal.3") {
                                 session.resign.send()
                                 detail = true
+                                spring = false
                             }.sheet(isPresented: $detail) {
                                 Detail(session: $session, visible: $detail)
                             }
@@ -110,8 +111,6 @@ struct Tools: View {
             detail = false
             usage = false
             settings = false
-        }.onReceive(session.type) { _ in
-            spring = false
         }
     }
 }
