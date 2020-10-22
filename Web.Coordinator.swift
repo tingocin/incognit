@@ -21,13 +21,16 @@ extension Web {
             self.view = view
             super.init(frame: .zero, configuration: WKWebViewConfiguration())
             configuration.allowsAirPlayForMediaPlayback = true
-            configuration.allowsInlineMediaPlayback = true
+            configuration.allowsInlineMediaPlayback = false
             configuration.ignoresViewportScaleLimits = true
             configuration.dataDetectorTypes = [.link, .phoneNumber]
             configuration.defaultWebpagePreferences.preferredContentMode = .mobile
             configuration.preferences.javaScriptCanOpenWindowsAutomatically = popups && javascript
             configuration.preferences.isFraudulentWebsiteWarningEnabled = secure
             configuration.websiteDataStore = .nonPersistent()
+            
+            
+            
             
             navigationDelegate = self
             uiDelegate = self
@@ -40,6 +43,18 @@ extension Web {
             
             if dark {
                 isOpaque = false
+                backgroundColor = .clear
+                
+                configuration.userContentController.addUserScript(.init(source: """
+var color = getComputedStyle(document.querySelector('body'))['background-color'];
+alert("xxxxxxxxxxxxxx:" + getComputedStyle(document.querySelector(':root'))['background-color']);
+if (color == "rgb(255, 255, 255)") {
+
+    var style = document.createElement('style');
+    style.innerHTML = ":root, img, [style*=background-image], [class*=video-thumbnail-img], #player-container-id { filter: invert(1) hue-rotate(.5turn); }";
+    document.head.appendChild(style);
+}
+""", injectionTime: .atDocumentEnd, forMainFrameOnly: true))
             }
             
             if ads {
@@ -126,20 +141,25 @@ extension Web {
             scrollView.delegate = nil
         }
         
+        func webView(_ webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping () -> Void) {
+            print(message)
+            completionHandler()
+        }
+        
         func webView(_: WKWebView, didStartProvisionalNavigation: WKNavigation!) {
             view.session.state.error = nil
         }
         
         func webView(_: WKWebView, didFinish: WKNavigation!) {
             view.session.state.progress = 1
-            let jsString = """
-var style = document.createElement('style');
-style.innerHTML = ':root, img { filter: invert(1)  hue-rotate(.5turn); }';
-document.head.appendChild(style);
-"""
-            evaluateJavaScript(jsString) {
-                print("js \($0), err \($1)")
-            }
+//            let jsString = """
+//var style = document.createElement('style');
+//style.innerHTML = ':root, img { filter: invert(1)  hue-rotate(.5turn); }';
+//document.head.appendChild(style);
+//"""
+//            evaluateJavaScript(jsString) {
+//                print("js \($0), err \($1)")
+//            }
         }
         
         func webView(_: WKWebView, didFailProvisionalNavigation: WKNavigation!, withError: Error) {
