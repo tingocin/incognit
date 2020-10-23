@@ -109,7 +109,9 @@ extension Web {
                         if name.isEmpty {
                             name = "Page.pdf"
                         } else if !name.hasSuffix(".pdf") {
-                            name = name.components(separatedBy: ".").dropLast().joined(separator: ".") + ".pdf"
+                            name = {
+                                $0.count > 1 ? $0.dropLast().joined(separator: ".") : $0.first!
+                            } (name.components(separatedBy: ".")) + ".pdf"
                         }
                         UIApplication.shared.share(data.temporal(name))
                     }

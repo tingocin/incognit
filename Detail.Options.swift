@@ -29,7 +29,9 @@ extension Detail {
                 }
                 Item(image: "pencil", text: "Edit URL") {
                     visible = false
-                    session.type.send(session.page!.url.absoluteString)
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        session.type.send(session.page!.url.absoluteString)
+                    }
                 }
                 Item(image: "doc.on.doc", text: "Copy URL") {
                     UIPasteboard.general.string = session.page!.url.absoluteString
@@ -40,7 +42,7 @@ extension Detail {
                 }
                 Item(image: "square.and.arrow.down", text: "Download") {
                     (try? Data(contentsOf: session.page!.url)).map { $0.temporal({
-                        $0.isEmpty ? "Page.webarchive" : $0
+                        $0.isEmpty ? "Page.webarchive" : $0.contains(".") ? $0 : $0 + ".webarchive"
                     } (session.page!.url.lastPathComponent.replacingOccurrences(of: "/", with: ""))) }.map(UIApplication.shared.share)
                 }
                 Item(image: "printer", text: "Print") {
