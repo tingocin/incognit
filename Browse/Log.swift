@@ -60,14 +60,14 @@ private struct Inner: View {
                 Text(verbatim: title)
                     .lineLimit(1)
                     .font(Font.footnote.bold())
-                    .foregroundColor(.black)
+                    .foregroundColor(.primary)
                 Spacer()
             }
             HStack {
                 Text(verbatim: url)
                     .lineLimit(1)
                     .font(.caption2)
-                    .foregroundColor(Color.black.opacity(0.7))
+                    .foregroundColor(.secondary)
                 Spacer()
             }
         }
