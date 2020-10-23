@@ -9,40 +9,36 @@ extension Book {
         
         var body: some View {
             Button(action: action) {
-                ZStack {
-                    RoundedRectangle(cornerRadius: 8)
-                        .foregroundColor(.init(.tertiarySystemBackground))
-                    HStack {
-                        VStack {
-                            HStack {
-                                Text(verbatim: page.title)
-                                    .fixedSize(horizontal: false, vertical: true)
-                                    .font(.footnote)
-                                    .foregroundColor(.primary)
-                                    .padding(.top)
-                                    .padding(.leading)
-                                Spacer()
-                            }
-                            HStack {
-                                Text(verbatim: page.url.absoluteString)
-                                    .lineLimit(1)
-                                    .font(.footnote)
-                                    .foregroundColor(.init(.tertiaryLabel))
-                                    .padding(.leading)
-                                Spacer()
-                            }
-                            HStack {
-                                Text(verbatim: date)
-                                    .font(Font.caption2.bold())
-                                    .foregroundColor(.init(.tertiaryLabel))
-                                    .padding(.bottom)
-                                    .padding(.leading)
-                                Spacer()
-                            }
+                HStack {
+                    VStack {
+                        HStack {
+                            Text(verbatim: page.title)
+                                .fixedSize(horizontal: false, vertical: true)
+                                .font(.footnote)
+                                .foregroundColor(.primary)
+                                .padding(.top)
+                                .padding(.leading)
+                            Spacer()
                         }
-                        Control.Icon(image: "xmark", color: .init(.tertiaryLabel), action: delete)
+                        HStack {
+                            Text(verbatim: page.url.absoluteString)
+                                .lineLimit(1)
+                                .font(.footnote)
+                                .foregroundColor(.init(.tertiaryLabel))
+                                .padding(.leading)
+                            Spacer()
+                        }
+                        HStack {
+                            Text(verbatim: date)
+                                .font(Font.caption2.bold())
+                                .foregroundColor(.init(.tertiaryLabel))
+                                .padding(.bottom)
+                                .padding(.leading)
+                            Spacer()
+                        }
                     }
-                }.padding(.horizontal)
+                    Control.Icon(image: "xmark", color: .init(.tertiaryLabel), action: delete)
+                }
             }.onAppear {
                 let formatter = DateComponentsFormatter()
                 formatter.allowedUnits = [.day, .hour, .minute]

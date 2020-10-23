@@ -23,7 +23,7 @@ extension Web {
             configuration.allowsAirPlayForMediaPlayback = true
             configuration.allowsInlineMediaPlayback = true
             configuration.ignoresViewportScaleLimits = true
-            configuration.dataDetectorTypes = [.link, .phoneNumber]
+            configuration.dataDetectorTypes = [.link]
             configuration.defaultWebpagePreferences.preferredContentMode = .mobile
             configuration.preferences.javaScriptCanOpenWindowsAutomatically = User.popups && javascript
             configuration.preferences.isFraudulentWebsiteWarningEnabled = secure
