@@ -34,12 +34,11 @@ extension Web {
             scrollView.keyboardDismissMode = .onDrag
             scrollView.contentInsetAdjustmentBehavior = .never
             scrollView.automaticallyAdjustsScrollIndicatorInsets = false
+            isOpaque = !dark && traitCollection.userInterfaceStyle == .dark
             
             HTTPCookieStorage.shared.cookieAcceptPolicy = cookies ? .never : .always
             
-            if dark {
-                isOpaque = false
-                backgroundColor = .clear
+            if traitCollection.userInterfaceStyle == .dark && dark {
                 configuration.userContentController.addUserScript(.init(source: Dark.script, injectionTime: .atDocumentEnd, forMainFrameOnly: true))
             }
             
