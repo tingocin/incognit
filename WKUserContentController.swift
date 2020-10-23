@@ -9,11 +9,9 @@ extension WKUserContentController {
         if let cookies = Self.cookies {
             add(cookies)
         } else {
-            WKContentRuleListStore.default()?.compileContentRuleList(forIdentifier: "cookies", encodedContentRuleList: Cookies.rule) { [weak self] list, _ in
-                list.map {
-                    Self.cookies = $0
-                    self?.add($0)
-                }
+            WKContentRuleListStore.default()!.compileContentRuleList(forIdentifier: "cookies", encodedContentRuleList: Cookies.rule) { [weak self] list, _ in
+                self?.add(list!)
+                Self.cookies = list!
             }
         }
     }
@@ -22,11 +20,9 @@ extension WKUserContentController {
         if let ads = Self.ads {
             add(ads)
         } else {
-            WKContentRuleListStore.default()?.compileContentRuleList(forIdentifier: "ads", encodedContentRuleList: Ads.serialise) { [weak self] list, _ in
-                list.map {
-                    Self.ads = $0
-                    self?.add($0)
-                }
+            WKContentRuleListStore.default()!.compileContentRuleList(forIdentifier: "ads", encodedContentRuleList: Ads.serialise) { [weak self] list, _ in
+                self?.add(list!)
+                Self.ads = list!
             }
         }
     }

@@ -14,15 +14,10 @@ extension Web {
         
         required init?(coder: NSCoder) { nil }
         init(view: Web) {
-            let popups = User.popups
-            let ads = User.ads
-            let cookies = User.cookies
             let dark = User.dark
             let secure = User.secure
             let trackers = User.trackers
             let javascript = User.javascript
-            
-            HTTPCookieStorage.shared.cookieAcceptPolicy = cookies ? .never : .always
             
             let configuration = WKWebViewConfiguration()
             configuration.allowsAirPlayForMediaPlayback = true
@@ -30,7 +25,7 @@ extension Web {
             configuration.ignoresViewportScaleLimits = true
             configuration.dataDetectorTypes = [.link, .phoneNumber]
             configuration.defaultWebpagePreferences.preferredContentMode = .mobile
-            configuration.preferences.javaScriptCanOpenWindowsAutomatically = popups && javascript
+            configuration.preferences.javaScriptCanOpenWindowsAutomatically = User.popups && javascript
             configuration.preferences.isFraudulentWebsiteWarningEnabled = secure
             configuration.websiteDataStore = .nonPersistent()
             
@@ -38,11 +33,11 @@ extension Web {
                 configuration.userContentController.addUserScript(.init(source: Dark.script, injectionTime: .atDocumentEnd, forMainFrameOnly: true))
             }
             
-            if ads {
+            if User.ads {
                 configuration.userContentController.blockAds()
             }
             
-            if cookies {
+            if User.cookies {
                 configuration.userContentController.blockCookies()
             }
             
@@ -50,7 +45,6 @@ extension Web {
             self.trackers = trackers
             self.javascript = javascript
             self.view = view
-            
             super.init(frame: .zero, configuration: configuration)
             navigationDelegate = self
             uiDelegate = self
