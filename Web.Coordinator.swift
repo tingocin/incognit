@@ -21,17 +21,13 @@ extension Web {
             self.view = view
             super.init(frame: .zero, configuration: WKWebViewConfiguration())
             configuration.allowsAirPlayForMediaPlayback = true
-            configuration.allowsInlineMediaPlayback = false
+            configuration.allowsInlineMediaPlayback = true
             configuration.ignoresViewportScaleLimits = true
             configuration.dataDetectorTypes = [.link, .phoneNumber]
             configuration.defaultWebpagePreferences.preferredContentMode = .mobile
             configuration.preferences.javaScriptCanOpenWindowsAutomatically = popups && javascript
             configuration.preferences.isFraudulentWebsiteWarningEnabled = secure
             configuration.websiteDataStore = .nonPersistent()
-            
-            
-            
-            
             navigationDelegate = self
             uiDelegate = self
             allowsBackForwardNavigationGestures = true
@@ -44,45 +40,7 @@ extension Web {
             if dark {
                 isOpaque = false
                 backgroundColor = .clear
-                
-                configuration.userContentController.addUserScript(.init(source: """
-var color = getComputedStyle(document.querySelector('body'))['background-color'];
-
-var s = document.styleSheets, r,
-        i, j, k;
-
-    if(!s) return false; //no style sheets found
-
-// document.styleSheets[0].cssRules[3].media.mediaText.indexOf('dark')
-
-    // walk throuth css sheets
-    for(i=0; i<s.length; i++) {
-        // get all rules
-        r = s[i].cssRules;
-        if(!r) continue;
-
-        for(j=0; j<r.length; j++) {
-            //If there's a rule for media query
-            if(r[j] instanceof CSSMediaRule &&
-                    r[j].media.mediaText == "only screen and (min-width: 600px)") {
-                for(k=0; k<r[j].cssRules.length; k++) {
-                    // remove all rules of it
-                    r[j].deleteRule(r[j].cssRules[k]);
-                }
-                return true;
-            }
-        }
-    }
-
-
-alert("xxxxxxxxxxxxxx:" + getComputedStyle(document.querySelector(':root'))['color-scheme']);
-if (color == "rgb(255, 255, 255)") {
-
-    var style = document.createElement('style');
-    style.innerHTML = ":root, img, [style*=background-image], [class*=video-thumbnail-img], #player-container-id { filter: invert(1) hue-rotate(.5turn); }";
-    document.head.appendChild(style);
-}
-""", injectionTime: .atDocumentEnd, forMainFrameOnly: true))
+                configuration.userContentController.addUserScript(.init(source: Dark.script, injectionTime: .atDocumentEnd, forMainFrameOnly: true))
             }
             
             if ads {

@@ -54,7 +54,7 @@ final class User: UserDefaults {
     }
     
     class var dark: Bool {
-        get { standard.object(forKey: _dark) as? Bool ?? false }
+        get { standard.object(forKey: _dark) as? Bool ?? true }
         set { standard.setValue(newValue, forKey: _dark) }
     }
     

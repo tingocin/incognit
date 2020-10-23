@@ -26,6 +26,16 @@
 				<string>google</string>
 			</array>
 		</dict>
+        <dict>
+            <key>Type</key>
+            <string>PSToggleSwitchSpecifier</string>
+            <key>Title</key>
+            <string>Force dark mode</string>
+            <key>Key</key>
+            <string>incognit_dark</string>
+            <key>DefaultValue</key>
+            <true/>
+        </dict>
 		<dict>
 			<key>Type</key>
 			<string>PSToggleSwitchSpecifier</string>
