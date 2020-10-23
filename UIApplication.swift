@@ -27,6 +27,11 @@ extension UIApplication {
     
     func forget() {
         HTTPCookieStorage.shared.removeCookies(since: .distantPast)
+        WKWebsiteDataStore.default().fetchDataRecords(ofTypes: WKWebsiteDataStore.allWebsiteDataTypes()) {
+            $0.forEach {
+                WKWebsiteDataStore.default().removeData(ofTypes: $0.dataTypes, for: [$0]) { }
+            }
+        }
         WKWebsiteDataStore.default().removeData(ofTypes: WKWebsiteDataStore.allWebsiteDataTypes(), modifiedSince: .distantPast) { }
     }
 }

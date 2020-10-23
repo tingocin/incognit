@@ -6,20 +6,25 @@ import Tron
 extension Web {
     final class Coordinator: WKWebView, WKNavigationDelegate, WKUIDelegate, UIScrollViewDelegate {
         private var subs = Set<AnyCancellable>()
-        private let view: Web
-        private let javascript = User.javascript
-        private let popups = User.popups
-        private let secure = User.secure
-        private let ads = User.ads
-        private let cookies = User.cookies
-        private let trackers = User.trackers
-        private let dark = User.dark
         private let tron = Tron()
+        private let view: Web
+        private let secure: Bool
+        private let trackers: Bool
+        private let javascript: Bool
         
         required init?(coder: NSCoder) { nil }
         init(view: Web) {
-            self.view = view
-            super.init(frame: .zero, configuration: WKWebViewConfiguration())
+            let popups = User.popups
+            let ads = User.ads
+            let cookies = User.cookies
+            let dark = User.dark
+            let secure = User.secure
+            let trackers = User.trackers
+            let javascript = User.javascript
+            
+            HTTPCookieStorage.shared.cookieAcceptPolicy = cookies ? .never : .always
+            
+            let configuration = WKWebViewConfiguration()
             configuration.allowsAirPlayForMediaPlayback = true
             configuration.allowsInlineMediaPlayback = true
             configuration.ignoresViewportScaleLimits = true
@@ -28,17 +33,8 @@ extension Web {
             configuration.preferences.javaScriptCanOpenWindowsAutomatically = popups && javascript
             configuration.preferences.isFraudulentWebsiteWarningEnabled = secure
             configuration.websiteDataStore = .nonPersistent()
-            navigationDelegate = self
-            uiDelegate = self
-            allowsBackForwardNavigationGestures = true
-            scrollView.keyboardDismissMode = .onDrag
-            scrollView.contentInsetAdjustmentBehavior = .never
-            scrollView.automaticallyAdjustsScrollIndicatorInsets = false
-            isOpaque = !dark && traitCollection.userInterfaceStyle == .dark
             
-            HTTPCookieStorage.shared.cookieAcceptPolicy = cookies ? .never : .always
-            
-            if traitCollection.userInterfaceStyle == .dark && dark {
+            if UIApplication.shared.windows.first!.rootViewController!.traitCollection.userInterfaceStyle == .dark && dark {
                 configuration.userContentController.addUserScript(.init(source: Dark.script, injectionTime: .atDocumentEnd, forMainFrameOnly: true))
             }
             
@@ -49,6 +45,20 @@ extension Web {
             if cookies {
                 configuration.userContentController.blockCookies()
             }
+            
+            self.secure = secure
+            self.trackers = trackers
+            self.javascript = javascript
+            self.view = view
+            
+            super.init(frame: .zero, configuration: configuration)
+            navigationDelegate = self
+            uiDelegate = self
+            allowsBackForwardNavigationGestures = true
+            scrollView.keyboardDismissMode = .onDrag
+            scrollView.contentInsetAdjustmentBehavior = .never
+            scrollView.automaticallyAdjustsScrollIndicatorInsets = false
+            isOpaque = !dark && traitCollection.userInterfaceStyle == .dark
             
             publisher(for: \.estimatedProgress).sink { [weak self] in
                 self?.view.session.state.progress = $0
@@ -126,25 +136,12 @@ extension Web {
             scrollView.delegate = nil
         }
         
-        func webView(_ webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping () -> Void) {
-            print(message)
-            completionHandler()
-        }
-        
         func webView(_: WKWebView, didStartProvisionalNavigation: WKNavigation!) {
             view.session.state.error = nil
         }
         
         func webView(_: WKWebView, didFinish: WKNavigation!) {
             view.session.state.progress = 1
-//            let jsString = """
-//var style = document.createElement('style');
-//style.innerHTML = ':root, img { filter: invert(1)  hue-rotate(.5turn); }';
-//document.head.appendChild(style);
-//"""
-//            evaluateJavaScript(jsString) {
-//                print("js \($0), err \($1)")
-//            }
         }
         
         func webView(_: WKWebView, didFailProvisionalNavigation: WKNavigation!, withError: Error) {
