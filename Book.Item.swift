@@ -16,7 +16,6 @@ extension Book {
                                 .fixedSize(horizontal: false, vertical: true)
                                 .font(.footnote)
                                 .foregroundColor(.primary)
-                                .padding(.top)
                                 .padding(.leading)
                             Spacer()
                         }
@@ -28,15 +27,11 @@ extension Book {
                                 .padding(.leading)
                             Spacer()
                         }
-                        HStack {
-                            Text(verbatim: date)
-                                .font(Font.caption2.bold())
-                                .foregroundColor(.init(.tertiaryLabel))
-                                .padding(.bottom)
-                                .padding(.leading)
-                            Spacer()
-                        }
-                    }
+                    }.padding(.vertical)
+                    Text(verbatim: date)
+                        .font(.caption2)
+                        .foregroundColor(.init(.tertiaryLabel))
+                        .offset(x: 15)
                     Control.Icon(image: "xmark", color: .init(.tertiaryLabel), action: delete)
                 }
             }.onAppear {

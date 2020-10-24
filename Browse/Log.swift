@@ -11,7 +11,7 @@ struct Log: View {
                 Spacer()
                 Image(systemName: "eyeglasses")
                     .font(Font.largeTitle.bold())
-                    .foregroundColor(.black)
+                    .foregroundColor(.init(.systemIndigo))
                 if family != .systemLarge {
                     Spacer()
                         frame(height: 100)
@@ -59,7 +59,7 @@ private struct Inner: View {
             HStack {
                 Text(verbatim: title)
                     .lineLimit(1)
-                    .font(Font.footnote.bold())
+                    .font(.caption2)
                     .foregroundColor(.primary)
                 Spacer()
             }
@@ -67,7 +67,7 @@ private struct Inner: View {
                 Text(verbatim: url)
                     .lineLimit(1)
                     .font(.caption2)
-                    .foregroundColor(.secondary)
+                    .foregroundColor(.init(.tertiaryLabel))
                 Spacer()
             }
         }

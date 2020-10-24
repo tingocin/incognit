@@ -7,19 +7,11 @@ struct Book: View {
     var body: some View {
         Group {
             if pages.isEmpty {
-                VStack {
-                    Image(systemName: "eyeglasses")
-                        .font(Font.largeTitle.bold())
-                    Spacer()
-                        .frame(height: 6)
-                    Text("incognit")
-                        .font(Font.headline.bold())
-                }.foregroundColor(Color.accentColor)
+                Image(systemName: "eyeglasses")
+                    .font(Font.largeTitle.bold())
+                    .foregroundColor(Color.accentColor)
             } else {
                 ScrollView {
-                    HStack{
-                        Spacer()
-                    }.frame(height: 20)
                     ForEach(pages) { page in
                         Item(page: page) {
                             session.delete(page)

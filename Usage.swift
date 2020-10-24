@@ -9,12 +9,7 @@ struct Usage: View {
         NavigationView {
             ScrollView {
                 Spacer()
-                    .frame(height: 70)
-                Image(systemName: "eyeglasses")
-                    .font(Font.largeTitle.bold())
-                    .foregroundColor(.accentColor)
-                Spacer()
-                    .frame(height: 50)
+                    .frame(height: 40)
                 Chart(values: Shared.chart)
                     .frame(height: 200)
                     .padding(.horizontal)
@@ -28,7 +23,7 @@ struct Usage: View {
                         .foregroundColor(.secondary)
                 }.padding(.horizontal)
                 Spacer()
-                    .frame(height: 60)
+                    .frame(height: 80)
                 Button {
                     withAnimation(.easeInOut(duration: 1)) {
                         session.forget()

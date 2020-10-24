@@ -15,7 +15,7 @@ struct Tools: View {
         VStack {
             Spacer()
             ZStack {
-                if session.page != nil {
+                if !session.typing && session.page != nil {
                     HStack {
                         ZStack {
                             Control.Circle(state: session.state.backwards ? .ready : .disabled, image: "chevron.left") {
@@ -85,8 +85,8 @@ struct Tools: View {
                 }
                 HStack {
                     Spacer()
-                    if session.page == nil {
-                        Control.Circle(image: "eyeglasses") {
+                    if !session.typing && session.page == nil {
+                        Control.Circle(image: "chart.pie") {
                             session.resign.send()
                             usage = true
                         }.sheet(isPresented: $usage) {
@@ -95,8 +95,8 @@ struct Tools: View {
                     }
                     Bar(session: $session)
                         .opacity(spring ? 0 : 1)
-                    if session.page == nil {
-                        Control.Circle(image: "gearshape.fill") {
+                    if !session.typing && session.page == nil {
+                        Control.Circle(image: "slider.horizontal.3") {
                             session.resign.send()
                             settings = true
                         }.sheet(isPresented: $settings) {

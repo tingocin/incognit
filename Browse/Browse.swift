@@ -10,19 +10,14 @@ import SwiftUI
                     Spacer()
                     HStack {
                         Spacer()
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 20)
-                                .foregroundColor(.init(.systemIndigo))
-                            Image(systemName: "magnifyingglass")
-                                .font(Font.headline.bold())
-                                .foregroundColor(.black)
-                        }
-                        .widgetURL(URL(string: "incognit-search://google.com")!)
-                        .frame(width: 80, height: 40)
-                        .padding(.bottom)
+                        Image(systemName: "magnifyingglass")
+                            .font(Font.body.bold())
+                            .foregroundColor(.init(.systemIndigo))
+                            .frame(width: 150, height: 40)
+                            .padding(.bottom)
                         Spacer()
                     }
-                }
+                }.widgetURL(URL(string: "incognit-search://")!)
             }.background(LinearGradient(gradient:
                                             .init(colors: [.init(.secondarySystemBackground),
                                                            .init(.systemBackground)]),

@@ -20,7 +20,7 @@ struct Bar: View {
                 .padding(.trailing)
                 .opacity(session.typing ? 1 : 0)
         }
-        .frame(width: session.typing ? 150 : 80, height: 70)
+        .frame(width: session.typing ? 200 : 80, height: 70)
         .onTapGesture {
             session.type.send(nil)
         }

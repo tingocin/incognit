@@ -6,17 +6,8 @@ struct Usage: View {
     @State private var alert = false
     
     var body: some View {
-        ScrollView {
-            Spacer()
-                .frame(height: 20)
-            Image(systemName: "eyeglasses")
-                .font(Font.title.bold())
-                .foregroundColor(.accentColor)
-                .padding()
-            Spacer()
-                .frame(height: 50)
+        VStack {
             Chart(values: delegate.chart)
-                .frame(height: 110)
                 .padding(.horizontal)
             HStack {
                 Text(verbatim: since)
@@ -27,8 +18,6 @@ struct Usage: View {
                     .font(.footnote)
                     .foregroundColor(.secondary)
             }.padding(.horizontal)
-            Spacer()
-                .frame(height: 40)
             Button {
                 alert = true
             } label: {
@@ -43,7 +32,9 @@ struct Usage: View {
                         Image(systemName: "flame")
                             .padding(.vertical)
                     }.padding(.horizontal)
-                }.contentShape(Rectangle())
+                }
+                .frame(height: 34)
+                .contentShape(Rectangle())
             }.alert(isPresented: $alert) {
                 Alert(title: .init("Forget everything?"), primaryButton: .default(.init("Cancel")), secondaryButton: .destructive(.init("Forget")) {
                     delegate.forget()
@@ -51,7 +42,7 @@ struct Usage: View {
             }
             .buttonStyle(PlainButtonStyle())
             .foregroundColor(.black)
-            .padding()
+            .padding(.horizontal)
         }
         .onAppear(perform: update)
         .onChange(of: delegate.chart) { _ in
