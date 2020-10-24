@@ -30,7 +30,7 @@ extension Web {
             configuration.websiteDataStore = .nonPersistent()
             
             if UIApplication.shared.windows.first!.rootViewController!.traitCollection.userInterfaceStyle == .dark && dark {
-                configuration.userContentController.addUserScript(.init(source: Dark.script, injectionTime: .atDocumentEnd, forMainFrameOnly: true))
+                configuration.userContentController.addUserScript(.init(source: Dark.script, injectionTime: .atDocumentEnd, forMainFrameOnly: false))
             }
             
             if User.ads {
