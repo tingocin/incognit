@@ -171,13 +171,34 @@ extension Web {
         }
         
         func webView(_: WKWebView, createWebViewWith: WKWebViewConfiguration, for action: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
-            if action.targetFrame == nil {
+            switch action.navigationType {
+            case .backForward: print("action: backforward")
+            case .formResubmitted: print("action: form re")
+            case .formSubmitted: print("action: furm sub")
+            case .linkActivated: print("action: link")
+            case .other: print("action: other")
+            case .reload: print("action: reload")
+            }
+            print("to: \(action.request.url)")
+            if action.targetFrame == nil && action.navigationType == .linkActivated {
                 action.request.url.map(view.session.navigate.send)
             }
             return nil
         }
         
         func webView(_: WKWebView, decidePolicyFor: WKNavigationAction, preferences: WKWebpagePreferences, decisionHandler: @escaping (WKNavigationActionPolicy, WKWebpagePreferences) -> Void) {
+            
+            switch decidePolicyFor.navigationType {
+            case .backForward: print("action2: backforward")
+            case .formResubmitted: print("action2: form re")
+            case .formSubmitted: print("action2: furm sub")
+            case .linkActivated: print("action2: link")
+            case .other: print("action2: other")
+            case .reload: print("action2: reload")
+            }
+            
+            print("to2: \(decidePolicyFor.request.url)")
+            
             var sub: AnyCancellable?
             sub = tron.policy(for: decidePolicyFor.request.url!, shield: trackers).receive(on: DispatchQueue.main).sink { [weak self] in
                 sub?.cancel()
