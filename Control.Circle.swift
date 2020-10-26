@@ -24,7 +24,7 @@ extension Control {
                         .foregroundColor(current == .disabled ? .accentColor : current == .selected ? .init(.secondarySystemBackground) : .accentColor)
                     Image(systemName: image)
                         .font(Font.headline.bold())
-                        .foregroundColor(current == .disabled ? .init(.tertiaryLabel) : current == .selected ? .accentColor : .black)
+                        .foregroundColor(current == .disabled ? .secondary : current == .selected ? .accentColor : .black)
                 }.contentShape(SwiftUI.Circle())
             })
         }
