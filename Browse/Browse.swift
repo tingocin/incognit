@@ -16,8 +16,8 @@ import SwiftUI
                             .frame(width: 150, height: 40)
                             .padding(.bottom)
                         Spacer()
-                    }
-                }.widgetURL(URL(string: "incognit-search://")!)
+                    }.widgetURL(URL(string: "incognit-search://")!)
+                }
             }.background(LinearGradient(gradient:
                                             .init(colors: [.init(.secondarySystemBackground),
                                                            .init(.systemBackground)]),
