@@ -5,6 +5,7 @@ import WebKit
 extension UIApplication {
     func appearance() {
         UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(named: "AccentColor")!
+        UIScrollView.appearance().keyboardDismissMode = .interactive
     }
     
     func resign() {
