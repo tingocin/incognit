@@ -2,7 +2,7 @@ import Foundation
 import WatchConnectivity
 import Combine
 
-final class Delegate: NSObject, WCSessionDelegate {
+final class SessionDelegate: NSObject, WCSessionDelegate {
     let forget = PassthroughSubject<Void, Never>()
     
     func session(_: WCSession, activationDidCompleteWith: WCSessionActivationState, error: Error?) { }

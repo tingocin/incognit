@@ -1,10 +1,12 @@
 import SwiftUI
 import WatchConnectivity
+import StoreKit
 
-@main struct Incognit: App {
+@main struct App: SwiftUI.App {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     @Environment(\.scenePhase) private var phase
     @State private var session = Session()
-    private let delegate = Delegate()
+    private let sessionDelegate = SessionDelegate()
     
     var body: some Scene {
         WindowGroup {
@@ -18,7 +20,7 @@ import WatchConnectivity
             }
             .background(Color(.secondarySystemBackground).edgesIgnoringSafeArea(.all))
             .onOpenURL(perform: open)
-            .onReceive(delegate.forget) {
+            .onReceive(sessionDelegate.forget) {
                 session.dismiss.send()
                 session.forget()
                 UIApplication.shared.forget()
@@ -29,12 +31,11 @@ import WatchConnectivity
                     pages()
                 }
                 
-                UIApplication.shared.appearance()
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                     if let created = User.created {
                         if !User.rated && Calendar.current.dateComponents([.day], from: created, to: .init()).day! > 6 {
                             User.rated = true
-                            UIApplication.shared.rate()
+                            SKStoreReviewController.requestReview(in: UIApplication.shared.windows.first!.windowScene!)
                         }
                     } else {
                         User.created = .init()
@@ -42,7 +43,7 @@ import WatchConnectivity
                 }
                 
                 if WCSession.isSupported() && WCSession.default.activationState != .activated {
-                    WCSession.default.delegate = delegate
+                    WCSession.default.delegate = sessionDelegate
                     WCSession.default.activate()
                 }
             }

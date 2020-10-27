@@ -1,13 +1,7 @@
 import UIKit
-import StoreKit
 import WebKit
 
 extension UIApplication {
-    func appearance() {
-        UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(named: "AccentColor")!
-        UIScrollView.appearance().keyboardDismissMode = .interactive
-    }
-    
     func resign() {
         sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
@@ -16,10 +10,6 @@ extension UIApplication {
         let controller = UIActivityViewController(activityItems: [any], applicationActivities: nil)
         controller.popoverPresentationController?.sourceView = windows.first!.rootViewController!.presentedViewController?.view
         windows.first!.rootViewController!.presentedViewController?.present(controller, animated: true)
-    }
-    
-    func rate() {
-        SKStoreReviewController.requestReview(in: windows.first!.windowScene!)
     }
     
     func settings() {
