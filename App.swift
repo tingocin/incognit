@@ -33,7 +33,7 @@ import StoreKit
                 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                     if let created = User.created {
-                        if !User.rated && Calendar.current.dateComponents([.day], from: created, to: .init()).day! > 6 {
+                        if !User.rated && Calendar.current.dateComponents([.day], from: created, to: .init()).day! > 4 {
                             User.rated = true
                             SKStoreReviewController.requestReview(in: UIApplication.shared.windows.first!.windowScene!)
                         }
