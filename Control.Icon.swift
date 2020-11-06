@@ -9,11 +9,11 @@ extension Control {
         var body: some View {
             Button(action: action) {
                 Image(systemName: image)
-                    .font(.footnote)
                     .foregroundColor(color)
-                    .frame(width: 52, height: 52)
-                    .contentShape(SwiftUI.Circle())
+                    .frame(width: 60, height: 60)
+                    
             }
+            .contentShape(SwiftUI.Circle())
         }
     }
 }

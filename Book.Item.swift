@@ -26,17 +26,16 @@ extension Book {
                                 .foregroundColor(.init(.tertiaryLabel))
                                 .padding(.leading)
                             Spacer()
+                            Text(verbatim: date)
+                                .font(.footnote)
+                                .foregroundColor(.init(.tertiaryLabel))
                         }
                     }.padding(.vertical)
-                    Text(verbatim: date)
-                        .font(.caption2)
-                        .foregroundColor(.init(.tertiaryLabel))
-                        .offset(x: 15)
-                    Control.Icon(image: "xmark", color: .init(.tertiaryLabel), action: delete)
+                    Control.Icon(image: "xmark.circle.fill", color: .init(.tertiaryLabel), action: delete)
                 }
             }.onAppear {
                 let formatter = DateComponentsFormatter()
-                formatter.allowedUnits = [.day, .hour, .minute]
+                formatter.allowedUnits = [.day, .hour, .minute, .second]
                 formatter.unitsStyle = .short
                 formatter.maximumUnitCount = 1
                 date = formatter.string(from: page.date, to: .init())!
