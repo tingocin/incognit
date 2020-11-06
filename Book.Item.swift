@@ -38,6 +38,7 @@ extension Book {
                 let formatter = DateComponentsFormatter()
                 formatter.allowedUnits = [.day, .hour, .minute]
                 formatter.unitsStyle = .short
+                formatter.maximumUnitCount = 1
                 date = formatter.string(from: page.date, to: .init())!
             }
         }
