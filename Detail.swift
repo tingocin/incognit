@@ -2,22 +2,22 @@ import SwiftUI
 
 struct Detail: View {
     @Binding var session: Session
-    @Binding var visible: Bool
     @State private var trackers = false
+    @Environment(\.presentationMode) private var visible
     
     var body: some View {
         NavigationView {
             ScrollView {
                 if session.page != nil {
                     Title(session: $session)
-                    Find(session: $session, visible: $visible)
-                    Options(session: $session, trackers: $trackers, visible: $visible)
+                    Find(session: $session)
+                    Options(session: $session, trackers: $trackers)
                 }
             }
             .navigationBarTitle("Browsing", displayMode: .inline)
             .navigationBarItems(trailing:
                                     Button(action: {
-                                        visible = false
+                                        visible.wrappedValue.dismiss()
                                     }, label: {
                                         Image(systemName: "xmark")
                                             .font(.footnote)
@@ -28,7 +28,7 @@ struct Detail: View {
         }
         .navigationViewStyle(StackNavigationViewStyle())
         .sheet(isPresented: $trackers) {
-            Trackers(session: $session, visible: $trackers)
+            Trackers(session: $session)
         }.onReceive(session.dismiss) {
             trackers = false
         }

@@ -3,8 +3,8 @@ import SwiftUI
 extension Detail {
     struct Find: View {
         @Binding var session: Session
-        @Binding var visible: Bool
         @State private var find = ""
+        @Environment(\.presentationMode) private var visible
         
         var body: some View {
             ZStack {
@@ -26,7 +26,7 @@ extension Detail {
                         }
                         TextField("Find on Page", text: $find, onCommit: {
                             guard !find.isEmpty else { return }
-                            visible = false
+                            visible.wrappedValue.dismiss()
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                                 session.find.send(find)
                             }

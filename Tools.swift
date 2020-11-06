@@ -35,7 +35,7 @@ struct Tools: View {
                                 detail = true
                                 spring = false
                             }.sheet(isPresented: $detail) {
-                                Detail(session: $session, visible: $detail)
+                                Detail(session: $session)
                             }
                             .offset(y: detailY)
                             .opacity(spring ? 1 : 0)
@@ -90,7 +90,7 @@ struct Tools: View {
                             session.resign.send()
                             usage = true
                         }.sheet(isPresented: $usage) {
-                            Usage(session: $session, visible: $usage)
+                            Usage(session: $session)
                         }.padding(.leading)
                     }
                     Bar(session: $session)
@@ -100,7 +100,7 @@ struct Tools: View {
                             session.resign.send()
                             settings = true
                         }.sheet(isPresented: $settings) {
-                            Settings(session: $session, visible: $settings)
+                            Settings(session: $session)
                         }.padding(.trailing)
                     }
                     Spacer()

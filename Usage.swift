@@ -2,8 +2,8 @@ import SwiftUI
 
 struct Usage: View {
     @Binding var session: Session
-    @Binding var visible: Bool
     @State private var since = ""
+    @Environment(\.presentationMode) private var visible
     
     var body: some View {
         NavigationView {
@@ -29,7 +29,7 @@ struct Usage: View {
                         session.forget()
                     }
                     UIApplication.shared.forget()
-                    visible = false
+                    visible.wrappedValue.dismiss()
                 } label: {
                     ZStack {
                         RoundedRectangle(cornerRadius: 8)
@@ -51,7 +51,7 @@ struct Usage: View {
             .navigationBarTitle("Usage", displayMode: .inline)
             .navigationBarItems(trailing:
                                     Button(action: {
-                                        visible = false
+                                        visible.wrappedValue.dismiss()
                                     }, label: {
                                         Image(systemName: "xmark")
                                             .font(.footnote)

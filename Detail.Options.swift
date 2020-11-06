@@ -4,8 +4,8 @@ extension Detail {
     struct Options: View {
         @Binding var session: Session
         @Binding var trackers: Bool
-        @Binding var visible: Bool
         @State private var done = false
+        @Environment(\.presentationMode) private var visible
         
         var body: some View {
             if session.page != nil {
@@ -28,7 +28,7 @@ extension Detail {
                     }
                 }
                 Item(image: "pencil", text: "Edit URL") {
-                    visible = false
+                    visible.wrappedValue.dismiss()
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                         session.type.send(session.page!.url.absoluteString)
                     }

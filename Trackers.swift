@@ -2,8 +2,8 @@ import SwiftUI
 
 struct Trackers: View {
     @Binding var session: Session
-    @Binding var visible: Bool
     @State private var trackers = [String]()
+    @Environment(\.presentationMode) private var visible
     
     var body: some View {
         NavigationView {
@@ -27,7 +27,7 @@ struct Trackers: View {
             .navigationBarTitle("Trackers", displayMode: .inline)
             .navigationBarItems(trailing:
                                     Button(action: {
-                                        visible = false
+                                        visible.wrappedValue.dismiss()
                                     }, label: {
                                         Image(systemName: "xmark")
                                             .font(.footnote)
