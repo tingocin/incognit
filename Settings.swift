@@ -39,9 +39,19 @@ struct Settings: View {
                     Toggle("Allow JavaScript", isOn: $javascript)
                     Toggle("Remove ads", isOn: $ads)
                 }.toggleStyle(SwitchToggleStyle(tint: .accentColor))
-                Section(header:
-                            Text("Privacy"),
-                        footer:
+                Section(footer:
+                            HStack {
+                                Text("You can make incognit your default browser and be secure and with privacy at all times.")
+                                Spacer()
+                            }) {
+                    Button(action: {
+                        UIApplication.shared.settings()
+                    }) {
+                        Text("Default browser")
+                            .foregroundColor(.primary)
+                    }
+                }
+                Section(footer:
                             VStack {
                                 HStack {
                                     Text(location)
@@ -56,7 +66,7 @@ struct Settings: View {
                     Button(action: {
                         UIApplication.shared.settings()
                     }) {
-                        Text("Privacy Settings")
+                        Text("Privacy settings")
                             .foregroundColor(.primary)
                     }
                 }
