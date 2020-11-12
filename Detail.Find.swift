@@ -4,7 +4,7 @@ extension Detail {
     struct Find: View {
         @Binding var session: Session
         @State private var find = ""
-        @Environment(\.presentationMode) private var visible
+        let dismiss: () -> Void
         
         var body: some View {
             ZStack {
@@ -26,7 +26,7 @@ extension Detail {
                         }
                         TextField("Find on Page", text: $find, onCommit: {
                             guard !find.isEmpty else { return }
-                            visible.wrappedValue.dismiss()
+                            dismiss()
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                                 session.find.send(find)
                             }

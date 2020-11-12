@@ -10,7 +10,9 @@ struct Detail: View {
             ScrollView {
                 if session.page != nil {
                     Title(session: $session)
-                    Find(session: $session)
+                    Find(session: $session) {
+                        visible.wrappedValue.dismiss()
+                    }
                     Options(session: $session, trackers: $trackers)
                 }
             }
