@@ -52,8 +52,9 @@ struct Usage: View {
     
     private func update() {
         let formatter = DateComponentsFormatter()
-        formatter.allowedUnits = [.day, .hour, .minute]
+        formatter.allowedUnits = [.day, .hour, .minute, .second]
         formatter.unitsStyle = .short
+        formatter.maximumUnitCount = 1
         since = formatter.string(from: delegate.since, to: .init())!
     }
 }

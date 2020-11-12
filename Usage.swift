@@ -61,8 +61,9 @@ struct Usage: View {
                                     }))
         }.onAppear {
             let formatter = DateComponentsFormatter()
-            formatter.allowedUnits = [.day, .hour, .minute]
-            formatter.unitsStyle = .short
+            formatter.allowedUnits = [.day, .hour, .minute, .second]
+            formatter.unitsStyle = .full
+            formatter.maximumUnitCount = 1
             since = formatter.string(from: Shared.since, to: .init())!
         }.navigationViewStyle(StackNavigationViewStyle())
     }
