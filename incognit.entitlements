@@ -6,5 +6,7 @@
 	<array>
 		<string>group.incognit.share</string>
 	</array>
+    <key>com.apple.developer.web-browser</key>
+    <true/>
 </dict>
 </plist>
