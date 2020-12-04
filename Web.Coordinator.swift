@@ -82,7 +82,7 @@ extension Web {
             }.store(in: &subs)
             
             view.session.navigate.sink { [weak self] in
-                self?.load(.init(url: $0))
+                self?.open($0)
             }.store(in: &subs)
             
             view.session.backward.sink { [weak self] in
@@ -123,7 +123,7 @@ extension Web {
                 self?.find($0) { _ in }
             }.store(in: &subs)
             
-            load(.init(url: view.session.page!.url))
+            open(view.session.page!.url)
         }
         
         deinit {
@@ -197,6 +197,14 @@ extension Web {
                     self?.view.session.state.blocked.insert(domain)
                 }
             }
+        }
+        
+        private func open(_ url: URL) {
+            guard url.deeplink else {
+                load(.init(url: url))
+                return
+            }
+            UIApplication.shared.open(url)
         }
     }
 }
