@@ -68,9 +68,13 @@ import StoreKit
         switch url.scheme {
         case "incognit":
             session.resign.send()
-            url.absoluteString.replacingOccurrences(of: "incognit://", with: "").removingPercentEncoding.map {
-                session.browse($0)
-            }
+            url.absoluteString
+                .replacingOccurrences(of: "incognit://", with: "")
+                .removingPercentEncoding
+                .flatMap(User.engine.url)
+                .map {
+                    session.browse($0)
+                }
         case "incognit-id":
             session.resign.send()
             session.browse(id: url.absoluteString.replacingOccurrences(of: "incognit-id://", with: ""))

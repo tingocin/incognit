@@ -1,5 +1,6 @@
 import SwiftUI
 import CoreLocation
+import Tron
 
 struct Settings: View {
     @Binding var session: Session

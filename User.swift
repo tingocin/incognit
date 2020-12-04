@@ -1,4 +1,5 @@
 import Foundation
+import Tron
 
 final class User: UserDefaults {
     private static let _premium = "incognit_premium"

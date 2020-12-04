@@ -50,11 +50,6 @@ struct Session {
         }
     }
     
-    mutating func browse(_ string: String) {
-        guard let url = string.url(User.engine) else { return }
-        browse(url)
-    }
-    
     mutating func browse(_ url: URL) {
         if page == nil {
             let page = Page(url: url)
@@ -81,27 +76,5 @@ struct Session {
         dispatch.async {
             FileManager.default.forget()
         }
-    }
-}
-
-private extension String {
-    func url(_ engine: Engine) -> URL? {
-        {
-            $0.isEmpty ? nil : URL(string: $0.content(engine))
-        } (trimmingCharacters(in: .whitespacesAndNewlines))
-    }
-    
-    private func content(_ engine: Engine) -> Self {
-        fullURL ? self : semiURL ? "http://" + self : engine.prefix + (addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "")
-    }
-    
-    private var fullURL: Bool {
-        (contains("http://") || contains("https://")) && semiURL
-    }
-    
-    private var semiURL: Bool {
-        {
-            $0.count > 1 && $0.last!.count > 1 && $0.first!.count > 1
-        } (components(separatedBy: "."))
     }
 }

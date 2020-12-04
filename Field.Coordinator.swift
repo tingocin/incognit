@@ -46,7 +46,7 @@ extension Field {
         }
         
         func searchBarSearchButtonClicked(_: UISearchBar) {
-            text.map {
+            text.flatMap(User.engine.url).map {
                 view.session.browse($0)
             }
             text = nil
