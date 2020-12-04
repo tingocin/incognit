@@ -11,6 +11,8 @@ import StoreKit
     var body: some Scene {
         WindowGroup {
             ZStack {
+                Color(.secondarySystemBackground)
+                    .edgesIgnoringSafeArea(.all)
                 if session.page == nil {
                     Book(session: $session)
                 } else {
@@ -18,7 +20,6 @@ import StoreKit
                 }
                 Tools(session: $session)
             }
-            .background(Color(.secondarySystemBackground).edgesIgnoringSafeArea(.all))
             .onOpenURL(perform: open)
             .onReceive(sessionDelegate.forget) {
                 session.dismiss.send()

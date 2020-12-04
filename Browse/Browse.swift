@@ -12,7 +12,7 @@ import SwiftUI
                         Spacer()
                         Image(systemName: "magnifyingglass")
                             .font(Font.body.bold())
-                            .foregroundColor(.init(.systemIndigo))
+                            .foregroundColor(.init("AccentColor"))
                             .frame(width: 150, height: 40)
                             .padding(.bottom)
                         Spacer()

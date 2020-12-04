@@ -5,17 +5,15 @@ struct Chart: View {
     
     var body: some View {
         ZStack {
-            Base()
-                .stroke(Color.accentColor, style: .init(lineWidth: 1, lineCap: .round))
             Pattern()
-                .stroke(Color.accentColor, style: .init(lineWidth: 1, lineCap: .round, dash: [1, 4]))
+                .stroke(Color.black, style: .init(lineWidth: 2, lineCap: .round, dash: [1, 4]))
             Shade(values: values)
-                .fill(Color.accentColor.opacity(0.5))
+                .fill(Color.accentColor.opacity(0.3))
             Road(values: values)
                 .stroke(Color.accentColor, style: .init(lineWidth: 2, lineCap: .round))
             ForEach(0 ..< values.count, id: \.self) {
                 Dot(y: values[$0], index: $0, count: values.count)
-                    .fill(Color.accentColor)
+                    .fill(Color.black)
                 Dot(y: values[$0], index: $0, count: values.count)
                     .stroke(Color.primary, style: .init(lineWidth: 2, lineCap: .round))
             }
@@ -38,8 +36,6 @@ private struct Pattern: Shape {
     func path(in rect: CGRect) -> Path {
         .init { path in
             path.move(to: .zero)
-            path.addLine(to: .init(x: rect.maxX, y: 0))
-            path.addLine(to: .init(x: rect.maxX, y: rect.maxY))
             (1 ..< 10).map { rect.maxX / 10 * .init($0) }.forEach {
                 path.move(to: .init(x: $0, y: 0))
                 path.addLine(to: .init(x: $0, y: rect.maxY))

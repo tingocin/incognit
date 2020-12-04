@@ -11,7 +11,7 @@ struct Log: View {
                 Spacer()
                 Image(systemName: "eyeglasses")
                     .font(Font.largeTitle.bold())
-                    .foregroundColor(.init(.systemIndigo))
+                    .foregroundColor(.init("AccentColor"))
                 if family != .systemLarge {
                     Spacer()
                         frame(height: 100)
