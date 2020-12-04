@@ -3,7 +3,7 @@ import WatchConnectivity
 import StoreKit
 
 @main struct App: SwiftUI.App {
-    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    @UIApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate
     @Environment(\.scenePhase) private var phase
     @State private var session = Session()
     private let sessionDelegate = SessionDelegate()
